@@ -2,6 +2,8 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 from datetime import datetime
+import database
+database.init_db()
 
 # Set up page styling
 st.set_page_config(page_title="NorthScout Dashboard", page_icon="🏈", layout="wide")
