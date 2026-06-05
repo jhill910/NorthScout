@@ -82,7 +82,11 @@ def scrape_x_media_bites():
 
     print("🎙️ Starting Playwright RPA Browser...")
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        # Force Playwright to use the cloud server's global Linux Chromium execution path
+browser = p.chromium.launch(
+    headless=True,
+    executable_path="/usr/bin/chromium"
+)
         context = browser.new_context(storage_state=auth_file)
         page = context.new_page()
         
