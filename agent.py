@@ -76,8 +76,18 @@ def get_top_team_news():
 
 def scrape_x_media_bites():
     import database
+    import json
+    import streamlit as st
+    
     auth_file = "twitter_auth.json"
+    
+    # Check if we are running in the cloud, if so, write our secret string to a temporary file
+    if not os.path.exists(auth_file) and "secret_auth" in st.secrets:
+        with open(auth_file, "w") as f:
+            f.write(st.secrets["secret_auth"]["json_data"])
+
     if not os.path.exists(auth_file):
+        print("   ❌ Missing twitter authorization tokens.")
         return
 
     print("🎙️ Starting Playwright RPA Browser...")
