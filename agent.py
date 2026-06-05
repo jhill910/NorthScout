@@ -46,9 +46,7 @@ def get_top_team_news():
             title = entry.get("title", "(No Title)")
             link = entry.get("link", "#")
             
-            # UPDATED: Capture the actual original publication date from the RSS feed item
             pub_date = entry.get("published", datetime.now().strftime("%Y-%m-%d %H:%M"))
-            # Clean up long messy timezones if present for a tighter UI fit
             pub_date = pub_date.replace(" +0000", "").replace(" GMT", "")
             
             raw_summary = entry.get("summary", "No summary text provided by source.")
@@ -69,7 +67,6 @@ def get_top_team_news():
         final_sorted_report[team_name] = top_five
         
         for idx, (score, title, summary, link, pub_date) in enumerate(top_five, 1):
-            # Save using the actual published timestamp
             database.save_team_news(team_name, title, summary, link, pub_date)
         
     return final_sorted_report
@@ -81,7 +78,7 @@ def scrape_x_media_bites():
     
     auth_file = "twitter_auth.json"
     
-    # Check if we are running in the cloud, if so, write our secret string to a temporary file
+    # 1. Check if running on cloud and generate local file from secrets if so
     if not os.path.exists(auth_file) and "secret_auth" in st.secrets:
         with open(auth_file, "w") as f:
             f.write(st.secrets["secret_auth"]["json_data"])
@@ -92,11 +89,14 @@ def scrape_x_media_bites():
 
     print("🎙️ Starting Playwright RPA Browser...")
     with sync_playwright() as p:
-        # Force Playwright to use the cloud server's global Linux Chromium execution path
-browser = p.chromium.launch(
-    headless=True,
-    executable_path="/usr/bin/chromium"
-)
+        # 2. Smart Environment Check: Use system Chromium path only if running on the cloud
+        cloud_chromium_path = "/usr/bin/chromium"
+        if os.path.exists(cloud_chromium_path):
+            browser = p.chromium.launch(headless=True, executable_path=cloud_chromium_path)
+        else:
+            # Safely fall back to your local Windows downloaded browser execution environment
+            browser = p.chromium.launch(headless=True)
+            
         context = browser.new_context(storage_state=auth_file)
         page = context.new_page()
         
@@ -117,11 +117,9 @@ browser = p.chromium.launch(
                     else:
                         tweet_url = f"https://x.com/{handle}"
                     
-                    # UPDATED: Pull the exact posted timestamp from X's native <time> attribute
                     time_element = tweet_locator.locator('time').first
                     if time_element.count() > 0:
-                        raw_time = time_element.get_attribute("datetime") # Format: 2026-06-02T18:30:00.000Z
-                        # Tidy it up cleanly into a readable format for show notes
+                        raw_time = time_element.get_attribute("datetime")
                         tweet_time = raw_time.replace("T", " ").split(".")[0] + " UTC"
                     else:
                         tweet_time = datetime.now().strftime("%Y-%m-%d %H:%M")
