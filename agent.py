@@ -4,6 +4,7 @@ import os
 import sqlite3
 from collections import Counter
 from datetime import datetime
+from time import mktime
 from playwright.sync_api import sync_playwright
 
 TEAMS = {
@@ -11,6 +12,7 @@ TEAMS = {
     "Detroit Lions": "https://www.detroitlions.com/rss/news",
     "Green Bay Packers": "https://www.packers.com/rss/news",
     "Minnesota Vikings": "https://www.vikings.com/rss/news",
+    "Sports Mockery (Bears/NFC)": "https://sportsmockery.com/feed",  # <-- Added Sports Mockery!
 }
 
 TWITTER_HANDLES = ["PatMcAfeeShow", "adamschefter", "3andout_pod", "ZarkTweets", "TheHerd", "SportsCenter"]
@@ -24,8 +26,6 @@ def calculate_global_trends(all_entries):
         keywords = [w for w in clean_words if w not in IGNORE_WORDS and not w.isdigit() and len(w) > 2]
         words.extend(keywords)
     return Counter(words)
-
-from time import mktime  # <-- Add this import at the very top of your file!
 
 def get_top_team_news():
     import database
@@ -46,9 +46,13 @@ def get_top_team_news():
     now = datetime.now()
     
     for team_name, entries in team_feeds.items():
+        # --- REDIRECTION RULE ---
+        # Map Sports Mockery entries straight to the Chicago Bears data layout
+        display_name = "Chicago Bears" if "Sports Mockery" in team_name else team_name
+        
         scored_entries = []
         for entry in entries:
-            # --- NEW: AGE FILTER LOGIC ---
+            # --- AGE FILTER LOGIC ---
             is_recent = True
             if "published_parsed" in entry and entry.published_parsed:
                 try:
@@ -87,10 +91,19 @@ def get_top_team_news():
         
         scored_entries.sort(key=lambda x: x[0], reverse=True)
         top_five = scored_entries[:5]
-        final_sorted_report[team_name] = top_five
         
+        # We append to final_sorted_report using display_name to group lists cleanly
+        if display_name in final_sorted_report:
+            # If Bears data already exists from the first pass, combine and trim to top 5
+            combined = final_sorted_report[display_name] + top_five
+            combined.sort(key=lambda x: x[0], reverse=True)
+            final_sorted_report[display_name] = combined[:5]
+        else:
+            final_sorted_report[display_name] = top_five
+        
+        # Save to database under the target display_name 
         for idx, (score, title, summary, link, pub_date) in enumerate(top_five, 1):
-            database.save_team_news(team_name, title, summary, link, pub_date)
+            database.save_team_news(display_name, title, summary, link, pub_date)
         
     return final_sorted_report
 
