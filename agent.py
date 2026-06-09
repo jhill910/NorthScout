@@ -25,6 +25,8 @@ def calculate_global_trends(all_entries):
         words.extend(keywords)
     return Counter(words)
 
+from time import mktime  # <-- Add this import at the very top of your file!
+
 def get_top_team_news():
     import database
     all_raw_entries = []
@@ -40,9 +42,30 @@ def get_top_team_news():
     trending_keywords = calculate_global_trends(all_raw_entries)
     final_sorted_report = {}
     
+    # Establish our 7-day age limit cutoff
+    now = datetime.now()
+    
     for team_name, entries in team_feeds.items():
         scored_entries = []
         for entry in entries:
+            # --- NEW: AGE FILTER LOGIC ---
+            is_recent = True
+            if "published_parsed" in entry and entry.published_parsed:
+                try:
+                    # Convert feed time-tuple to a standard datetime object
+                    pub_datetime = datetime.fromtimestamp(mktime(entry.published_parsed))
+                    # Calculate age in days
+                    age_days = (now - pub_datetime).days
+                    if age_days > 7:
+                        is_recent = False
+                except Exception:
+                    # If date parsing fails for a weird entry, default to keeping it
+                    pass
+            
+            # Skip the story entirely if it's older than 7 days
+            if not is_recent:
+                continue
+                
             title = entry.get("title", "(No Title)")
             link = entry.get("link", "#")
             
