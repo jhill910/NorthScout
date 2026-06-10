@@ -12,7 +12,7 @@ TEAMS = {
     "Detroit Lions": "https://www.detroitlions.com/rss/news",
     "Green Bay Packers": "https://www.packers.com/rss/news",
     "Minnesota Vikings": "https://www.vikings.com/rss/news",
-    "Sports Mockery (Bears/NFC)": "https://sportsmockery.com/feed",  # <-- Added Sports Mockery!
+    "Sports Mockery (Bears/NFC)": "https://sportsmockery.com/category/bears/feed",  # <-- Added Sports Mockery!
 }
 
 TWITTER_HANDLES = ["PatMcAfeeShow", "adamschefter", "3andout_pod", "ZarkTweets", "TheHerd", "SportsCenter"]
