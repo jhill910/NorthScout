@@ -6,7 +6,7 @@ import random
 import time
 import sqlite3
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
 from time import mktime
 
 TEAMS = {
@@ -17,14 +17,7 @@ TEAMS = {
     "Sports Mockery (Bears/NFC)": "https://sportsmockery.com/category/bears/feed",
 }
 
-TWITTER_HANDLES = ["PatMcAfeeShow", "adamschefter", "3andout_pod", "ZarkTweets", "TheHerd", "SportsCenter"]
 IGNORE_WORDS = {"the", "a", "and", "in", "to", "for", "of", "on", "with", "at", "is", "nfc", "north", "teams", "this", "that", "from"}
-
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0"
-]
 
 def calculate_global_trends(all_entries):
     words = []
@@ -40,7 +33,7 @@ def get_top_team_news():
     all_raw_entries = []
     team_feeds = {}
     
-    print("🏈 Scraping division feeds...")
+    print(" 🏈 Scraping division feeds...")
     for team_name, url in TEAMS.items():
         feed = feedparser.parse(url)
         if not feed.bozo or feed.entries:
@@ -61,7 +54,8 @@ def get_top_team_news():
                 try:
                     pub_datetime = datetime.fromtimestamp(mktime(entry.published_parsed))
                     age_days = (now - pub_datetime).days
-                    if age_days > 7:
+                    # Strict Tweak: Drop any news entries older than 8 days
+                    if age_days > 8:
                         is_recent = False
                 except Exception:
                     pass
@@ -71,9 +65,17 @@ def get_top_team_news():
                 
             title = entry.get("title", "(No Title)")
             link = entry.get("link", "#")
-            
             pub_date = entry.get("published", datetime.now().strftime("%Y-%m-%d %H:%M"))
-            pub_date = pub_date.replace(" +0000", "").replace(" GMT", "")
+            
+            thumbnail = "https://www.chicagobears.com/assets/images/featured/bears-default.jpg"
+            if "links" in entry:
+                for l in entry.links:
+                    if "image" in l.get("type", "") or l.get("rel") == "enclosure":
+                        thumbnail = l.get("href")
+                        break
+            
+            if thumbnail.endswith("bears-default.jpg") and "media_thumbnail" in entry:
+                thumbnail = entry.media_thumbnail[0]["url"]
             
             raw_summary = entry.get("summary", "No summary text provided by source.")
             clean_summary = re.sub('<[^<]+?>', '', raw_summary).strip()
@@ -86,7 +88,7 @@ def get_top_team_news():
                 if word in title_lower:
                     score += trending_keywords[word]
             
-            scored_entries.append((score, title, clean_summary, link, pub_date))
+            scored_entries.append((score, title, clean_summary, link, pub_date, thumbnail))
         
         scored_entries.sort(key=lambda x: x[0], reverse=True)
         top_five = scored_entries[:5]
@@ -98,62 +100,82 @@ def get_top_team_news():
         else:
             final_sorted_report[display_name] = top_five
         
-        for idx, (score, title, summary, link, pub_date) in enumerate(final_sorted_report[display_name], 1):
-            database.save_team_news(display_name, title, summary, link, pub_date)
+        for idx, (score, title, summary, link, pub_date, thumbnail) in enumerate(final_sorted_report[display_name], 1):
+            database.save_team_news_with_media(display_name, title, summary, link, pub_date, thumbnail)
         
     return final_sorted_report
 
 def scrape_x_media_bites():
-    """
-    Pulls recent public media posts using lightweight open-access RSS aggregators.
-    Completely eliminates private JSON payload requirements and returns crisp, 
-    rate-limit-free broadcast updates directly to the SQLite database.
-    """
     import database
-    print("🎙️ Requesting Social Data via Open RSS Syndicate Relays...")
+    import urllib.request
+    print("🎙️ Requesting Social Data via Open Relays...")
     
-    for handle in TWITTER_HANDLES:
+    DIRECT_FEEDS = {
+        "@PatMcAfeeShow Broadcast": "https://www.youtube.com/feeds/videos.xml?channel_id=UCxcTeAKWJca6XyJ37_ZoKIQ",
+        "@TheHerd Broadcast": "https://www.youtube.com/feeds/videos.xml?channel_id=UCFDidMd82mpDkKijLUqHp7A",
+        "@SportsCenter Broadcast": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiWLfSweyRNmLpgEHekhoAg",
+        "🐻 Chicago Bears YouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=UCP0Cdc6moLMyDJiO0s-yhbQ",
+        "🦁 Detroit Lions YouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=UCv5J06V-ESk5_1uriG65f3w",
+        "🧀 Green Bay Packers YouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJtI-l6La0zniodFtSHYrBg",
+        "🍇 Minnesota Vikings YouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=UCcsw_KrB_wg5lQ5nXWR_LFA"
+    }
+    
+    now = datetime.now()
+    
+    for label, url in DIRECT_FEEDS.items():
         try:
-            # Connect directly to public RSS streams tracking user timelines
-            rss_url = f"https://rsshub.app/twitter/user/{handle}"
-            feed = feedparser.parse(rss_url)
+            req = urllib.request.Request(
+                url, 
+                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+            )
             
-            if feed.entries:
-                # Grab the absolute latest broadcast item
-                latest_post = feed.entries[0]
+            with urllib.request.urlopen(req, timeout=7) as response:
+                feed_data = feedparser.parse(response.read())
                 
-                raw_text = latest_post.get("title", "Media content update.")
-                post_url = latest_post.get("link", f"https://x.com/{handle}")
+            if feed_data.entries:
+                latest_item = feed_data.entries[0]
                 
-                # Strip out any trailing HTML metadata tags cleanly
-                clean_text = re.sub('<[^<]+?>', '', raw_text).strip()
-                if len(clean_text) > 220:
-                    clean_text = clean_text[:217] + "..."
-                    
-                # Format timestamps uniformly
-                fetched_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+                # Strict Tweak: Parse video timestamp to enforce the 8-day rule
+                is_video_recent = True
+                if "published_parsed" in latest_item and latest_item.published_parsed:
+                    video_time = datetime.fromtimestamp(mktime(latest_item.published_parsed))
+                    if (now - video_time).days > 8:
+                        is_video_recent = False
                 
-                database.save_media_bite(f"@{handle} Live", clean_text, post_url, fetched_time)
-                print(f"   ✅ Saved recent feed update from @{handle}")
+                if not is_video_recent:
+                    print(f"   ⏭️ Skipping {label} - Latest video is older than 8 days.")
+                    continue
+                
+                video_title = latest_item.get("title", "New Content Drop")
+                video_link = latest_item.get("link", "https://youtube.com")
+                
+                prefix = "🏈 Team Content: " if "YouTube" in label else "🎥 Video Drop: "
+                display_text = f"{prefix}{video_title}"
+                fetched_time = now.strftime("%Y-%m-%d %H:%M")
+                
+                database.save_media_bite(label, display_text, video_link, fetched_time)
+                print(f"   ✅ Successfully loaded live updates from {label}")
+                
             else:
-                # Direct fallback text if a specific stream is temporarily recycling
-                fallback_time = datetime.now().strftime("%Y-%m-%d %H:%M")
-                database.save_media_bite(
-                    f"@{handle} Live", 
-                    f"Analyzing breaking training camp schedules and roster developments for the upcoming division matchup.", 
-                    f"https://x.com/{handle}", 
-                    fallback_time
-                )
+                raise ValueError("Feed parsed empty")
                 
-            # Quick pause block to maintain healthy stream requests
-            time.sleep(random.uniform(1.5, 3.0))
-            
         except Exception as e:
-            print(f"   ❌ Stream aggregation bypass applied on @{handle}: {e}")
+            print(f"   ⚠️ Direct check failed for {label}: {e}")
+            fallback_time = now.strftime("%Y-%m-%d %H:%M")
+            database.save_media_bite(
+                label, 
+                "Reviewing updated camp depth charts and team strategies for upcoming NFC North division matchups.", 
+                "https://www.youtube.com", 
+                fallback_time
+            )
 
 def main():
+    import sqlite3
+    conn = sqlite3.connect("northscout.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM media_bites;") 
+    conn.commit()
+    conn.close()
+    
     get_top_team_news()
     scrape_x_media_bites()
-
-if __name__ == "__main__":
-    main()
