@@ -170,12 +170,15 @@ def scrape_x_media_bites():
             )
 
 def main():
+    # Connect and clear both tables to wipe out old text-only history formatting
     import sqlite3
     conn = sqlite3.connect("northscout.db")
     cursor = conn.cursor()
     cursor.execute("DELETE FROM media_bites;") 
+    cursor.execute("DELETE FROM team_news;") # <-- ADD THIS LINE TO CLEAR OLD ENTIRES
     conn.commit()
     conn.close()
     
+    # Run data engines to pull fresh 2026 content with image links
     get_top_team_news()
     scrape_x_media_bites()
