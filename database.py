@@ -7,6 +7,7 @@ def init_db():
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     
+    # Create Team News Table if it doesn't exist
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS team_news (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,6 +20,7 @@ def init_db():
         )
     """)
     
+    # Create Media Bites Table if it doesn't exist
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS media_bites (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,11 +31,12 @@ def init_db():
         )
     """)
     
-    # Structural updates to prevent backward errors with older local file versions
+    # PRODUCTION FAILSAFE: Explicitly force-inject the missing thumbnail column 
+    # into the existing production cloud database if it doesn't exist yet!
     try:
-        cursor.execute("ALTER TABLE team_news ADD COLUMN thumbnail TEXT;")
+        cursor.execute("ALTER TABLE team_news ADD COLUMN thumbnail TEXT DEFAULT '';")
     except sqlite3.OperationalError:
-        pass # Already upgraded
+        pass # The column already exists, safe to ignore
         
     conn.commit()
     conn.close()
