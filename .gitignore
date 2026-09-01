@@ -1,0 +1,35 @@
+# --- Credentials / secrets: NEVER commit ---
+twitter_auth.json
+.streamlit/secrets.toml
+*.env
+.env
+
+# --- Local database (ephemeral, machine-specific) ---
+northscout.db
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- Generated reports / working files ---
+show_prep.md
+DIAGNOSIS_*.md
+
+# --- Screenshots & scratch images ---
+*.png
+*.jpg
+*.jpeg
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

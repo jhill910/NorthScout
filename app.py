@@ -39,12 +39,60 @@ def load_dashboard_data(team_name):
     conn.close()
     return df
 
-def load_media_data():
+def load_media_data(platform=None, limit=8):
     conn = sqlite3.connect("northscout.db")
-    query = "SELECT source, tweet_text, link, fetched_at FROM media_bites ORDER BY id DESC LIMIT 8"
+    query = """
+        SELECT source, tweet_text, link, fetched_at, COALESCE(platform, '') AS platform
+        FROM media_bites
+        ORDER BY id DESC
+        LIMIT 80
+    """
     df = pd.read_sql_query(query, conn)
     conn.close()
-    return df
+
+    if df.empty:
+        return df
+
+    def infer_platform(row):
+        tagged = str(row.get("platform") or "").strip().lower()
+        if tagged in ("youtube", "x"):
+            return tagged
+        link = str(row.get("link") or "").lower()
+        if "youtube.com" in link or "youtu.be" in link:
+            return "youtube"
+        if "x.com" in link or "twitter.com" in link:
+            return "x"
+        return ""
+
+    df["_platform"] = df.apply(infer_platform, axis=1)
+    if platform:
+        df = df[df["_platform"] == platform]
+    return df.drop(columns=["_platform"]).head(limit).reset_index(drop=True)
+
+def render_media_cards(media_df, empty_message):
+    if media_df.empty:
+        st.info(empty_message)
+        return
+
+    sub_cols = st.columns(4)
+    for idx, row in media_df.iterrows():
+        col_target = idx % 4
+        with sub_cols[col_target]:
+            with st.container(border=True):
+                st.markdown(f"##### 📢 {row['source']}")
+                st.caption(f"🕒 {row['fetched_at']}")
+
+                post_text = row['tweet_text'] if row['tweet_text'] else "[No text content captured]"
+                st.markdown(
+                    f"""
+                    <div style="height: 110px; margin-top: 10px; margin-bottom: 10px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
+                        <a href="{row['link']}" target="_blank" style="text-decoration: none; color: #000000; font-style: italic; font-size: 14px; line-height: 1.4;">
+                            "{post_text}"
+                        </a>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
 
 # --- FIXED LOGO ASSETS & PROMINENT TEAM COLOR PALETTES ---
 TEAM_ASSETS = {
@@ -196,32 +244,19 @@ for team_name, tab_obj in teams_list:
 st.markdown("---")
 
 # --- SPLIT SCREEN PLATFORM LAYOUT ---
-st.header("🎙️ Live Media Soundbites & Clips (X/Twitter/YouTube)")
-media_df = load_media_data()
+st.header("🎙️ Live Media Soundbites & Clips")
 
-if media_df.empty:
-    st.info("No recent social media soundbites captured inside the 8-day window yet.")
-else:
-    sub_cols = st.columns(4)
-    for idx, row in media_df.iterrows():
-        col_target = idx % 4
-        with sub_cols[col_target]:
-            with st.container(border=True):
-                st.markdown(f"##### 📢 {row['source']}")
-                st.caption(f"🕒 Post Timestamp: {row['fetched_at']}")
-                
-                # Tweak: Set style color rule to explicitly target #000000 (Black) for solid text readability
-                post_text = row['tweet_text'] if row['tweet_text'] else "[No text content captured]"
-                st.markdown(
-                    f"""
-                    <div style="height: 110px; margin-top: 10px; margin-bottom: 10px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
-                        <a href="{row['link']}" target="_blank" style="text-decoration: none; color: #000000; font-style: italic; font-size: 14px; line-height: 1.4;">
-                            "{post_text}"
-                        </a>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+st.subheader("🎥 YouTube — NFC North clips")
+render_media_cards(
+    load_media_data(platform="youtube", limit=8),
+    "No recent YouTube clips inside the 8-day window yet. Hit Sync!",
+)
+
+st.subheader("🐦 X / Twitter — Division posts")
+render_media_cards(
+    load_media_data(platform="x", limit=8),
+    "No recent X posts captured yet. Hit Sync! (Requires a valid twitter_auth.json session.)",
+)
 
 st.sidebar.header("⚙️ Application Controls")
 if st.sidebar.button("🔄 Sync Live Data Now"):
