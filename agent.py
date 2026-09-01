@@ -134,8 +134,11 @@ def get_top_team_news():
 
             raw_summary = entry.get("summary", "No summary text provided by source.")
             clean_summary = re.sub('<[^<]+?>', '', raw_summary).strip()
-            if len(clean_summary) > 180:
-                clean_summary = clean_summary[:177] + "..."
+            # 180 chars cut transaction posts off mid-list, hiding exactly the
+            # names a producer needs (who was cut, who was signed). The summary
+            # sits behind an expander, so extra length costs nothing on screen.
+            if len(clean_summary) > 1200:
+                clean_summary = clean_summary[:1197] + "..."
 
             score = 0
             title_lower = title.lower()
@@ -146,17 +149,24 @@ def get_top_team_news():
             scored_entries.append((score, title, clean_summary, link, pub_date, thumbnail))
 
         scored_entries.sort(key=lambda x: x[0], reverse=True)
-        top_five = scored_entries[:5]
 
+        # Persist EVERY story inside the freshness window, each with its score.
+        # Previously only the top 5 were saved, so anything ranked 6th or lower
+        # was destroyed at scrape time and unrecoverable without a re-scrape.
+        # Ranking now happens at read time in app.py, which makes the 5-story
+        # cutoff a display choice rather than permanent data loss.
+        for score, title, summary, link, pub_date, thumbnail in scored_entries:
+            database.save_team_news_with_media(
+                display_name, title, summary, link, pub_date, thumbnail, score
+            )
+
+        top_five = scored_entries[:5]
         if display_name in final_sorted_report:
             combined = final_sorted_report[display_name] + top_five
             combined.sort(key=lambda x: x[0], reverse=True)
             final_sorted_report[display_name] = combined[:5]
         else:
             final_sorted_report[display_name] = top_five
-
-        for score, title, summary, link, pub_date, thumbnail in final_sorted_report[display_name]:
-            database.save_team_news_with_media(display_name, title, summary, link, pub_date, thumbnail)
 
     return final_sorted_report
 
@@ -355,7 +365,7 @@ def main():
         print(f"🧹 Cleared {removed} stale media bite(s) older than {MAX_AGE_DAYS} days")
 
     # Remove old fake fallback rows from previous scraper versions
-    conn = sqlite3.connect("northscout.db")
+    conn = sqlite3.connect(database.DB_NAME)
     cursor = conn.cursor()
     cursor.execute(
         "DELETE FROM media_bites WHERE link = ? AND tweet_text LIKE ?",

@@ -18,9 +18,8 @@ __pycache__/
 venv/
 env/
 
-# --- Generated reports / working files ---
+# --- Generated failsafe report (regenerated each run) ---
 show_prep.md
-DIAGNOSIS_*.md
 
 # --- Screenshots & scratch images ---
 *.png

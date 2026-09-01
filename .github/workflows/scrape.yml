@@ -1,0 +1,89 @@
+name: NorthScout scrape
+
+# Streamlit Cloud's filesystem is ephemeral, so the app cannot durably store
+# its own data. This Action does the scraping on a schedule and commits the
+# result back to the repo, which IS durable. The app just reads the committed
+# snapshot.
+
+on:
+  schedule:
+    # 11:00 UTC = 6am CT, 21:00 UTC = 4pm CT.
+    # Morning run has overnight news ready before show prep; afternoon run
+    # catches same-day pressers, cuts and transactions.
+    - cron: "0 11 * * *"
+    - cron: "0 21 * * *"
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - "agent.py"
+      - "database.py"
+      - "export_json.py"
+      - ".github/workflows/scrape.yml"
+
+permissions:
+  contents: write           # required so the job can commit the snapshot
+
+concurrency:
+  group: northscout-scrape
+  cancel-in-progress: false # never interrupt a run mid-commit
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      X_AUTH_JSON: ${{ secrets.X_AUTH_JSON }}
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # X scraping is optional. Without the secret the scrape still runs and
+      # simply skips X, rather than failing the whole job.
+      - name: Restore X session from secret
+        if: env.X_AUTH_JSON != ''
+        run: |
+          printf '%s' "$X_AUTH_JSON" > twitter_auth.json
+          python -c "import json; json.load(open('twitter_auth.json')); print('X session file is valid JSON')"
+
+      - name: Install Playwright browser
+        if: env.X_AUTH_JSON != ''
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run scrape and build snapshot
+        run: python export_json.py
+
+      # Credentials must never reach a commit. The repo is public.
+      - name: Remove X session file
+        if: always()
+        run: rm -f twitter_auth.json
+
+      - name: Commit snapshot
+        run: |
+          git config user.name  "northscout-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/northscout.json
+          if git diff --staged --quiet; then
+            echo "No change in snapshot - nothing to commit"
+          else
+            git commit -m "data: snapshot $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "Snapshot committed"
+          fi
+
+      - name: Job summary
+        if: always()
+        run: python summarize_run.py >> "$GITHUB_STEP_SUMMARY"

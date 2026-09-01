@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
 import sqlite3
+import json
 import pandas as pd
 import time
 from datetime import datetime, timezone
@@ -31,24 +32,82 @@ def get_countdown_to_kickoff():
     minutes = (time_delta.seconds % 3600) // 60
     return f"⏱️ {days}d : {hours}h : {minutes}m until 2026 Regular Season Kickoff"
 
-# --- DATABASE LOADING ENGINES ---
-def load_dashboard_data(team_name):
-    conn = sqlite3.connect("northscout.db")
-    query = "SELECT title, summary, link, fetched_at, thumbnail FROM team_news WHERE team = ? ORDER BY id DESC LIMIT 5"
-    df = pd.read_sql_query(query, conn, params=(team_name,))
+# --- DATA LOADING ENGINES ---
+# Streamlit Community Cloud has an EPHEMERAL filesystem: anything written to
+# disk is wiped on restart, redeploy or inactivity sleep. So SQLite cannot be
+# the source of truth in production. The scheduled GitHub Action commits
+# data/northscout.json to the repo, which IS durable, and the app reads that.
+# Local SQLite remains the fallback so local development still works.
+SNAPSHOT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             "data", "northscout.json")
+
+
+@st.cache_data(ttl=300)
+def load_snapshot():
+    """Read the committed JSON snapshot. Returns None if absent/unreadable."""
+    if not os.path.exists(SNAPSHOT_PATH):
+        return None
+    try:
+        with open(SNAPSHOT_PATH, "r", encoding="utf-8") as f:
+            snap = json.load(f)
+        if not isinstance(snap, dict) or "team_news" not in snap:
+            return None
+        return snap
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def load_dashboard_data(team_name, limit=5):
+    """Top stories for a team, ranked by the score the scraper computed.
+
+    This previously used ORDER BY id DESC -- insertion order -- which threw away
+    the ranking agent.py had just calculated. Two orderings were fighting and
+    the arbitrary one won.
+    """
+    cols = ["title", "summary", "link", "fetched_at", "thumbnail", "score"]
+
+    snap = load_snapshot()
+    if snap is not None:
+        rows = snap.get("team_news", {}).get(team_name, [])
+        if not rows:
+            return pd.DataFrame(columns=cols)
+        df = pd.DataFrame(rows)
+        for c in cols:
+            if c not in df.columns:
+                df[c] = "" if c != "score" else 0
+        df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0)
+        return df.sort_values("score", ascending=False).head(limit)[cols].reset_index(drop=True)
+
+    conn = sqlite3.connect(database.DB_NAME)
+    query = """
+        SELECT title, summary, link, fetched_at, thumbnail,
+               COALESCE(score, 0) AS score
+        FROM team_news
+        WHERE team = ?
+        ORDER BY score DESC, id DESC
+        LIMIT ?
+    """
+    df = pd.read_sql_query(query, conn, params=(team_name, limit))
     conn.close()
     return df
 
+
 def load_media_data(platform=None, limit=8):
-    conn = sqlite3.connect("northscout.db")
-    query = """
-        SELECT source, tweet_text, link, fetched_at, COALESCE(platform, '') AS platform
-        FROM media_bites
-        ORDER BY id DESC
-        LIMIT 80
-    """
-    df = pd.read_sql_query(query, conn)
-    conn.close()
+    snap = load_snapshot()
+    if snap is not None:
+        rows = snap.get("media_bites", [])
+        df = pd.DataFrame(rows) if rows else pd.DataFrame(
+            columns=["source", "tweet_text", "link", "fetched_at", "platform"])
+    else:
+        conn = sqlite3.connect(database.DB_NAME)
+        query = """
+            SELECT source, tweet_text, link, fetched_at, COALESCE(platform, '') AS platform
+            FROM media_bites
+            ORDER BY id DESC
+            LIMIT 80
+        """
+        df = pd.read_sql_query(query, conn)
+        conn.close()
 
     if df.empty:
         return df
@@ -141,6 +200,42 @@ st.markdown(
 
 st.title("🏈 NorthScout: Master Show Prep App")
 st.subheader(f"Snapshot Room — Week of {datetime.now().strftime('%B %d, %Y')}")
+
+
+def render_freshness_banner():
+    """Never let stale data pass as current. Every failure used to be a silent
+    print() to a console nobody sees; now the age of the data is on screen."""
+    snap = load_snapshot()
+    if snap is None:
+        st.warning(
+            "⚠️ **No committed snapshot found.** Falling back to local SQLite, which "
+            "does **not** survive restarts on Streamlit Cloud. Check that the "
+            "`scrape.yml` GitHub Action has run and committed `data/northscout.json`."
+        )
+        return
+    try:
+        gen = datetime.fromisoformat(str(snap.get("generated_at", "")).replace("Z", "+00:00"))
+        age_h = (datetime.now(timezone.utc) - gen).total_seconds() / 3600
+        stamp = gen.strftime("%b %d, %Y at %H:%M UTC")
+    except ValueError:
+        st.warning("⚠️ Snapshot found but its timestamp is unreadable.")
+        return
+
+    counts = snap.get("counts", {})
+    detail = (f"{counts.get('team_news', 0)} stories · "
+              f"{counts.get('media_bites', 0)} media bites · scraped {stamp}")
+    if age_h < 24:
+        st.success(f"✅ Data is current — {detail}")
+    elif age_h < 72:
+        st.warning(f"⚠️ Data is {age_h/24:.1f} days old — {detail}")
+    else:
+        st.error(
+            f"🛑 Data is {age_h/24:.1f} days old — {detail}. "
+            "The scheduled scrape has likely stopped. Check the Actions tab."
+        )
+
+
+render_freshness_banner()
 st.markdown("---")
 
 # --- PRODUCER FOCUS PRIORITIZATION: DIVISION STANDINGS CONTAINER ---
@@ -259,10 +354,30 @@ render_media_cards(
 )
 
 st.sidebar.header("⚙️ Application Controls")
+
+_snap = load_snapshot()
+if _snap is not None:
+    st.sidebar.caption(f"📦 Snapshot: {_snap.get('generated_at', 'unknown')}")
+    st.sidebar.caption(f"🔁 Refreshed automatically by GitHub Actions")
+else:
+    st.sidebar.caption("📦 No committed snapshot — using local SQLite")
+
 if st.sidebar.button("🔄 Sync Live Data Now"):
-    with st.spinner("Executing Data Recalculation Engine..."):
-        import agent
-        agent.main()
-    st.sidebar.success("Database successfully updated!")
+    with st.spinner("Scraping division feeds..."):
+        try:
+            import agent
+            agent.main()
+            st.sidebar.success("Local database updated.")
+        except Exception as e:
+            st.sidebar.error(f"Sync failed: {e}")
+            raise
+    load_snapshot.clear()
     time.sleep(1)
     st.rerun()
+
+st.sidebar.info(
+    "**Note:** a manual sync writes to local disk only. On Streamlit Cloud that "
+    "disk is wiped on every restart, so manual syncs are temporary. Durable "
+    "updates come from the scheduled GitHub Action, which commits "
+    "`data/northscout.json` back to the repo."
+)

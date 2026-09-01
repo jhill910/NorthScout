@@ -1,7 +1,12 @@
+import os
 import sqlite3
 from datetime import datetime, timedelta
 
-DB_NAME = "northscout.db"
+# Absolute, so the DB can never depend on the directory Streamlit was launched
+# from. A relative path silently creates a second, empty database when the
+# working directory differs from the app directory.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "northscout.db")
 
 def init_db():
     conn = sqlite3.connect(DB_NAME)
@@ -15,7 +20,8 @@ def init_db():
             summary TEXT,
             link TEXT,
             fetched_at TEXT,
-            thumbnail TEXT
+            thumbnail TEXT,
+            score REAL DEFAULT 0
         )
     """)
     
@@ -30,33 +36,48 @@ def init_db():
         )
     """)
     
-    try:
-        cursor.execute("ALTER TABLE team_news ADD COLUMN thumbnail TEXT DEFAULT '';")
-    except sqlite3.OperationalError:
-        pass
-
-    try:
-        cursor.execute("ALTER TABLE media_bites ADD COLUMN platform TEXT DEFAULT 'youtube';")
-    except sqlite3.OperationalError:
-        pass
+    # Column migrations. "duplicate column name" is expected and benign; any
+    # other OperationalError is a real failure and must not be swallowed.
+    for table, coldef in (
+        ("team_news", "thumbnail TEXT DEFAULT ''"),
+        ("team_news", "score REAL DEFAULT 0"),
+        ("media_bites", "platform TEXT DEFAULT 'youtube'"),
+    ):
+        try:
+            cursor.execute(f"ALTER TABLE {table} ADD COLUMN {coldef};")
+        except sqlite3.OperationalError as e:
+            if "duplicate column" not in str(e).lower():
+                print(f"MIGRATION FAILED on {table}.{coldef.split()[0]}: {e}")
         
     conn.commit()
     conn.close()
 
-def save_team_news_with_media(team, title, summary, link, fetched_at, thumbnail):
+def save_team_news_with_media(team, title, summary, link, fetched_at, thumbnail, score=0):
+    """Store a story, keyed on LINK rather than title.
+
+    NFL clubs recycle a single headline for every transaction -- the Bears feed
+    routinely carries eight separate stories all titled "Chicago Bears announce
+    roster moves". Deduping on title meant only the first was ever kept, and
+    every later cut, signing and trade was silently discarded as a duplicate.
+    The link is the only stable unique identifier these feeds provide.
+    """
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
-    cursor.execute("SELECT id FROM team_news WHERE team = ? AND title = ?", (team, title))
-    if not cursor.fetchone():
+    cursor.execute("SELECT id FROM team_news WHERE link = ?", (link,))
+    row = cursor.fetchone()
+    if row:
+        # Already known: refresh the score so re-ranking reflects this run.
+        cursor.execute("UPDATE team_news SET score = ? WHERE id = ?", (score, row[0]))
+    else:
         cursor.execute("""
-            INSERT INTO team_news (team, title, summary, link, fetched_at, thumbnail)
-            VALUES (?, ?, ?, ?, ?, ?)
-        """, (team, title, summary, link, fetched_at, thumbnail))
-        conn.commit()
+            INSERT INTO team_news (team, title, summary, link, fetched_at, thumbnail, score)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (team, title, summary, link, fetched_at, thumbnail, score))
+    conn.commit()
     conn.close()
 
 def save_team_news(team, title, summary, link, fetched_at):
-    save_team_news_with_media(team, title, summary, link, fetched_at, "")
+    save_team_news_with_media(team, title, summary, link, fetched_at, "", 0)
 
 def save_media_bite(source, tweet_text, link, fetched_at, platform="youtube"):
     conn = sqlite3.connect(DB_NAME)
