@@ -57,6 +57,68 @@ def load_snapshot():
         return None
 
 
+def relative_time(raw):
+    """'9h ago' rather than 'Mon, 01 Sep 2026 12:00:00 GMT'.
+
+    A producer cares how fresh a story is, not the RFC-822 string.
+    """
+    import scoring
+    dt = scoring.parse_date(raw)
+    if not dt:
+        return str(raw or "")[:16]
+    mins = (datetime.now() - dt).total_seconds() / 60
+    if mins < 0:
+        return "just now"
+    if mins < 60:
+        return f"{int(mins)}m ago"
+    if mins < 48 * 60:
+        return f"{int(mins // 60)}h ago"
+    return f"{int(mins // 1440)}d ago"
+
+
+# Signal -> (label, background, text colour). The scorer emits a long reasons
+# sentence that gets truncated mid-thought on a card; these turn it into
+# something scannable in about two seconds.
+CHIP_RULES = [
+    ("availability:",        "availability",     "#FCEBEB", "#A32D2D"),
+    ("conflict:",            "off-field",        "#FCEBEB", "#A32D2D"),
+    ("decision-maker",       "GM on record",     "#EEEDFE", "#534AB7"),
+    ("front-office",         "coaching voice",   "#EEEDFE", "#534AB7"),
+    ("press conference",     "press conference", "#E1F5EE", "#0F6E56"),
+    ("uncertainty:",         "uncertainty",      "#FAEEDA", "#854F0B"),
+    ("acquisition:",         "acquisition",      "#E6F1FB", "#185FA5"),
+    ("roster milestone:",    "roster milestone", "#E6F1FB", "#185FA5"),
+    ("transaction:",         "transaction",      "#E6F1FB", "#185FA5"),
+    ("money:",               "money",            "#EAF3DE", "#3B6D11"),
+    ("running storyline:",   "running story",    "#F1EFE8", "#5F5E5A"),
+    ("independent source",   "independent",      "#F1EFE8", "#5F5E5A"),
+    ("routine",              "routine",          "#F1EFE8", "#888780"),
+    ("ceremonial",           "ceremonial",       "#F1EFE8", "#888780"),
+]
+
+
+def signal_chips(reasons, limit=3):
+    """Highest-value signals first, de-duplicated, capped."""
+    low = str(reasons or "").lower()
+    out, seen = [], set()
+    for needle, label, bg, fg in CHIP_RULES:
+        if needle in low and label not in seen:
+            seen.add(label)
+            out.append((label, bg, fg))
+        if len(out) >= limit:
+            break
+    return out
+
+
+def chips_html(reasons, limit=3):
+    parts = []
+    for label, bg, fg in signal_chips(reasons, limit):
+        parts.append(
+            f"<span style='font-size:11px;padding:2px 7px;border-radius:4px;"
+            f"background:{bg};color:{fg};margin-right:4px;white-space:nowrap;'>{label}</span>")
+    return "".join(parts)
+
+
 def _dedupe_near_titles(df, threshold=0.82):
     """Collapse the same story reported by several outlets.
 
@@ -276,48 +338,79 @@ def render_freshness_banner():
 render_freshness_banner()
 st.markdown("---")
 
-# --- PRODUCER FOCUS PRIORITIZATION: DIVISION STANDINGS CONTAINER ---
-st.markdown("### 📊 DIVISION STANDINGS (Bears-Centric Anchor Frame)")
-st.markdown(
-    """
-    <div style="background-color: #0B162A; padding: 20px; border-radius: 12px; border-left: 8px solid #E64303; box-shadow: 0 4px 15px rgba(0,0,0,0.4); margin-bottom: 25px;">
-        <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px;">
-            <div style="text-align: center; min-width: 150px; border-right: 2px solid #1f2d42; padding-right: 10px;">
-                <h5 style="color: #8b949e; margin: 0; font-size: 12px; letter-spacing: 1px;">🐻 CHI BEARS</h5>
-                <h2 style="color: #E64303; margin: 5px 0 0 0; font-size: 26px; font-weight: bold;">11-6-0</h2>
-                <span style="color: #238636; font-size: 12px; font-weight: bold;">+26 Diff</span>
-            </div>
-            <div style="text-align: center; min-width: 150px; border-right: 2px solid #1f2d42; padding-right: 10px;">
-                <h5 style="color: #8b949e; margin: 0; font-size: 12px; letter-spacing: 1px;">🧀 GB PACKERS</h5>
-                <h2 style="color: #FFB612; margin: 5px 0 0 0; font-size: 24px; font-weight: bold;">9-7-1</h2>
-                <span style="color: #238636; font-size: 12px; font-weight: bold;">+31 Diff</span>
-            </div>
-            <div style="text-align: center; min-width: 150px; border-right: 2px solid #1f2d42; padding-right: 10px;">
-                <h5 style="color: #8b949e; margin: 0; font-size: 12px; letter-spacing: 1px;">🍇 MIN VIKINGS</h5>
-                <h2 style="color: #FFC62F; margin: 5px 0 0 0; font-size: 24px; font-weight: bold;">9-8-0</h2>
-                <span style="color: #238636; font-size: 12px; font-weight: bold;">+11 Diff</span>
-            </div>
-            <div style="text-align: center; min-width: 150px;">
-                <h5 style="color: #8b949e; margin: 0; font-size: 12px; letter-spacing: 1px;">🦁 DET LIONS</h5>
-                <h2 style="color: #B0B7BC; margin: 5px 0 0 0; font-size: 24px; font-weight: bold;">9-8-0</h2>
-                <span style="color: #238636; font-size: 12px; font-weight: bold;">+68 Diff</span>
-            </div>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# --- DIVISION STANDINGS (live) ---------------------------------------------
+# These used to be hardcoded HTML: Bears 11-6-0, Packers 9-7-1, and so on --
+# the 2025 FINAL records, displayed under a header reading "division
+# standings" on a desk used during production. In September 2026 everyone is
+# 0-0, so anyone glancing at it read numbers that were plausible and wrong.
+# Now it shows the real thing, or admits it doesn't have it.
 
-st.markdown(
-    """
-    <div style="background-color: #11141a; padding: 12px; border-radius: 6px; border: 1px solid #2d333b; margin-bottom: 25px;">
-        <p style="margin: 0; font-size: 12px; color: #8b949e; line-height: 1.4;">
-            💡 <b>Show Tracker Tip:</b> The NFC North concluded the previous season with all 4 teams over .500—making this standings block a crucial anchor point for discussing target ceilings on the next episode.
-        </p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
+@st.cache_data(ttl=900)
+def load_standings():
+    snap = load_snapshot() or {}
+    embedded = snap.get("standings")
+    if embedded and embedded.get("teams"):
+        return embedded
+    try:
+        import standings as standings_mod
+        return standings_mod.load_cached()
+    except Exception:
+        return None
+
+
+_st = load_standings()
+
+st.markdown("### 📊 DIVISION STANDINGS")
+
+if not _st or not _st.get("teams"):
+    st.warning(
+        "⚠️ **Standings unavailable.** The live feed didn't return data on the "
+        "last run. Showing nothing beats showing last season's numbers as if "
+        "they were current — run `python standings.py` to check the source."
+    )
+else:
+    _teams = _st["teams"]
+    _order = sorted(
+        TEAM_ASSETS.keys(),
+        key=lambda t: (-(_teams.get(t, {}).get("wins") or 0),
+                       _teams.get(t, {}).get("losses") or 0),
+    )
+    _cards = []
+    for _t in _order:
+        _rec = _teams.get(_t, {})
+        _a = TEAM_ASSETS[_t]
+        _record = _rec.get("record") or "—"
+        _diff = _rec.get("point_diff")
+        if _diff is None:
+            _diff_s, _diff_c = "—", "#8b949e"
+        else:
+            _diff_s = f"+{_diff}" if _diff > 0 else str(_diff)
+            _diff_c = "#238636" if _diff > 0 else ("#8b949e" if _diff == 0 else "#d1444a")
+        _cards.append(
+            f"""<div style="text-align:center;min-width:150px;flex:1;
+                            border-right:1px solid #1f2d42;padding:0 10px;">
+                  <h5 style="color:#8b949e;margin:0;font-size:12px;letter-spacing:1px;">
+                    {_t.upper()}</h5>
+                  <h2 style="color:{_a['text_color']};margin:5px 0 0;font-size:26px;
+                             font-weight:bold;">{_record}</h2>
+                  <span style="color:{_diff_c};font-size:12px;font-weight:bold;">
+                    {_diff_s} diff</span>
+                </div>"""
+        )
+    st.markdown(
+        f"""
+        <div style="background-color:#0B162A;padding:20px;border-radius:12px;
+                    border-left:8px solid #E64303;margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-around;align-items:center;
+                      flex-wrap:wrap;gap:12px;">{''.join(_cards)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.caption(f"🔄 {_st.get('source', 'live')} · updated {relative_time(_st.get('fetched_at'))}")
+
+st.markdown("---")
 
 # --- TOP DIVISION COMMAND STATS MAIN SECTION ---
 st.markdown("### 📋 DIVISION INTELLIGENCE STATIONS")
@@ -352,39 +445,82 @@ for team_name, tab_obj in teams_list:
         if data.empty:
             st.info("No recent data within our 8-day freshness window found. Hit Sync!")
         else:
-            headline_data = data.head(5).reset_index(drop=True)
-            cols = st.columns(5)
-            for idx, row in headline_data.iterrows():
-                with cols[idx]:
-                    thumb_url = row['thumbnail'] if ('thumbnail' in row and isinstance(row['thumbnail'], str) and row['thumbnail'].strip() != "") else assets['logo']
-                    st.image(thumb_url, width='stretch')
-                    
-                    st.markdown(
-                        f"""
-                        <div style="height: 95px; margin-top: 10px; margin-bottom: 5px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                            <a href="{row['link']}" target="_blank" style="text-decoration: none; color: #1f8fff; font-size: 16px; font-weight: bold; line-height: 1.3;">
-                                {row['title']}
-                            </a>
-                        </div>
-                        """, 
-                        unsafe_allow_html=True
-                    )
-                    
-                    raw_date = row['fetched_at'] if row['fetched_at'] else ""
-                    clean_date = raw_date.split(" 2026")[0] + " 2026" if " 2026" in raw_date else raw_date.split(" 2025")[0] + " 2025" if " 2025" in raw_date else raw_date
-                    st.caption(f"🗓️ {clean_date}")
-                    
-                    with st.expander("📖 Read Summary", expanded=False):
-                        if row['summary'] and row['summary'].strip() != "":
-                            st.write(row['summary'])
-                        else:
-                            st.write("*No summary snippet provided by source.*")
+            def thumb_block(row, height, radius):
+                """Real image if the feed gave one, otherwise a muted placeholder.
 
-                    # Why this story ranked where it did. Keeps the board
-                    # auditable instead of asking you to trust a number.
-                    why = str(row.get('reasons') or "").strip()
-                    if why:
-                        st.caption(f"🎯 {why}")
+                The old fallback stretched the full-colour team logo into every
+                card without a picture, so real photography had to compete with
+                a wall of logos. Grey recedes; photos carry."""
+                url = row.get("thumbnail")
+                if isinstance(url, str) and url.strip() and not url.endswith("bears-default.jpg"):
+                    return (f"<div style=\"height:{height}px;border-radius:{radius};overflow:hidden;"
+                            f"background:#F1EFE8;\">"
+                            f"<img src='{url}' style='width:100%;height:100%;object-fit:cover;"
+                            f"display:block;'></div>")
+                return (f"<div style=\"height:{height}px;border-radius:{radius};background:"
+                        f"{assets['bg_color']}1A;display:flex;align-items:center;"
+                        f"justify-content:center;\">"
+                        f"<span style='font-size:13px;letter-spacing:0.08em;color:#888780;'>"
+                        f"{team_name.split()[-1].upper()}</span></div>")
+
+            lead = data.iloc[0]
+
+            # --- lead story: full width, larger thumbnail --------------------
+            st.markdown(
+                f"""
+                <div style="background:#ffffff;border:1px solid #e3e0d8;border-radius:12px;
+                            padding:14px;display:flex;gap:16px;margin-bottom:18px;">
+                  <div style="flex:0 0 220px;">{thumb_block(lead, 124, '8px')}</div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="margin-bottom:6px;font-size:12px;color:#5F5E5A;">
+                      <span style="background:{assets['bg_color']};color:#ffffff;font-size:11px;
+                                   padding:2px 8px;border-radius:4px;margin-right:8px;">LEAD</span>
+                      {relative_time(lead['fetched_at'])}
+                    </div>
+                    <a href="{lead['link']}" target="_blank"
+                       style="font-size:19px;font-weight:600;color:#1f6feb;text-decoration:none;
+                              line-height:1.3;display:block;margin-bottom:8px;">{lead['title']}</a>
+                    <p style="font-size:14px;color:#3d3d3a;line-height:1.55;margin:0 0 10px;">
+                      {str(lead['summary'])[:340]}</p>
+                    <div>{chips_html(lead.get('reasons'), 4)}</div>
+                  </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            with st.expander("📋 Copy lead for the rundown", expanded=False):
+                st.code(f"{lead['title']}\n{lead['link']}", language=None)
+
+            # --- the rest: four across --------------------------------------
+            rest = data.iloc[1:5].reset_index(drop=True)
+            if not rest.empty:
+                cols = st.columns(len(rest))
+                for idx, row in rest.iterrows():
+                    with cols[idx]:
+                        st.markdown(
+                            f"""
+                            <div style="background:#ffffff;border:1px solid #e3e0d8;
+                                        border-radius:12px;overflow:hidden;margin-bottom:8px;">
+                              {thumb_block(row, 104, '0')}
+                              <div style="padding:11px 12px 13px;">
+                                <div style="font-size:12px;color:#5F5E5A;margin-bottom:5px;">
+                                  <span style="color:#888780;">#{idx + 2}</span> ·
+                                  {relative_time(row['fetched_at'])}
+                                </div>
+                                <a href="{row['link']}" target="_blank"
+                                   style="font-size:14px;font-weight:600;color:#1f6feb;
+                                          text-decoration:none;line-height:1.35;display:block;
+                                          margin-bottom:6px;">{row['title']}</a>
+                                <p style="font-size:12.5px;color:#3d3d3a;line-height:1.5;
+                                          margin:0 0 8px;">{str(row['summary'])[:190]}</p>
+                                <div>{chips_html(row.get('reasons'), 2)}</div>
+                              </div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True,
+                        )
+                        with st.expander("📋 Copy", expanded=False):
+                            st.code(f"{row['title']}\n{row['link']}", language=None)
 
             runners_up = data.iloc[5:]
             if not runners_up.empty:
@@ -394,14 +530,12 @@ for team_name, tab_obj in teams_list:
                         st.markdown(
                             f"**[{row['title']}]({row['link']})**  "
                             f"<span style='color:#8b949e;font-size:12px;'>"
-                            f"· score {row['score']:.0f}</span>",
+                            f"· {relative_time(row['fetched_at'])}</span><br>"
+                            f"{chips_html(row.get('reasons'), 3)}",
                             unsafe_allow_html=True,
                         )
-                        why = str(row.get('reasons') or "").strip()
-                        if why:
-                            st.caption(f"🎯 {why}")
                         st.markdown(
-                            "<hr style='margin:6px 0;border-color:#2d333b;'>",
+                            "<hr style='margin:8px 0;border-color:#2d333b;'>",
                             unsafe_allow_html=True,
                         )
 

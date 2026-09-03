@@ -164,12 +164,22 @@ def build_snapshot():
     except Exception:
         roster_counts = {}
 
+    # Embedded so the app gets standings from the same committed file, rather
+    # than depending on a second network call at page load.
+    try:
+        import standings
+        standings_snap = standings.refresh()
+    except Exception as e:
+        print(f"   ⚠️  standings refresh failed ({type(e).__name__})")
+        standings_snap = None
+
     return {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "window_days": agent.MAX_AGE_DAYS,
         "counts": {"team_news": total_stories, "media_bites": len(media),
                    "pressers": sum(1 for m in media if m.get("kind") == "presser")},
         "roster_counts": roster_counts,
+        "standings": standings_snap,
         "team_news": team_news,
         "media_bites": media,
     }
@@ -211,6 +221,12 @@ def main():
     rc = snapshot.get("roster_counts") or {}
     if rc:
         print("   Roster: " + ", ".join(f"{k.split()[-1]} {v}" for k, v in rc.items()))
+    sd = (snapshot.get("standings") or {}).get("teams") or {}
+    if sd:
+        print("   Standings: " + ", ".join(
+            f"{k.split()[-1]} {v.get('record') or '—'}" for k, v in sd.items()))
+    else:
+        print("   Standings: unavailable this run")
     return 0
 
 
