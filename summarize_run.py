@@ -42,11 +42,12 @@ def main():
     media = snap.get("media_bites", [])
     if media:
         yt = sum(1 for m in media if m.get("platform") == "youtube")
-        x = sum(1 for m in media if m.get("platform") == "x")
-        print(f"\n**Media:** {yt} YouTube · {x} X/Twitter")
-        if x == 0:
-            print("\n> ⚠️ No X posts captured. The `X_AUTH_JSON` secret is either "
-                  "missing or the saved session has expired.")
+        bs = sum(1 for m in media if m.get("platform") == "bluesky")
+        pr = sum(1 for m in media if m.get("kind") == "presser")
+        print(f"\n**Media:** {yt} YouTube · {bs} Bluesky · {pr} press conference(s)")
+        if bs == 0:
+            print("\n> ⚠️ No Bluesky posts captured. Run `python check_bluesky.py` "
+                  "to verify the API response shape and configured handles.")
 
 
 if __name__ == "__main__":

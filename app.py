@@ -144,13 +144,15 @@ def load_media_data(platform=None, limit=8, kind=None):
 
     def infer_platform(row):
         tagged = str(row.get("platform") or "").strip().lower()
-        if tagged in ("youtube", "x"):
+        if tagged in ("youtube", "x", "bluesky"):
             return tagged
         link = str(row.get("link") or "").lower()
         if "youtube.com" in link or "youtu.be" in link:
             return "youtube"
         if "x.com" in link or "twitter.com" in link:
-            return "x"
+            return "x"          # legacy rows from before X was disabled
+        if "bsky.app" in link:
+            return "bluesky"
         return ""
 
     for c in ("kind", "speaker"):
@@ -440,10 +442,11 @@ render_media_cards(
     "No recent YouTube clips inside the 8-day window yet. Hit Sync!",
 )
 
-st.subheader("🐦 X / Twitter — Division posts")
+st.subheader("🦋 Bluesky — Division posts")
 render_media_cards(
-    load_media_data(platform="x", limit=8),
-    "No recent X posts captured yet. Hit Sync! (Requires a valid twitter_auth.json session.)",
+    load_media_data(platform="bluesky", limit=8),
+    "No recent Bluesky posts yet. Run `python check_bluesky.py` to confirm the "
+    "API shape and that the configured handles resolve.",
 )
 
 st.sidebar.header("⚙️ Application Controls")

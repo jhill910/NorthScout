@@ -59,19 +59,16 @@ TEAM_YOUTUBE_FEEDS = {
     "Minnesota Vikings YouTube": "https://www.youtube.com/feeds/videos.xml?channel_id=UCcsw_KrB_wg5lQ5nXWR_LFA",
 }
 
-X_ACCOUNTS = [
-    # Official team accounts
-    ("X @ChicagoBears", "ChicagoBears", True),
-    ("X @Lions", "Lions", True),
-    ("X @packers", "packers", True),
-    ("X @Vikings", "Vikings", True),
-    # Beat / division voices
-    ("X @BradBiggs", "BradBiggs", False),
-    ("X @AdamHoge", "AdamHoge", False),
-    ("X @justinrridge", "justinrridge", False),
-    ("X @robdemovsky", "robdemovsky", False),
-    ("X @Kevin_Seifert", "Kevin_Seifert", False),
-]
+# X/Twitter scraping is DISABLED and should not be re-enabled.
+#
+# scrape_x_media_bites() drove a logged-in headless browser through nine
+# profiles on a timer. That is automated access to a logged-in session: against
+# X's terms, trivially detectable, and it produced zero rows in four months.
+# The account it used was ultimately suspended (permanent read-only).
+#
+# bluesky.py replaces it using a public, documented, unauthenticated API. No
+# credentials to store, nothing to expire, nobody to get suspended.
+X_SCRAPING_DISABLED = True
 
 MAX_AGE_DAYS = 8
 MAX_VIDEOS_PER_FEED = 5
@@ -445,121 +442,48 @@ def scrape_youtube_media_bites():
 
 
 def scrape_x_media_bites():
-    """Pull recent posts from allowlisted X accounts via Playwright + saved session cookies."""
+    """Disabled. See X_SCRAPING_DISABLED above.
+
+    Kept as a no-op so any external caller or scheduled job that still
+    references it fails safely and loudly rather than crashing.
+    """
+    print("🚫 X scraping is disabled (ToS + account suspension). Using Bluesky.")
+    return 0
+
+
+def scrape_bluesky_media_bites():
+    """Pull division-relevant Bluesky posts. No auth, no browser."""
     import database
-    import json
-
-    print("🐦 Scraping X/Twitter for NFC North posts...")
-    auth_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "twitter_auth.json")
-    if not os.path.exists(auth_path):
-        print("   ⚠️ twitter_auth.json not found — skipping X scrape")
-        return 0
 
     try:
-        from playwright.sync_api import sync_playwright
+        import bluesky
     except ImportError:
-        print("   ⚠️ playwright not installed — skipping X scrape (pip install playwright)")
+        print("   ⚠️  bluesky.py missing — skipping social scrape")
         return 0
 
-    with open(auth_path, "r", encoding="utf-8") as f:
-        storage_state = json.load(f)
-
-    now = datetime.now()
-    saved = 0
-
+    print("🦋 Scraping Bluesky for NFC North posts...")
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                storage_state=storage_state,
-                user_agent=(
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                viewport={"width": 1280, "height": 900},
-            )
-            page = context.new_page()
-
-            for label, handle, is_team_account in X_ACCOUNTS:
-                try:
-                    page.goto(
-                        f"https://x.com/{handle}",
-                        wait_until="domcontentloaded",
-                        timeout=25000,
-                    )
-                    page.wait_for_timeout(3500)
-
-                    body_text = (page.inner_text("body") or "")[:500].lower()
-                    if "sign in to x" in body_text or "log in to x" in body_text:
-                        print(f"   ⚠️ X session may be expired (login wall on @{handle})")
-                        break
-
-                    articles = page.query_selector_all('article[data-testid="tweet"]')
-                    kept = 0
-                    for article in articles:
-                        if kept >= MAX_TWEETS_PER_ACCOUNT:
-                            break
-                        try:
-                            text_el = article.query_selector('div[data-testid="tweetText"]')
-                            tweet_text = text_el.inner_text().strip() if text_el else ""
-                            if not tweet_text:
-                                continue
-
-                            if not is_team_account and not is_nfc_north_relevant(tweet_text):
-                                continue
-
-                            link_el = article.query_selector('a[href*="/status/"]')
-                            href = link_el.get_attribute("href") if link_el else None
-                            if not href:
-                                continue
-                            if href.startswith("/"):
-                                href = f"https://x.com{href}"
-
-                            time_el = article.query_selector("time")
-                            fetched_time = now.strftime("%Y-%m-%d %H:%M")
-                            if time_el:
-                                dt_attr = time_el.get_attribute("datetime")
-                                if dt_attr:
-                                    try:
-                                        post_dt = datetime.fromisoformat(
-                                            dt_attr.replace("Z", "+00:00")
-                                        ).replace(tzinfo=None)
-                                        if (now - post_dt).days > MAX_AGE_DAYS:
-                                            continue
-                                        fetched_time = post_dt.strftime("%Y-%m-%d %H:%M")
-                                    except ValueError:
-                                        pass
-
-                            database.save_media_bite(
-                                label,
-                                tweet_text[:280],
-                                href.split("?")[0],
-                                fetched_time,
-                                platform="x",
-                            )
-                            kept += 1
-                            saved += 1
-                        except Exception:
-                            continue
-
-                    if kept:
-                        print(f"   ✅ @{handle}: saved {kept} post(s)")
-                    else:
-                        print(f"   ⏭️ @{handle}: no matching posts found")
-
-                    time.sleep(random.uniform(1.2, 2.4))
-
-                except Exception as e:
-                    print(f"   ⚠️ X scrape failed for @{handle}: {e}")
-                    continue
-
-            browser.close()
+        posts = bluesky.collect(relevance_fn=is_nfc_north_relevant)
     except Exception as e:
-        print(f"   ⚠️ Playwright X scrape aborted: {e}")
-        return saved
+        print(f"   ⚠️  Bluesky collect failed ({type(e).__name__}: {e})")
+        return 0
 
-    print(f"🐦 X scrape complete — {saved} post(s) saved")
+    saved = 0
+    for p in posts:
+        try:
+            database.save_media_bite(
+                p["source"], p["text"], p["link"], p["fetched_at"],
+                platform="bluesky", kind="clip", speaker=p.get("author_display", ""),
+            )
+            saved += 1
+        except Exception:
+            continue
+
+    if saved:
+        print(f"🦋 Bluesky scrape complete — {saved} post(s) saved")
+    else:
+        print("🦋 Bluesky returned nothing. Run `python check_bluesky.py` to "
+              "confirm the API shape and handles.")
     return saved
 
 
@@ -586,4 +510,4 @@ def main():
 
     get_top_team_news()
     scrape_youtube_media_bites()
-    scrape_x_media_bites()
+    scrape_bluesky_media_bites()

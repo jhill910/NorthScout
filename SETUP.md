@@ -39,31 +39,34 @@ Go to the **Actions** tab in GitHub → **NorthScout scrape**. The run posts a s
 
 If Actions is disabled on the repo, GitHub will show a button to enable it. You can also trigger a run by hand any time via **Run workflow**.
 
-### 3. (Optional) Turn X/Twitter back on
+### 3. Social posts (Bluesky, no setup required)
 
-X scraping has never produced a single row, for two separate reasons.
+X/Twitter scraping has been **removed**. It drove a logged-in headless browser
+through nine profiles on a timer — automated access to a logged-in session,
+which is against X's terms, trivially detectable, and produced zero rows in
+four months. The account it used was ultimately suspended (permanent
+read-only). Re-enabling it, on that account or a new one, would very likely
+end the same way.
 
-**First**, your existing `twitter_auth.json` holds only one cookie, `auth_token`. X also requires `ct0`, its CSRF token, so the scraper reaches a login wall and gives up. The token itself hasn't expired — the file is incomplete, not stale. **Second**, on Cloud the file isn't in the repo at all (correctly, it holds live credentials), so the scraper found nothing to load.
+`bluesky.py` replaces it using Bluesky's public AT Protocol API. **Nothing to
+configure** — no account, no browser, no stored credentials, nothing to expire.
+The `X_AUTH_JSON` secret is no longer used and can be deleted from GitHub.
 
-Fix both:
+One caveat: the Bluesky module was written without network access to Bluesky,
+so its assumptions about the JSON response shape are unconfirmed. Before you
+rely on it:
 
 ```bash
-pip install playwright
-python -m playwright install chromium
-python save_x_session.py
+python check_bluesky.py
 ```
 
-That opens a browser, waits while you log in yourself, and saves the complete session. Your password is never read by the script.
+That prints the real response shape, flags any field that `parse_post()` reads
+but the API doesn't return, and resolves the configured account handles — which
+were guesses and are almost certainly not all correct. Anything marked
+NOT FOUND should be fixed or removed from `bluesky.CANDIDATE_HANDLES`.
 
-Then, for Cloud:
-
-1. Copy the entire contents of the regenerated `twitter_auth.json`.
-2. GitHub → **Settings → Secrets and variables → Actions → New repository secret**
-3. Name it exactly `X_AUTH_JSON`, paste, save.
-
-The workflow writes it to disk, installs Chromium, runs the scrape, and deletes it afterward — it never reaches a commit. Without the secret, everything else runs and X is skipped cleanly.
-
-**Note:** X sessions expire every few weeks. When yours does, re-run `save_x_session.py` and update the secret. The run summary warns you when no X posts were captured.
+The search queries work without any handles being correct, so posts will flow
+even if every handle is wrong.
 
 ---
 
@@ -103,7 +106,9 @@ The sidebar sync button still exists for local work, but now says plainly that a
 | `test_scoring.py`, `test_sources.py` | New — regression tests | Pin every bug found while tuning. |
 | `roster.py` | New — self-updating roster | Harvests people from club `media:keywords` tags and headlines. Replaces the hand-typed 27-name keyword list. |
 | `agent.py` | Roster-backed relevance | National clips are matched against a live roster (182 terms and growing), not a static list. |
-| `save_x_session.py` | New — X session capture | Your saved session was missing the `ct0` cookie, so X saw a logged-out browser. This regenerates a complete one. |
+| `bluesky.py`, `check_bluesky.py` | New — replaces X scraping | Public API, no auth, no browser. The checker verifies the response shape and handles, which couldn't be tested from where this was written. |
+| `agent.py` | X scraping removed | Browser automation against a logged-in session got the account suspended. Now a no-op that logs why. |
+| `requirements.txt` | Playwright dropped | No browser automation left, so CI installs faster. |
 
 ---
 
@@ -111,7 +116,7 @@ The sidebar sync button still exists for local work, but now says plainly that a
 
 1. **Most third-party feeds are unverified.** They were added from a machine that cannot reach them, so `sources.py` marks them `unverified`. Run `python check_sources.py` once and the table tells you which are live, stale or dead; `--write` records the results back into the file. Dead feeds are skipped with a warning, never silently.
 2. **Scoring was tuned on a single week.** Thirteen topics from the 9/1 rundown is a small sample and some weights are judgment calls. They are named constants at the top of `scoring.py`. Send next week's rundown and `evaluate.py` re-measures in minutes.
-3. **X/Twitter needs the `X_AUTH_JSON` secret** before it produces anything, and saved sessions expire every few weeks.
+3. **Bluesky's response shape is unverified.** Run `python check_bluesky.py` from a networked machine before trusting the social rail; the account handles in particular were guesses.
 4. **Press-conference detection depends on how clubs title uploads.** It handles the common patterns; if a club changes style, add it to `PRESSER_MARKERS` in `agent.py`.
 5. **The roster harvests from club feeds only.** Once the wires and blogs verify, it will learn names from those too. Names unseen for 60 days drop off automatically, so cuts and trades need no manual cleanup.
 

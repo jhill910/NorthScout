@@ -135,7 +135,4 @@ def mark_status(label, status):
         r'(verified|unverified|disabled)(")'
     )
     new_text, n = pattern.subn(lambda m: m.group(1) + status + m.group(3), text)
-    if n:
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(new_text)
-    return n
+ 

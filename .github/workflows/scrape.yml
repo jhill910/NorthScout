@@ -33,9 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
-    env:
-      X_AUTH_JSON: ${{ secrets.X_AUTH_JSON }}
-
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -51,18 +48,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # X scraping is optional. Without the secret the scrape still runs and
-      # simply skips X, rather than failing the whole job.
-      - name: Restore X session from secret
-        if: env.X_AUTH_JSON != ''
-        run: |
-          printf '%s' "$X_AUTH_JSON" > twitter_auth.json
-          python -c "import json; json.load(open('twitter_auth.json')); print('X session file is valid JSON')"
-
-      - name: Install Playwright browser
-        if: env.X_AUTH_JSON != ''
-        run: python -m playwright install --with-deps chromium
-
       # Non-fatal: reports which feeds are live so a quietly-dead source shows
       # up in the run log instead of silently narrowing the board.
       - name: Check source health
@@ -71,11 +56,6 @@ jobs:
 
       - name: Run scrape and build snapshot
         run: python export_json.py
-
-      # Credentials must never reach a commit. The repo is public.
-      - name: Remove X session file
-        if: always()
-        run: rm -f twitter_auth.json
 
       - name: Commit snapshot
         run: |
