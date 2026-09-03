@@ -63,6 +63,12 @@ jobs:
         if: env.X_AUTH_JSON != ''
         run: python -m playwright install --with-deps chromium
 
+      # Non-fatal: reports which feeds are live so a quietly-dead source shows
+      # up in the run log instead of silently narrowing the board.
+      - name: Check source health
+        continue-on-error: true
+        run: python check_sources.py | tee source_health.txt
+
       - name: Run scrape and build snapshot
         run: python export_json.py
 
@@ -86,4 +92,17 @@ jobs:
 
       - name: Job summary
         if: always()
-        run: python summarize_run.py >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          python summarize_run.py >> "$GITHUB_STEP_SUMMARY"
+          if [ -f source_health.txt ]; then
+            {
+              echo ""
+              echo "<details><summary>Feed health</summary>"
+              echo ""
+              echo '```'
+              cat source_health.txt
+              echo '```'
+              echo ""
+              echo "</details>"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi

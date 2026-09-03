@@ -57,6 +57,30 @@ def load_snapshot():
         return None
 
 
+def _dedupe_near_titles(df, threshold=0.82):
+    """Collapse the same story reported by several outlets.
+
+    Now that wires, blogs and papers sit alongside the club feed, one
+    transaction can appear four times with near-identical headlines. Keep the
+    highest-scoring version so the board shows four stories, not one story
+    four times.
+    """
+    from difflib import SequenceMatcher
+    import re as _re
+
+    def norm(t):
+        return _re.sub(r"[^a-z0-9 ]", "", str(t).lower()).strip()
+
+    keep, seen = [], []
+    for idx, row in df.iterrows():
+        t = norm(row.get("title"))
+        if any(SequenceMatcher(None, t, s).ratio() >= threshold for s in seen):
+            continue
+        seen.append(t)
+        keep.append(idx)
+    return df.loc[keep]
+
+
 def load_dashboard_data(team_name, limit=5):
     """Top stories for a team, ranked by the score the scraper computed.
 
@@ -76,7 +100,9 @@ def load_dashboard_data(team_name, limit=5):
             if c not in df.columns:
                 df[c] = 0 if c == "score" else ""
         df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0)
-        return df.sort_values("score", ascending=False).head(limit)[cols].reset_index(drop=True)
+        df = df.sort_values("score", ascending=False)
+        df = _dedupe_near_titles(df)
+        return df.head(limit)[cols].reset_index(drop=True)
 
     conn = sqlite3.connect(database.DB_NAME)
     query = """
@@ -87,24 +113,28 @@ def load_dashboard_data(team_name, limit=5):
         ORDER BY score DESC, id DESC
         LIMIT ?
     """
-    df = pd.read_sql_query(query, conn, params=(team_name, limit))
+    df = pd.read_sql_query(query, conn, params=(team_name, limit * 3))
     conn.close()
-    return df
+    return _dedupe_near_titles(df).head(limit).reset_index(drop=True)
 
 
-def load_media_data(platform=None, limit=8):
+def load_media_data(platform=None, limit=8, kind=None):
     snap = load_snapshot()
     if snap is not None:
         rows = snap.get("media_bites", [])
         df = pd.DataFrame(rows) if rows else pd.DataFrame(
-            columns=["source", "tweet_text", "link", "fetched_at", "platform"])
+            columns=["source", "tweet_text", "link", "fetched_at", "platform",
+                     "kind", "speaker"])
     else:
         conn = sqlite3.connect(database.DB_NAME)
         query = """
-            SELECT source, tweet_text, link, fetched_at, COALESCE(platform, '') AS platform
+            SELECT source, tweet_text, link, fetched_at,
+                   COALESCE(platform, '') AS platform,
+                   COALESCE(kind, 'clip') AS kind,
+                   COALESCE(speaker, '') AS speaker
             FROM media_bites
             ORDER BY id DESC
-            LIMIT 80
+            LIMIT 120
         """
         df = pd.read_sql_query(query, conn)
         conn.close()
@@ -123,9 +153,15 @@ def load_media_data(platform=None, limit=8):
             return "x"
         return ""
 
+    for c in ("kind", "speaker"):
+        if c not in df.columns:
+            df[c] = "clip" if c == "kind" else ""
+
     df["_platform"] = df.apply(infer_platform, axis=1)
     if platform:
         df = df[df["_platform"] == platform]
+    if kind:
+        df = df[df["kind"] == kind]
     return df.drop(columns=["_platform"]).head(limit).reset_index(drop=True)
 
 def render_media_cards(media_df, empty_message):
@@ -372,9 +408,35 @@ st.markdown("---")
 # --- SPLIT SCREEN PLATFORM LAYOUT ---
 st.header("🎙️ Live Media Soundbites & Clips")
 
+# Every "==" break in the show rundown is a SOT. Pressers get their own rail so
+# they can be scanned in one place while segments are being built, and they also
+# rank inside the team tabs on their merits.
+st.subheader("🎙️ Press Conferences & SOTs")
+_pressers = load_media_data(kind="presser", limit=12)
+if _pressers.empty:
+    st.info(
+        "No press conferences detected in the current window. Clubs post full "
+        "availabilities to YouTube within hours of a presser — if this stays "
+        "empty after a scrape, check that the team channel IDs in agent.py are "
+        "still correct."
+    )
+else:
+    _pcols = st.columns(3)
+    for _i, _row in _pressers.iterrows():
+        with _pcols[_i % 3]:
+            with st.container(border=True):
+                _who = _row.get("speaker") or "—"
+                st.markdown(f"##### 🎙️ {_who}")
+                st.caption(f"🕒 {_row['fetched_at']} · {_row['source']}")
+                st.markdown(
+                    f"[{str(_row['tweet_text'])[:110]}]({_row['link']})"
+                )
+
+st.markdown("---")
+
 st.subheader("🎥 YouTube — NFC North clips")
 render_media_cards(
-    load_media_data(platform="youtube", limit=8),
+    load_media_data(platform="youtube", limit=8, kind="clip"),
     "No recent YouTube clips inside the 8-day window yet. Hit Sync!",
 )
 

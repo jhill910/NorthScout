@@ -80,6 +80,8 @@ def seed_from_previous_snapshot():
             r["link"],
             r.get("fetched_at", ""),
             r.get("platform", "youtube"),
+            r.get("kind", "clip"),
+            r.get("speaker", ""),
         )
         restored += 1
 
@@ -145,12 +147,14 @@ def build_snapshot():
         total_stories += len(rows)
 
     cursor.execute(
-        """SELECT source, tweet_text, link, fetched_at, COALESCE(platform, '')
+        """SELECT source, tweet_text, link, fetched_at, COALESCE(platform, ''),
+                  COALESCE(kind, 'clip'), COALESCE(speaker, '')
            FROM media_bites ORDER BY id DESC"""
     )
     media = [
-        {"source": src, "tweet_text": txt, "link": l, "fetched_at": f, "platform": p}
-        for src, txt, l, f, p in cursor.fetchall()
+        {"source": src, "tweet_text": txt, "link": l, "fetched_at": f,
+         "platform": p, "kind": k, "speaker": sp}
+        for src, txt, l, f, p, k, sp in cursor.fetchall()
     ]
     conn.close()
 

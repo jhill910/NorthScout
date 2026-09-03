@@ -33,7 +33,9 @@ def init_db():
             tweet_text TEXT,
             link TEXT,
             fetched_at TEXT,
-            platform TEXT DEFAULT 'youtube'
+            platform TEXT DEFAULT 'youtube',
+            kind TEXT DEFAULT 'clip',
+            speaker TEXT DEFAULT ''
         )
     """)
     
@@ -44,6 +46,8 @@ def init_db():
         ("team_news", "score REAL DEFAULT 0"),
         ("team_news", "reasons TEXT DEFAULT ''"),
         ("media_bites", "platform TEXT DEFAULT 'youtube'"),
+        ("media_bites", "kind TEXT DEFAULT 'clip'"),
+        ("media_bites", "speaker TEXT DEFAULT ''"),
     ):
         try:
             cursor.execute(f"ALTER TABLE {table} ADD COLUMN {coldef};")
@@ -84,19 +88,25 @@ def save_team_news_with_media(team, title, summary, link, fetched_at, thumbnail,
 def save_team_news(team, title, summary, link, fetched_at):
     save_team_news_with_media(team, title, summary, link, fetched_at, "", 0, "")
 
-def save_media_bite(source, tweet_text, link, fetched_at, platform="youtube"):
+def save_media_bite(source, tweet_text, link, fetched_at, platform="youtube",
+                    kind="clip", speaker=""):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute(
         "SELECT id FROM media_bites WHERE link = ? OR (source = ? AND tweet_text = ?)",
         (link, source, tweet_text),
     )
-    if not cursor.fetchone():
+    row = cursor.fetchone()
+    if row:
+        cursor.execute("UPDATE media_bites SET kind = ?, speaker = ? WHERE id = ?",
+                       (kind, speaker, row[0]))
+    else:
         cursor.execute("""
-            INSERT INTO media_bites (source, tweet_text, link, fetched_at, platform)
-            VALUES (?, ?, ?, ?, ?)
-        """, (source, tweet_text, link, fetched_at, platform))
-        conn.commit()
+            INSERT INTO media_bites
+                (source, tweet_text, link, fetched_at, platform, kind, speaker)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (source, tweet_text, link, fetched_at, platform, kind, speaker))
+    conn.commit()
     conn.close()
 
 def clear_stale_media_bites(max_age_days=8):

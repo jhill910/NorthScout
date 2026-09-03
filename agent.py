@@ -7,13 +7,9 @@ from collections import Counter
 from datetime import datetime
 from time import mktime
 
-TEAMS = {
-    "Chicago Bears": "https://www.chicagobears.com/rss/news",
-    "Detroit Lions": "https://www.detroitlions.com/rss/news",
-    "Green Bay Packers": "https://www.packers.com/rss/news",
-    "Minnesota Vikings": "https://www.vikings.com/rss/news",
-    "Sports Mockery (Bears/NFC)": "https://sportsmockery.com/category/bears/feed",
-}
+# Feeds now live in sources.py, which records each one's team, kind and health
+# status. The old hardcoded dict was four club PR feeds plus one blog, which is
+# why off-field news was structurally unreachable.
 
 IGNORE_WORDS = {"the", "a", "and", "in", "to", "for", "of", "on", "with", "at", "is", "nfc", "north", "teams", "this", "that", "from"}
 
@@ -31,6 +27,15 @@ NATIONAL_YOUTUBE_FEEDS = {
     "@PatMcAfeeShow": "https://www.youtube.com/feeds/videos.xml?channel_id=UCxcTeAKWJca6XyJ37_ZoKIQ",
     "@TheHerd": "https://www.youtube.com/feeds/videos.xml?channel_id=UCFDidMd82mpDkKijLUqHp7A",
     "@SportsCenter": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiWLfSweyRNmLpgEHekhoAg",
+}
+
+# Which club each YouTube channel belongs to, so a presser can be routed onto
+# the right team board.
+CHANNEL_TEAMS = {
+    "Chicago Bears YouTube": "Chicago Bears",
+    "Detroit Lions YouTube": "Detroit Lions",
+    "Green Bay Packers YouTube": "Green Bay Packers",
+    "Minnesota Vikings YouTube": "Minnesota Vikings",
 }
 
 TEAM_YOUTUBE_FEEDS = {
@@ -67,6 +72,63 @@ MAX_TWEETS_PER_ACCOUNT = 3
 # attribution, uncertainty and narrative momentum -- and reached 12 of 13.
 
 
+# --- Press conferences ----------------------------------------------------
+# Every "==" break in the show rundown is a SOT: a clip of a coach or GM
+# speaking. The pipeline had no way to find them -- pressers were dumped into
+# the same undifferentiated media bucket as hype reels. Clubs post full
+# availabilities to YouTube within hours, so they are findable; they just were
+# never labelled.
+
+PRESSER_MARKERS = [
+    "press conference", "presser", "media availability", "meets the media",
+    "speaks with the media", "speaks to the media", "postgame", "post-game",
+    "pregame press", "podium", "availability", "full interview",
+    "one-on-one", "1-on-1", "sit-down", "addresses the media",
+]
+
+# Who is worth tagging by name. Head coach and GM first, then coordinators and
+# the quarterbacks -- the voices a producer actually cuts a SOT from.
+SPEAKERS = {
+    "Chicago Bears": ["Ryan Poles", "Ben Johnson", "Caleb Williams",
+                      "Dennis Allen", "Declan Doyle"],
+    "Detroit Lions": ["Dan Campbell", "Brad Holmes", "Jared Goff",
+                      "John Morton", "Kelvin Sheppard", "Aidan Hutchinson"],
+    "Green Bay Packers": ["Matt LaFleur", "Brian Gutekunst", "Jordan Love",
+                          "Jeff Hafley", "Adam Stenavich", "Josh Jacobs"],
+    "Minnesota Vikings": ["Kevin O'Connell", "Kwesi Adofo-Mensah",
+                          "J.J. McCarthy", "Brian Flores", "Justin Jefferson"],
+}
+
+
+def classify_media(title, team=None):
+    """Return (kind, speaker). kind is 'presser' or 'clip'."""
+    low = (title or "").lower()
+    is_presser = any(m in low for m in PRESSER_MARKERS)
+
+    speaker = ""
+    candidates = SPEAKERS.get(team, []) if team else [
+        n for names in SPEAKERS.values() for n in names]
+    for name in candidates:
+        if name.lower() in low:
+            speaker = name
+            break
+
+    if not speaker and is_presser:
+        # "Ryan Poles Press Conference | Chicago Bears" -> take the run of
+        # capitalised words before the marker.
+        m = re.match(r"^([A-Z][\w'\.-]+(?: [A-Z][\w'\.-]+){0,2})\b", title or "")
+        if m and len(m.group(1).split()) >= 2:
+            speaker = m.group(1)
+
+    # A named coach or GM speaking is a presser even if the club titled it
+    # something cute.
+    if speaker and not is_presser:
+        if any(w in low for w in ("says", "on ", "talks", "reacts", "explains")):
+            is_presser = True
+
+    return ("presser" if is_presser else "clip"), speaker
+
+
 def is_nfc_north_relevant(text):
     haystack = (text or "").lower()
     return any(keyword in haystack for keyword in NFC_KEYWORDS)
@@ -82,67 +144,107 @@ def entry_age_days(entry, now):
     return 0
 
 
+def fetch_all_sources():
+    """Fetch every registered feed. Returns (by_team, health).
+
+    by_team maps a club name to a list of (entry, source) pairs. League-wide
+    wires are routed to whichever clubs a story actually mentions, and dropped
+    if it mentions none -- otherwise the board fills with AFC news.
+
+    A dead feed is logged and skipped. It never breaks the run, and it never
+    silently narrows the board without saying so.
+    """
+    import sources
+    from collections import defaultdict
+
+    by_team = defaultdict(list)
+    health = []
+
+    for src in sources.active_sources():
+        try:
+            feed = feedparser.parse(src["url"])
+            entries = list(feed.entries or [])
+        except Exception as e:
+            entries = []
+            print(f"   ⚠️  {src['label']}: fetch failed ({type(e).__name__})")
+
+        if not entries:
+            health.append((src["label"], src["kind"], 0, "unreachable/empty"))
+            if src["status"] == "verified":
+                print(f"   ⚠️  {src['label']}: returned nothing (was verified)")
+            continue
+
+        routed = 0
+        if src["team"] == "division":
+            for e in entries:
+                text = f"{e.get('title','')} {e.get('summary','')}"
+                for team in sources.route_to_teams(text):
+                    by_team[team].append((e, src))
+                    routed += 1
+        else:
+            team = src["team"]
+            for e in entries:
+                by_team[team].append((e, src))
+                routed += 1
+
+        health.append((src["label"], src["kind"], routed, "ok"))
+        print(f"   ✅ {src['label']}: {routed} item(s)")
+
+    return by_team, health
+
+
 def get_top_team_news():
     import database
     import scoring
-    all_raw_entries = []
-    team_feeds = {}
 
     print(" 🏈 Scraping division feeds...")
-    for team_name, url in TEAMS.items():
-        feed = feedparser.parse(url)
-        if not feed.bozo or feed.entries:
-            team_feeds[team_name] = feed.entries
-            all_raw_entries.extend(feed.entries)
+    by_team, health = fetch_all_sources()
 
-    # Build the corpus once so scoring can measure vocabulary rarity and track
-    # which people have been in the news across multiple days.
+    live = sum(1 for _, _, n, s in health if s == "ok")
+    print(f" 📡 {live}/{len(health)} feeds returned content")
+
+    # Build the scoring corpus once, across every source, so vocabulary rarity
+    # and multi-day narrative momentum are measured over the whole division.
     scoring_corpus = []
-    for tname, entries in team_feeds.items():
-        dname = "Chicago Bears" if "Sports Mockery" in tname else tname
-        for e in entries:
+    for team, pairs in by_team.items():
+        for e, src in pairs:
             scoring_corpus.append({
                 "title": e.get("title", ""),
                 "summary": re.sub('<[^<]+?>', '', e.get("summary", "") or ""),
                 "pub": e.get("published", ""),
-                "team": dname,
+                "team": team,
             })
     corpus_stats = scoring.build_corpus_stats(scoring_corpus)
 
     final_sorted_report = {}
     now = datetime.now()
 
-    for team_name, entries in team_feeds.items():
-        display_name = "Chicago Bears" if "Sports Mockery" in team_name else team_name
+    for team_name, pairs in by_team.items():
         scored_entries = []
+        seen_links = set()
 
-        for entry in entries:
-            is_recent = True
-            if "published_parsed" in entry and entry.published_parsed:
-                try:
-                    pub_datetime = datetime.fromtimestamp(mktime(entry.published_parsed))
-                    age_days = (now - pub_datetime).days
-                    if age_days > MAX_AGE_DAYS:
-                        is_recent = False
-                except Exception:
-                    pass
+        for entry, src in pairs:
+            link = entry.get("link", "")
+            if not link or link in seen_links:
+                continue
+            seen_links.add(link)
 
-            if not is_recent:
+            if entry_age_days(entry, now) > MAX_AGE_DAYS:
                 continue
 
             title = entry.get("title", "(No Title)")
-            link = entry.get("link", "#")
-            pub_date = entry.get("published", datetime.now().strftime("%Y-%m-%d %H:%M"))
+            pub_date = entry.get("published", now.strftime("%Y-%m-%d %H:%M"))
 
-            thumbnail = "https://www.chicagobears.com/assets/images/featured/bears-default.jpg"
-            if "links" in entry:
-                for l in entry.links:
-                    if "image" in l.get("type", "") or l.get("rel") == "enclosure":
-                        thumbnail = l.get("href")
-                        break
-
-            if thumbnail.endswith("bears-default.jpg") and "media_thumbnail" in entry:
-                thumbnail = entry.media_thumbnail[0]["url"]
+            thumbnail = ""
+            for l in (entry.get("links") or []):
+                if "image" in (l.get("type") or "") or l.get("rel") == "enclosure":
+                    thumbnail = l.get("href", "")
+                    break
+            if not thumbnail and entry.get("media_thumbnail"):
+                try:
+                    thumbnail = entry.media_thumbnail[0]["url"]
+                except (KeyError, IndexError, TypeError):
+                    pass
 
             raw_summary = entry.get("summary", "No summary text provided by source.")
             clean_summary = re.sub('<[^<]+?>', '', raw_summary).strip()
@@ -155,12 +257,20 @@ def get_top_team_news():
             score, reasons = scoring.score_story(
                 {"title": title, "summary": clean_summary,
                  "link": link, "pub": pub_date},
-                corpus_stats, display_name, now,
+                corpus_stats, team_name, now,
             )
-            reason_text = "; ".join(reasons)
+
+            # Team .com feeds are the club's PR arm. When a non-PR outlet is
+            # carrying a story, that is itself editorially meaningful -- it is
+            # the category of source that broke Josh Jacobs' exempt-list move,
+            # which no club site would ever publish.
+            if src["kind"] in ("wire", "paper", "blog"):
+                score += 6.0
+                reasons.append(f"independent source ({src['label']})")
 
             scored_entries.append(
-                (score, title, clean_summary, link, pub_date, thumbnail, reason_text))
+                (score, title, clean_summary, link, pub_date, thumbnail,
+                 "; ".join(reasons)))
 
         scored_entries.sort(key=lambda x: x[0], reverse=True)
 
@@ -171,17 +281,11 @@ def get_top_team_news():
         # cutoff a display choice rather than permanent data loss.
         for score, title, summary, link, pub_date, thumbnail, reason_text in scored_entries:
             database.save_team_news_with_media(
-                display_name, title, summary, link, pub_date, thumbnail,
+                team_name, title, summary, link, pub_date, thumbnail,
                 score, reason_text
             )
 
-        top_five = scored_entries[:5]
-        if display_name in final_sorted_report:
-            combined = final_sorted_report[display_name] + top_five
-            combined.sort(key=lambda x: x[0], reverse=True)
-            final_sorted_report[display_name] = combined[:5]
-        else:
-            final_sorted_report[display_name] = top_five
+        final_sorted_report[team_name] = scored_entries[:5]
 
     return final_sorted_report
 
@@ -193,6 +297,7 @@ def scrape_youtube_media_bites():
     print("🎥 Scraping YouTube feeds for NFC North content...")
     now = datetime.now()
     saved = 0
+    presser_pressers = []   # (team, title, speaker, link, published)
 
     feed_jobs = []
     for label, url in NATIONAL_YOUTUBE_FEEDS.items():
@@ -227,13 +332,32 @@ def scrape_youtube_media_bites():
                 if not is_team_channel and not is_nfc_north_relevant(video_title):
                     continue
 
-                prefix = "🏈 Team: " if is_team_channel else "🎥 Clip: "
+                team_for_channel = CHANNEL_TEAMS.get(label)
+                kind, speaker = classify_media(video_title, team_for_channel)
+
+                if kind == "presser":
+                    prefix = f"🎙️ {speaker}: " if speaker else "🎙️ Presser: "
+                elif is_team_channel:
+                    prefix = "🏈 Team: "
+                else:
+                    prefix = "🎥 Clip: "
                 display_text = f"{prefix}{video_title}"
+
                 if entry.get("published_parsed"):
                     published = datetime.fromtimestamp(mktime(entry.published_parsed)).strftime("%Y-%m-%d %H:%M")
                 else:
                     published = now.strftime("%Y-%m-%d %H:%M")
-                database.save_media_bite(label, display_text, video_link, published, platform="youtube")
+
+                database.save_media_bite(label, display_text, video_link, published,
+                                         platform="youtube", kind=kind, speaker=speaker)
+
+                # A press conference is a story, not just a clip. Push it into
+                # the team board too so it ranks against written coverage --
+                # every "==" break in the rundown is a SOT.
+                if kind == "presser" and team_for_channel:
+                    presser_pressers.append(
+                        (team_for_channel, video_title, speaker, video_link, published))
+
                 kept += 1
                 saved += 1
                 if kept >= MAX_VIDEOS_PER_FEED:
@@ -246,6 +370,30 @@ def scrape_youtube_media_bites():
 
         except Exception as e:
             print(f"   ⚠️ YouTube check failed for {label}: {e}")
+
+    # Press conferences also become team_news rows so they rank against written
+    # coverage rather than sitting in a separate bucket the ranking never sees.
+    if presser_pressers:
+        import scoring
+        corpus = [{"title": t, "summary": f"Press conference. {sp}".strip(),
+                   "pub": p, "team": tm}
+                  for tm, t, sp, _, p in presser_pressers]
+        stats = scoring.build_corpus_stats(corpus)
+        for team, title, speaker, link, published in presser_pressers:
+            summary = (f"Press conference video"
+                       + (f" — {speaker}." if speaker else ".")
+                       + " Usable as a SOT.")
+            score, reasons = scoring.score_story(
+                {"title": title, "summary": summary, "link": link, "pub": published},
+                stats, team, now)
+            score += 12.0
+            reasons.append("press conference (SOT available)")
+            if speaker:
+                reasons.append(f"speaker: {speaker}")
+            database.save_team_news_with_media(
+                team, f"🎙️ {title}", summary, link, published, "",
+                score, "; ".join(reasons))
+        print(f"   🎙️ {len(presser_pressers)} press conference(s) added to team boards")
 
     print(f"🎥 YouTube scrape complete — {saved} item(s) saved")
     return saved
