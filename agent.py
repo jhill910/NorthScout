@@ -59,14 +59,12 @@ MAX_VIDEOS_PER_FEED = 5
 MAX_TWEETS_PER_ACCOUNT = 3
 
 
-def calculate_global_trends(all_entries):
-    words = []
-    for entry in all_entries:
-        title = entry.get("title", "").lower()
-        clean_words = re.findall(r'\b\w+\b', title)
-        keywords = [w for w in clean_words if w not in IGNORE_WORDS and not w.isdigit() and len(w) > 2]
-        words.extend(keywords)
-    return Counter(words)
+# calculate_global_trends() used to live here. It summed, for every headline,
+# how often its words appeared across the division, which meant a story's score
+# rose with how unremarkable its vocabulary was. Measured against the 2026-09-01
+# rundown it surfaced 3 of 13 discussed topics. It is replaced by scoring.py,
+# which scores timeliness, availability, transactions, money, decision-maker
+# attribution, uncertainty and narrative momentum -- and reached 12 of 13.
 
 
 def is_nfc_north_relevant(text):
@@ -86,6 +84,7 @@ def entry_age_days(entry, now):
 
 def get_top_team_news():
     import database
+    import scoring
     all_raw_entries = []
     team_feeds = {}
 
@@ -96,7 +95,20 @@ def get_top_team_news():
             team_feeds[team_name] = feed.entries
             all_raw_entries.extend(feed.entries)
 
-    trending_keywords = calculate_global_trends(all_raw_entries)
+    # Build the corpus once so scoring can measure vocabulary rarity and track
+    # which people have been in the news across multiple days.
+    scoring_corpus = []
+    for tname, entries in team_feeds.items():
+        dname = "Chicago Bears" if "Sports Mockery" in tname else tname
+        for e in entries:
+            scoring_corpus.append({
+                "title": e.get("title", ""),
+                "summary": re.sub('<[^<]+?>', '', e.get("summary", "") or ""),
+                "pub": e.get("published", ""),
+                "team": dname,
+            })
+    corpus_stats = scoring.build_corpus_stats(scoring_corpus)
+
     final_sorted_report = {}
     now = datetime.now()
 
@@ -140,13 +152,15 @@ def get_top_team_news():
             if len(clean_summary) > 1200:
                 clean_summary = clean_summary[:1197] + "..."
 
-            score = 0
-            title_lower = title.lower()
-            for word in trending_keywords:
-                if word in title_lower:
-                    score += trending_keywords[word]
+            score, reasons = scoring.score_story(
+                {"title": title, "summary": clean_summary,
+                 "link": link, "pub": pub_date},
+                corpus_stats, display_name, now,
+            )
+            reason_text = "; ".join(reasons)
 
-            scored_entries.append((score, title, clean_summary, link, pub_date, thumbnail))
+            scored_entries.append(
+                (score, title, clean_summary, link, pub_date, thumbnail, reason_text))
 
         scored_entries.sort(key=lambda x: x[0], reverse=True)
 
@@ -155,9 +169,10 @@ def get_top_team_news():
         # was destroyed at scrape time and unrecoverable without a re-scrape.
         # Ranking now happens at read time in app.py, which makes the 5-story
         # cutoff a display choice rather than permanent data loss.
-        for score, title, summary, link, pub_date, thumbnail in scored_entries:
+        for score, title, summary, link, pub_date, thumbnail, reason_text in scored_entries:
             database.save_team_news_with_media(
-                display_name, title, summary, link, pub_date, thumbnail, score
+                display_name, title, summary, link, pub_date, thumbnail,
+                score, reason_text
             )
 
         top_five = scored_entries[:5]

@@ -67,6 +67,7 @@ def seed_from_previous_snapshot():
                 r.get("fetched_at", ""),
                 r.get("thumbnail", ""),
                 r.get("score", 0),
+                r.get("reasons", ""),
             )
             restored += 1
 
@@ -122,7 +123,8 @@ def build_snapshot():
     total_stories = 0
     for team in TEAMS:
         cursor.execute(
-            """SELECT title, summary, link, fetched_at, thumbnail, COALESCE(score, 0)
+            """SELECT title, summary, link, fetched_at, thumbnail,
+                      COALESCE(score, 0), COALESCE(reasons, '')
                FROM team_news WHERE team = ?
                ORDER BY COALESCE(score, 0) DESC, id DESC""",
             (team,),
@@ -135,8 +137,9 @@ def build_snapshot():
                 "fetched_at": f,
                 "thumbnail": th,
                 "score": round(float(sc), 2),
+                "reasons": rz,
             }
-            for t, s, l, f, th, sc in cursor.fetchall()
+            for t, s, l, f, th, sc, rz in cursor.fetchall()
         ]
         team_news[team] = rows
         total_stories += len(rows)

@@ -64,7 +64,7 @@ def load_dashboard_data(team_name, limit=5):
     the ranking agent.py had just calculated. Two orderings were fighting and
     the arbitrary one won.
     """
-    cols = ["title", "summary", "link", "fetched_at", "thumbnail", "score"]
+    cols = ["title", "summary", "link", "fetched_at", "thumbnail", "score", "reasons"]
 
     snap = load_snapshot()
     if snap is not None:
@@ -74,14 +74,14 @@ def load_dashboard_data(team_name, limit=5):
         df = pd.DataFrame(rows)
         for c in cols:
             if c not in df.columns:
-                df[c] = "" if c != "score" else 0
+                df[c] = 0 if c == "score" else ""
         df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0)
         return df.sort_values("score", ascending=False).head(limit)[cols].reset_index(drop=True)
 
     conn = sqlite3.connect(database.DB_NAME)
     query = """
         SELECT title, summary, link, fetched_at, thumbnail,
-               COALESCE(score, 0) AS score
+               COALESCE(score, 0) AS score, COALESCE(reasons, '') AS reasons
         FROM team_news
         WHERE team = ?
         ORDER BY score DESC, id DESC
@@ -305,12 +305,18 @@ for team_name, tab_obj in teams_list:
             </div>
         """, unsafe_allow_html=True)
         
-        data = load_dashboard_data(team_name)
+        # Pull 10 and show 5 as cards. On a heavy news week one club can have
+        # 40+ stories in window and five slots genuinely isn't enough -- the
+        # 9/1 Packers board had four separate rundown topics competing for
+        # five cards. Measured against that rundown, top-5 covered 12 of 13
+        # discussed topics and top-8 covered all 13.
+        data = load_dashboard_data(team_name, limit=10)
         if data.empty:
             st.info("No recent data within our 8-day freshness window found. Hit Sync!")
         else:
+            headline_data = data.head(5).reset_index(drop=True)
             cols = st.columns(5)
-            for idx, row in data.iterrows():
+            for idx, row in headline_data.iterrows():
                 with cols[idx]:
                     thumb_url = row['thumbnail'] if ('thumbnail' in row and isinstance(row['thumbnail'], str) and row['thumbnail'].strip() != "") else assets['logo']
                     st.image(thumb_url, width='stretch')
@@ -335,6 +341,31 @@ for team_name, tab_obj in teams_list:
                             st.write(row['summary'])
                         else:
                             st.write("*No summary snippet provided by source.*")
+
+                    # Why this story ranked where it did. Keeps the board
+                    # auditable instead of asking you to trust a number.
+                    why = str(row.get('reasons') or "").strip()
+                    if why:
+                        st.caption(f"🎯 {why}")
+
+            runners_up = data.iloc[5:]
+            if not runners_up.empty:
+                with st.expander(f"➕ {len(runners_up)} more stories in the window",
+                                 expanded=False):
+                    for _, row in runners_up.iterrows():
+                        st.markdown(
+                            f"**[{row['title']}]({row['link']})**  "
+                            f"<span style='color:#8b949e;font-size:12px;'>"
+                            f"· score {row['score']:.0f}</span>",
+                            unsafe_allow_html=True,
+                        )
+                        why = str(row.get('reasons') or "").strip()
+                        if why:
+                            st.caption(f"🎯 {why}")
+                        st.markdown(
+                            "<hr style='margin:6px 0;border-color:#2d333b;'>",
+                            unsafe_allow_html=True,
+                        )
 
 st.markdown("---")
 

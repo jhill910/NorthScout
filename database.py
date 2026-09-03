@@ -21,7 +21,8 @@ def init_db():
             link TEXT,
             fetched_at TEXT,
             thumbnail TEXT,
-            score REAL DEFAULT 0
+            score REAL DEFAULT 0,
+            reasons TEXT DEFAULT ''
         )
     """)
     
@@ -41,6 +42,7 @@ def init_db():
     for table, coldef in (
         ("team_news", "thumbnail TEXT DEFAULT ''"),
         ("team_news", "score REAL DEFAULT 0"),
+        ("team_news", "reasons TEXT DEFAULT ''"),
         ("media_bites", "platform TEXT DEFAULT 'youtube'"),
     ):
         try:
@@ -52,7 +54,8 @@ def init_db():
     conn.commit()
     conn.close()
 
-def save_team_news_with_media(team, title, summary, link, fetched_at, thumbnail, score=0):
+def save_team_news_with_media(team, title, summary, link, fetched_at, thumbnail,
+                              score=0, reasons=""):
     """Store a story, keyed on LINK rather than title.
 
     NFL clubs recycle a single headline for every transaction -- the Bears feed
@@ -66,18 +69,20 @@ def save_team_news_with_media(team, title, summary, link, fetched_at, thumbnail,
     cursor.execute("SELECT id FROM team_news WHERE link = ?", (link,))
     row = cursor.fetchone()
     if row:
-        # Already known: refresh the score so re-ranking reflects this run.
-        cursor.execute("UPDATE team_news SET score = ? WHERE id = ?", (score, row[0]))
+        # Already known: refresh score and reasons so re-ranking reflects this run.
+        cursor.execute("UPDATE team_news SET score = ?, reasons = ? WHERE id = ?",
+                       (score, reasons, row[0]))
     else:
         cursor.execute("""
-            INSERT INTO team_news (team, title, summary, link, fetched_at, thumbnail, score)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (team, title, summary, link, fetched_at, thumbnail, score))
+            INSERT INTO team_news
+                (team, title, summary, link, fetched_at, thumbnail, score, reasons)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (team, title, summary, link, fetched_at, thumbnail, score, reasons))
     conn.commit()
     conn.close()
 
 def save_team_news(team, title, summary, link, fetched_at):
-    save_team_news_with_media(team, title, summary, link, fetched_at, "", 0)
+    save_team_news_with_media(team, title, summary, link, fetched_at, "", 0, "")
 
 def save_media_bite(source, tweet_text, link, fetched_at, platform="youtube"):
     conn = sqlite3.connect(DB_NAME)
