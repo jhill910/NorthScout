@@ -41,31 +41,31 @@ SOURCES = [
     # These are the ones that carry exempt-list moves, suspensions, arrests and
     # trades before (or instead of) the clubs. Stories are routed to a team by
     # keyword match in agent.py, and dropped if they mention no NFC North club.
-    ("ProFootballTalk", "https://profootballtalk.nbcsports.com/feed/", "division", "wire", "unverified"),
-    ("NFL.com",         "https://www.nfl.com/feeds/rss/news",          "division", "wire", "unverified"),
-    ("ESPN NFL",        "https://www.espn.com/espn/rss/nfl/news",      "division", "wire", "unverified"),
-    ("CBS Sports NFL",  "https://www.cbssports.com/rss/headlines/nfl/","division", "wire", "unverified"),
-    ("Yahoo NFL",       "https://sports.yahoo.com/nfl/rss.xml",        "division", "wire", "unverified"),
+    ("ProFootballTalk", "https://profootballtalk.nbcsports.com/feed/", "division", "wire", "verified"),
+    ("NFL.com",         "https://www.nfl.com/feeds/rss/news",          "division", "wire", "disabled"),
+    ("ESPN NFL",        "https://www.espn.com/espn/rss/nfl/news",      "division", "wire", "disabled"),
+    ("CBS Sports NFL",  "https://www.cbssports.com/rss/headlines/nfl/","division", "wire", "verified"),
+    ("Yahoo NFL",       "https://sports.yahoo.com/nfl/rss.xml",        "division", "wire", "verified"),
 
     # ---------------- SB Nation team blogs --------------------------------
-    ("Windy City Gridiron",  "https://www.windycitygridiron.com/rss/current.xml",   "Chicago Bears",     "blog", "unverified"),
-    ("Pride of Detroit",     "https://www.prideofdetroit.com/rss/current.xml",      "Detroit Lions",     "blog", "unverified"),
-    ("Acme Packing Company", "https://www.acmepackingcompany.com/rss/current.xml",  "Green Bay Packers", "blog", "unverified"),
-    ("Daily Norseman",       "https://www.dailynorseman.com/rss/current.xml",       "Minnesota Vikings", "blog", "unverified"),
+    ("Windy City Gridiron",  "https://www.windycitygridiron.com/rss/current.xml",   "Chicago Bears",     "blog", "verified"),
+    ("Pride of Detroit",     "https://www.prideofdetroit.com/rss/current.xml",      "Detroit Lions",     "blog", "verified"),
+    ("Acme Packing Company", "https://www.acmepackingcompany.com/rss/current.xml",  "Green Bay Packers", "blog", "verified"),
+    ("Daily Norseman",       "https://www.dailynorseman.com/rss/current.xml",       "Minnesota Vikings", "blog", "verified"),
 
     # Already in the original config.
-    ("Sports Mockery", "https://sportsmockery.com/category/bears/feed", "Chicago Bears", "blog", "unverified"),
+    ("Sports Mockery", "https://sportsmockery.com/category/bears/feed", "Chicago Bears", "blog", "disabled"),
 
     # ---------------- Metro papers ----------------------------------------
     # Closest to what the reporters on the show actually read. Several are
     # paywalled -- the RSS headline and summary are still useful for spotting a
     # story even when the body isn't readable.
-    ("Chicago Tribune Bears",   "https://www.chicagotribune.com/sports/bears/feed/",         "Chicago Bears",     "paper", "unverified"),
-    ("Chicago Sun-Times Bears", "https://chicago.suntimes.com/bears/rss.xml",                "Chicago Bears",     "paper", "unverified"),
-    ("Detroit Free Press",      "https://www.freep.com/rss/sports/lions/",                   "Detroit Lions",     "paper", "unverified"),
-    ("Detroit News Lions",      "https://www.detroitnews.com/rss/sports/nfl/lions/",         "Detroit Lions",     "paper", "unverified"),
-    ("Milwaukee Journal Sentinel", "https://www.jsonline.com/rss/sports/packers/",           "Green Bay Packers", "paper", "unverified"),
-    ("Star Tribune Vikings",    "https://www.startribune.com/vikings/index.rss2",            "Minnesota Vikings", "paper", "unverified"),
+    ("Chicago Tribune Bears",   "https://www.chicagotribune.com/sports/bears/feed/",         "Chicago Bears",     "paper", "disabled"),
+    ("Chicago Sun-Times Bears", "https://chicago.suntimes.com/bears/rss.xml",                "Chicago Bears",     "paper", "verified"),
+    ("Detroit Free Press",      "https://www.freep.com/rss/sports/lions/",                   "Detroit Lions",     "paper", "disabled"),
+    ("Detroit News Lions",      "https://www.detroitnews.com/rss/sports/nfl/lions/",         "Detroit Lions",     "paper", "disabled"),
+    ("Milwaukee Journal Sentinel", "https://www.jsonline.com/rss/sports/packers/",           "Green Bay Packers", "paper", "disabled"),
+    ("Star Tribune Vikings",    "https://www.startribune.com/vikings/index.rss2",            "Minnesota Vikings", "paper", "disabled"),
 ]
 
 
