@@ -87,6 +87,8 @@ The sidebar sync button still exists for local work, but now says plainly that a
 | `agent.py` | Press conferences | Detects pressers, tags the speaker, gives them a rail, and ranks them in the team boards. |
 | `app.py` | Near-duplicate suppression | With wires and papers added, one story could occupy four of five slots. Keeps the best version. |
 | `test_scoring.py`, `test_sources.py` | New — regression tests | Pin every bug found while tuning. |
+| `roster.py` | New — self-updating roster | Harvests people from club `media:keywords` tags and headlines. Replaces the hand-typed 27-name keyword list. |
+| `agent.py` | Roster-backed relevance | National clips are matched against a live roster (182 terms and growing), not a static list. |
 
 ---
 
@@ -96,6 +98,6 @@ The sidebar sync button still exists for local work, but now says plainly that a
 2. **Scoring was tuned on a single week.** Thirteen topics from the 9/1 rundown is a small sample and some weights are judgment calls. They are named constants at the top of `scoring.py`. Send next week's rundown and `evaluate.py` re-measures in minutes.
 3. **X/Twitter needs the `X_AUTH_JSON` secret** before it produces anything, and saved sessions expire every few weeks.
 4. **Press-conference detection depends on how clubs title uploads.** It handles the common patterns; if a club changes style, add it to `PRESSER_MARKERS` in `agent.py`.
-5. **`NFC_KEYWORDS` is still hand-maintained** — it gates which national YouTube clips count as relevant, and new signings are invisible until added.
+5. **The roster harvests from club feeds only.** Once the wires and blogs verify, it will learn names from those too. Names unseen for 60 days drop off automatically, so cuts and trades need no manual cleanup.
 
 See `DIAGNOSIS_2026-09-01.md` for the original analysis.

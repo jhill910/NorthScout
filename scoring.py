@@ -162,9 +162,34 @@ TEAM_WORDS = {
 }
 
 _WORD = re.compile(r"[a-z0-9'&.-]+")
-# Two or three capitalised words in a row -- a decent proxy for a person's name
-# without pulling in a full NER dependency.
-_NAME = re.compile(r"\b([A-Z][a-zA-Z'\-\.]+(?: [A-Z][a-zA-Z'\-\.]+){1,2})\b")
+# A run of capitalised words. Allow up to five so that "Packers RB Kaleb
+# Johnson" is captured WHOLE and then trimmed -- the previous {1,2} limit
+# matched only "Packers RB Kaleb", which was then thrown away for containing a
+# team word, losing the player entirely.
+_NAME = re.compile(r"\b([A-Z][a-zA-Z'\-\.]+(?: [A-Z][a-zA-Z'\-\.]+){1,4})\b")
+
+# Positions and titles that prefix a name in club copy: "QB Kedon Slovis",
+# "GM Brian Gutekunst", "TE Mark Redman".
+POSITION_TOKENS = {
+    "qb", "rb", "wr", "te", "ol", "dl", "lb", "db", "cb", "s", "k", "p", "ls",
+    "g", "t", "c", "edge", "dt", "de", "fb", "ot", "og", "nt", "ilb", "olb",
+    "fs", "ss", "gm", "ceo", "hc", "oc", "dc", "coach", "president", "owner",
+    "rookie", "veteran", "all-pro", "pro",
+}
+
+# Every NFL club, so an opponent is never harvested as a person.
+NFL_CLUBS = {
+    "cardinals", "falcons", "ravens", "bills", "panthers", "bengals",
+    "browns", "cowboys", "broncos", "texans", "colts", "jaguars", "chiefs",
+    "raiders", "chargers", "rams", "dolphins", "patriots", "saints",
+    "giants", "jets", "eagles", "steelers", "49ers", "niners", "seahawks",
+    "buccaneers", "titans", "commanders", "arizona", "atlanta", "baltimore",
+    "buffalo", "carolina", "cincinnati", "cleveland", "dallas", "denver",
+    "houston", "indianapolis", "jacksonville", "kansas", "vegas",
+    "angeles", "miami", "england", "orleans", "york", "philadelphia",
+    "pittsburgh", "francisco", "seattle", "tampa", "tennessee", "washington",
+    "indianapolis", "nashville",
+}
 
 # Words that disqualify a capitalised phrase from being a person's name.
 # Without this, "Game Recap", "Man Roster" and "General Manager Brian" were
@@ -194,20 +219,42 @@ def tokens(text):
             if w not in STOPWORDS and len(w) > 2 and not w.isdigit()]
 
 
+def _trim_name(tokens):
+    """Strip leading club/position tokens and trailing club tokens.
+
+    "Packers RB Kaleb Johnson" -> "Kaleb Johnson"
+    "GM Brian Gutekunst"       -> "Brian Gutekunst"
+    """
+    def is_junk(tok):
+        t = tok.lower().strip(".'-")
+        return t in TEAM_WORDS or t in POSITION_TOKENS or t in NFL_CLUBS
+
+    while tokens and is_junk(tokens[0]):
+        tokens = tokens[1:]
+    while tokens and is_junk(tokens[-1]):
+        tokens = tokens[:-1]
+    return tokens
+
+
 def extract_names(text):
     out = set()
     for m in _NAME.finditer(text or ""):
-        n = m.group(1).strip()
+        raw = m.group(1).strip()
+        if raw in NON_NAMES:
+            continue
+        tokens = _trim_name(raw.split())
+        if not 2 <= len(tokens) <= 3:
+            continue
+        n = " ".join(tokens)
         if n in NON_NAMES:
             continue
         low = n.lower()
-        parts = low.replace(".", "").split()
-        if any(t in low for t in TEAM_WORDS):
+        parts = [p.strip(".'-") for p in low.split()]
+        if any(p in TEAM_WORDS or p in NFL_CLUBS for p in parts):
             continue
         if any(p in NAME_STOP for p in parts):
             continue
-        if len(parts) >= 2:
-            out.add(n)
+        out.add(n)
     return out
 
 

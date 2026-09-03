@@ -13,14 +13,28 @@ from time import mktime
 
 IGNORE_WORDS = {"the", "a", "and", "in", "to", "for", "of", "on", "with", "at", "is", "nfc", "north", "teams", "this", "that", "from"}
 
-NFC_KEYWORDS = [
+# Clubs, cities and venues never change, so these stay hardcoded. PEOPLE are
+# harvested from the feeds by roster.py -- see is_nfc_north_relevant(). The old
+# hand-typed list of 27 names meant anyone who had just arrived was invisible
+# to the national-clip filter, which on 2026-09-01 included Kaleb Johnson,
+# Clark Phillips III, Gervon Dexter, Coby Bryant and Josh Jacobs. Every one of
+# them was a topic on that week's show.
+STATIC_KEYWORDS = [
     "bears", "lions", "packers", "vikings", "nfc north", "nfcnorth",
     "chicago", "detroit", "green bay", "minnesota", "halas", "lambeau",
     "soldier field", "ford field", "u.s. bank", "us bank stadium",
-    "caleb williams", "aidan hutchinson", "jordan love", "j.j. mccarthy",
-    "jj mccarthy", "kyler murray", "ben johnson", "dan campbell",
-    "matt lafleur", "kevin o'connell", "kevin oconnell",
 ]
+
+# Kept as a floor so the filter still works on a cold start, before any roster
+# file exists.
+CORE_PEOPLE = [
+    "caleb williams", "aidan hutchinson", "jordan love", "j.j. mccarthy",
+    "jj mccarthy", "ben johnson", "dan campbell", "matt lafleur",
+    "kevin o'connell", "kevin oconnell", "ryan poles", "brad holmes",
+    "brian gutekunst", "kwesi adofo-mensah",
+]
+
+NFC_KEYWORDS = STATIC_KEYWORDS + CORE_PEOPLE   # retained for compatibility
 
 # National / show channels need keyword hits. Team channels are inherently relevant.
 NATIONAL_YOUTUBE_FEEDS = {
@@ -129,9 +143,26 @@ def classify_media(title, team=None):
     return ("presser" if is_presser else "clip"), speaker
 
 
+_ROSTER_CACHE = None
+
+
+def relevance_keywords():
+    """Static club terms plus every person harvested from the feeds."""
+    global _ROSTER_CACHE
+    if _ROSTER_CACHE is None:
+        names = set()
+        try:
+            import roster
+            names = roster.all_names()
+        except Exception as e:
+            print(f"   ⚠️  roster unavailable ({type(e).__name__}) — using core list only")
+        _ROSTER_CACHE = set(STATIC_KEYWORDS) | set(CORE_PEOPLE) | names
+    return _ROSTER_CACHE
+
+
 def is_nfc_north_relevant(text):
     haystack = (text or "").lower()
-    return any(keyword in haystack for keyword in NFC_KEYWORDS)
+    return any(keyword in haystack for keyword in relevance_keywords())
 
 
 def entry_age_days(entry, now):
@@ -202,6 +233,20 @@ def get_top_team_news():
 
     live = sum(1 for _, _, n, s in health if s == "ok")
     print(f" 📡 {live}/{len(health)} feeds returned content")
+
+    # Learn who is on these rosters before anything is filtered by relevance,
+    # so a player acquired today is recognised in today's national clips.
+    try:
+        import roster
+        rosters = roster.harvest(by_team)
+        roster.prune(rosters)
+        roster.save_rosters(rosters)
+        global _ROSTER_CACHE
+        _ROSTER_CACHE = None          # force reload with the new names
+        counts = roster.summary(rosters)
+        print(f" 👥 Roster: " + ", ".join(f"{k.split()[-1]} {v}" for k, v in counts.items()))
+    except Exception as e:
+        print(f"   ⚠️  Roster harvest failed ({type(e).__name__}: {e})")
 
     # Build the scoring corpus once, across every source, so vocabulary rarity
     # and multi-day narrative momentum are measured over the whole division.

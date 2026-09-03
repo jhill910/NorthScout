@@ -158,10 +158,18 @@ def build_snapshot():
     ]
     conn.close()
 
+    try:
+        import roster
+        roster_counts = roster.summary()
+    except Exception:
+        roster_counts = {}
+
     return {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "window_days": agent.MAX_AGE_DAYS,
-        "counts": {"team_news": total_stories, "media_bites": len(media)},
+        "counts": {"team_news": total_stories, "media_bites": len(media),
+                   "pressers": sum(1 for m in media if m.get("kind") == "presser")},
+        "roster_counts": roster_counts,
         "team_news": team_news,
         "media_bites": media,
     }
@@ -198,7 +206,11 @@ def main():
         print(f"  {team:<20} {len(rows):>3} stories   top: {top}")
     print("-" * 60)
     print(f"✅ Wrote {SNAPSHOT_PATH}")
-    print(f"   {counts['team_news']} stories, {counts['media_bites']} media bites")
+    print(f"   {counts['team_news']} stories, {counts['media_bites']} media bites, "
+          f"{counts.get('pressers', 0)} presser(s)")
+    rc = snapshot.get("roster_counts") or {}
+    if rc:
+        print("   Roster: " + ", ".join(f"{k.split()[-1]} {v}" for k, v in rc.items()))
     return 0
 
 
