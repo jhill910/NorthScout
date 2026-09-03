@@ -81,16 +81,21 @@ The sidebar sync button still exists for local work, but now says plainly that a
 | `export_json.py` | New — scrape → durable JSON | Includes a guard that refuses to overwrite a good snapshot with an empty scrape, so a transient network failure can't wipe your board. |
 | `.github/workflows/scrape.yml` | New — scheduled scrape + commit | Twice daily, plus manual trigger. |
 | `.gitignore` | New | Keeps `twitter_auth.json` and `northscout.db` out of a public repo. |
+| `scoring.py` | New — editorial ranking | Replaces trend-frequency scoring. Rundown coverage went 3/13 → 12/13 in the top five. |
+| `sources.py` | New — source registry | 20 feeds tagged with team, kind and health. Wires route to teams by keyword; AFC news is dropped. |
+| `check_sources.py` | New — feed health check | Reports live / stale / dead per feed. The Action posts the table to each run summary. |
+| `agent.py` | Press conferences | Detects pressers, tags the speaker, gives them a rail, and ranks them in the team boards. |
+| `app.py` | Near-duplicate suppression | With wires and papers added, one story could occupy four of five slots. Keeps the best version. |
+| `test_scoring.py`, `test_sources.py` | New — regression tests | Pin every bug found while tuning. |
 
 ---
 
 ## Still open
 
-These came out of the diagnosis and are **not** fixed yet:
+1. **Most third-party feeds are unverified.** They were added from a machine that cannot reach them, so `sources.py` marks them `unverified`. Run `python check_sources.py` once and the table tells you which are live, stale or dead; `--write` records the results back into the file. Dead feeds are skipped with a warning, never silently.
+2. **Scoring was tuned on a single week.** Thirteen topics from the 9/1 rundown is a small sample and some weights are judgment calls. They are named constants at the top of `scoring.py`. Send next week's rundown and `evaluate.py` re-measures in minutes.
+3. **X/Twitter needs the `X_AUTH_JSON` secret** before it produces anything, and saved sessions expire every few weeks.
+4. **Press-conference detection depends on how clubs title uploads.** It handles the common patterns; if a club changes style, add it to `PRESSER_MARKERS` in `agent.py`.
+5. **`NFC_KEYWORDS` is still hand-maintained** — it gates which national YouTube clips count as relevant, and new signings are invisible until added.
 
-1. **The ranking algorithm still rewards boilerplate.** It scores a headline by summing how often its words appear elsewhere, so "Bears training camp report" beats a trade. Your 9/1 Poles presser ranked dead last of 16 Bears stories. Storing everything with scores means nothing is lost anymore, but the *order* is still wrong. This is the next big win.
-2. **No press-conference source.** Every `==` break in your rundown is a SOT, and nothing in the pipeline captures pressers. Team YouTube channels post them within hours.
-3. **Team PR feeds can't cover off-field news.** The Josh Jacobs exempt-list story was structurally unreachable. Needs beat blogs, metro papers, and a league transactions feed.
-4. **`NFC_KEYWORDS` is a hand-maintained list of 27 names.** Kaleb Johnson, Clark Phillips, Gervon Dexter, Braxton Jones and Josh Jacobs are all missing, so national clips about them get filtered out as irrelevant.
-
-See `DIAGNOSIS_2026-09-01.md` for the full analysis.
+See `DIAGNOSIS_2026-09-01.md` for the original analysis.
