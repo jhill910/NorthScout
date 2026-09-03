@@ -41,15 +41,29 @@ If Actions is disabled on the repo, GitHub will show a button to enable it. You 
 
 ### 3. (Optional) Turn X/Twitter back on
 
-X scraping has never produced a single row, and it can't work on Cloud as previously built — `twitter_auth.json` isn't in the repo (correctly, it holds live session cookies), so the scraper found nothing and skipped. It now runs in Actions, where the session can live as a secret.
+X scraping has never produced a single row, for two separate reasons.
 
-1. Open `twitter_auth.json` on your machine and copy the entire contents.
+**First**, your existing `twitter_auth.json` holds only one cookie, `auth_token`. X also requires `ct0`, its CSRF token, so the scraper reaches a login wall and gives up. The token itself hasn't expired — the file is incomplete, not stale. **Second**, on Cloud the file isn't in the repo at all (correctly, it holds live credentials), so the scraper found nothing to load.
+
+Fix both:
+
+```bash
+pip install playwright
+python -m playwright install chromium
+python save_x_session.py
+```
+
+That opens a browser, waits while you log in yourself, and saves the complete session. Your password is never read by the script.
+
+Then, for Cloud:
+
+1. Copy the entire contents of the regenerated `twitter_auth.json`.
 2. GitHub → **Settings → Secrets and variables → Actions → New repository secret**
-3. Name it exactly `X_AUTH_JSON`, paste the JSON, save.
+3. Name it exactly `X_AUTH_JSON`, paste, save.
 
-The workflow writes it to disk, installs Chromium, runs the scrape, and deletes the file afterward — it never reaches a commit. Without the secret, everything else still runs and X is skipped cleanly.
+The workflow writes it to disk, installs Chromium, runs the scrape, and deletes it afterward — it never reaches a commit. Without the secret, everything else runs and X is skipped cleanly.
 
-**Note:** saved X sessions expire every few weeks. When they do, the run summary prints a warning and the site's media rail shows a stale-data banner instead of failing silently. You'll need to re-copy the cookie file when that happens.
+**Note:** X sessions expire every few weeks. When yours does, re-run `save_x_session.py` and update the secret. The run summary warns you when no X posts were captured.
 
 ---
 
@@ -89,6 +103,7 @@ The sidebar sync button still exists for local work, but now says plainly that a
 | `test_scoring.py`, `test_sources.py` | New — regression tests | Pin every bug found while tuning. |
 | `roster.py` | New — self-updating roster | Harvests people from club `media:keywords` tags and headlines. Replaces the hand-typed 27-name keyword list. |
 | `agent.py` | Roster-backed relevance | National clips are matched against a live roster (182 terms and growing), not a static list. |
+| `save_x_session.py` | New — X session capture | Your saved session was missing the `ct0` cookie, so X saw a logged-out browser. This regenerates a complete one. |
 
 ---
 
