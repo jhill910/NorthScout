@@ -129,6 +129,12 @@ BOILERPLATE = [
     "5 things to watch", "things to watch", "observations", "inbox",
     "mailbag", "lunchbreak", "photos", "gallery", "podcast", "celebrate",
     "honor", "behind the scenes", "look-in", "highlights",
+    # Blog community formats. "Bears Over Beers Happy Hour and Open Thread:
+    # Bears Trade Incoming?" ranked #1 on the live Bears board -- it is a
+    # comment thread, not reporting.
+    "open thread", "happy hour", "live chat", "game thread", "off-topic",
+    "news and links", "links:", "daily links", "morning links", "survey",
+    "poll:", "fan reaction", "reacts to", "over beers", "roundtable",
 ]
 
 # Speech verbs -- an executive's name only counts as attribution if they are

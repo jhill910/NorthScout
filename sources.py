@@ -111,12 +111,44 @@ def active_sources(include_unverified=True):
     return out
 
 
-def route_to_teams(text):
-    """Which NFC North clubs does this wire story concern? May be several."""
-    low = (text or "").lower()
+import re as _re
+
+_ROUTE_CACHE = {}
+
+
+def _club_pattern(keys):
+    """Word-boundary matcher for a club's terms.
+
+    Naive substring matching routed 'NFL legend Emmitt Smith accused of
+    scamming a company out of millions' to the Detroit Lions, because
+    'lions' is inside 'mil-LIONS'. Observed live on 2026-09-03.
+    """
+    key = tuple(keys)
+    if key not in _ROUTE_CACHE:
+        parts = [r"\b" + _re.escape(k) + r"\b" for k in keys]
+        _ROUTE_CACHE[key] = _re.compile("|".join(parts))
+    return _ROUTE_CACHE[key]
+
+
+def route_to_teams(title, summary=""):
+    """Which NFC North clubs is this story actually ABOUT?
+
+    Two rules, both learned from live misroutes:
+
+    1. Word boundaries, not substrings ('millions' is not the Lions).
+    2. A single passing mention in the body is not enough. A Rams schedule
+       piece that named the Packers once landed on the Packers board. The club
+       must appear in the HEADLINE, or at least twice in the body, before the
+       story is treated as being about that club.
+    """
+    title_l = (title or "").lower()
+    body_l = (summary or "").lower()
     hits = []
     for team, keys in TEAM_ROUTING.items():
-        if any(k in low for k in keys):
+        pat = _club_pattern(keys)
+        if pat.search(title_l):
+            hits.append(team)
+        elif len(pat.findall(body_l)) >= 2:
             hits.append(team)
     return hits
 
@@ -135,7 +167,4 @@ def mark_status(label, status):
         r'(verified|unverified|disabled)(")'
     )
     new_text, n = pattern.subn(lambda m: m.group(1) + status + m.group(3), text)
-    if n:
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(new_text)
-    return n
+ 

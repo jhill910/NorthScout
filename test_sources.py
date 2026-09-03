@@ -32,6 +32,45 @@ def test_jacobs_would_now_be_reachable():
     assert any("conflict" in r for r in rs), rs
     print(f"  ok  Jacobs story routes AND scores highly ({sc:.1f}): {[r for r in rs if 'conflict' in r]}")
 
+def test_live_misroutes_2026_09_03():
+    """Two false positives observed on the first live run.
+
+    1. 'scamming a company out of millions' routed to the Detroit Lions,
+       because naive substring matching found 'lions' inside 'millions'.
+    2. A Rams schedule piece routed to Green Bay for naming the Packers once
+       in passing.
+    """
+    assert sources.route_to_teams(
+        "NFL legend Emmitt Smith accused in lawsuit of scamming company out of millions",
+        "The Cowboys legend is in hot water after being hit with a lawsuit this week") == []
+    assert sources.route_to_teams(
+        "When did the Rams last beat teams on the 2026 schedule?",
+        "LA is seeking to end lengthy losing streaks against the Eagles, Cowboys and Packers") == []
+    # ...without breaking genuine multi-club routing
+    assert sources.route_to_teams(
+        "NFC North preview: Packers and Vikings both improved",
+        "Green Bay and Minnesota look strong. The Packers added depth; the Vikings did too."
+    ) == ["Green Bay Packers", "Minnesota Vikings"]
+    print("  ok  live misroutes fixed (millions/Lions, passing Packers mention)")
+
+
+def test_open_threads_demoted():
+    """A blog open thread ranked #1 on the live Bears board."""
+    import scoring
+    from datetime import datetime
+    now = datetime(2026, 9, 3, 20, 0)
+    st = scoring.build_corpus_stats([{"title": "x", "summary": "", "pub": "", "team": "Chicago Bears"}] * 3)
+    pub = "Tue, 02 Sep 2026 12:00:00 GMT"
+    thread, _ = scoring.score_story(
+        {"title": "Bears Over Beers Happy Hour and Open Thread: Bears Trade Incoming?",
+         "summary": "", "pub": pub, "link": ""}, st, "Chicago Bears", now)
+    news, _ = scoring.score_story(
+        {"title": "Bears to move S Coby Bryant to injured reserve, sign DT",
+         "summary": "", "pub": pub, "link": ""}, st, "Chicago Bears", now)
+    assert news > thread * 2, (news, thread)
+    print(f"  ok  open thread demoted ({thread:.1f}) below real news ({news:.1f})")
+
+
 def test_presser_classification():
     cases=[("Ryan Poles Press Conference | Chicago Bears","Chicago Bears","presser","Ryan Poles"),
            ("Dan Campbell postgame vs. Colts","Detroit Lions","presser","Dan Campbell"),

@@ -205,8 +205,9 @@ def fetch_all_sources():
         routed = 0
         if src["team"] == "division":
             for e in entries:
-                text = f"{e.get('title','')} {e.get('summary','')}"
-                for team in sources.route_to_teams(text):
+                import re as _re2
+                clean_summary = _re2.sub('<[^<]+?>', '', e.get("summary", "") or "")
+                for team in sources.route_to_teams(e.get("title", ""), clean_summary):
                     by_team[team].append((e, src))
                     routed += 1
         else:
