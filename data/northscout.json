@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-09-04T14:52:43Z",
+  "generated_at": "2026-09-04T22:57:43Z",
   "window_days": 8,
   "counts": {
-    "team_news": 206,
-    "media_bites": 31,
+    "team_news": 219,
+    "media_bites": 41,
     "pressers": 7
   },
   "roster_counts": {
-    "Chicago Bears": 175,
-    "Detroit Lions": 69,
-    "Green Bay Packers": 88,
-    "Minnesota Vikings": 32
+    "Chicago Bears": 187,
+    "Detroit Lions": 71,
+    "Green Bay Packers": 99,
+    "Minnesota Vikings": 34
   },
   "standings": {
-    "fetched_at": "2026-09-04T14:52:43Z",
+    "fetched_at": "2026-09-04T22:57:43Z",
     "source": "ESPN",
     "teams": {
       "Green Bay Packers": {
@@ -79,21 +79,12 @@
         "reasons": "published 6h ago; money: cap space, restructure; running storyline: T.J. Edwards (4 days); distinctive wording; independent source (ProFootballTalk)"
       },
       {
-        "title": "Bears need health, production from WR Rome Odunze to form dynamic duo",
-        "summary": "Their decision to trade DJ Moore to the Bills opened up salary cap space in 2026 and into the future, when the Bears hope they have to pay Caleb Williams like a franchise quarterback. It also put the onus on Odunze and Luther Burden to perform like one of the best receiver pairings in the NFL.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-rome-odunze-luther-burden-health-dynamic-duo-wide-receiver-foot-nfl",
-        "fetched_at": "2026-09-03T17:50:09.272-05:00",
-        "thumbnail": "",
-        "score": 73.98,
-        "reasons": "published 1.6d ago; transaction: trade; acquisition: trade; money: salary cap; running storyline: Rome Odunze (4 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
         "title": "Bears to move S Coby Bryant, TE Hayden Large to injured reserve, sign DT James Lynch, LB Jack Sanborn",
         "summary": "Bryant and Large needed to be on the roster at the cut deadline Sunday, but now their spots can go to someone else while they're on IR.",
         "link": "https://chicago.suntimes.com/bears/2026/08/31/bears-move-s-coby-bryant-te-hayden-large-to-injured-reserve-sign-dt-james-lynch-to-active-roster",
         "fetched_at": "2026-08-31T23:12:31.431-05:00",
         "thumbnail": "",
-        "score": 73.34,
+        "score": 73.07,
         "reasons": "availability: injured reserve, ir; transaction: cut, sign; running storyline: Coby Bryant (6 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -106,6 +97,15 @@
         "reasons": "published 3h ago; running storyline: Dennis Allen (4 days); distinctive wording; independent source (Yahoo NFL)"
       },
       {
+        "title": "Bears need health, production from WR Rome Odunze to form dynamic duo",
+        "summary": "Their decision to trade DJ Moore to the Bills opened up salary cap space in 2026 and into the future, when the Bears hope they have to pay Caleb Williams like a franchise quarterback. It also put the onus on Odunze and Luther Burden to perform like one of the best receiver pairings in the NFL.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-rome-odunze-luther-burden-health-dynamic-duo-wide-receiver-foot-nfl",
+        "fetched_at": "2026-09-03T17:50:09.272-05:00",
+        "thumbnail": "",
+        "score": 71.28,
+        "reasons": "published 2.0d ago; transaction: trade; acquisition: trade; money: salary cap; running storyline: Rome Odunze (4 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
         "title": "Bears' Rome Odunze, D'Andre Swift hurt at practice. Injury updates, what to know",
         "summary": "The Bears saw both Rome Odunze and D'Andre Swift suffer injuries at practice Wednesday. Here's what to know about their statuses.",
         "link": "https://sports.yahoo.com/articles/bears-rome-odunze-dandre-swift-220508743.html",
@@ -113,15 +113,6 @@
         "thumbnail": "",
         "score": 70.74,
         "reasons": "published 1h ago; running storyline: Rome Odunze (3 days); distinctive wording; independent source (Yahoo NFL)"
-      },
-      {
-        "title": "GM Ryan Poles: I don't know if Kyler Gordon will play for Bears again",
-        "summary": "Poles said he hoped the slot corner would return but he didn't know for sure.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/01/bears-gm-ryan-poles-kyler-gordon-do-not-know-play-again-calf-injury-nfl-slot-cornerback",
-        "fetched_at": "2026-09-01T11:01:19.782-05:00",
-        "thumbnail": "",
-        "score": 69.85,
-        "reasons": "decision-maker on record: ryan poles; uncertainty: didn't know, i don't know; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "Rome Odunze, D'Andre Swift left Bears practice early",
@@ -133,13 +124,22 @@
         "reasons": "published 2h ago; running storyline: Rome Odunze (3 days); distinctive wording; independent source (Yahoo NFL)"
       },
       {
-        "title": "8 things we learned from Bears GM Ryan Poles",
-        "summary": "Bears GM Ryan Poles spoke to the media Tuesday at Halas Hall about reaching the NFL’s 53-man roster limit, trading defensive tackle Gervon Dexter Sr. to the Falcons and more.",
-        "link": "https://www.chicagobears.com/news/8-things-we-learned-from-bears-gm-ryan-poles-53-man-roster-2026",
-        "fetched_at": "Tue, 01 Sep 2026 19:41:51 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/jirx2ko7yqjvk1dunlop.jpg",
-        "score": 67.57,
-        "reasons": "published 2.8d ago; transaction: 53-man; roster milestone: 53-man roster; decision-maker on record: ryan poles; running storyline: Halas Hall (7 days); distinctive wording"
+        "title": "GM Ryan Poles: I don't know if Kyler Gordon will play for Bears again",
+        "summary": "Poles said he hoped the slot corner would return but he didn't know for sure.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/01/bears-gm-ryan-poles-kyler-gordon-do-not-know-play-again-calf-injury-nfl-slot-cornerback",
+        "fetched_at": "2026-09-01T11:01:19.782-05:00",
+        "thumbnail": "",
+        "score": 69.4,
+        "reasons": "decision-maker on record: ryan poles; uncertainty: didn't know, i don't know; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "Chicago Bears Restructure Multiple Contracts, Gain $17M in Cap Space",
+        "summary": "The latest movement of monies allow for the Bears to get under the salary cap for this upcoming 2026 regular season.",
+        "link": "https://sports.yahoo.com/articles/chicago-bears-restructure-multiple-contracts-172838833.html",
+        "fetched_at": "Fri, 04 Sep 2026 17:28:38 +0000",
+        "thumbnail": "",
+        "score": 68.3,
+        "reasons": "published 5h ago; money: $, cap space; distinctive wording; independent source (Yahoo NFL)"
       },
       {
         "title": "Ryan Poles talks roster cutdown day on preseason broadcast",
@@ -147,17 +147,17 @@
         "link": "https://www.chicagobears.com/news/ryan-poles-talks-roster-cutdown-day-on-preseason-broadcast",
         "fetched_at": "Sun, 30 Aug 2026 04:01:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/bears/uxrh2axggjmsnad1vkdd.jpg",
-        "score": 67.28,
-        "reasons": "transaction: 53-man, cutdown; roster milestone: 53-man roster, cutdown; decision-maker on record: ryan poles; running storyline: Ryan Poles (6 days)"
+        "score": 67.35,
+        "reasons": "transaction: 53-man, cutdown; roster milestone: 53-man roster, cutdown; decision-maker on record: ryan poles; running storyline: Ryan Poles (6 days); distinctive wording"
       },
       {
-        "title": "Is Kentavius Street really the best Chicago Bears defensive tackle?",
-        "summary": "After the trade of Gervon Dexter, most of us Chicago Bears fans just assumed that Neville Gallimore and Grady Jarrett would be the starting defensive tackles on the team. Jarrett got a decent chunk of change from the Bears last year, and Gallimore was given a healthy raise when they brought him in as a [&#8230;]",
-        "link": "https://www.windycitygridiron.com/chicago-bears-news/121920/chicago-bears-kentavius-street-best-dt-in-camp-dennis-allen-ryan-poles",
-        "fetched_at": "2026-09-03T13:00:00-04:00",
-        "thumbnail": "",
-        "score": 65.96,
-        "reasons": "published 1.6d ago; transaction: trade; acquisition: trade; running storyline: Neville Gallimore (5 days); distinctive wording; independent source (Windy City Gridiron)"
+        "title": "8 things we learned from Bears GM Ryan Poles",
+        "summary": "Bears GM Ryan Poles spoke to the media Tuesday at Halas Hall about reaching the NFL’s 53-man roster limit, trading defensive tackle Gervon Dexter Sr. to the Falcons and more.",
+        "link": "https://www.chicagobears.com/news/8-things-we-learned-from-bears-gm-ryan-poles-53-man-roster-2026",
+        "fetched_at": "Tue, 01 Sep 2026 19:41:51 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/jirx2ko7yqjvk1dunlop.jpg",
+        "score": 66.49,
+        "reasons": "published 3.1d ago; transaction: 53-man; roster milestone: 53-man roster; decision-maker on record: ryan poles; running storyline: Halas Hall (6 days); distinctive wording"
       },
       {
         "title": "Rome Odunze, D'Andre Swift left Bears practice early",
@@ -169,40 +169,22 @@
         "reasons": "published 6h ago; running storyline: Rome Odunze (3 days); distinctive wording; independent source (ProFootballTalk)"
       },
       {
-        "title": "Bears leave CB Kyler Gordon on PUP list to start season, ruling him out for first four games",
-        "summary": "The Bears also put defensive lineman Shemar Turner, who is coming off a torn ACL, and backup linebacker Noah Sewell on the PUP list to begin the season.",
-        "link": "https://chicago.suntimes.com/bears/2026/08/30/bears-leave-cb-kyler-gordon-on-pup-list-to-start-season-ruling-him-out-for-first-4-games",
-        "fetched_at": "2026-08-30T17:01:05.918-05:00",
+        "title": "Is Kentavius Street really the best Chicago Bears defensive tackle?",
+        "summary": "After the trade of Gervon Dexter, most of us Chicago Bears fans just assumed that Neville Gallimore and Grady Jarrett would be the starting defensive tackles on the team. Jarrett got a decent chunk of change from the Bears last year, and Gallimore was given a healthy raise when they brought him in as a [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-news/121920/chicago-bears-kentavius-street-best-dt-in-camp-dennis-allen-ryan-poles",
+        "fetched_at": "2026-09-03T13:00:00-04:00",
         "thumbnail": "",
-        "score": 62.24,
-        "reasons": "availability: acl, pup, torn; running storyline: Kyler Gordon (4 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 63.14,
+        "reasons": "published 2.0d ago; transaction: trade; acquisition: trade; running storyline: Neville Gallimore (5 days); distinctive wording; independent source (Windy City Gridiron)"
       },
       {
-        "title": "Chicago Bears News: D’Andre Swift &#038; Rome Odunze injuries?",
-        "summary": "The Chicago Bears absolutely do not need two of their offensive stars picking up injuries at practice, as both D’Andre Swift and Rome Odunze ended practice early, Odunze with a leg and Swift reportedly with cramps. Early speculation is that neither injury was serious, but speculation is not confirmation so we will have to wait [&#8230;]",
-        "link": "https://www.windycitygridiron.com/chicago-bears-news/121959/chicago-bears-news-dandre-swift-rome-odunze-injuries",
-        "fetched_at": "2026-09-04T06:00:00-04:00",
+        "title": "Chicago Bears Restructure Multiple Contracts, Gain $17M in Cap Space",
+        "summary": "With less than two weeks left before the start of the regular season, the Chicago Bears have gained some much-needed breathing room salary cap-wise. In this particular instance, three different players volunteered to make this happen for a team that’s snug against said salary cap. A sum of money that should allow for basic business [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-analysis/121989/chicago-bears-restructure-multiple-contracts-gain-17m-in-cap-space",
+        "fetched_at": "2026-09-04T13:28:38-04:00",
         "thumbnail": "",
-        "score": 62.21,
-        "reasons": "published 15h ago; running storyline: Rome Odunze (4 days); distinctive wording; independent source (Windy City Gridiron)"
-      },
-      {
-        "title": "🎙️ Press Taylor on working with Ben Johnson on offensive schemes | Press Conference",
-        "summary": "Press conference video — Ben Johnson. Usable as a SOT.",
-        "link": "https://www.youtube.com/watch?v=-WPfqkgozXs",
-        "fetched_at": "2026-09-03 18:50",
-        "thumbnail": "",
-        "score": 59.54,
-        "reasons": "published 20h ago; decision-maker on record: ben johnson; press conference (SOT available); speaker: Ben Johnson"
-      },
-      {
-        "title": "Chicago Bears announce roster moves",
-        "summary": "The Chicago Bears have placed defensive back Coby Bryant and tight end Hayden Large on Reserve/Injured, signed defensive lineman James Lynch and linebacker Jack Sanborn to the active roster and signed 14 players to the practice squad.",
-        "link": "https://www.chicagobears.com/news/chicago-bears-announce-roster-moves-practice-squad-2026",
-        "fetched_at": "Tue, 01 Sep 2026 19:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/b92totsow5wvjk4xjdbp.jpg",
-        "score": 58.29,
-        "reasons": "published 2.8d ago; availability: reserve/injured; transaction: practice squad, roster moves, signed; running storyline: Coby Bryant (6 days)"
+        "score": 59.93,
+        "reasons": "published 23h ago; money: $, cap space; distinctive wording; independent source (Windy City Gridiron)"
       },
       {
         "title": "Chicago Bears Question of the Day: What defines a successful 2026?",
@@ -214,22 +196,40 @@
         "reasons": "published 2h ago; distinctive wording; independent source (Yahoo NFL)"
       },
       {
-        "title": "Chicago Packer: Jayden Reed wears West Side childhood on his arm",
-        "summary": "Tattooed on his upper left arm are street signs of the intersection where he grew up — Lamon and Cortez —with five cousins sleeping in one bedroom.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/04/chicago-bears-green-bay-packers-jayden-reed-west-side-soldier-field-christian-watson-matthew-golden",
-        "fetched_at": "2026-09-04T08:00:00-05:00",
+        "title": "Bears leave CB Kyler Gordon on PUP list to start season, ruling him out for first four games",
+        "summary": "The Bears also put defensive lineman Shemar Turner, who is coming off a torn ACL, and backup linebacker Noah Sewell on the PUP list to begin the season.",
+        "link": "https://chicago.suntimes.com/bears/2026/08/30/bears-leave-cb-kyler-gordon-on-pup-list-to-start-season-ruling-him-out-for-first-4-games",
+        "fetched_at": "2026-08-30T17:01:05.918-05:00",
         "thumbnail": "",
-        "score": 57.56,
-        "reasons": "published 15h ago; transaction: signs; distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 57.87,
+        "reasons": "availability: acl, pup, torn; running storyline: Kyler Gordon (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
-        "title": "Video emerges of Kyler Gordon workout 1 day after Bears cast doubt on return",
-        "summary": "One day after Bears general manager Ryan Poles said he couldn’t guarantee that cornerback Kyler Gordon would ever play for them again, a rehab specialist posted videos of Gordon going through private workouts.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/02/bears-kyler-gordon-workout-video-return-calf-injury-instagram",
-        "fetched_at": "2026-09-02T17:26:29.758-05:00",
+        "title": "Bears' rare 'diamond' Colston Loveland has the wedding invite to prove it",
+        "summary": "Loveland attended Travis Kelce and global superstar Taylor Swift’s nuptials in Madison Square Garden on July 3, the result of the relationship he’d developed with the Chiefs star through the “Tight End U” offseason summit.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/04/bears-colston-loveland-taylor-swift-travis-kelce-wedding-tight-end-rare-diamond-ben-johnson-cole-kmet-nfl-training-camp",
+        "fetched_at": "2026-09-04T11:30:33.547-05:00",
         "thumbnail": "",
-        "score": 57.07,
-        "reasons": "published 2.6d ago; decision-maker quoted: ryan poles; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 57.51,
+        "reasons": "published 23h ago; running storyline: Colston Loveland (5 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "Chicago Bears announce roster moves",
+        "summary": "The Chicago Bears have placed defensive back Coby Bryant and tight end Hayden Large on Reserve/Injured, signed defensive lineman James Lynch and linebacker Jack Sanborn to the active roster and signed 14 players to the practice squad.",
+        "link": "https://www.chicagobears.com/news/chicago-bears-announce-roster-moves-practice-squad-2026",
+        "fetched_at": "Tue, 01 Sep 2026 19:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/b92totsow5wvjk4xjdbp.jpg",
+        "score": 57.09,
+        "reasons": "published 3.2d ago; availability: reserve/injured; transaction: practice squad, roster moves, signed; running storyline: Coby Bryant (6 days)"
+      },
+      {
+        "title": "Chicago Bears News: D’Andre Swift &#038; Rome Odunze injuries?",
+        "summary": "The Chicago Bears absolutely do not need two of their offensive stars picking up injuries at practice, as both D’Andre Swift and Rome Odunze ended practice early, Odunze with a leg and Swift reportedly with cramps. Early speculation is that neither injury was serious, but speculation is not confirmation so we will have to wait [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-news/121959/chicago-bears-news-dandre-swift-rome-odunze-injuries",
+        "fetched_at": "2026-09-04T06:00:00-04:00",
+        "thumbnail": "",
+        "score": 56.85,
+        "reasons": "published 23h ago; running storyline: Rome Odunze (4 days); distinctive wording; independent source (Windy City Gridiron)"
       },
       {
         "title": "The Madden Curse is real and it’s coming for the Bears",
@@ -241,12 +241,21 @@
         "reasons": "published 3h ago; distinctive wording; independent source (Yahoo NFL)"
       },
       {
+        "title": "Video emerges of Kyler Gordon workout 1 day after Bears cast doubt on return",
+        "summary": "One day after Bears general manager Ryan Poles said he couldn’t guarantee that cornerback Kyler Gordon would ever play for them again, a rehab specialist posted videos of Gordon going through private workouts.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/02/bears-kyler-gordon-workout-video-return-calf-injury-instagram",
+        "fetched_at": "2026-09-02T17:26:29.758-05:00",
+        "thumbnail": "",
+        "score": 55.85,
+        "reasons": "published 3.0d ago; decision-maker quoted: ryan poles; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
         "title": "'Goofy' is gone as Bears coach Ben Johnson sees sharper focus from QB Caleb Williams",
         "summary": "Johnson said Williams' demeanor and approach to the job are significantly different than when they first began working together.",
         "link": "https://chicago.suntimes.com/bears/2026/09/01/goofy-is-gone-as-bears-coach-ben-johnson-sees-sharper-focus-from-qb-caleb-williams",
         "fetched_at": "2026-09-01T13:47:38.792-05:00",
         "thumbnail": "",
-        "score": 55.28,
+        "score": 54.61,
         "reasons": "decision-maker on record: ben johnson; running storyline: Ben Johnson (14 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -255,7 +264,7 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/30/bears-trade-falcons-gervon-dexter-clark-phillips-cornerback-cut-day-trade-draft-pick-atlanta",
         "fetched_at": "2026-08-30T07:41:53.386-05:00",
         "thumbnail": "",
-        "score": 54.9,
+        "score": 54.59,
         "reasons": "transaction: cut, trade; acquisition: trade; running storyline: Gervon Dexter (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -264,17 +273,26 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/29/blue-chippers-bears-gm-ryan-poles-has-compiled-solid-list-going-into-season-and-it-could-grow",
         "fetched_at": "2026-08-29T17:06:06.648-05:00",
         "thumbnail": "",
-        "score": 54.66,
+        "score": 54.39,
         "reasons": "decision-maker on record: ryan poles; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
-        "title": "Fourth-year cornerback Clark Phillips III excited to join Bears",
-        "summary": "CB Clark Phillips III was thrilled when his agent called to inform him that he was being traded to the Bears, saying he’s eager to get in a new building with new guys and learn a new scheme.",
-        "link": "https://www.chicagobears.com/news/fourth-year-cornerback-clark-phillips-iii-excited-to-join-bears",
-        "fetched_at": "Wed, 02 Sep 2026 23:13:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/anahpyoehltub9njdb4t.jpg",
-        "score": 53.23,
-        "reasons": "published 1.7d ago; transaction: traded; acquisition: traded; running storyline: Clark Phillips III (2 days); distinctive wording"
+        "title": "Chicago Packer: Jayden Reed wears West Side childhood on his arm",
+        "summary": "Tattooed on his upper left arm are street signs of the intersection where he grew up — Lamon and Cortez —with five cousins sleeping in one bedroom.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/04/chicago-bears-green-bay-packers-jayden-reed-west-side-soldier-field-christian-watson-matthew-golden",
+        "fetched_at": "2026-09-04T08:00:00-05:00",
+        "thumbnail": "",
+        "score": 51.82,
+        "reasons": "published 23h ago; transaction: signs; distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "🎙️ Press Taylor on working with Ben Johnson on offensive schemes | Press Conference",
+        "summary": "Press conference video — Ben Johnson. Usable as a SOT.",
+        "link": "https://www.youtube.com/watch?v=-WPfqkgozXs",
+        "fetched_at": "2026-09-03 18:50",
+        "thumbnail": "",
+        "score": 51.38,
+        "reasons": "published 1.2d ago; decision-maker on record: ben johnson; press conference (SOT available); speaker: Ben Johnson"
       },
       {
         "title": "Ben Johnson lauds Caleb Williams for QB's intensity, focus",
@@ -282,26 +300,8 @@
         "link": "https://www.chicagobears.com/news/ben-johnson-lauds-caleb-williams-for-qb-s-intensity-focus",
         "fetched_at": "Tue, 01 Sep 2026 22:24:11 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/l3ibgkrb2ahw1qkxcdtc.jpg",
-        "score": 52.36,
-        "reasons": "published 2.7d ago; decision-maker on record: ben johnson; running storyline: Ben Johnson (14 days); distinctive wording"
-      },
-      {
-        "title": "Chicago Bears Question of the Day: What defines a successful 2026?",
-        "summary": "Ask this question in any of the last 6+ years, and you would get something to the tune of: “A successful Bears season looks like QB development, improvement by (rattles off a handful of key players) and threaten for a playoff spot” But 2025 changed that. The Bears won their division, won a playoff game, [&#8230;]",
-        "link": "https://www.windycitygridiron.com/chicago-bears-discussion/121858/chicago-bears-question-of-the-day-what-defines-a-successful-2026",
-        "fetched_at": "2026-09-04T09:00:00-04:00",
-        "thumbnail": "",
-        "score": 51.46,
-        "reasons": "published 15h ago; distinctive wording; independent source (Windy City Gridiron)"
-      },
-      {
-        "title": "Roster Moves: Chicago Bears agree to acquire fifth-round pick and DB Clark Phillips III in trade with Atlanta",
-        "summary": "The Chicago Bears have agreed to acquire a 2027 fifth-round pick and defensive back Clark Phillips III in a trade with the Atlanta Falcons in exchange for defensive lineman Gervon Dexter Sr., pending physicals.",
-        "link": "https://www.chicagobears.com/news/roster-moves-chicago-bears-agree-to-acquire-fifth-round-pick-and-db-clark-phillips-iii-in-trade-with-atlanta",
-        "fetched_at": "Sun, 30 Aug 2026 22:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/ev9xkog21f4lifjihs8v.jpg",
-        "score": 50.48,
-        "reasons": "transaction: acquire, roster moves, trade; acquisition: acquire, in exchange for; running storyline: Clark Phillips III (2 days); distinctive wording"
+        "score": 51.02,
+        "reasons": "published 3.0d ago; decision-maker on record: ben johnson; running storyline: Ben Johnson (14 days); distinctive wording"
       },
       {
         "title": "Report: Chicago Bears Exploring Trade Market for Defensive Ends",
@@ -313,13 +313,22 @@
         "reasons": "published 2.0d ago; transaction: trade; acquisition: trade; distinctive wording; independent source (Windy City Gridiron)"
       },
       {
-        "title": "Which NFL GMs have had the most to work with in the Draft?",
-        "summary": "From my own Bears-centric view of things, the Chicago Bears under Ryan Poles seem to have had a pretty rare set of conditions to help usher along a rebuild. In his first five years on the job, Poles had four selections in the top third of the first round (i.e. Top 11 picks) including the [&#8230;]",
-        "link": "https://www.windycitygridiron.com/chicago-bears-analysis/121764/which-nfl-gm-general-manager-work-draft-ryan-poles-john-lynch",
-        "fetched_at": "2026-09-03T11:25:05-04:00",
-        "thumbnail": "",
-        "score": 48.71,
-        "reasons": "published 1.6d ago; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Windy City Gridiron)"
+        "title": "Fourth-year cornerback Clark Phillips III excited to join Bears",
+        "summary": "CB Clark Phillips III was thrilled when his agent called to inform him that he was being traded to the Bears, saying he’s eager to get in a new building with new guys and learn a new scheme.",
+        "link": "https://www.chicagobears.com/news/fourth-year-cornerback-clark-phillips-iii-excited-to-join-bears",
+        "fetched_at": "Wed, 02 Sep 2026 23:13:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/anahpyoehltub9njdb4t.jpg",
+        "score": 50.32,
+        "reasons": "published 2.0d ago; transaction: traded; acquisition: traded; running storyline: Clark Phillips III (2 days); distinctive wording"
+      },
+      {
+        "title": "Roster Moves: Chicago Bears agree to acquire fifth-round pick and DB Clark Phillips III in trade with Atlanta",
+        "summary": "The Chicago Bears have agreed to acquire a 2027 fifth-round pick and defensive back Clark Phillips III in a trade with the Atlanta Falcons in exchange for defensive lineman Gervon Dexter Sr., pending physicals.",
+        "link": "https://www.chicagobears.com/news/roster-moves-chicago-bears-agree-to-acquire-fifth-round-pick-and-db-clark-phillips-iii-in-trade-with-atlanta",
+        "fetched_at": "Sun, 30 Aug 2026 22:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/ev9xkog21f4lifjihs8v.jpg",
+        "score": 50.18,
+        "reasons": "transaction: acquire, roster moves, trade; acquisition: acquire, in exchange for; running storyline: Gervon Dexter Sr (2 days); distinctive wording"
       },
       {
         "title": "Famous Packers fan Lil Wayne takes aim at Bears, tells Ben Johnson to ‘put his shirt back on’",
@@ -327,7 +336,7 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/30/famous-packers-fan-lil-wayne-takes-aim-at-bears-tells-ben-johnson-to-put-his-shirt-back-on",
         "fetched_at": "2026-08-30T06:00:00-05:00",
         "thumbnail": "",
-        "score": 48.51,
+        "score": 48.37,
         "reasons": "decision-maker on record: ben johnson; running storyline: Ben Johnson (14 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -349,40 +358,13 @@
         "reasons": "published 2.6d ago; transaction: 53-man, trade; roster milestone: 53-man roster; acquisition: trade; running storyline: Ryan Poles (6 days); distinctive wording; routine: happy hour, open thread, over beers; independent source (Windy City Gridiron)"
       },
       {
-        "title": "Bears practice report: RB D'Andre Swift, WR Rome Odunze leave with injuries",
-        "summary": "Neither had any issues in training camp until Thursday, which is difficult timing with just over a week until the season opener.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-practice-report-rb-dandre-swift-wr-rome-odunze-leave-with-injuries",
-        "fetched_at": "2026-09-03T16:28:51.635-05:00",
-        "thumbnail": "",
-        "score": 47.55,
-        "reasons": "published 1.6d ago; running storyline: Rome Odunze (4 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
         "title": "Bears coach Ben Johnson wants to move the team forward by putting it in his players' hands",
         "summary": "\"You win championships when you're a player-led team,\" quarterback Caleb Williams said, and that's Johnson's goal.",
         "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-coach-ben-johnson-is-trying-to-move-the-team-forward-by-putting-it-in-his-players-hands",
         "fetched_at": "2026-08-29T06:00:00-05:00",
         "thumbnail": "",
-        "score": 47.51,
+        "score": 47.45,
         "reasons": "decision-maker on record: ben johnson; running storyline: Ben Johnson (14 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Bears training camp diaries with Sam Roush, Neville Gallimore | Week 5",
-        "summary": "Tight end Sam Roush — a third-round selection from Stanford — and defensive tackle Neville Gallimore — a seven-year veteran who signed with the Bears in free agency — share their training camp experiences from rookie and veteran perspectives exclusively on ChicagoBears.com. This series will feature both players giving first-person accounts once a week throughout training camp.",
-        "link": "https://www.chicagobears.com/news/bears-training-camp-diaries-with-sam-roush-neville-gallimore-week-5",
-        "fetched_at": "Thu, 03 Sep 2026 21:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/tg4grl5vkzkbb0gy7nyp.jpg",
-        "score": 47.0,
-        "reasons": "published 18h ago; transaction: signed; running storyline: Neville Gallimore (5 days); routine: camp diaries"
-      },
-      {
-        "title": "Bond between Caleb Williams, Kalif Raymond evident in practice",
-        "summary": "Bears quarterback Caleb Williams and receiver Kalif Raymond showed their cohesiveness in Thursday’s padded practice, teaming up to produce an impact play that required perfect timing.",
-        "link": "https://www.chicagobears.com/news/bond-between-caleb-williams-kalif-raymond-evident-in-practice",
-        "fetched_at": "Thu, 03 Sep 2026 23:19:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/lumun7vwbhl9gwyk4z1m.jpg",
-        "score": 46.89,
-        "reasons": "published 16h ago; running storyline: Kalif Raymond (2 days); distinctive wording"
       },
       {
         "title": "Chicago Bears Sign 1 More Player to 2026 Practice Squad, 1 Spot Remains",
@@ -394,22 +376,58 @@
         "reasons": "published 2.0d ago; transaction: practice squad, sign, signed; independent source (Windy City Gridiron)"
       },
       {
-        "title": "🎙️ Kalif Raymond, T.J. Edwards talk talent on Bears roster | Press Conference",
-        "summary": "Press conference video — Kalif Raymond. Usable as a SOT.",
-        "link": "https://www.youtube.com/watch?v=AzfOZ8d5VuQ",
-        "fetched_at": "2026-09-03 22:47",
+        "title": "Chicago Bears Question of the Day: What defines a successful 2026?",
+        "summary": "Ask this question in any of the last 6+ years, and you would get something to the tune of: “A successful Bears season looks like QB development, improvement by (rattles off a handful of key players) and threaten for a playoff spot” But 2025 changed that. The Bears won their division, won a playoff game, [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-discussion/121858/chicago-bears-question-of-the-day-what-defines-a-successful-2026",
+        "fetched_at": "2026-09-04T09:00:00-04:00",
         "thumbnail": "",
-        "score": 45.05,
-        "reasons": "published 16h ago; press conference (SOT available); speaker: Kalif Raymond"
+        "score": 46.63,
+        "reasons": "published 23h ago; distinctive wording; independent source (Windy City Gridiron)"
       },
       {
-        "title": "Which Chicago Bears Practice Squad Player Will Make the Biggest Impact?",
-        "summary": "With roster cuts in the rearview and practice squads across the league all but finalized for opening day, we ask the following question: Which current practice squad player will make the biggest impact? You can take a look at Chicago’s practice squad in depth here, but for me, this answer boils down to three players. [&#8230;]",
-        "link": "https://www.windycitygridiron.com/chicago-bears-discussion/121735/which-chicago-bears-practice-squad-player-will-make-the-biggest-impact",
-        "fetched_at": "2026-09-03T09:00:00-04:00",
+        "title": "2026 NFL Season Award Predictions: MVP",
+        "summary": "Some of the Windy City Gridiron staff made their picks for several 2026 individual season awards, and we capped the predictions off by picking Super Bowl LXI. We&#8217;ll run through all our picks in the coming days, and first up is Most Valuable Player. Bryan Orenchuk: For MVP this season, I&#8217;m going with Caleb Williams. [&#8230;]",
+        "link": "https://www.windycitygridiron.com/general/121957/2026-nfl-season-award-predictions-mvp-caleb-williams-josh-allen-matthew-stafford",
+        "fetched_at": "2026-09-04T13:00:00-04:00",
         "thumbnail": "",
-        "score": 44.6,
-        "reasons": "published 1.6d ago; transaction: cuts, practice squad; independent source (Windy City Gridiron)"
+        "score": 45.83,
+        "reasons": "published 23h ago; distinctive wording; independent source (Windy City Gridiron)"
+      },
+      {
+        "title": "Which NFL GMs have had the most to work with in the Draft?",
+        "summary": "From my own Bears-centric view of things, the Chicago Bears under Ryan Poles seem to have had a pretty rare set of conditions to help usher along a rebuild. In his first five years on the job, Poles had four selections in the top third of the first round (i.e. Top 11 picks) including the [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-analysis/121764/which-nfl-gm-general-manager-work-draft-ryan-poles-john-lynch",
+        "fetched_at": "2026-09-03T11:25:05-04:00",
+        "thumbnail": "",
+        "score": 45.54,
+        "reasons": "published 2.0d ago; running storyline: Ryan Poles (6 days); distinctive wording; independent source (Windy City Gridiron)"
+      },
+      {
+        "title": "Bears practice report: RB D'Andre Swift, WR Rome Odunze leave with injuries",
+        "summary": "Neither had any issues in training camp until Thursday, which is difficult timing with just over a week until the season opener.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-practice-report-rb-dandre-swift-wr-rome-odunze-leave-with-injuries",
+        "fetched_at": "2026-09-03T16:28:51.635-05:00",
+        "thumbnail": "",
+        "score": 44.86,
+        "reasons": "published 2.0d ago; running storyline: Rome Odunze (4 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "The NFL is Ruining Football with Streaming and International Games",
+        "summary": "Hello, Chicago Bears fans!  I knew I had officially become an old man when the AARP started sending me letters. As such, it is now my right, duty, and privilege to yell at clouds. The cloud today is the NFL’s headlong bent to move the game to the international stage and engage with as many [&#8230;]",
+        "link": "https://www.windycitygridiron.com/general/121949/the-nfl-is-ruining-football-with-streaming-and-international-games",
+        "fetched_at": "2026-09-04T11:00:00-04:00",
+        "thumbnail": "",
+        "score": 44.81,
+        "reasons": "published 23h ago; distinctive wording; independent source (Windy City Gridiron)"
+      },
+      {
+        "title": "NFL Draft College Prospects to Watch: Friday Night Defenders",
+        "summary": "If you don’t want to read about the 2027 Draft, just skip this one. Enjoy any of the other content on WCG, and check out the app! However, a number of talented college prospects are going to be on display over Labor Day weekend, and a few who seem especially well-suited to Chicago’s lingering needs [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-draft/122001/nfl-draft-college-prospects-to-watch-friday-night-defenders-chicago-bears",
+        "fetched_at": "2026-09-04T17:30:00-04:00",
+        "thumbnail": "",
+        "score": 44.48,
+        "reasons": "published 23h ago; distinctive wording; independent source (Windy City Gridiron)"
       },
       {
         "title": "Bears-Titans training-camp report: Luther Burden looks '100%'",
@@ -417,17 +435,35 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-titans-final-score-luther-burden-looks-100-percent-wide-receiver-groin-preseason-game-saturday",
         "fetched_at": "2026-08-29T21:01:23.531-05:00",
         "thumbnail": "",
-        "score": 43.9,
+        "score": 43.81,
         "reasons": "decision-maker quoted: ben johnson; running storyline: Ben Johnson (14 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
-        "title": "Week 1 NFL picks, predictions for Kalshi, Polymarket, Underdog: Panthers-Bears, Vikings-Packers markets",
-        "summary": "SportsLine's advanced model has locked in its Week 1 NFL predictions today from 10,000 simulations",
-        "link": "https://www.cbssports.com/prediction/news/week-1-nfl-picks-predictions-kalshi-polymarket-underdog-panthers-bears-vikings-packers-markets/",
-        "fetched_at": "Thu, 03 Sep 2026 17:11:21 +0000",
-        "thumbnail": "https://sportshub.cbsistatic.com/i/2026/08/23/25bf6cbe-db17-4810-a7f5-58a7e4204684/justin-jefferson-minnesota-vikings.jpg",
-        "score": 40.12,
-        "reasons": "published 22h ago; distinctive wording; independent source (CBS Sports NFL)"
+        "title": "Bears training camp diaries with Sam Roush, Neville Gallimore | Week 5",
+        "summary": "Tight end Sam Roush — a third-round selection from Stanford — and defensive tackle Neville Gallimore — a seven-year veteran who signed with the Bears in free agency — share their training camp experiences from rookie and veteran perspectives exclusively on ChicagoBears.com. This series will feature both players giving first-person accounts once a week throughout training camp.",
+        "link": "https://www.chicagobears.com/news/bears-training-camp-diaries-with-sam-roush-neville-gallimore-week-5",
+        "fetched_at": "Thu, 03 Sep 2026 21:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/tg4grl5vkzkbb0gy7nyp.jpg",
+        "score": 41.78,
+        "reasons": "published 1.1d ago; transaction: signed; running storyline: Sam Roush (5 days); routine: camp diaries"
+      },
+      {
+        "title": "Which Chicago Bears Practice Squad Player Will Make the Biggest Impact?",
+        "summary": "With roster cuts in the rearview and practice squads across the league all but finalized for opening day, we ask the following question: Which current practice squad player will make the biggest impact? You can take a look at Chicago’s practice squad in depth here, but for me, this answer boils down to three players. [&#8230;]",
+        "link": "https://www.windycitygridiron.com/chicago-bears-discussion/121735/which-chicago-bears-practice-squad-player-will-make-the-biggest-impact",
+        "fetched_at": "2026-09-03T09:00:00-04:00",
+        "thumbnail": "",
+        "score": 41.69,
+        "reasons": "published 2.0d ago; transaction: cuts, practice squad; independent source (Windy City Gridiron)"
+      },
+      {
+        "title": "Bond between Caleb Williams, Kalif Raymond evident in practice",
+        "summary": "Bears quarterback Caleb Williams and receiver Kalif Raymond showed their cohesiveness in Thursday’s padded practice, teaming up to produce an impact play that required perfect timing.",
+        "link": "https://www.chicagobears.com/news/bond-between-caleb-williams-kalif-raymond-evident-in-practice",
+        "fetched_at": "Thu, 03 Sep 2026 23:19:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/lumun7vwbhl9gwyk4z1m.jpg",
+        "score": 41.24,
+        "reasons": "published 24h ago; running storyline: Kalif Raymond (2 days); distinctive wording"
       },
       {
         "title": "🎙️ Dennis Allen on defense's progress throughout training camp | Press Conference",
@@ -439,31 +475,40 @@
         "reasons": "published 1.2d ago; press conference (SOT available); speaker: Dennis Allen"
       },
       {
-        "title": "Bears DC Dennis Allen sees line as defense's deepest position group",
-        "summary": "With the season opener in Carolina looming a week from Sunday, defensive coordinator Dennis Allen on Wednesday expressed faith in the Bears’ revamped defensive line.",
-        "link": "https://www.chicagobears.com/news/bears-dc-dennis-allen-sees-line-as-defense-s-deepest-position-group",
-        "fetched_at": "Wed, 02 Sep 2026 20:34:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/l9ahk6i2itolhzvduk2g.jpg",
-        "score": 38.22,
-        "reasons": "published 1.8d ago; running storyline: Dennis Allen (3 days); distinctive wording"
-      },
-      {
         "title": "Rookie DT Jordan van den Berg is raw — but exactly what the Bears need",
         "summary": "This offseason, Bears defensive coordinator Dennis Allen decided he wanted his defensive line to get more explosive and play with more energy. Those traits are what made the 24-year-old South African the defensive star of training camp.",
         "link": "https://chicago.suntimes.com/bears/2026/09/02/bears-training-camp-jordan-van-den-berg-raw-what-they-need-defensive-tackle-nfl-south-africa-georgia-tech",
         "fetched_at": "2026-09-02T14:55:57.685-05:00",
         "thumbnail": "",
-        "score": 37.81,
-        "reasons": "published 2.6d ago; running storyline: Dennis Allen (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 36.52,
+        "reasons": "published 3.0d ago; running storyline: Dennis Allen (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
-        "title": "Bears training-camp report No. 20: DT Gervon Dexter (hamstring) not with team in Tennessee",
-        "summary": "Plus, a good day for Dayo Odeyingbo and more from the joint practice with the Titans.",
-        "link": "https://chicago.suntimes.com/bears/2026/08/27/bears-training-camp-report-no-20-dt-gervon-dexter-hamstring-not-with-team-in-tennessee",
-        "fetched_at": "2026-08-27T15:56:20.622-05:00",
+        "title": "🎙️ Kalif Raymond, T.J. Edwards talk talent on Bears roster | Press Conference",
+        "summary": "Press conference video — Kalif Raymond. Usable as a SOT.",
+        "link": "https://www.youtube.com/watch?v=AzfOZ8d5VuQ",
+        "fetched_at": "2026-09-03 22:47",
         "thumbnail": "",
-        "score": 37.55,
-        "reasons": "availability: hamstring; running storyline: Gervon Dexter (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 36.29,
+        "reasons": "published 1.0d ago; press conference (SOT available); speaker: Kalif Raymond"
+      },
+      {
+        "title": "Bears DC Dennis Allen sees line as defense's deepest position group",
+        "summary": "With the season opener in Carolina looming a week from Sunday, defensive coordinator Dennis Allen on Wednesday expressed faith in the Bears’ revamped defensive line.",
+        "link": "https://www.chicagobears.com/news/bears-dc-dennis-allen-sees-line-as-defense-s-deepest-position-group",
+        "fetched_at": "Wed, 02 Sep 2026 20:34:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/l9ahk6i2itolhzvduk2g.jpg",
+        "score": 35.66,
+        "reasons": "published 2.1d ago; running storyline: Dennis Allen (3 days); distinctive wording"
+      },
+      {
+        "title": "Week 1 NFL picks, predictions for Kalshi, Polymarket, Underdog: Panthers-Bears, Vikings-Packers markets",
+        "summary": "SportsLine's advanced model has locked in its Week 1 NFL predictions today from 10,000 simulations",
+        "link": "https://www.cbssports.com/prediction/news/week-1-nfl-picks-predictions-kalshi-polymarket-underdog-panthers-bears-vikings-packers-markets/",
+        "fetched_at": "Thu, 03 Sep 2026 17:11:21 +0000",
+        "thumbnail": "https://sportshub.cbsistatic.com/i/2026/08/23/25bf6cbe-db17-4810-a7f5-58a7e4204684/justin-jefferson-minnesota-vikings.jpg",
+        "score": 35.28,
+        "reasons": "published 1.2d ago; distinctive wording; independent source (CBS Sports NFL)"
       },
       {
         "title": "NFL Week 1 Power Rankings and the Biggest Question for Each Team",
@@ -471,17 +516,8 @@
         "link": "https://www.windycitygridiron.com/chicago-bears-power-rankings/121936/nfl-week-1-power-rankings-biggest-question-each-team-bears-rams-seahawks-ravens",
         "fetched_at": "2026-09-03T15:00:00-04:00",
         "thumbnail": "",
-        "score": 37.37,
-        "reasons": "published 1.6d ago; distinctive wording; independent source (Windy City Gridiron)"
-      },
-      {
-        "title": "Money isn't everything: With big contract in reach, QB Caleb Williams wants to make sure Bears keep winning",
-        "summary": "Williams said money is \"not a motivating factor.\" Instead, his real goals are to play his entire career with the Bears and be on a championship-caliber team.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/01/money-isnt-everything-with-a-big-contract-in-reach-qb-caleb-williams-wants-to-make-sure-bears-keep-winning",
-        "fetched_at": "2026-09-01T19:27:48.64-05:00",
-        "thumbnail": "",
-        "score": 33.71,
-        "reasons": "money: contract; distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 34.66,
+        "reasons": "published 2.0d ago; distinctive wording; independent source (Windy City Gridiron)"
       },
       {
         "title": "Three Bears to watch in Saturday's preseason finale",
@@ -489,26 +525,17 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-titans-three-watch-malik-muhammad-sam-roush-salvon-ahmed-preseason-finale",
         "fetched_at": "2026-08-29T05:26:00-05:00",
         "thumbnail": "",
-        "score": 33.3,
+        "score": 33.17,
         "reasons": "running storyline: Ben Johnson (14 days); independent source (Chicago Sun-Times Bears)"
       },
       {
-        "title": "Bears' secondary ends tough day vs. Titans with S Xavier Woods' 'cheap' blindside hit on WR Wan'Dale Robinson",
-        "summary": "Woods hit Robinson over the middle to break up a pass late in practice, which drew a penalty flag and sparked a skirmish between the teams.",
-        "link": "https://chicago.suntimes.com/bears/2026/08/27/titans-smolder-after-bears-s-xavier-woods-cheap-blindside-hit-on-wr-wandale-robinson-in-joint-practice",
-        "fetched_at": "2026-08-27T14:54:06.989-05:00",
+        "title": "Money isn't everything: With big contract in reach, QB Caleb Williams wants to make sure Bears keep winning",
+        "summary": "Williams said money is \"not a motivating factor.\" Instead, his real goals are to play his entire career with the Bears and be on a championship-caliber team.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/01/money-isnt-everything-with-a-big-contract-in-reach-qb-caleb-williams-wants-to-make-sure-bears-keep-winning",
+        "fetched_at": "2026-09-01T19:27:48.64-05:00",
         "thumbnail": "",
-        "score": 32.29,
-        "reasons": "running storyline: Xavier Woods (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "🎙️ D'Andre Swift, Clark Phillips III believe 'best days are ahead' | Press Conference",
-        "summary": "Press conference video — D'Andre Swift. Usable as a SOT.",
-        "link": "https://www.youtube.com/watch?v=HZkPS_C79XM",
-        "fetched_at": "2026-09-02 21:03",
-        "thumbnail": "",
-        "score": 31.56,
-        "reasons": "published 1.7d ago; press conference (SOT available); speaker: D'Andre Swift"
+        "score": 32.82,
+        "reasons": "money: contract; distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "Chicago Bears Mega Season Preview with Aaron Leming",
@@ -525,7 +552,7 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/30/bears-set-53-man-roster-nfl-cut-day-sunday-deadline-ryan-poles-ben-johnson",
         "fetched_at": "2026-08-30T17:20:58.441-05:00",
         "thumbnail": "",
-        "score": 30.82,
+        "score": 30.75,
         "reasons": "transaction: 53-man; roster milestone: 53-man roster; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -538,31 +565,13 @@
         "reasons": "published 2.6d ago; distinctive wording; independent source (Windy City Gridiron)"
       },
       {
-        "title": "Top 5 moments from Bears QB Caleb Williams' 'Hot Ones' debut",
-        "summary": "Williams ate hot wings on the popular interview show.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-caleb-williams-hot-ones-debut-top-5-moments-ben-johnson-quarterback-nfl-hot-wings",
-        "fetched_at": "2026-09-03T10:46:45.161-05:00",
-        "thumbnail": "",
-        "score": 30.62,
-        "reasons": "published 1.6d ago; distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
         "title": "Bears transaction tracker — analyzing cut-day decisions",
         "summary": "The Bears began making roster moves Sunday.",
         "link": "https://chicago.suntimes.com/bears/2026/08/30/bears-transaction-tracker-cut-day-decisions-ryan-poles-ben-johnson-gervon-dexter-ryan-poles-nfl",
         "fetched_at": "2026-08-30T11:44:24.962-05:00",
         "thumbnail": "",
-        "score": 29.78,
+        "score": 29.61,
         "reasons": "transaction: cut, roster moves; distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Chicago Bears presenta Vamos Bears, una nueva iniciativa en Español para aficionados de todo el mundo",
-        "summary": "Los Chicago Bears presentaron oficialmente Vamos Bears, la nueva iniciativa en español del equipo creada para fortalecer la conexión con los aficionados de habla hispana mediante contenido exclusivo y narrativas durante todo el año. La iniciativa incluye un sitio web en español, un espacio dedicado dentro de la aplicación oficial y canales en redes sociales, ampliando así la presencia digital del equipo para conectar con aficionados en el área de Chicago, España y comunidades de habla hispana alrededor del mundo.",
-        "link": "https://www.chicagobears.com/news/chicago-bears-presenta-vamos-bears-una-nueva-iniciativa-en-espanol-para-aficionados-de-todo-el-mundo",
-        "fetched_at": "Wed, 02 Sep 2026 13:59:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/mamrxqcvgv0llbnnae2k.jpg",
-        "score": 29.73,
-        "reasons": "published 2.0d ago; distinctive wording"
       },
       {
         "title": "Chicago Bears announce roster moves",
@@ -570,8 +579,26 @@
         "link": "https://www.chicagobears.com/news/chicago-bears-announce-roster-moves-initial-53-man-2026",
         "fetched_at": "Sun, 30 Aug 2026 22:01:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/q1k2791bgaxhcaehzui4.jpg",
-        "score": 29.1,
+        "score": 28.79,
         "reasons": "transaction: 53-man, roster moves; roster milestone: 53-man roster"
+      },
+      {
+        "title": "Top 5 moments from Bears QB Caleb Williams' 'Hot Ones' debut",
+        "summary": "Williams ate hot wings on the popular interview show.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-caleb-williams-hot-ones-debut-top-5-moments-ben-johnson-quarterback-nfl-hot-wings",
+        "fetched_at": "2026-09-03T10:46:45.161-05:00",
+        "thumbnail": "",
+        "score": 27.82,
+        "reasons": "published 2.0d ago; distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "Chicago Bears presenta Vamos Bears, una nueva iniciativa en Español para aficionados de todo el mundo",
+        "summary": "Los Chicago Bears presentaron oficialmente Vamos Bears, la nueva iniciativa en español del equipo creada para fortalecer la conexión con los aficionados de habla hispana mediante contenido exclusivo y narrativas durante todo el año. La iniciativa incluye un sitio web en español, un espacio dedicado dentro de la aplicación oficial y canales en redes sociales, ampliando así la presencia digital del equipo para conectar con aficionados en el área de Chicago, España y comunidades de habla hispana alrededor del mundo.",
+        "link": "https://www.chicagobears.com/news/chicago-bears-presenta-vamos-bears-una-nueva-iniciativa-en-espanol-para-aficionados-de-todo-el-mundo",
+        "fetched_at": "Wed, 02 Sep 2026 13:59:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/mamrxqcvgv0llbnnae2k.jpg",
+        "score": 27.62,
+        "reasons": "published 2.4d ago; distinctive wording"
       },
       {
         "title": "Chicago Bears launch Vamos Bears, new Spanish-language initiative for fans worldwide",
@@ -579,17 +606,8 @@
         "link": "https://www.chicagobears.com/news/chicago-bears-launch-vamos-bears-new-spanish-language-initiative-for-fans-worldwide",
         "fetched_at": "Wed, 02 Sep 2026 14:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/mamrxqcvgv0llbnnae2k.jpg",
-        "score": 28.88,
-        "reasons": "published 2.0d ago; distinctive wording"
-      },
-      {
-        "title": "Bears LB T.J. Edwards rare starter to get snaps in preseason finale vs. Titans",
-        "summary": "Rookie safety Dillon Thieneman was the only other starter on either side of the ball to play Saturday.",
-        "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-lb-t-j-edwards-rare-starter-to-get-snaps-in-preseason-finale-vs-titans",
-        "fetched_at": "2026-08-29T18:16:30.674-05:00",
-        "thumbnail": "",
-        "score": 28.49,
-        "reasons": "running storyline: T.J. Edwards (4 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+        "score": 26.73,
+        "reasons": "published 2.4d ago; distinctive wording"
       },
       {
         "title": "QB Tyson Bagent, 3 rookies pace Bears vs. Titans",
@@ -597,8 +615,17 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-titans-tyson-bagent-zavion-thomas-sam-roush-dillon-thieneman-nfl",
         "fetched_at": "2026-08-29T18:42:01.247-05:00",
         "thumbnail": "",
-        "score": 26.14,
+        "score": 25.88,
         "reasons": "running storyline: Tyson Bagent (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "🎙️ D'Andre Swift, Clark Phillips III believe 'best days are ahead' | Press Conference",
+        "summary": "Press conference video — D'Andre Swift. Usable as a SOT.",
+        "link": "https://www.youtube.com/watch?v=HZkPS_C79XM",
+        "fetched_at": "2026-09-02 21:03",
+        "thumbnail": "",
+        "score": 25.75,
+        "reasons": "published 2.1d ago; press conference (SOT available); speaker: D'Andre Swift"
       },
       {
         "title": "Zavion Thomas shines in NFL preseason debut vs. Titans",
@@ -606,8 +633,17 @@
         "link": "https://www.chicagobears.com/news/zavion-thomas-shines-in-nfl-preseason-debut-vs-titans",
         "fetched_at": "Sun, 30 Aug 2026 04:15:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/uswzjdtwqs0xeu9cpwnn.jpg",
-        "score": 25.11,
+        "score": 24.98,
         "reasons": "running storyline: Zavion Thomas (3 days); distinctive wording"
+      },
+      {
+        "title": "Bears LB T.J. Edwards rare starter to get snaps in preseason finale vs. Titans",
+        "summary": "Rookie safety Dillon Thieneman was the only other starter on either side of the ball to play Saturday.",
+        "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-lb-t-j-edwards-rare-starter-to-get-snaps-in-preseason-finale-vs-titans",
+        "fetched_at": "2026-08-29T18:16:30.674-05:00",
+        "thumbnail": "",
+        "score": 24.58,
+        "reasons": "running storyline: T.J. Edwards (3 days); distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "Game Recap: Bears close preseason with victory over Titans",
@@ -615,7 +651,7 @@
         "link": "https://www.chicagobears.com/news/game-recap-bears-close-preseason-with-victory-over-titans-week-3-2026",
         "fetched_at": "Sun, 30 Aug 2026 04:13:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/ci1hugrhrgopnxvfbpjv.jpg",
-        "score": 24.72,
+        "score": 24.55,
         "reasons": "running storyline: Zavion Thomas (3 days); distinctive wording"
       },
       {
@@ -624,7 +660,7 @@
         "link": "https://chicago.suntimes.com/murals/2026/08/28/chicago-murals-chicago-bears-caleb-williams-asend-west-loop-madden-27",
         "fetched_at": "2026-08-28T11:00:00-05:00",
         "thumbnail": "",
-        "score": 24.21,
+        "score": 24.11,
         "reasons": "distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -633,17 +669,8 @@
         "link": "https://chicago.suntimes.com/halas-intrigue/2026/08/29/bears-titans-podcast-halas-intrigue",
         "fetched_at": "2026-08-29T22:14:34.529-05:00",
         "thumbnail": "",
-        "score": 24.09,
+        "score": 23.96,
         "reasons": "transaction: 53-man; roster milestone: 53-man roster; distinctive wording; routine: podcast; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "'There's no lead safe from Caleb,' but Bears want Williams lighting up red zone early, too",
-        "summary": "The Bears want Williams to get better in the red zone. As training camp wound to a close Thursday, Johnson said he was excited about exactly that.",
-        "link": "https://chicago.suntimes.com/bears/2026/08/27/bears-caleb-williams-red-zone-titans-robert-saleh-ben-johnson-no-lead-safe-20-yard-line-quarterback-cam-ward-nfl",
-        "fetched_at": "2026-08-27T19:52:00-05:00",
-        "thumbnail": "",
-        "score": 23.77,
-        "reasons": "distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "Bears' practice report: It's a scorcher out there!",
@@ -651,17 +678,8 @@
         "link": "https://chicago.suntimes.com/bears/2026/09/02/bears-practice-report-its-a-scorcher-out-there",
         "fetched_at": "2026-09-02T14:52:25.971-05:00",
         "thumbnail": "",
-        "score": 21.71,
-        "reasons": "published 2.6d ago; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Bears' Caleb Williams, Bulls players lead PCA cheering section",
-        "summary": "Williams wore a pinstriped Pete Crow-Armstrong jersey at Wrigley Field on Thursday night.",
-        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-qb-caleb-williams-cubs-pete-crow-armstrong-caleb-wilson-matas-buzelis-cheering-section-wrigley-field",
-        "fetched_at": "2026-09-03T20:59:33.397-05:00",
-        "thumbnail": "",
-        "score": 20.0,
-        "reasons": "published 1.6d ago; distinctive wording; routine: jersey; independent source (Chicago Sun-Times Bears)"
+        "score": 20.4,
+        "reasons": "published 3.0d ago; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "Bears' practice report: 'Week Zero' starts with reshuffled roster",
@@ -669,26 +687,8 @@
         "link": "https://chicago.suntimes.com/bears/2026/09/01/bears-practice-report-week-0-starts-with-new-look-roster-clark-phillips-gervon-dexter-jack-sanborn-james-lynch-ryan-poles-nfl",
         "fetched_at": "2026-09-01T15:39:52.771-05:00",
         "thumbnail": "",
-        "score": 19.13,
+        "score": 18.51,
         "reasons": "distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Bears-Titans notes: Chicago native Carnell Tate torches former favorite team",
-        "summary": "Tate's love for Jay Cutler, Matt Forte and wide receiver Brandon Marshall came from his father.",
-        "link": "https://chicago.suntimes.com/bears/2026/08/27/bears-titans-notes-carnell-tate-former-favorite-team-jay-cutler-matt-forte-brandon-marshall-austin-booker-marcus-davenport-nfl",
-        "fetched_at": "2026-08-27T18:51:08.121-05:00",
-        "thumbnail": "",
-        "score": 19.02,
-        "reasons": "distinctive wording; independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Halas Intrigue Bears podcast: Is Kyler Gordon done?",
-        "summary": "The Bears don't sound confident that Gordon will ever suit up for them again.",
-        "link": "https://chicago.suntimes.com/halas-intrigue/2026/09/01/bears-kyler-gordon-podcast-halas-intrigue",
-        "fetched_at": "2026-09-01T15:08:28.888-05:00",
-        "thumbnail": "",
-        "score": 18.32,
-        "reasons": "running storyline: Halas Intrigue (3 days); distinctive wording; routine: podcast; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "With Army in his past — and future — Bears LB Jon Rhattigan fights for roster spot",
@@ -696,7 +696,7 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/28/bears-jon-rhattigan-army-roster-spot-past-future-linebacker-titans-exhibition-game-war-military-nfl",
         "fetched_at": "2026-08-28T11:21:02.555-05:00",
         "thumbnail": "",
-        "score": 18.2,
+        "score": 18.26,
         "reasons": "distinctive wording; independent source (Chicago Sun-Times Bears)"
       },
       {
@@ -705,8 +705,26 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/29/chaos-meets-corruption-players-in-nfl-camps-heading-back-to-college",
         "fetched_at": "2026-08-29T17:05:09.251-05:00",
         "thumbnail": "",
-        "score": 18.07,
+        "score": 17.87,
         "reasons": "distinctive wording; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "Halas Intrigue Bears podcast: Is Kyler Gordon done?",
+        "summary": "The Bears don't sound confident that Gordon will ever suit up for them again.",
+        "link": "https://chicago.suntimes.com/halas-intrigue/2026/09/01/bears-kyler-gordon-podcast-halas-intrigue",
+        "fetched_at": "2026-09-01T15:08:28.888-05:00",
+        "thumbnail": "",
+        "score": 17.72,
+        "reasons": "running storyline: Halas Intrigue (3 days); distinctive wording; routine: podcast; independent source (Chicago Sun-Times Bears)"
+      },
+      {
+        "title": "Bears' Caleb Williams, Bulls players lead PCA cheering section",
+        "summary": "Williams wore a pinstriped Pete Crow-Armstrong jersey at Wrigley Field on Thursday night.",
+        "link": "https://chicago.suntimes.com/bears/2026/09/03/bears-qb-caleb-williams-cubs-pete-crow-armstrong-caleb-wilson-matas-buzelis-cheering-section-wrigley-field",
+        "fetched_at": "2026-09-03T20:59:33.397-05:00",
+        "thumbnail": "",
+        "score": 17.16,
+        "reasons": "published 2.0d ago; distinctive wording; routine: jersey; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "Training camp is over but the Bears have a lot to get done before Week 1",
@@ -714,17 +732,8 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/31/bears-training-camp-week-1-checklist-panthers-caleb-williams-defensive-issues-health-kyler-gordon-ben-johnson-ryan-poles-nfl",
         "fetched_at": "2026-08-31T17:33:13.216-05:00",
         "thumbnail": "",
-        "score": 16.42,
+        "score": 16.16,
         "reasons": "independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Bears training camp report: Joint practice with Titans | Thursday, Aug. 27",
-        "summary": "All the latest news from Thursday’s joint practice in Tennessee, including coach Ben Johnson discussing where quarterback Caleb Williams has made the most progress in camp.",
-        "link": "https://www.chicagobears.com/news/bears-training-camp-report-joint-practice-with-titans-thursday-aug-27",
-        "fetched_at": "Thu, 27 Aug 2026 20:56:46 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/ytcqrtusiyilg7r3d2fm.jpg",
-        "score": 14.89,
-        "reasons": "running storyline: Ben Johnson (14 days); routine: training camp report"
       },
       {
         "title": "Bears QB Caleb Williams, most starters not playing preseason finale",
@@ -732,17 +741,8 @@
         "link": "https://chicago.suntimes.com/bears/2026/08/29/bears-titans-caleb-williams-most-starters-not-playing-preseason-finale-nashville-tyson-bagent-nfl",
         "fetched_at": "2026-08-29T16:32:08.845-05:00",
         "thumbnail": "",
-        "score": 14.86,
+        "score": 14.79,
         "reasons": "independent source (Chicago Sun-Times Bears)"
-      },
-      {
-        "title": "Halas Intrigue podcast: Bears, Titans scrap at practice",
-        "summary": "Things got a touch out of control in Thursday's practice. The Bears conclude the preseason on Saturday.",
-        "link": "https://chicago.suntimes.com/halas-intrigue/2026/08/27/bears-titans-podcast-caleb-williams-halas-intrigue",
-        "fetched_at": "2026-08-27T22:07:00.91-05:00",
-        "thumbnail": "",
-        "score": 14.4,
-        "reasons": "running storyline: Halas Intrigue (3 days); distinctive wording; routine: podcast; independent source (Chicago Sun-Times Bears)"
       },
       {
         "title": "6 Bears players to watch in preseason game vs. Titans",
@@ -750,7 +750,7 @@
         "link": "https://www.chicagobears.com/news/6-bears-players-to-watch-in-preseason-game-vs-titans",
         "fetched_at": "Sat, 29 Aug 2026 14:44:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/yxizyrvp2yxhxas2m35w.jpg",
-        "score": 13.27,
+        "score": 13.21,
         "reasons": ""
       },
       {
@@ -759,7 +759,7 @@
         "link": "https://www.chicagobears.com/news/chicago-bears-open-applications-for-2026-community-all-pros-107-000-grant",
         "fetched_at": "Thu, 03 Sep 2026 15:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/y4polbp44oof8pixyjoo.jpg",
-        "score": 11.63,
+        "score": 10.58,
         "reasons": "ceremonial/promotional (community) — heavily damped"
       },
       {
@@ -768,7 +768,7 @@
         "link": "https://www.chicagobears.com/news/bears-thrilled-to-support-chicago-state-university-football-program",
         "fetched_at": "Fri, 28 Aug 2026 19:58:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/bears/wjcf1hjde9cx2ufp99b5.jpg",
-        "score": 7.56,
+        "score": 7.52,
         "reasons": "ceremonial/promotional (university) — heavily damped"
       }
     ],
@@ -851,17 +851,8 @@
         "link": "https://www.prideofdetroit.com/detroit-lions-analysis/171766/fair-unfair-criticism-detroit-lions-handling-of-terrion-arnold",
         "fetched_at": "2026-09-03T18:30:00-04:00",
         "thumbnail": "",
-        "score": 62.88,
-        "reasons": "published 1.6d ago; transaction: cuts; decision-maker quoted: brad holmes; running storyline: Brad Holmes (2 days); distinctive wording; independent source (Pride of Detroit)"
-      },
-      {
-        "title": "Detroit Lions open 2 roster spots by waiving pair of offensive players",
-        "summary": "The Detroit Lions waived two players on Wednesday, creating two empty roster spots on their 53-man roster. The players they waived were running back Jabari Small and backup center Seth McLaughlin. Why did the Lions waive these two players after they made the initial 53-man roster? One theory could be that they found two new [&#8230;]",
-        "link": "https://www.prideofdetroit.com/detroit-lions-news/171711/detroit-lions-open-2-roster-spots-by-waiving-pair-of-offensive-players",
-        "fetched_at": "2026-09-02T16:28:09-04:00",
-        "thumbnail": "",
-        "score": 58.52,
-        "reasons": "published 2.6d ago; transaction: 53-man, waive, waived; roster milestone: 53-man roster; running storyline: Jabari Small (2 days); distinctive wording; independent source (Pride of Detroit)"
+        "score": 60.05,
+        "reasons": "published 2.0d ago; transaction: cuts; decision-maker quoted: brad holmes; running storyline: Ray Agnew (2 days); distinctive wording; independent source (Pride of Detroit)"
       },
       {
         "title": "Detroit Lions updated depth chart: Initial 53-man roster, practice squad",
@@ -873,22 +864,31 @@
         "reasons": "published 2.0d ago; transaction: 53-man, depth chart, practice squad; roster milestone: 53-man roster, depth chart; independent source (Pride of Detroit)"
       },
       {
-        "title": "The Detroit Lions may be over the salary cap by next week",
-        "summary": "When the NFL shifts from the offseason to the regular season, the accounting for the salary cap changes—and it can have a dramatic impact on where a team’s standing is when it comes to cap compliance. During the offseason—when teams have a 90-man roster—only the top 51 contracts count against the salary cap. But when [&#8230;]",
-        "link": "https://www.prideofdetroit.com/detroit-lions-salary-cap-contracts/171837/detroit-lions-salary-cap-2026-over-limit-moves-coming",
-        "fetched_at": "2026-09-04T08:30:00-04:00",
+        "title": "Detroit Lions open 2 roster spots by waiving pair of offensive players",
+        "summary": "The Detroit Lions waived two players on Wednesday, creating two empty roster spots on their 53-man roster. The players they waived were running back Jabari Small and backup center Seth McLaughlin. Why did the Lions waive these two players after they made the initial 53-man roster? One theory could be that they found two new [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-news/171711/detroit-lions-open-2-roster-spots-by-waiving-pair-of-offensive-players",
+        "fetched_at": "2026-09-02T16:28:09-04:00",
         "thumbnail": "",
-        "score": 57.6,
-        "reasons": "published 15h ago; money: salary cap; distinctive wording; independent source (Pride of Detroit)"
+        "score": 57.31,
+        "reasons": "published 3.0d ago; transaction: 53-man, waive, waived; roster milestone: 53-man roster; running storyline: Jabari Small (2 days); distinctive wording; independent source (Pride of Detroit)"
       },
       {
-        "title": "2026 NFL team win totals, odds, picks, best bets: Sleeping on Seattle? Lions bounce back, but fade Falcons",
-        "summary": "Our CBS Sports staff gives its best picks for this season's Over/Under win totals",
-        "link": "https://www.cbssports.com/nfl/news/2026-nfl-team-win-totals-odds-picks-best-bets/",
-        "fetched_at": "Fri, 04 Sep 2026 12:11:57 +0000",
-        "thumbnail": "https://sportshub.cbsistatic.com/i/2026/07/25/36a4945a-4863-4f0b-b718-8b4bd7523a11/sam-darnold-seattle-seahawks-imagn-images.jpg",
-        "score": 56.78,
-        "reasons": "published 3h ago; distinctive wording; independent source (CBS Sports NFL)"
+        "title": "Best Detroit Lions content of the week: The joy of being Jameson Williams",
+        "summary": "It wasn’t always sunshine for Detroit Lions wide receiver Jameson Williams since entering the NFL. Coming off an electric final collegiate season where Williams would tear his ACL in the National Championship game, his professional career in Detroit got off to a slower start than most anticipated. And if you are reading this, you are [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-news/171861/best-detroit-lions-content-week-joy-of-jameson-williams",
+        "fetched_at": "2026-09-04T16:53:35-04:00",
+        "thumbnail": "",
+        "score": 56.94,
+        "reasons": "published 23h ago; availability: acl; distinctive wording; independent source (Pride of Detroit)"
+      },
+      {
+        "title": "Best Lions content of the week: The joy of being Jameson Williams",
+        "summary": "Nolan Bianchi of The Detroit News wrote about the joy that is being Detroit Lions wide receiver Jameson Williams.",
+        "link": "https://sports.yahoo.com/articles/best-lions-content-week-joy-205335583.html",
+        "fetched_at": "Fri, 04 Sep 2026 20:53:35 +0000",
+        "thumbnail": "",
+        "score": 56.08,
+        "reasons": "published 2h ago; distinctive wording; independent source (Yahoo NFL)"
       },
       {
         "title": "NFL Offensive Player of the Year Odds: Jahmyr Gibbs Poised for a Career Year?",
@@ -918,13 +918,13 @@
         "reasons": "published 1.9d ago; transaction: 53-man; roster milestone: 53-man roster; running storyline: Isiah Pacheco (2 days); distinctive wording; independent source (Pride of Detroit)"
       },
       {
-        "title": "Inside the Grit Index: 8 NFL Draft prospects to watch in Week 1",
-        "summary": "It’s Week 1 of the college football season, which means it is time to start tracking which 2027 NFL Draft prospects could be the best fits for the Detroit Lions. Unlike most NFL Draft-centric college football previews, the primary focus here is not to tell you which players are the top, most athletically gifted prospects. [&#8230;]",
-        "link": "https://www.prideofdetroit.com/detroit-lions-draft/169986/inside-the-grit-index-8-detroit-lions-nfl-draft-prospects-to-watch-in-week-1",
-        "fetched_at": "2026-09-04T09:30:00-04:00",
+        "title": "The Detroit Lions may be over the salary cap by next week",
+        "summary": "When the NFL shifts from the offseason to the regular season, the accounting for the salary cap changes—and it can have a dramatic impact on where a team’s standing is when it comes to cap compliance. During the offseason—when teams have a 90-man roster—only the top 51 contracts count against the salary cap. But when [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-salary-cap-contracts/171837/detroit-lions-salary-cap-2026-over-limit-moves-coming",
+        "fetched_at": "2026-09-04T08:30:00-04:00",
         "thumbnail": "",
-        "score": 51.65,
-        "reasons": "published 15h ago; distinctive wording; independent source (Pride of Detroit)"
+        "score": 52.11,
+        "reasons": "published 23h ago; money: salary cap; distinctive wording; independent source (Pride of Detroit)"
       },
       {
         "title": "Survey: Which Lions RB will get the majority of Isiah Pacheco&#8217;s snaps?",
@@ -932,8 +932,17 @@
         "link": "https://www.prideofdetroit.com/detroit-lions-discussion/171687/detroit-lions-rb-replace-isiah-pacheco",
         "fetched_at": "2026-09-03T07:00:00-04:00",
         "thumbnail": "",
-        "score": 51.34,
-        "reasons": "published 1.6d ago; availability: injured reserve; transaction: placed on; distinctive wording; routine: survey; independent source (Pride of Detroit)"
+        "score": 48.67,
+        "reasons": "published 2.0d ago; availability: injured reserve; transaction: placed on; distinctive wording; routine: survey; independent source (Pride of Detroit)"
+      },
+      {
+        "title": "2026 NFL team win totals, odds, picks, best bets: Sleeping on Seattle? Lions bounce back, but fade Falcons",
+        "summary": "Our CBS Sports staff gives its best picks for this season's Over/Under win totals",
+        "link": "https://www.cbssports.com/nfl/news/2026-nfl-team-win-totals-odds-picks-best-bets/",
+        "fetched_at": "Fri, 04 Sep 2026 12:11:57 +0000",
+        "thumbnail": "https://sportshub.cbsistatic.com/i/2026/07/25/36a4945a-4863-4f0b-b718-8b4bd7523a11/sam-darnold-seattle-seahawks-imagn-images.jpg",
+        "score": 48.52,
+        "reasons": "published 11h ago; distinctive wording; independent source (CBS Sports NFL)"
       },
       {
         "title": "🎙️ Brad Holmes and Ray Agnew Press Conference | Sept. 2, 2026",
@@ -954,6 +963,15 @@
         "reasons": "published 3h ago; distinctive wording; routine: uniform; independent source (Yahoo NFL)"
       },
       {
+        "title": "Inside the Grit Index: 8 NFL Draft prospects to watch in Week 1",
+        "summary": "It’s Week 1 of the college football season, which means it is time to start tracking which 2027 NFL Draft prospects could be the best fits for the Detroit Lions. Unlike most NFL Draft-centric college football previews, the primary focus here is not to tell you which players are the top, most athletically gifted prospects. [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-draft/169986/inside-the-grit-index-8-detroit-lions-nfl-draft-prospects-to-watch-in-week-1",
+        "fetched_at": "2026-09-04T09:30:00-04:00",
+        "thumbnail": "",
+        "score": 45.6,
+        "reasons": "published 23h ago; distinctive wording; independent source (Pride of Detroit)"
+      },
+      {
         "title": "2026 Detroit Lions have one of the youngest rosters in NFL",
         "summary": "It’s no secret that the Detroit Lions attempted to get a little younger this offseason. And as a result, they have one of the youngest rosters in the NFL. According to Philly Voice, Detroit’s initial 53-man roster had an average age of 26.0 years old, good for eighth-youngest in the NFL. Bill Speros did his [&#8230;]",
         "link": "https://www.prideofdetroit.com/detroit-lions-analysis/24481031/2026-detroit-lions-have-one-of-the-youngest-rosters-in-nfl",
@@ -963,22 +981,22 @@
         "reasons": "published 2.9d ago; transaction: 53-man; roster milestone: 53-man roster; distinctive wording; independent source (Pride of Detroit)"
       },
       {
+        "title": "LIONS DAILY: Detroit wanted more juice up front. Two rookies answered the call",
+        "summary": "No summary text provided by source.",
+        "link": "https://www.detroitlions.com/news/lions-daily-detroit-wanted-more-juice-up-front-two-rookies-answered-the-call",
+        "fetched_at": "Fri, 04 Sep 2026 14:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/tjjrowoiptuehpejnew9.jpg",
+        "score": 44.48,
+        "reasons": "published 9h ago; distinctive wording"
+      },
+      {
         "title": "10 takeaways from Ray Agnew & Brad Holmes",
         "summary": "Catch up on all the news from Detroit Lions GM Brad Holmes and assistant GM Ray Agnew's joint press conference.",
         "link": "https://www.detroitlions.com/news/10-takeaways-from-brad-holmes-and-ray-agnew-gill-howard-oneill-goff",
         "fetched_at": "Wed, 02 Sep 2026 17:36:37 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/ksmx1m9sxbzbjjbdsr1s.jpg",
-        "score": 45.07,
-        "reasons": "published 1.9d ago; decision-maker on record: brad holmes; running storyline: Brad Holmes (2 days); distinctive wording"
-      },
-      {
-        "title": "What uniform combination should the Lions go with against the Saints?",
-        "summary": "We are nearly there. After the coming weekend, we will officially be into Week 1 of the 2026 NFL season. For the Detroit Lions, that means hosting the New Orleans Saints back in the friendly confines of Ford Field. It’s a big season for Detroit in many ways, and after a 2025 season that fell [&#8230;]",
-        "link": "https://www.prideofdetroit.com/detroit-lions-discussion/171822/detroit-lions-uniform-combination-week-1-new-orleans-saints",
-        "fetched_at": "2026-09-04T07:36:42-04:00",
-        "thumbnail": "",
-        "score": 40.55,
-        "reasons": "published 15h ago; distinctive wording; routine: uniform; independent source (Pride of Detroit)"
+        "score": 42.72,
+        "reasons": "published 2.2d ago; decision-maker on record: brad holmes; running storyline: Ray Agnew (2 days); distinctive wording"
       },
       {
         "title": "🎙️ Dan Campbell postgame media availability | 2026 NFL Preseason Season Week 3: Lions at Colts",
@@ -995,8 +1013,17 @@
         "link": "https://www.detroitlions.com/news/lions-daily-why-dan-skipper-became-coach-skip-for-dan-campbell-s-team",
         "fetched_at": "Wed, 02 Sep 2026 13:30:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/vpmjhz9j6yqsw6doq3t4.jpg",
-        "score": 39.85,
-        "reasons": "published 2.1d ago; decision-maker on record: dan campbell; distinctive wording"
+        "score": 37.65,
+        "reasons": "published 2.4d ago; decision-maker on record: dan campbell; distinctive wording"
+      },
+      {
+        "title": "What uniform combination should the Lions go with against the Saints?",
+        "summary": "We are nearly there. After the coming weekend, we will officially be into Week 1 of the 2026 NFL season. For the Detroit Lions, that means hosting the New Orleans Saints back in the friendly confines of Ford Field. It’s a big season for Detroit in many ways, and after a 2025 season that fell [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-discussion/171822/detroit-lions-uniform-combination-week-1-new-orleans-saints",
+        "fetched_at": "2026-09-04T07:36:42-04:00",
+        "thumbnail": "",
+        "score": 35.1,
+        "reasons": "published 23h ago; distinctive wording; routine: uniform; independent source (Pride of Detroit)"
       },
       {
         "title": "6 Lions named to NFL Top 100 list",
@@ -1004,8 +1031,8 @@
         "link": "https://www.detroitlions.com/news/6-lions-named-to-nfl-top-100-list-hutchinson-stbrown-gibbs",
         "fetched_at": "Thu, 03 Sep 2026 15:05:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/y2zhszmes8vdoppysvy9.jpg",
-        "score": 39.49,
-        "reasons": "published 24h ago; running storyline: NFL Top (3 days); distinctive wording"
+        "score": 34.94,
+        "reasons": "published 1.3d ago; running storyline: NFL Top (3 days); distinctive wording"
       },
       {
         "title": "2026 Detroit Lions roster comparison: Are they deeper than last year?",
@@ -1013,8 +1040,8 @@
         "link": "https://www.prideofdetroit.com/detroit-lions-analysis/171755/2026-detroit-lions-roster-comparison-deeper-than-2025",
         "fetched_at": "2026-09-03T08:45:00-04:00",
         "thumbnail": "",
-        "score": 35.44,
-        "reasons": "published 1.6d ago; distinctive wording; independent source (Pride of Detroit)"
+        "score": 32.42,
+        "reasons": "published 2.0d ago; distinctive wording; independent source (Pride of Detroit)"
       },
       {
         "title": "LIONS DAILY: Detroit opens two roster spots, waiving Jabari Small and Seth McLaughlin",
@@ -1022,26 +1049,8 @@
         "link": "https://www.detroitlions.com/news/lions-daily-detroit-opens-two-roster-spots-waiving-jabari-small-and-seth-mclaughlin",
         "fetched_at": "Thu, 03 Sep 2026 13:30:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/ruvisr2rvy1geuozmjcp.jpg",
-        "score": 35.4,
-        "reasons": "published 1.1d ago; running storyline: Jabari Small (2 days); distinctive wording"
-      },
-      {
-        "title": "Detroit Lions rookie Derrick Moore among 6 jersey number changes",
-        "summary": "When NFL teams cut their roster down from 90 to 53 players, it frees up a bunch of jersey numbers, and we often see a bunch of players change their numbers before the season begins. That’s exactly what has happened with the Detroit Lions in 2026, as six players will now have new numbers for [&#8230;]",
-        "link": "https://www.prideofdetroit.com/detroit-lions-news/171797/detroit-lions-jersey-number-changes-derrick-moore-2026",
-        "fetched_at": "2026-09-03T17:26:46-04:00",
-        "thumbnail": "",
-        "score": 32.16,
-        "reasons": "published 1.6d ago; transaction: cut; distinctive wording; routine: jersey; independent source (Pride of Detroit)"
-      },
-      {
-        "title": "Ford Field food options: What the Detroit Lions are offering in 2026",
-        "summary": "On Wednesday, the Detroit Lions unveiled their new food offerings during games at Ford Field. Their focus this year was on three goals: I was lucky enough to attend this unveiling, and I tried just about as much of the new food offerings as possible. You can watch that below, but I also have more [&#8230;]",
-        "link": "https://www.prideofdetroit.com/detroit-lions-news/171709/ford-field-food-options-detroit-lions-2026-new-items",
-        "fetched_at": "2026-09-02T18:40:54-04:00",
-        "thumbnail": "",
-        "score": 30.15,
-        "reasons": "published 2.6d ago; distinctive wording; independent source (Pride of Detroit)"
+        "score": 31.13,
+        "reasons": "published 1.4d ago; running storyline: Jabari Small (2 days); distinctive wording"
       },
       {
         "title": "2026 Detroit Lions preview: Don’t sleep on these 9 players",
@@ -1053,12 +1062,30 @@
         "reasons": "published 2.6d ago; distinctive wording; independent source (Pride of Detroit)"
       },
       {
+        "title": "Detroit Lions rookie Derrick Moore among 6 jersey number changes",
+        "summary": "When NFL teams cut their roster down from 90 to 53 players, it frees up a bunch of jersey numbers, and we often see a bunch of players change their numbers before the season begins. That’s exactly what has happened with the Detroit Lions in 2026, as six players will now have new numbers for [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-news/171797/detroit-lions-jersey-number-changes-derrick-moore-2026",
+        "fetched_at": "2026-09-03T17:26:46-04:00",
+        "thumbnail": "",
+        "score": 29.14,
+        "reasons": "published 2.0d ago; transaction: cut; distinctive wording; routine: jersey; independent source (Pride of Detroit)"
+      },
+      {
+        "title": "Ford Field food options: What the Detroit Lions are offering in 2026",
+        "summary": "On Wednesday, the Detroit Lions unveiled their new food offerings during games at Ford Field. Their focus this year was on three goals: I was lucky enough to attend this unveiling, and I tried just about as much of the new food offerings as possible. You can watch that below, but I also have more [&#8230;]",
+        "link": "https://www.prideofdetroit.com/detroit-lions-news/171709/ford-field-food-options-detroit-lions-2026-new-items",
+        "fetched_at": "2026-09-02T18:40:54-04:00",
+        "thumbnail": "",
+        "score": 28.79,
+        "reasons": "published 3.0d ago; distinctive wording; independent source (Pride of Detroit)"
+      },
+      {
         "title": "LIONS DAILY: 7 thoughts on Detroit's initial 53-man roster",
         "summary": "No summary text provided by source.",
         "link": "https://www.detroitlions.com/news/lions-daily-7-thoughts-on-detroit-s-initial-53-man-roster",
         "fetched_at": "Mon, 31 Aug 2026 14:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/kvhjm9ugdtmmwa8ndcl7.jpg",
-        "score": 28.35,
+        "score": 28.15,
         "reasons": "transaction: 53-man; roster milestone: 53-man roster; distinctive wording"
       },
       {
@@ -1067,7 +1094,7 @@
         "link": "https://www.detroitlions.com/news/detroit-lions-nfl-breaking-down-the-initial-53-man-roster",
         "fetched_at": "Mon, 31 Aug 2026 01:03:54 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/e0bp9rupnzbe8mpq5slh.jpg",
-        "score": 26.68,
+        "score": 26.46,
         "reasons": "transaction: 53-man; roster milestone: 53-man roster"
       },
       {
@@ -1076,8 +1103,8 @@
         "link": "https://www.detroitlions.com/news/lions-daily-detroit-signs-luke-altmyer-tom-kennedy-12-others-to-practice-squad",
         "fetched_at": "Tue, 01 Sep 2026 13:55:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/xmqttckqioxdf8hbxjsw.jpg",
-        "score": 26.23,
-        "reasons": "published 3.0d ago; transaction: practice squad, signs; distinctive wording"
+        "score": 25.18,
+        "reasons": "transaction: practice squad, signs; distinctive wording"
       },
       {
         "title": "Lions announce roster moves",
@@ -1085,7 +1112,7 @@
         "link": "https://www.detroitlions.com/news/lions-announce-roster-moves-x4845",
         "fetched_at": "Mon, 31 Aug 2026 22:06:36 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/uvv3yphjcuugj6oecplv.jpg",
-        "score": 19.67,
+        "score": 19.03,
         "reasons": "transaction: practice squad, roster moves"
       },
       {
@@ -1094,7 +1121,7 @@
         "link": "https://www.detroitlions.com/news/detroit-lions-breaking-down-the-lions-initial-practice-squad-altmyer-whiteside-kennedy",
         "fetched_at": "Mon, 31 Aug 2026 22:08:38 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/repzvbrj1drkjuz4txv8.jpg",
-        "score": 17.42,
+        "score": 16.88,
         "reasons": "transaction: practice squad"
       },
       {
@@ -1103,8 +1130,8 @@
         "link": "https://www.detroitlions.com/news/detroit-lions-breaking-down-first-five-games-of-2026-season-goff-hutchinson-gibbs",
         "fetched_at": "Tue, 01 Sep 2026 11:00:35 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/mov0zjq5s31j8kz6h3l2.jpg",
-        "score": 14.4,
-        "reasons": "published 3.2d ago; distinctive wording"
+        "score": 13.62,
+        "reasons": "distinctive wording"
       },
       {
         "title": "Lions announce roster moves",
@@ -1112,7 +1139,7 @@
         "link": "https://www.detroitlions.com/news/lions-announce-roster-moves-x5389",
         "fetched_at": "Mon, 31 Aug 2026 00:55:12 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/im3yjih3gb2nhb5h8fet.jpg",
-        "score": 13.24,
+        "score": 12.9,
         "reasons": "transaction: roster moves"
       },
       {
@@ -1121,7 +1148,7 @@
         "link": "https://www.detroitlions.com/news/lions-daily-how-detroit-s-blue-collar-identity-resonates-with-one-lions-veteran",
         "fetched_at": "Sat, 29 Aug 2026 14:15:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/wdyv8njpdaaf0fono7dn.jpg",
-        "score": 12.18,
+        "score": 12.02,
         "reasons": "distinctive wording"
       },
       {
@@ -1130,7 +1157,7 @@
         "link": "https://www.detroitlions.com/news/recap-lions-at-colts-dobbs-meeks-williams",
         "fetched_at": "Sat, 29 Aug 2026 20:19:09 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/he7o64gy88o69mjbth1d.jpg",
-        "score": 11.0,
+        "score": 10.85,
         "reasons": "distinctive wording"
       },
       {
@@ -1139,17 +1166,8 @@
         "link": "https://www.detroitlions.com/news/lions-daily-lions-got-back-to-detroit-vs-detroit-in-this-year-s-training-camp",
         "fetched_at": "Fri, 28 Aug 2026 13:15:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/uq4bjamekdbco6ojvjj8.jpg",
-        "score": 10.05,
+        "score": 9.97,
         "reasons": "distinctive wording"
-      },
-      {
-        "title": "Camp Notes: Campbell reflects on Lions' 2026 training camp",
-        "summary": "Tim Twentyman covers all the news from Day 19 of Detroit Lions training camp practice.",
-        "link": "https://www.detroitlions.com/news/camp-notes-campbell-reflects-on-lions-2026-training-camp-hutchinson-pacheco",
-        "fetched_at": "Thu, 27 Aug 2026 20:50:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/bnclcwg9kagicssotn1y.jpg",
-        "score": 9.5,
-        "reasons": ""
       },
       {
         "title": "Eric Schugars of Traverse City Central High School Named the Detroit Lions High School Football Coach of the Week - Week 1",
@@ -1157,7 +1175,7 @@
         "link": "https://www.detroitlions.com/news/eric-schugars-of-traverse-city-central-high-school-named-the-detroit-lions-high-school-football-coach-of-the-week-week-1",
         "fetched_at": "Tue, 01 Sep 2026 20:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/ljny8dkayttq0l9rpxsp.jpg",
-        "score": 6.0,
+        "score": 5.67,
         "reasons": "ceremonial/promotional (coach of the week, high school) — heavily damped"
       },
       {
@@ -1166,7 +1184,7 @@
         "link": "https://www.detroitlions.com/news/lions-at-colts-how-to-watch-listen-and-follow-x1830",
         "fetched_at": "Fri, 28 Aug 2026 11:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/x1gqtuajkllvkxxq5nuy.jpg",
-        "score": 5.43,
+        "score": 5.21,
         "reasons": "routine: how to watch"
       },
       {
@@ -1175,7 +1193,7 @@
         "link": "https://www.detroitlions.com/news/detroit-lions-preseason-week-3-observations-dobbs-saylors-meeks",
         "fetched_at": "Sat, 29 Aug 2026 22:48:31 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/sfcdxq6uwddhhpeuuk51.jpg",
-        "score": 0.07,
+        "score": 0.04,
         "reasons": "routine: observations"
       },
       {
@@ -1186,18 +1204,72 @@
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/zqqref4rnufefqbcm43a.jpg",
         "score": 0.0,
         "reasons": "routine: 5 things to watch, things to watch"
-      },
-      {
-        "title": "TWENTYMAN: Training camp Day 19 observations",
-        "summary": "Tim Twentyman shares his observations from Detroit Lions training camp practice.",
-        "link": "https://www.detroitlions.com/news/twentyman-training-camp-day-19-observations-goff-stbrown-gibbs",
-        "fetched_at": "Thu, 27 Aug 2026 21:37:57 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/lions/nqgkfcfbqgvhpoxigkqj.jpg",
-        "score": 0.0,
-        "reasons": "routine: observations"
       }
     ],
     "Green Bay Packers": [
+      {
+        "title": "Josh Jacobs’ initial hearing has been moved up by several months",
+        "summary": "Green Bay Packers running back Josh Jacobs was placed on the NFL’s commissioner exempt list before the league’s final cutdowns to teams’ initial 53-man rosters for the 2026 season. The Packers’ brass has stated that they will stand by Jacobs, who is currently set to face charges of battery and criminal damage in Brown County, [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-news/85989/josh-jacobs-initial-hearing-has-been-moved-up-by-several-months",
+        "fetched_at": "2026-09-04T16:02:12-04:00",
+        "thumbnail": "",
+        "score": 91.47,
+        "reasons": "published 23h ago; availability: exempt list; transaction: 53-man, placed on; conflict: charges, exempt list; distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "Packers Preview: What to expect from a MarShawn Lloyd running game?",
+        "summary": "The Green Bay Packers’ running game is going to be a bit of a mystery box going into the 2026 regular season. Not only is starting running back Josh Jacobs on the commissioner exempt list, but the players who will backfill Jacobs’ carries have never been significant ball-carriers at the NFL level, and the Packers’ [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-discussion/85970/packers-preview-what-to-expect-from-a-marshawn-lloyd-running-game",
+        "fetched_at": "2026-09-04T15:43:42-04:00",
+        "thumbnail": "",
+        "score": 81.36,
+        "reasons": "published 23h ago; availability: exempt list; conflict: exempt list; running storyline: MarShawn Lloyd (5 days); distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "Cowboys' captains: Kenny Clark, Quinnen Williams, Dak Prescott, Brandon Aubrey",
+        "summary": "The Cowboys have two defensive captains this season, and both were acquired by trading Micah Parsons.",
+        "link": "https://sports.yahoo.com/articles/cowboys-captains-kenny-clark-quinnen-191152563.html",
+        "fetched_at": "Fri, 04 Sep 2026 19:11:52 +0000",
+        "thumbnail": "",
+        "score": 77.38,
+        "reasons": "published 4h ago; transaction: acquired; acquisition: acquired; running storyline: Micah Parsons (2 days); distinctive wording; independent source (Yahoo NFL)"
+      },
+      {
+        "title": "Cowboys' captains: Kenny Clark, Quinnen Williams, Dak Prescott, Brandon Aubrey",
+        "summary": "The Cowboys have two defensive captains this season, and both were acquired by trading Micah Parsons.",
+        "link": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/cowboys-captains-kenny-clark-quinnen-williams-dak-prescott-brandon-aubrey",
+        "fetched_at": "Fri, 04 Sep 2026 15:11:52 -0400",
+        "thumbnail": "https://nbcsports.brightspotcdn.com/dims4/default/1295451/2147483647/strip/false/crop/1920x1080+0+0/resize/1920x1080!/quality/90/?url=https%3A%2F%2Fhdliveextra-a.akamaihd.net%2FHD%2Fimage_sports%2FNBCU_Sports_Group_-_nbcsports%2F437%2F263%2Fnbc_pft_cowboyswrs_260903.jpg",
+        "score": 73.21,
+        "reasons": "published 8h ago; transaction: acquired; acquisition: acquired; running storyline: Micah Parsons (2 days); distinctive wording; independent source (ProFootballTalk)"
+      },
+      {
+        "title": "Packers Preview: What to expect from a MarShawn Lloyd running game?",
+        "summary": "With Josh Jacobs out, MarShawn Lloyd spearheads Green Bay’s return to an outside zone run game",
+        "link": "https://sports.yahoo.com/articles/packers-preview-expect-marshawn-lloyd-194342082.html",
+        "fetched_at": "Fri, 04 Sep 2026 19:43:42 +0000",
+        "thumbnail": "",
+        "score": 67.17,
+        "reasons": "published 3h ago; running storyline: MarShawn Lloyd (5 days); distinctive wording; independent source (Yahoo NFL)"
+      },
+      {
+        "title": "Josh Jacobs's first court appearance moves from November 17 to September 10",
+        "summary": "Paid leave puts a premium on expediting the prosecuion.",
+        "link": "https://sports.yahoo.com/articles/josh-jacobss-first-court-appearance-190450320.html",
+        "fetched_at": "Fri, 04 Sep 2026 19:04:50 +0000",
+        "thumbnail": "",
+        "score": 66.62,
+        "reasons": "published 4h ago; conflict: court; distinctive wording; independent source (Yahoo NFL)"
+      },
+      {
+        "title": "Green Bay Packers RB Josh Jacobs has court appearance set",
+        "summary": "Green Bay Packers RB Josh Jacobs will make his first court appearance just three days before Week 1.",
+        "link": "https://sports.yahoo.com/articles/green-bay-packers-rb-josh-184006235.html",
+        "fetched_at": "Fri, 04 Sep 2026 18:40:06 +0000",
+        "thumbnail": "",
+        "score": 66.1,
+        "reasons": "published 4h ago; conflict: court; distinctive wording; independent source (Yahoo NFL)"
+      },
       {
         "title": "Green Bay Packers News: Newcomers making an impression",
         "summary": "Cutdown weekend is always a time of change and transition. For a few new members of the Green Bay Packers, that was especially true. Not only did the Packers trim their roster from 90 to the required 53, but they traded for two new players in the process and added a third via free agency. [&#8230;]",
@@ -1206,6 +1278,24 @@
         "thumbnail": "",
         "score": 64.67,
         "reasons": "published 2.6d ago; transaction: cutdown, traded; roster milestone: cutdown; acquisition: traded; distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "Josh Jacobs's first court appearance moves from November 17 to September 10",
+        "summary": "Paid leave puts a premium on expediting the prosecuion.",
+        "link": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/josh-jacobss-first-court-appearance-moves-from-november-17-to-september-10",
+        "fetched_at": "Fri, 04 Sep 2026 15:04:50 -0400",
+        "thumbnail": "https://nbcsports.brightspotcdn.com/dims4/default/231febe/2147483647/strip/false/crop/1920x1080+0+0/resize/1920x1080!/quality/90/?url=https%3A%2F%2Fhdliveextra-a.akamaihd.net%2FHD%2Fimage_sports%2FNBCU_Sports_Group_-_nbcsports%2F361%2F587%2Fnbc_pftpm_paidleavestatus_260902.jpg",
+        "score": 62.46,
+        "reasons": "published 8h ago; conflict: court; distinctive wording; independent source (ProFootballTalk)"
+      },
+      {
+        "title": "2026 Minnesota Vikings betting preview, predictions: Four NFL player props to target before Week 1",
+        "summary": "Lock in these NFL player props for Justin Jefferson and Aaron Jones before Minnesota's Week 1 matchup against the Packers",
+        "link": "https://www.cbssports.com/betting/news/2026-minnesota-vikings-betting-preview-predictions-four-nfl-player-props-to-target-before-week-1/",
+        "fetched_at": "Thu, 03 Sep 2026 03:19:23 +0000",
+        "thumbnail": "https://sportshub.cbsistatic.com/i/2025/11/28/81060540-1a57-477d-bd18-451029bb48ac/justin-jefferson-minnesota-vikings-imagn-images.jpg",
+        "score": 62.16,
+        "reasons": "published 3h ago; distinctive wording; independent source (CBS Sports NFL)"
       },
       {
         "title": "Packers Injuries: Updates on IR’d players and Micah Parsons",
@@ -1226,15 +1316,6 @@
         "reasons": "published 1h ago; distinctive wording; independent source (Yahoo NFL)"
       },
       {
-        "title": "Packers’ 1923 throwback uniforms will return in December",
-        "summary": "The new alternates, which debuted last year, will return for a late-season Sunday Night Football matchup.",
-        "link": "https://sports.yahoo.com/articles/packers-1923-throwback-uniforms-return-124500445.html",
-        "fetched_at": "Fri, 04 Sep 2026 12:45:00 +0000",
-        "thumbnail": "",
-        "score": 57.43,
-        "reasons": "published 2h ago; distinctive wording; independent source (Yahoo NFL)"
-      },
-      {
         "title": "When did the Rams last beat teams on the 2026 schedule?",
         "summary": "LA is seeking to end lengthy losing streaks against the Eagles, Cowboys and Packers this season",
         "link": "https://sports.yahoo.com/articles/did-rams-last-beat-teams-184500194.html",
@@ -1244,13 +1325,22 @@
         "reasons": "published 2h ago; distinctive wording; independent source (Yahoo NFL)"
       },
       {
-        "title": "Green Bay Packers News: MarShawn Lloyd is ready for a big role",
-        "summary": "I’m excited for MarShawn Lloyd. I’m worried for MarShawn Lloyd. In some ways his offseason reminded me of a low-level viral tweet from a while back: he accidentally became important at work, and it might be ruining his life. I don’t think anybody anticipated the Packers would go into Week 1 with Lloyd as the [&#8230;]",
-        "link": "https://www.acmepackingcompany.com/green-bay-packers-news/85952/green-bay-packers-news-marshawn-lloyd-is-ready-for-a-big-role",
-        "fetched_at": "2026-09-03T10:55:36-04:00",
+        "title": "Packers’ 1923 throwback uniforms will return in December",
+        "summary": "The new alternates, which debuted last year, will return for a late-season Sunday Night Football matchup.",
+        "link": "https://sports.yahoo.com/articles/packers-1923-throwback-uniforms-return-124500445.html",
+        "fetched_at": "Fri, 04 Sep 2026 12:45:00 +0000",
         "thumbnail": "",
-        "score": 55.82,
-        "reasons": "published 23h ago; running storyline: MarShawn Lloyd (4 days); distinctive wording; independent source (Acme Packing Company)"
+        "score": 57.43,
+        "reasons": "published 2h ago; distinctive wording; independent source (Yahoo NFL)"
+      },
+      {
+        "title": "Josh Jacobs’ initial hearing has been moved up by several months",
+        "summary": "Packers RB Josh Jacobs had his initial hearing push up from November 17th to September 10th",
+        "link": "https://sports.yahoo.com/articles/josh-jacobs-initial-hearing-moved-200212910.html",
+        "fetched_at": "Fri, 04 Sep 2026 20:02:12 +0000",
+        "thumbnail": "",
+        "score": 55.63,
+        "reasons": "published 3h ago; distinctive wording; independent source (Yahoo NFL)"
       },
       {
         "title": "Packers sign Scott Daly to practice squad as long snapper insurance",
@@ -1258,8 +1348,8 @@
         "link": "https://www.acmepackingcompany.com/green-bay-packers-roster/85939/packers-sign-scott-daly-to-practice-squad-as-long-snapper-insurance",
         "fetched_at": "2026-09-02T14:03:57-04:00",
         "thumbnail": "",
-        "score": 55.48,
-        "reasons": "published 2.6d ago; transaction: 53-man, practice squad, sign; roster milestone: 53-man roster; distinctive wording; independent source (Acme Packing Company)"
+        "score": 54.17,
+        "reasons": "published 3.0d ago; transaction: 53-man, practice squad, sign; roster milestone: 53-man roster; distinctive wording; independent source (Acme Packing Company)"
       },
       {
         "title": "Packers Practice Squad Tracker 2026: Follow all the reports &#038; signings",
@@ -1267,17 +1357,8 @@
         "link": "https://www.acmepackingcompany.com/green-bay-packers-roster/85280/packers-practice-squad-tracker-2026-follow-all-the-reports-signings",
         "fetched_at": "2026-09-02T13:33:22-04:00",
         "thumbnail": "",
-        "score": 55.01,
-        "reasons": "published 2.6d ago; transaction: 53-man, cutdown, practice squad; roster milestone: 53-man roster, cutdown; distinctive wording; independent source (Acme Packing Company)"
-      },
-      {
-        "title": "Perseverance paved J. Michael Sturdivant's path to Packers' 53",
-        "summary": "Florida receiver extends Green Bay’s undrafted rookie streak to 22 years",
-        "link": "https://www.packers.com/news/perseverance-paved-j-michael-sturdivant-s-path-to-packers-53-sept-4-2026",
-        "fetched_at": "Fri, 04 Sep 2026 14:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/ztjcpidyogrvulohcs3j.jpg",
-        "score": 53.57,
-        "reasons": "published 1h ago; distinctive wording"
+        "score": 53.62,
+        "reasons": "published 3.0d ago; transaction: 53-man, cutdown, practice squad; roster milestone: 53-man roster, cutdown; distinctive wording; independent source (Acme Packing Company)"
       },
       {
         "title": "Packers Film Review: TE Mark Redman",
@@ -1287,6 +1368,51 @@
         "thumbnail": "",
         "score": 46.13,
         "reasons": "transaction: traded; acquisition: traded; distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "Packers can be optimistic about forcing turnovers in 2026",
+        "summary": "A little over a year ago, I wrote about the Packers’ defense and its plans for 2025. Heading into the second year of the Jeff Hafley era, the Packers wanted to force even more turnovers than they had in 2024, which I argued was an admirable but misguided plan. “Get more turnovers” isn’t really a [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-analysis/85982/packers-can-be-optimistic-about-forcing-turnovers-in-2026",
+        "fetched_at": "2026-09-04T13:02:03-04:00",
+        "thumbnail": "",
+        "score": 46.0,
+        "reasons": "published 23h ago; distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "The Madden Curse is real and it’s coming for the Bears",
+        "summary": "I live in suburban Chicago Illinois, which has several benefits. One of the big benefits is that I get to hear overconfident Bears fans on the radio, which I enjoy more than hearing overconfident Green Bay Packers fans on the radio. Don’t get me wrong, I’m not at all against proclaiming the superiority of your [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-analysis/85961/the-madden-curse-is-real-and-its-coming-for-the-bears",
+        "fetched_at": "2026-09-04T08:00:00-04:00",
+        "thumbnail": "",
+        "score": 45.41,
+        "reasons": "published 23h ago; distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "The Packers’ 2026 schedule is mostly friendly for out-of-market fans across the US",
+        "summary": "Being a fan of one of the NFL’s biggest fan bases has its perks. For Green Bay Packers fans living in the United States but outside of the team’s home television markets, nationally televised games are a welcome sight. Fans can certainly debate the time slot that they prefer based on their own circumstances, but [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-game-information/85958/the-packers-2026-schedule-is-mostly-friendly-for-out-of-market-fans-across-the-us",
+        "fetched_at": "2026-09-04T10:00:00-04:00",
+        "thumbnail": "",
+        "score": 45.06,
+        "reasons": "published 23h ago; distinctive wording; independent source (Acme Packing Company)"
+      },
+      {
+        "title": "Perseverance paved J. Michael Sturdivant's path to Packers' 53",
+        "summary": "Florida receiver extends Green Bay’s undrafted rookie streak to 22 years",
+        "link": "https://www.packers.com/news/perseverance-paved-j-michael-sturdivant-s-path-to-packers-53-sept-4-2026",
+        "fetched_at": "Fri, 04 Sep 2026 14:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/ztjcpidyogrvulohcs3j.jpg",
+        "score": 45.04,
+        "reasons": "published 9h ago; distinctive wording"
+      },
+      {
+        "title": "Green Bay Packers News: MarShawn Lloyd is ready for a big role",
+        "summary": "I’m excited for MarShawn Lloyd. I’m worried for MarShawn Lloyd. In some ways his offseason reminded me of a low-level viral tweet from a while back: he accidentally became important at work, and it might be ruining his life. I don’t think anybody anticipated the Packers would go into Week 1 with Lloyd as the [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-news/85952/green-bay-packers-news-marshawn-lloyd-is-ready-for-a-big-role",
+        "fetched_at": "2026-09-03T10:55:36-04:00",
+        "thumbnail": "",
+        "score": 44.9,
+        "reasons": "published 2.0d ago; running storyline: MarShawn Lloyd (5 days); distinctive wording; independent source (Acme Packing Company)"
       },
       {
         "title": "Packers Discussion: What does a gameday roster look like for Green Bay?",
@@ -1307,58 +1433,13 @@
         "reasons": "published 1.1d ago; distinctive wording; press conference (SOT available); speaker: Jordan Love"
       },
       {
-        "title": "Inbox: He'll get his chance and he's got a chance",
-        "summary": "It’s a commitment to the position in general",
-        "link": "https://www.packers.com/news/inbox-he-ll-get-his-chance-and-he-s-got-a-chance-sept-4-2026",
-        "fetched_at": "Fri, 04 Sep 2026 13:30:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/z9ftpyddeuxvh2uakbm1.jpg",
-        "score": 41.1,
-        "reasons": "published 1h ago; distinctive wording; routine: inbox"
-      },
-      {
         "title": "Packers sign QB Kedon Slovis to practice squad",
         "summary": "General Manager Brian Gutekunst announced the transaction Tuesday",
         "link": "https://www.packers.com/news/packers-sign-qb-kedon-slovis-to-practice-squad-sep-1-2026",
         "fetched_at": "Tue, 01 Sep 2026 20:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/bzy0aesvyzsawcydwgfk.jpg",
-        "score": 40.48,
-        "reasons": "published 2.8d ago; transaction: practice squad, sign; decision-maker quoted: brian gutekunst; distinctive wording"
-      },
-      {
-        "title": "2026 Minnesota Vikings betting preview, predictions: Four NFL player props to target before Week 1",
-        "summary": "Lock in these NFL player props for Justin Jefferson and Aaron Jones before Minnesota's Week 1 matchup against the Packers",
-        "link": "https://www.cbssports.com/betting/news/2026-minnesota-vikings-betting-preview-predictions-four-nfl-player-props-to-target-before-week-1/",
-        "fetched_at": "Thu, 03 Sep 2026 03:19:23 +0000",
-        "thumbnail": "https://sportshub.cbsistatic.com/i/2025/11/28/81060540-1a57-477d-bd18-451029bb48ac/justin-jefferson-minnesota-vikings-imagn-images.jpg",
-        "score": 38.8,
-        "reasons": "published 1.5d ago; distinctive wording; independent source (CBS Sports NFL)"
-      },
-      {
-        "title": "Lambeau Field preparing for Sunday's Shamrock Series matchup between Notre Dame and Wisconsin",
-        "summary": "Exclusive merchandise now available in Packers Pro Shop; fans of both teams can enjoy full weekend of festivities",
-        "link": "https://www.packers.com/news/lambeau-field-preparing-for-sunday-s-shamrock-series-matchup-between-notre-dame-and-wisconsin",
-        "fetched_at": "Thu, 03 Sep 2026 22:21:01 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/j9gqawwsjndqtodcu3ul.jpg",
-        "score": 37.62,
-        "reasons": "published 17h ago; distinctive wording"
-      },
-      {
-        "title": "New Packers tight ends give position different look",
-        "summary": "Jonnu Smith, Mark Redman getting acclimated quickly",
-        "link": "https://www.packers.com/news/new-packers-tight-ends-give-position-different-look-sep-2-2026",
-        "fetched_at": "Wed, 02 Sep 2026 14:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/nc185rwpw0hyixue82vl.jpg",
-        "score": 37.39,
-        "reasons": "published 2.0d ago; acquisition: new packers; running storyline: Mark Redman (2 days); distinctive wording"
-      },
-      {
-        "title": "5 things learned from GM Brian Gutekunst about Packers' roster",
-        "summary": "Notes on key decisions and injury updates",
-        "link": "https://www.packers.com/news/5-things-learned-from-gm-brian-gutekunst-about-packers-roster-sep-1-2026",
-        "fetched_at": "Tue, 01 Sep 2026 16:35:39 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/djxwji4phuewpitkdktk.jpg",
-        "score": 36.7,
-        "reasons": "published 2.9d ago; decision-maker on record: brian gutekunst; running storyline: Brian Gutekunst (2 days)"
+        "score": 39.29,
+        "reasons": "published 3.1d ago; transaction: practice squad, sign; decision-maker quoted: brian gutekunst; distinctive wording"
       },
       {
         "title": "Packers agree to terms on trade with Rams",
@@ -1366,17 +1447,35 @@
         "link": "https://www.packers.com/news/packers-agree-to-terms-on-trade-with-rams-aug-30-2026",
         "fetched_at": "Sun, 30 Aug 2026 20:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/a1bw9rmszxxjyjuknvnd.jpg",
-        "score": 35.47,
+        "score": 35.63,
         "reasons": "transaction: trade; acquisition: in exchange for, trade; running storyline: Mark Redman (2 days); distinctive wording"
       },
       {
-        "title": "Packers announce roster moves | Sept. 2, 2026",
-        "summary": "Green Bay signs LS Scott Daly and K Lenny Krieg to the practice squad",
-        "link": "https://www.packers.com/news/packers-announce-roster-moves-sept-2-2026",
-        "fetched_at": "Wed, 02 Sep 2026 20:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/splcpbl1ihe98vzudgqi.jpg",
-        "score": 34.73,
-        "reasons": "published 1.8d ago; transaction: practice squad, roster moves, signs"
+        "title": "5 things learned from GM Brian Gutekunst about Packers' roster",
+        "summary": "Notes on key decisions and injury updates",
+        "link": "https://www.packers.com/news/5-things-learned-from-gm-brian-gutekunst-about-packers-roster-sep-1-2026",
+        "fetched_at": "Tue, 01 Sep 2026 16:35:39 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/djxwji4phuewpitkdktk.jpg",
+        "score": 35.62,
+        "reasons": "published 3.3d ago; decision-maker on record: brian gutekunst; running storyline: Brian Gutekunst (2 days)"
+      },
+      {
+        "title": "New Packers tight ends give position different look",
+        "summary": "Jonnu Smith, Mark Redman getting acclimated quickly",
+        "link": "https://www.packers.com/news/new-packers-tight-ends-give-position-different-look-sep-2-2026",
+        "fetched_at": "Wed, 02 Sep 2026 14:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/nc185rwpw0hyixue82vl.jpg",
+        "score": 35.55,
+        "reasons": "published 2.4d ago; acquisition: new packers; running storyline: Mark Redman (2 days); distinctive wording"
+      },
+      {
+        "title": "Green Bay Packers News: 1923 throwback uniforms return in December",
+        "summary": "You didn’t think the Green Bay Packers would have just a single game in alternate uniforms this season, did you? Hopefully not, because Thursday afternoon brought the news that the team will once again be bringing out their “1923 Classic” threads later this season. This alternate uniform, which debuted last season in a home game [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-news/85974/green-bay-packers-news-1923-throwback-uniforms-return-in-december",
+        "fetched_at": "2026-09-04T08:45:00-04:00",
+        "thumbnail": "",
+        "score": 34.91,
+        "reasons": "published 23h ago; distinctive wording; routine: uniform; independent source (Acme Packing Company)"
       },
       {
         "title": "Packers announce trade with Dolphins",
@@ -1384,17 +1483,8 @@
         "link": "https://www.packers.com/news/packers-announce-trade-with-dolphins-aug-30-2026",
         "fetched_at": "Sun, 30 Aug 2026 17:20:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/pkaluuygfux0m4kpghvw.jpg",
-        "score": 33.71,
+        "score": 33.52,
         "reasons": "transaction: trade; acquisition: in exchange for, trade; running storyline: Kyle McCord (2 days); distinctive wording"
-      },
-      {
-        "title": "Packers keep six receivers, seven defensive linemen: Here's the initial 2026 roster",
-        "summary": "J. Michael Sturdivant extends undrafted rookie streak to 22 years; DL Anthony Campbell makes the cut",
-        "link": "https://www.packers.com/news/packers-keep-six-receivers-seven-defensive-linemen-here-s-the-initial-2026-roster",
-        "fetched_at": "Sun, 30 Aug 2026 22:02:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/ehrgpkgsalygwsvsxfky.jpg",
-        "score": 32.98,
-        "reasons": "transaction: cut, initial 2026 roster; roster milestone: initial 2026 roster; distinctive wording"
       },
       {
         "title": "RB MarShawn Lloyd 'as ready as he's ever been' to help Packers",
@@ -1402,17 +1492,44 @@
         "link": "https://www.packers.com/news/rb-marshawn-lloyd-as-ready-as-he-s-ever-been-to-help-packers-sep-2-2026",
         "fetched_at": "Wed, 02 Sep 2026 20:05:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/duuyzluzl27blmvvoam6.jpg",
-        "score": 32.21,
-        "reasons": "published 1.8d ago; running storyline: MarShawn Lloyd (3 days); distinctive wording"
+        "score": 33.32,
+        "reasons": "published 2.1d ago; running storyline: MarShawn Lloyd (5 days); distinctive wording"
       },
       {
-        "title": "A look at Pro Football Reference all-time player ratings",
-        "summary": "Answering through the careers of Paul Hornung, Ray Nitschke, Dan Currie, Willie Wood and others",
-        "link": "https://www.packers.com/news/a-look-at-pro-football-reference-all-time-player-ratings-sept-3-2026",
-        "fetched_at": "Thu, 03 Sep 2026 14:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/euxw3bykbnmg1sdujc8k.jpg",
-        "score": 31.89,
+        "title": "Packers keep six receivers, seven defensive linemen: Here's the initial 2026 roster",
+        "summary": "J. Michael Sturdivant extends undrafted rookie streak to 22 years; DL Anthony Campbell makes the cut",
+        "link": "https://www.packers.com/news/packers-keep-six-receivers-seven-defensive-linemen-here-s-the-initial-2026-roster",
+        "fetched_at": "Sun, 30 Aug 2026 22:02:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/ehrgpkgsalygwsvsxfky.jpg",
+        "score": 32.63,
+        "reasons": "transaction: cut, initial 2026 roster; roster milestone: initial 2026 roster; distinctive wording"
+      },
+      {
+        "title": "Inbox: He'll get his chance and he's got a chance",
+        "summary": "It’s a commitment to the position in general",
+        "link": "https://www.packers.com/news/inbox-he-ll-get-his-chance-and-he-s-got-a-chance-sept-4-2026",
+        "fetched_at": "Fri, 04 Sep 2026 13:30:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/z9ftpyddeuxvh2uakbm1.jpg",
+        "score": 32.48,
+        "reasons": "published 9h ago; distinctive wording; routine: inbox"
+      },
+      {
+        "title": "Lambeau Field preparing for Sunday's Shamrock Series matchup between Notre Dame and Wisconsin",
+        "summary": "Exclusive merchandise now available in Packers Pro Shop; fans of both teams can enjoy full weekend of festivities",
+        "link": "https://www.packers.com/news/lambeau-field-preparing-for-sunday-s-shamrock-series-matchup-between-notre-dame-and-wisconsin",
+        "fetched_at": "Thu, 03 Sep 2026 22:21:01 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/j9gqawwsjndqtodcu3ul.jpg",
+        "score": 32.23,
         "reasons": "published 1.0d ago; distinctive wording"
+      },
+      {
+        "title": "Packers announce roster moves | Sept. 2, 2026",
+        "summary": "Green Bay signs LS Scott Daly and K Lenny Krieg to the practice squad",
+        "link": "https://www.packers.com/news/packers-announce-roster-moves-sept-2-2026",
+        "fetched_at": "Wed, 02 Sep 2026 20:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/splcpbl1ihe98vzudgqi.jpg",
+        "score": 32.22,
+        "reasons": "published 2.1d ago; transaction: practice squad, roster moves, signs"
       },
       {
         "title": "Packers announce roster moves | Aug. 30, 2026",
@@ -1420,7 +1537,7 @@
         "link": "https://www.packers.com/news/packers-announce-roster-moves-aug-30-2026",
         "fetched_at": "Sun, 30 Aug 2026 22:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/lcdxf7wzygggbsslmopb.jpg",
-        "score": 31.19,
+        "score": 30.88,
         "reasons": "transaction: roster moves, trade; acquisition: trade"
       },
       {
@@ -1447,7 +1564,7 @@
         "link": "https://www.packers.com/news/5-things-to-know-about-new-packers-rb-kaleb-johnson-aug-30-2026",
         "fetched_at": "Sun, 30 Aug 2026 22:01:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/ersclu3sqa1nclu0vwuq.jpg",
-        "score": 29.6,
+        "score": 29.4,
         "reasons": "transaction: trade; acquisition: new packers, trade; distinctive wording"
       },
       {
@@ -1465,26 +1582,17 @@
         "link": "https://www.packers.com/news/5-things-to-know-about-new-packers-te-jonnu-smith-aug-29-2026",
         "fetched_at": "Sat, 29 Aug 2026 20:21:38 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/zq080gtdaleegaeao2ej.jpg",
-        "score": 28.77,
+        "score": 28.74,
         "reasons": "acquisition: new packers; running storyline: Jonnu Smith (2 days); distinctive wording"
       },
       {
-        "title": "Lambeau Field to host 'Travel Wisconsin Frozen Tundra Faceoff,' welcoming NCAA hockey doubleheader in February",
-        "summary": "Historic B1G men’s & WCHA women’s doubleheader will feature three powerhouse programs in Wisconsin, Michigan and Ohio State",
-        "link": "https://www.packers.com/news/lambeau-field-to-host-travel-wisconsin-frozen-tundra-faceoff-welcoming-ncaa-hockey-doubleheader-in-february-2027",
-        "fetched_at": "Wed, 02 Sep 2026 15:10:01 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/hfbk7pqzh0obo3ijdydv.jpg",
-        "score": 28.61,
-        "reasons": "published 2.0d ago; distinctive wording"
-      },
-      {
-        "title": "Packers Roster: Which units improved their standing in training camp?",
-        "summary": "Here’s a fun one: Which of the Green Bay Packers’ units improved (or declined) their standing on the team during training camp? Before training camp, we had you all vote on how you would grade the Packers’ positional groups with an A to F scale, then we calculated the results with a GPA ranking. Here’s [&#8230;]",
-        "link": "https://www.acmepackingcompany.com/green-bay-packers-discussion/85947/packers-roster-which-units-improved-their-standing-in-training-camp",
-        "fetched_at": "2026-09-02T21:02:20-04:00",
-        "thumbnail": "",
-        "score": 27.64,
-        "reasons": "published 2.6d ago; independent source (Acme Packing Company)"
+        "title": "A look at Pro Football Reference all-time player ratings",
+        "summary": "Answering through the careers of Paul Hornung, Ray Nitschke, Dan Currie, Willie Wood and others",
+        "link": "https://www.packers.com/news/a-look-at-pro-football-reference-all-time-player-ratings-sept-3-2026",
+        "fetched_at": "Thu, 03 Sep 2026 14:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/euxw3bykbnmg1sdujc8k.jpg",
+        "score": 27.62,
+        "reasons": "published 1.4d ago; distinctive wording"
       },
       {
         "title": "5 takeaways from Packers' roster decisions",
@@ -1492,17 +1600,26 @@
         "link": "https://www.packers.com/news/5-takeaways-from-packers-roster-decisions-2026",
         "fetched_at": "Mon, 31 Aug 2026 14:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/wyv5tey1kbofczhe9ui7.jpg",
-        "score": 27.5,
+        "score": 27.05,
         "reasons": "transaction: roster decisions; roster milestone: roster decisions"
       },
       {
-        "title": "Packers announce game themes for 2026 season",
-        "summary": "Rivalries, 1923 Classic, Packers Vs. Cancer and Salute to Service\nall on the schedule for Lambeau Field",
-        "link": "https://www.packers.com/news/packers-announce-game-themes-for-2026-season",
-        "fetched_at": "Thu, 03 Sep 2026 19:51:20 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/k6lxkooejtgbiak00bxt.jpg",
-        "score": 24.75,
-        "reasons": "published 19h ago; distinctive wording; routine: game themes"
+        "title": "Lambeau Field to host 'Travel Wisconsin Frozen Tundra Faceoff,' welcoming NCAA hockey doubleheader in February",
+        "summary": "Historic B1G men’s & WCHA women’s doubleheader will feature three powerhouse programs in Wisconsin, Michigan and Ohio State",
+        "link": "https://www.packers.com/news/lambeau-field-to-host-travel-wisconsin-frozen-tundra-faceoff-welcoming-ncaa-hockey-doubleheader-in-february-2027",
+        "fetched_at": "Wed, 02 Sep 2026 15:10:01 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/hfbk7pqzh0obo3ijdydv.jpg",
+        "score": 26.77,
+        "reasons": "published 2.3d ago; distinctive wording"
+      },
+      {
+        "title": "Packers Roster: Which units improved their standing in training camp?",
+        "summary": "Here’s a fun one: Which of the Green Bay Packers’ units improved (or declined) their standing on the team during training camp? Before training camp, we had you all vote on how you would grade the Packers’ positional groups with an A to F scale, then we calculated the results with a GPA ranking. Here’s [&#8230;]",
+        "link": "https://www.acmepackingcompany.com/green-bay-packers-discussion/85947/packers-roster-which-units-improved-their-standing-in-training-camp",
+        "fetched_at": "2026-09-02T21:02:20-04:00",
+        "thumbnail": "",
+        "score": 26.28,
+        "reasons": "published 3.0d ago; independent source (Acme Packing Company)"
       },
       {
         "title": "Packers vs. Cardinals: What to watch for",
@@ -1510,7 +1627,7 @@
         "link": "https://www.packers.com/news/packers-vs-cardinals-what-to-watch-for-pre-week-3-2026",
         "fetched_at": "Fri, 28 Aug 2026 14:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/ar76qah2wfjwftnfaioi.jpg",
-        "score": 23.87,
+        "score": 23.86,
         "reasons": "transaction: roster decisions; roster milestone: roster decisions"
       },
       {
@@ -1519,7 +1636,7 @@
         "link": "https://www.packers.com/news/packers-sign-te-jonnu-smith-aug-29-2026",
         "fetched_at": "Sat, 29 Aug 2026 20:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/acwsfexfk6lbgm4ape3s.jpg",
-        "score": 20.89,
+        "score": 20.74,
         "reasons": "transaction: sign; running storyline: Jonnu Smith (2 days); distinctive wording"
       },
       {
@@ -1528,26 +1645,17 @@
         "link": "https://www.packers.com/news/packers-sign-13-players-to-practice-squad-aug-31-2026",
         "fetched_at": "Mon, 31 Aug 2026 22:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/splcpbl1ihe98vzudgqi.jpg",
-        "score": 20.43,
+        "score": 19.86,
         "reasons": "transaction: practice squad, sign"
       },
       {
-        "title": "Inbox: It's worth it in the end",
-        "summary": "Never forgo an opportunity to get better in this league",
-        "link": "https://www.packers.com/news/inbox-it-s-worth-it-in-the-end-sept-3-2026",
-        "fetched_at": "Thu, 03 Sep 2026 13:30:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/lyov3qbwxsspdsq6e5bo.jpg",
-        "score": 19.93,
-        "reasons": "published 1.1d ago; distinctive wording; routine: inbox"
-      },
-      {
-        "title": "Packers seeking employees at September job fairs",
-        "summary": "Walk-in job fairs to be held in the Verizon Loft, Atrium Eateries and Johnsonville Tailgate Village for gameday and seasonal positions",
-        "link": "https://www.packers.com/news/packers-seeking-employees-at-september-job-fairs-2026",
-        "fetched_at": "Thu, 27 Aug 2026 22:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/vjnqf6i5gfuh1oqpk5yn.jpg",
-        "score": 19.29,
-        "reasons": "distinctive wording"
+        "title": "Packers announce game themes for 2026 season",
+        "summary": "Rivalries, 1923 Classic, Packers Vs. Cancer and Salute to Service\nall on the schedule for Lambeau Field",
+        "link": "https://www.packers.com/news/packers-announce-game-themes-for-2026-season",
+        "fetched_at": "Thu, 03 Sep 2026 19:51:20 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/k6lxkooejtgbiak00bxt.jpg",
+        "score": 19.66,
+        "reasons": "published 1.1d ago; distinctive wording; routine: game themes"
       },
       {
         "title": "It's all 'Go Pack Go' for new RB Kaleb Johnson",
@@ -1555,8 +1663,17 @@
         "link": "https://www.packers.com/news/it-s-all-go-pack-go-for-new-rb-kaleb-johnson-sep-1-2026",
         "fetched_at": "Tue, 01 Sep 2026 20:51:28 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/iw1f3wpb37cspibkeuuj.jpg",
-        "score": 17.69,
-        "reasons": "published 2.8d ago; distinctive wording"
+        "score": 16.38,
+        "reasons": "published 3.1d ago; distinctive wording"
+      },
+      {
+        "title": "Inbox: It's worth it in the end",
+        "summary": "Never forgo an opportunity to get better in this league",
+        "link": "https://www.packers.com/news/inbox-it-s-worth-it-in-the-end-sept-3-2026",
+        "fetched_at": "Thu, 03 Sep 2026 13:30:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/lyov3qbwxsspdsq6e5bo.jpg",
+        "score": 15.71,
+        "reasons": "published 1.4d ago; distinctive wording; routine: inbox"
       },
       {
         "title": "Former Packers RB coach Kippy Brown dies at 71",
@@ -1564,8 +1681,8 @@
         "link": "https://www.packers.com/news/former-packers-rb-coach-kippy-brown-dies-at-71",
         "fetched_at": "Tue, 01 Sep 2026 12:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/qo7qj56yplpoqty4jgzn.jpg",
-        "score": 16.73,
-        "reasons": "published 3.1d ago; distinctive wording"
+        "score": 15.5,
+        "reasons": "distinctive wording"
       },
       {
         "title": "Packers salute U.S. Air Force veteran Morgan Saracena for 'Operation Fan Mail'",
@@ -1573,7 +1690,7 @@
         "link": "https://www.packers.com/news/packers-salute-u-s-air-force-veteran-morgan-saracena-for-operation-fan-mail-pre-week-3-2026",
         "fetched_at": "Fri, 28 Aug 2026 23:00:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/kahju7hmes0qb6iff5fa.jpg",
-        "score": 13.34,
+        "score": 13.13,
         "reasons": "distinctive wording"
       },
       {
@@ -1582,17 +1699,8 @@
         "link": "https://www.packers.com/news/game-notes-kisean-johnson-captures-his-lambeau-field-moment-pre-week-3-2026",
         "fetched_at": "Sat, 29 Aug 2026 04:55:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/vcw7l2p38kg0zdudnsnp.jpg",
-        "score": 11.18,
+        "score": 11.15,
         "reasons": "distinctive wording"
-      },
-      {
-        "title": "Inbox: Now another major opportunity awaits",
-        "summary": "There’s plenty to keep their attention",
-        "link": "https://www.packers.com/news/inbox-now-another-major-opportunity-awaits-sep-2-2026",
-        "fetched_at": "Wed, 02 Sep 2026 13:30:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/oxremjnkgoefpe7c5nrt.jpg",
-        "score": 10.99,
-        "reasons": "published 2.1d ago; distinctive wording; routine: inbox"
       },
       {
         "title": "37 Packers not suiting up vs. Cardinals",
@@ -1600,7 +1708,7 @@
         "link": "https://www.packers.com/news/37-packers-not-suiting-up-vs-cardinals",
         "fetched_at": "Fri, 28 Aug 2026 23:48:08 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/z52swc3rpnm8lwengohc.jpg",
-        "score": 10.18,
+        "score": 10.22,
         "reasons": "distinctive wording"
       },
       {
@@ -1609,7 +1717,16 @@
         "link": "https://www.packers.com/news/in-game-updates-preseason-week-3-cardinals-2026",
         "fetched_at": "Sat, 29 Aug 2026 00:34:43 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/coxkuhujvr5a6sjywzhg.jpg",
-        "score": 9.91,
+        "score": 9.84,
+        "reasons": ""
+      },
+      {
+        "title": "Game recap: 5 takeaways from Packers' preseason win over Cardinals",
+        "summary": "Late fourth-quarter comeback caps wild summer finale",
+        "link": "https://www.packers.com/news/game-recap-5-takeaways-from-packers-preseason-win-over-cardinals-pre-week-3-2026",
+        "fetched_at": "Sat, 29 Aug 2026 04:59:01 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/t1flgqt6rglb52s0a0ab.jpg",
+        "score": 9.27,
         "reasons": ""
       },
       {
@@ -1618,17 +1735,17 @@
         "link": "https://www.packers.com/news/packers-foundation-awards-1-6-million-in-annual-grants-sept-2-2026",
         "fetched_at": "Wed, 02 Sep 2026 20:54:51 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/sphlur0sycvm71x3d2jz.jpg",
-        "score": 9.88,
+        "score": 9.19,
         "reasons": "ceremonial/promotional (foundation) — heavily damped"
       },
       {
-        "title": "Game recap: 5 takeaways from Packers' preseason win over Cardinals",
-        "summary": "Late fourth-quarter comeback caps wild summer finale",
-        "link": "https://www.packers.com/news/game-recap-5-takeaways-from-packers-preseason-win-over-cardinals-pre-week-3-2026",
-        "fetched_at": "Sat, 29 Aug 2026 04:59:01 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/t1flgqt6rglb52s0a0ab.jpg",
-        "score": 9.35,
-        "reasons": ""
+        "title": "Inbox: Now another major opportunity awaits",
+        "summary": "There’s plenty to keep their attention",
+        "link": "https://www.packers.com/news/inbox-now-another-major-opportunity-awaits-sep-2-2026",
+        "fetched_at": "Wed, 02 Sep 2026 13:30:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/oxremjnkgoefpe7c5nrt.jpg",
+        "score": 8.98,
+        "reasons": "published 2.4d ago; distinctive wording; routine: inbox"
       },
       {
         "title": "Live Chat: Packers vs. Cardinals | Preseason Week 3",
@@ -1645,8 +1762,8 @@
         "link": "https://www.packers.com/news/inbox-it-s-a-great-opportunity-for-a-fresh-start-sep-1-2026",
         "fetched_at": "Tue, 01 Sep 2026 13:30:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/t7kdg0e6tjzv15ycwl5m.jpg",
-        "score": 6.02,
-        "reasons": "published 3.1d ago; distinctive wording; routine: inbox"
+        "score": 5.12,
+        "reasons": "distinctive wording; routine: inbox"
       },
       {
         "title": "'Packers Give Us a Sign Contest' winner chosen",
@@ -1654,7 +1771,7 @@
         "link": "https://www.packers.com/news/packers-give-us-a-sign-contest-winner-chosen-2026",
         "fetched_at": "Mon, 31 Aug 2026 18:16:19 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/s8edc916exdghazeklam.jpg",
-        "score": 5.15,
+        "score": 5.03,
         "reasons": "ceremonial/promotional (sign contest) — heavily damped"
       },
       {
@@ -1663,17 +1780,8 @@
         "link": "https://www.packers.com/news/packers-everywhere-set-to-host-free-pep-rally-in-tampa-2026",
         "fetched_at": "Tue, 01 Sep 2026 16:40:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/fbutjns5mv18nehxuxcc.jpg",
-        "score": 4.38,
+        "score": 4.12,
         "reasons": "ceremonial/promotional (pep rally) — heavily damped"
-      },
-      {
-        "title": "Packers invite high school teams to submit highlights for 'High School Plays of the Month' program",
-        "summary": "Program will feature five teams each month; each team will receive a $2,000 donation courtesy of the Packers and UW Health Kids",
-        "link": "https://www.packers.com/news/packers-invite-high-school-teams-to-submit-highlights-for-high-school-plays-of-the-month-program-2026",
-        "fetched_at": "Thu, 27 Aug 2026 22:05:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/lgdbcklsbjtq3q46x22c.jpg",
-        "score": 3.96,
-        "reasons": "ceremonial/promotional (donation, high school) — heavily damped"
       },
       {
         "title": "Inbox: Never a dull moment around here",
@@ -1681,17 +1789,8 @@
         "link": "https://www.packers.com/news/inbox-never-a-dull-moment-around-here-aug-31-2026",
         "fetched_at": "Mon, 31 Aug 2026 13:30:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/j5nnfjqdh0uchh6jsull.jpg",
-        "score": 3.78,
+        "score": 3.19,
         "reasons": "distinctive wording; routine: inbox"
-      },
-      {
-        "title": "Packers LB Edgerrin Cooper receives 2026 community service award",
-        "summary": "Third-year linebacker was a second-round pick in 2024",
-        "link": "https://www.packers.com/news/packers-lb-edgerrin-cooper-receives-2026-community-service-award",
-        "fetched_at": "Thu, 27 Aug 2026 20:35:39 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/id0m1hsvve9ybuut8g12.jpg",
-        "score": 3.33,
-        "reasons": "ceremonial/promotional (community) — heavily damped"
       },
       {
         "title": "Packers, Greater Green Bay Chamber celebrate new chapter for 'Welcome Back Packers Luncheon'",
@@ -1699,7 +1798,7 @@
         "link": "https://www.packers.com/news/packers-greater-green-bay-chamber-celebrate-new-chapter-for-welcome-back-packers-luncheon-aug-31-2026",
         "fetched_at": "Mon, 31 Aug 2026 20:38:18 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/qhqjlvkynzmqmgbgg503.jpg",
-        "score": 3.02,
+        "score": 2.85,
         "reasons": "ceremonial/promotional (community, luncheon) — heavily damped"
       },
       {
@@ -1708,7 +1807,7 @@
         "link": "https://www.packers.com/news/inbox-it-s-a-tough-business-aug-29-2026",
         "fetched_at": "Sat, 29 Aug 2026 15:30:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/packers/psmhwz5auihra7rdgruo.jpg",
-        "score": 1.43,
+        "score": 1.09,
         "reasons": "distinctive wording; routine: inbox"
       },
       {
@@ -1732,15 +1831,6 @@
     ],
     "Minnesota Vikings": [
       {
-        "title": "Kyler Murray&#8217;s TruMedia Data Reveals His Potential in Kevin O&#8217;Connell&#8217;s Offense",
-        "summary": "On The Real Forno Show, Tyler Forness and producer Dave Stefano skipped the J.J. McCarthy loop and put the actual starter under the lights. Murray starts Week 1 against Green Bay at U.S. Bank Stadium. The episode — a Vikings 1st &#38; SKOL production — is the same exercise they ran on Sam Darnold in [&#8230;]",
-        "link": "https://www.dailynorseman.com/minnesota-vikings-podcasts/98709/kyler-murrays-trumedia-data-reveals-his-potential-in-kevin-oconnells-offense",
-        "fetched_at": "2026-09-04T09:56:45-04:00",
-        "thumbnail": "",
-        "score": 55.7,
-        "reasons": "published 15h ago; running storyline: Dave Stefano (2 days); distinctive wording; independent source (Daily Norseman)"
-      },
-      {
         "title": "Vikings name eight captains, including Kyler Murray",
         "summary": "Good news?",
         "link": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/vikings-name-eight-captains-including-kyler-murray",
@@ -1759,13 +1849,13 @@
         "reasons": "transaction: 53-man, practice squad; roster milestone: 53-man roster; running storyline: Dave Stefano (2 days); distinctive wording; independent source (Daily Norseman)"
       },
       {
-        "title": "Vikings Name Captains for 2026 Season",
-        "summary": "No summary text provided by source.",
-        "link": "https://www.vikings.com/news/captains-named-2026-nfl-season",
-        "fetched_at": "Thu, 03 Sep 2026 19:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/w8cpaotsanu5fkvoewtj.jpg",
-        "score": 39.66,
-        "reasons": "published 17h ago; distinctive wording"
+        "title": "Kyler Murray&#8217;s TruMedia Data Reveals His Potential in Kevin O&#8217;Connell&#8217;s Offense",
+        "summary": "On The Real Forno Show, Tyler Forness and producer Dave Stefano skipped the J.J. McCarthy loop and put the actual starter under the lights. Murray starts Week 1 against Green Bay at U.S. Bank Stadium. The episode — a Vikings 1st &#38; SKOL production — is the same exercise they ran on Sam Darnold in [&#8230;]",
+        "link": "https://www.dailynorseman.com/minnesota-vikings-podcasts/98709/kyler-murrays-trumedia-data-reveals-his-potential-in-kevin-oconnells-offense",
+        "fetched_at": "2026-09-04T09:56:45-04:00",
+        "thumbnail": "",
+        "score": 46.12,
+        "reasons": "published 23h ago; distinctive wording; independent source (Daily Norseman)"
       },
       {
         "title": "Vikings GM Nolan Teasley: J.J. McCarthy is practicing, expect him on Week 1 roster",
@@ -1777,13 +1867,31 @@
         "reasons": "published 1.3d ago; running storyline: J.J. McCarthy (2 days); distinctive wording; independent source (ProFootballTalk)"
       },
       {
+        "title": "Norse Code Podcast Episode 610: I Yearn…",
+        "summary": "Download Link Here Episode Notes: Follow us on Twitter / Bluesky To listen to more, this is the link to that iTunes feed. If you can’t for whatever reason subscribe via iTunes, subscribe to via our RSS feed, which should support the RSS reader or podcast organizer of your choice. You can still leave a [&#8230;]",
+        "link": "https://www.dailynorseman.com/minnesota-vikings-podcasts/98724/norse-code-podcast-episode-610-i-yearn",
+        "fetched_at": "2026-09-04T17:21:07-04:00",
+        "thumbnail": "",
+        "score": 36.65,
+        "reasons": "published 23h ago; distinctive wording; routine: podcast; independent source (Daily Norseman)"
+      },
+      {
         "title": "Kyle Van Noy to Sign with Vikings",
         "summary": "As previously reported on the DN and elsewhere, the Minnesota Vikings hosted free agent outside linebacker Kyle Van Noy for a visit on Tuesday. That visit apparently went well as Tom Pelissero is reporting that Van Noy is signing with the Vikings. Apparently Van Noy will start on the practice squad, which is likely a [&#8230;]",
         "link": "https://www.dailynorseman.com/minnesota-vikings-news/98675/kyle-van-noy-to-sign-with-vikings",
         "fetched_at": "2026-09-01T23:31:03-04:00",
         "thumbnail": "",
-        "score": 35.61,
+        "score": 34.91,
         "reasons": "transaction: practice squad, sign; distinctive wording; independent source (Daily Norseman)"
+      },
+      {
+        "title": "Vikings Name Captains for 2026 Season",
+        "summary": "No summary text provided by source.",
+        "link": "https://www.vikings.com/news/captains-named-2026-nfl-season",
+        "fetched_at": "Thu, 03 Sep 2026 19:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/w8cpaotsanu5fkvoewtj.jpg",
+        "score": 33.3,
+        "reasons": "published 1.0d ago; distinctive wording"
       },
       {
         "title": "2026 NFC North Season Forecast: Detroit Lions",
@@ -1791,7 +1899,7 @@
         "link": "https://www.dailynorseman.com/minnesota-vikings-news/98440/2026-nfc-north-season-forecast-detroit-lions",
         "fetched_at": "2026-09-01T22:08:52-04:00",
         "thumbnail": "",
-        "score": 33.36,
+        "score": 32.67,
         "reasons": "running storyline: NFC North (2 days); distinctive wording; independent source (Daily Norseman)"
       },
       {
@@ -1800,8 +1908,8 @@
         "link": "https://www.dailynorseman.com/minnesota-vikings-news/98690/vikings-make-flurry-practice-squad-moves",
         "fetched_at": "2026-09-02T11:39:23-04:00",
         "thumbnail": "",
-        "score": 32.72,
-        "reasons": "published 2.6d ago; transaction: practice squad; independent source (Daily Norseman)"
+        "score": 31.33,
+        "reasons": "published 3.0d ago; transaction: practice squad; independent source (Daily Norseman)"
       },
       {
         "title": "Vikings Sign OLB Kyle Van Noy, RB DeeJay Dallas to Practice Squad; Bring Back Brosmer & Bell",
@@ -1809,8 +1917,8 @@
         "link": "https://www.vikings.com/news/signing-practice-squad-max-brosmer-dillon-bell",
         "fetched_at": "Wed, 02 Sep 2026 14:23:41 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/isjnvet3vkazk2kbpcj5.jpg",
-        "score": 31.21,
-        "reasons": "published 2.0d ago; transaction: practice squad, sign; distinctive wording"
+        "score": 29.07,
+        "reasons": "published 2.4d ago; transaction: practice squad, sign; distinctive wording"
       },
       {
         "title": "Are the Minnesota Vikings Super Bowl contenders?",
@@ -1827,17 +1935,8 @@
         "link": "https://www.dailynorseman.com/minnesota-vikings-draft/98695/week-1-which-college-players-are-future-vikings-2026",
         "fetched_at": "2026-09-02T16:17:33-04:00",
         "thumbnail": "",
-        "score": 28.05,
-        "reasons": "published 2.6d ago; independent source (Daily Norseman)"
-      },
-      {
-        "title": "Minnesota Vikings News and Links: The Vikings Hired A Good GM",
-        "summary": "The season starts in 6 days when the Patriots take on the Seahawks. We are still debating the QB position as I expected and I figure it is going to continue all season long. Gotta love it though! No matter what player you favor, the debates show passion, intelligence, idiocy (in my case), and frustration [&#8230;]",
-        "link": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/98702/minnesota-vikings-news-and-links-the-vikings-hired-a-good-gm",
-        "fetched_at": "2026-09-03T14:58:18-04:00",
-        "thumbnail": "",
-        "score": 27.34,
-        "reasons": "published 1.6d ago; distinctive wording; routine: news and links; independent source (Daily Norseman)"
+        "score": 26.57,
+        "reasons": "published 3.0d ago; independent source (Daily Norseman)"
       },
       {
         "title": "Report: Vikings to Host Kyle Van Noy on Free Agent Visit",
@@ -1845,26 +1944,17 @@
         "link": "https://www.dailynorseman.com/minnesota-vikings-news/98651/minnesota-vikings-to-host-kyle-van-noy-free-agent-visit",
         "fetched_at": "2026-09-01T12:38:56-04:00",
         "thumbnail": "",
-        "score": 25.57,
+        "score": 25.0,
         "reasons": "distinctive wording; independent source (Daily Norseman)"
       },
       {
-        "title": "Lunchbreak: ESPN Bullish on Dallas Turner's Production in 3rd Vikings Season",
-        "summary": "No summary text provided by source.",
-        "link": "https://www.vikings.com/news/lunchbreak-dallas-turner-production-in-third-season",
-        "fetched_at": "Thu, 03 Sep 2026 16:00:00 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/mu4oam2dprsecply7cj0.jpg",
-        "score": 24.78,
-        "reasons": "published 23h ago; distinctive wording; routine: lunchbreak"
-      },
-      {
-        "title": "Nolan Teasley on Vikings Roster Build, Kyler Murray's Trajectory & J.J. McCarthy's Role",
-        "summary": "No summary text provided by source.",
-        "link": "https://www.vikings.com/news/nolan-teasley-on-roster-build-kyler-murray-jj-mccarthy",
-        "fetched_at": "Wed, 02 Sep 2026 20:14:58 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/ofhh0noqzogrcx4noodn.jpg",
-        "score": 24.22,
-        "reasons": "published 1.8d ago; distinctive wording"
+        "title": "Minnesota Vikings News and Links: The Vikings Hired A Good GM",
+        "summary": "The season starts in 6 days when the Patriots take on the Seahawks. We are still debating the QB position as I expected and I figure it is going to continue all season long. Gotta love it though! No matter what player you favor, the debates show passion, intelligence, idiocy (in my case), and frustration [&#8230;]",
+        "link": "https://www.dailynorseman.com/minnesota-vikings-discussion-chat-message-board/98702/minnesota-vikings-news-and-links-the-vikings-hired-a-good-gm",
+        "fetched_at": "2026-09-03T14:58:18-04:00",
+        "thumbnail": "",
+        "score": 24.62,
+        "reasons": "published 2.0d ago; distinctive wording; routine: news and links; independent source (Daily Norseman)"
       },
       {
         "title": "Vikings Sign Players to 2026 Practice Squad",
@@ -1872,17 +1962,26 @@
         "link": "https://www.vikings.com/news/practice-squad-2026-roster-nfl",
         "fetched_at": "Tue, 01 Sep 2026 21:11:00 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/vikings/mypat8pzi19rlp0ockoo.jpg",
-        "score": 23.43,
-        "reasons": "published 2.7d ago; transaction: practice squad, sign"
+        "score": 22.23,
+        "reasons": "published 3.1d ago; transaction: practice squad, sign"
       },
       {
-        "title": "Vikings Announce Jersey Number Changes for 2026 Week 1",
+        "title": "Nolan Teasley on Vikings Roster Build, Kyler Murray's Trajectory & J.J. McCarthy's Role",
         "summary": "No summary text provided by source.",
-        "link": "https://www.vikings.com/news/jersey-number-changes-2026-nfl-season",
-        "fetched_at": "Thu, 03 Sep 2026 17:00:21 GMT",
-        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/ra0uwvbrktrdkyncpihr.jpg",
-        "score": 22.96,
-        "reasons": "published 22h ago; distinctive wording; routine: jersey"
+        "link": "https://www.vikings.com/news/nolan-teasley-on-roster-build-kyler-murray-jj-mccarthy",
+        "fetched_at": "Wed, 02 Sep 2026 20:14:58 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/ofhh0noqzogrcx4noodn.jpg",
+        "score": 21.63,
+        "reasons": "published 2.1d ago; distinctive wording"
+      },
+      {
+        "title": "Lunchbreak: ESPN Bullish on Dallas Turner's Production in 3rd Vikings Season",
+        "summary": "No summary text provided by source.",
+        "link": "https://www.vikings.com/news/lunchbreak-dallas-turner-production-in-third-season",
+        "fetched_at": "Thu, 03 Sep 2026 16:00:00 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/mu4oam2dprsecply7cj0.jpg",
+        "score": 20.24,
+        "reasons": "published 1.3d ago; distinctive wording; routine: lunchbreak"
       },
       {
         "title": "Daily Norseman Reacts Survey: Grading the Vikings’ Offseason",
@@ -1890,8 +1989,26 @@
         "link": "https://www.dailynorseman.com/minnesota-vikings-news/98649/daily-norseman-reacts-survey-grading-minnesota-vikings-offseason",
         "fetched_at": "2026-09-02T11:07:42-04:00",
         "thumbnail": "",
-        "score": 21.31,
-        "reasons": "published 2.6d ago; distinctive wording; routine: survey; independent source (Daily Norseman)"
+        "score": 19.74,
+        "reasons": "published 3.0d ago; distinctive wording; routine: survey; independent source (Daily Norseman)"
+      },
+      {
+        "title": "Vikings Announce Jersey Number Changes for 2026 Week 1",
+        "summary": "No summary text provided by source.",
+        "link": "https://www.vikings.com/news/jersey-number-changes-2026-nfl-season",
+        "fetched_at": "Thu, 03 Sep 2026 17:00:21 GMT",
+        "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/ra0uwvbrktrdkyncpihr.jpg",
+        "score": 17.96,
+        "reasons": "published 1.2d ago; distinctive wording; routine: jersey"
+      },
+      {
+        "title": "Pro Football Hall of Fame Makes Big Changes to Induction Procedures",
+        "summary": "The Pro Football Hall of Fame announced several significant changes to its induction procedures on Friday, and they look to be pretty bad news for some former, prominent members of the Minnesota Vikings who may have gotten the call to Canton in the future. Among the changes that have been made are the following: It’s [&#8230;]",
+        "link": "https://www.dailynorseman.com/minnesota-vikings-news/98715/pro-football-hall-of-fame-big-changes-induction-procedures",
+        "fetched_at": "2026-09-04T11:49:53-04:00",
+        "thumbnail": "",
+        "score": 15.76,
+        "reasons": "ceremonial/promotional (hall of fame) — heavily damped; independent source (Daily Norseman)"
       },
       {
         "title": "Get the best of Daily Norseman on the new SB Nation app",
@@ -1908,8 +2025,8 @@
         "link": "https://www.vikings.com/news/lunchbreak-kyler-murray-most-intriguing-figures-2026",
         "fetched_at": "Tue, 01 Sep 2026 17:07:54 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/uvowdfygct5btrvcspul.jpg",
-        "score": 8.25,
-        "reasons": "published 2.9d ago; distinctive wording; routine: lunchbreak"
+        "score": 7.14,
+        "reasons": "published 3.2d ago; distinctive wording; routine: lunchbreak"
       },
       {
         "title": "How Resiliency Keyed Larry Dean's Football Career as Player and Exec",
@@ -1917,7 +2034,7 @@
         "link": "https://www.vikings.com/news/longform/larry-dean-resiliency-football-career-player-exec",
         "fetched_at": "Tue, 01 Sep 2026 17:45:11 GMT",
         "thumbnail": "https://static.clubs.nfl.com/image/upload/t_editorial_landscape_12_desktop/vikings/gxkuhpctnxl9veiew8tv.jpg",
-        "score": 4.47,
+        "score": 4.16,
         "reasons": "ceremonial/promotional (/longform/) — heavily damped"
       }
     ]
@@ -1925,234 +2042,126 @@
   "media_bites": [
     {
       "source": "Minnesota Vikings YouTube",
-      "tweet_text": "🏈 Team: Josh is our favorite MN State Fair YouTuber 😎",
-      "link": "https://www.youtube.com/shorts/gq8WW5b9mG4",
-      "fetched_at": "2026-09-04 13:58",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Green Bay Packers YouTube",
-      "tweet_text": "🏈 Team: Mic'd Up: Bo Melton",
-      "link": "https://www.youtube.com/watch?v=Aeg3VuKzjnk",
-      "fetched_at": "2026-09-04 14:50",
+      "tweet_text": "🏈 Team: Preparing for 2026 Regular Season, 53-Man Roster & Randy Moss at Training Camp | Vikings Weekly",
+      "link": "https://www.youtube.com/watch?v=5uh-iH0csE0",
+      "fetched_at": "2026-09-04 17:00",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
       "source": "Minnesota Vikings YouTube",
-      "tweet_text": "🏈 Team: And Your 2026 Captains Are...",
-      "link": "https://www.youtube.com/shorts/p8g2FeGPi-A",
-      "fetched_at": "2026-09-03 21:41",
+      "tweet_text": "🏈 Team: Robert Griffith Reacts To Best Games, Favorite Plays & Moments From NFL Career | Minnesota Vikings",
+      "link": "https://www.youtube.com/watch?v=rucWPIqRUvk",
+      "fetched_at": "2026-09-04 20:00",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
-      "source": "@SportsCenter",
-      "tweet_text": "🎥 Clip: Keys to 49ers attacking Aaron Donald and the Rams' defense in Week 1 🔑 | NFL Live",
-      "link": "https://www.youtube.com/watch?v=ZKI1mVBY2z4",
-      "fetched_at": "2026-09-03 21:02",
+      "source": "Minnesota Vikings YouTube",
+      "tweet_text": "🏈 Team: Water cup challenge gets competitive 😂",
+      "link": "https://www.youtube.com/shorts/DhQDTT6gy6o",
+      "fetched_at": "2026-09-04 20:47",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
-      "source": "@PatMcAfeeShow",
-      "tweet_text": "🎥 Clip: Can ANYONE Stop Aaron Donald & Myles Garrett? A Former NFL Lineman Weighs In",
-      "link": "https://www.youtube.com/watch?v=fZgqySV64jc",
-      "fetched_at": "2026-09-01 20:00",
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: From Prep to Pride: Michigan High School Football",
+      "link": "https://www.youtube.com/watch?v=sSCmDegnLa8",
+      "fetched_at": "2026-09-04 15:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: Here for the cellys | #DetroitLioms #NFL #shorts",
+      "link": "https://www.youtube.com/shorts/0BG6n1TgG2c",
+      "fetched_at": "2026-09-04 17:01",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: Stop the video at your favorite Lions jersey | #NFL #DetroitLions #Jersey",
+      "link": "https://www.youtube.com/shorts/BASJccQpD1s",
+      "fetched_at": "2026-09-04 18:04",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: D-Barnes, not an onion guy 🍕",
+      "link": "https://www.youtube.com/shorts/JD8MYSfXrOk",
+      "fetched_at": "2026-09-04 19:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🏈 Team: Preparations begin for Week 1 | Bears, etc. Podcast",
+      "link": "https://www.youtube.com/watch?v=yYDVSAykVDc",
+      "fetched_at": "2026-09-04 14:59",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
       "source": "@TheHerd",
-      "tweet_text": "🎥 Clip: Is #KylerMurray the missing piece for the #minnesotavikings ? | THE HERD #nfl",
-      "link": "https://www.youtube.com/shorts/TA6-Mm6QKYA",
-      "fetched_at": "2026-09-01 21:30",
+      "tweet_text": "🎥 Clip: NFC Predictions: Bears, Giants, Bucs, Seahawks, Rams, Cowboys, Lions | THE HERD NFL",
+      "link": "https://www.youtube.com/watch?v=xXM8SKIqVLI",
+      "fetched_at": "2026-09-04 19:22",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
       "source": "@TheHerd",
-      "tweet_text": "🎥 Clip: WEEK 1 PICKS: Patriots-Seahawks, 49ers-Rams, Bills-Texans, Bears-Panthers, Saints-Lions | HERD NFL",
-      "link": "https://www.youtube.com/watch?v=gRm_CDilEF4",
-      "fetched_at": "2026-09-01 20:32",
+      "tweet_text": "🎥 Clip: Caleb Williams is THE main character",
+      "link": "https://www.youtube.com/shorts/nnCxYsrUMjM",
+      "fetched_at": "2026-09-04 20:15",
       "platform": "youtube",
       "kind": "clip",
-      "speaker": ""
+      "speaker": "Caleb Williams"
     },
     {
-      "source": "@TheHerd",
-      "tweet_text": "🎥 Clip: Aaron Donald is BACK!",
-      "link": "https://www.youtube.com/shorts/tNTnnzfLiVs",
-      "fetched_at": "2026-08-31 21:00",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Chicago Bears YouTube",
-      "tweet_text": "🏈 Team: A Bear among bears 🤝 #zoo #rookie #nfl",
-      "link": "https://www.youtube.com/shorts/h_SUMKpGxlQ",
-      "fetched_at": "2026-09-03 19:13",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Chicago Bears YouTube",
-      "tweet_text": "🎙️ Ben Johnson: Press Taylor on working with Ben Johnson on offensive schemes | Press Conference",
-      "link": "https://www.youtube.com/watch?v=-WPfqkgozXs",
-      "fetched_at": "2026-09-03 18:50",
-      "platform": "youtube",
-      "kind": "presser",
-      "speaker": "Ben Johnson"
-    },
-    {
-      "source": "Chicago Bears YouTube",
-      "tweet_text": "🎙️ D'Andre Swift: D'Andre Swift, Clark Phillips III believe 'best days are ahead' | Press Conference",
-      "link": "https://www.youtube.com/watch?v=HZkPS_C79XM",
-      "fetched_at": "2026-09-02 21:03",
-      "platform": "youtube",
-      "kind": "presser",
-      "speaker": "D'Andre Swift"
-    },
-    {
-      "source": "Chicago Bears YouTube",
-      "tweet_text": "🏈 Team: Allow Zavion to introduce himself 🎤 #nfl #rookie #zavionthomas",
-      "link": "https://www.youtube.com/shorts/SAkziD_BUaU",
-      "fetched_at": "2026-09-02 20:27",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Chicago Bears YouTube",
-      "tweet_text": "🎙️ Dennis Allen: Dennis Allen on defense's progress throughout training camp | Press Conference",
-      "link": "https://www.youtube.com/watch?v=s1sI46zy1wA",
-      "fetched_at": "2026-09-02 18:03",
-      "platform": "youtube",
-      "kind": "presser",
-      "speaker": "Dennis Allen"
-    },
-    {
-      "source": "Detroit Lions YouTube",
-      "tweet_text": "🏈 Team: Lions Kid Reporter | Kellan O’Neil",
-      "link": "https://www.youtube.com/watch?v=NSAyBB_GcO4",
-      "fetched_at": "2026-09-03 16:00",
+      "source": "Green Bay Packers YouTube",
+      "tweet_text": "🏈 Team: Like this if you love our equipment team",
+      "link": "https://www.youtube.com/shorts/i0KYpeeg-1A",
+      "fetched_at": "2026-09-03 21:30",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
       "source": "Detroit Lions YouTube",
-      "tweet_text": "🎙️ Brad Holmes: Brad Holmes and Ray Agnew Press Conference | Sept. 2, 2026",
-      "link": "https://www.youtube.com/watch?v=VDJggIy-VA4",
-      "fetched_at": "2026-09-02 14:30",
+      "tweet_text": "🏈 Team: Which Lions player would be the BEST Pop Warner Coach? 🏈 | Detroit #Lions #shorts",
+      "link": "https://www.youtube.com/shorts/juSYjxBGqVM",
+      "fetched_at": "2026-09-03 22:04",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🎙️ Kalif Raymond: Kalif Raymond, T.J. Edwards talk talent on Bears roster | Press Conference",
+      "link": "https://www.youtube.com/watch?v=AzfOZ8d5VuQ",
+      "fetched_at": "2026-09-03 22:47",
       "platform": "youtube",
       "kind": "presser",
-      "speaker": "Brad Holmes"
-    },
-    {
-      "source": "Detroit Lions YouTube",
-      "tweet_text": "🏈 Team: Through the Seam | Patricia Cook",
-      "link": "https://www.youtube.com/watch?v=3TvR9mGDDOM",
-      "fetched_at": "2026-09-01 16:00",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Detroit Lions YouTube",
-      "tweet_text": "🎙️ Dan Campbell: Dan Campbell postgame media availability | 2026 NFL Preseason Season Week 3: Lions at Colts",
-      "link": "https://www.youtube.com/watch?v=qWTQBCOypSc",
-      "fetched_at": "2026-08-29 23:47",
-      "platform": "youtube",
-      "kind": "presser",
-      "speaker": "Dan Campbell"
-    },
-    {
-      "source": "Detroit Lions YouTube",
-      "tweet_text": "🏈 Team: Detroit Lions players meet with the media | 2026 NFL Preseason Week 3: Lions at Colts",
-      "link": "https://www.youtube.com/watch?v=fIu9wIQmx2A",
-      "fetched_at": "2026-08-29 23:47",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Green Bay Packers YouTube",
-      "tweet_text": "🏈 Team: Packers Unscripted: State of the team",
-      "link": "https://www.youtube.com/watch?v=Lz3sN7SyY1k",
-      "fetched_at": "2026-09-03 18:29",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Green Bay Packers YouTube",
-      "tweet_text": "🏈 Team: Jonnu knew what he was doing sitting next to J-Love",
-      "link": "https://www.youtube.com/shorts/7fREmvlZ1CY",
-      "fetched_at": "2026-09-03 18:00",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Green Bay Packers YouTube",
-      "tweet_text": "🏈 Team: Packers Daily: New faces on the offense",
-      "link": "https://www.youtube.com/watch?v=SE1s6ogV5e4",
-      "fetched_at": "2026-09-03 17:05",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Green Bay Packers YouTube",
-      "tweet_text": "🏈 Team: Anthony Campbell on making the roster: 'I'm a fighter'",
-      "link": "https://www.youtube.com/watch?v=0-P_lxsOE90",
-      "fetched_at": "2026-09-02 19:48",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Green Bay Packers YouTube",
-      "tweet_text": "🎙️ Jordan Love: Jayden Reed on Jordan Love: 'I don't think I've ever seen him flinch'",
-      "link": "https://www.youtube.com/watch?v=gkxVkNT_OjU",
-      "fetched_at": "2026-09-02 19:48",
-      "platform": "youtube",
-      "kind": "presser",
-      "speaker": "Jordan Love"
+      "speaker": "Kalif Raymond"
     },
     {
       "source": "Minnesota Vikings YouTube",
-      "tweet_text": "🏈 Team: Analyzing the Minnesota Vikings Initial 53-Man Roster",
-      "link": "https://www.youtube.com/watch?v=vvHaBPu1zf8",
-      "fetched_at": "2026-09-02 22:49",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Minnesota Vikings YouTube",
-      "tweet_text": "🏈 Team: General Manager Nolan Teasley on Setting the Minnesota Vikings 53-Man Roster",
-      "link": "https://www.youtube.com/watch?v=IikuEXjGigo",
-      "fetched_at": "2026-09-02 19:07",
-      "platform": "youtube",
-      "kind": "clip",
-      "speaker": ""
-    },
-    {
-      "source": "Minnesota Vikings YouTube",
-      "tweet_text": "🏈 Team: Guess the Number 🧐",
-      "link": "https://www.youtube.com/shorts/P2CtQeyM4ks",
-      "fetched_at": "2026-09-01 22:00",
+      "tweet_text": "🏈 Team: Reactions to Minnesota Vikings Initial 53-Man Roster for 2026 NFL Season",
+      "link": "https://www.youtube.com/watch?v=QMjxrHKC6l4",
+      "fetched_at": "2026-08-31 03:07",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
@@ -2168,36 +2177,234 @@
     },
     {
       "source": "Minnesota Vikings YouTube",
-      "tweet_text": "🏈 Team: Reactions to Minnesota Vikings Initial 53-Man Roster for 2026 NFL Season",
-      "link": "https://www.youtube.com/watch?v=QMjxrHKC6l4",
-      "fetched_at": "2026-08-31 03:07",
+      "tweet_text": "🏈 Team: Guess the Number 🧐",
+      "link": "https://www.youtube.com/shorts/P2CtQeyM4ks",
+      "fetched_at": "2026-09-01 22:00",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
-      "source": "Chicago Bears YouTube",
-      "tweet_text": "🎙️ Kalif Raymond: Kalif Raymond, T.J. Edwards talk talent on Bears roster | Press Conference",
-      "link": "https://www.youtube.com/watch?v=AzfOZ8d5VuQ",
-      "fetched_at": "2026-09-03 22:47",
+      "source": "Minnesota Vikings YouTube",
+      "tweet_text": "🏈 Team: General Manager Nolan Teasley on Setting the Minnesota Vikings 53-Man Roster",
+      "link": "https://www.youtube.com/watch?v=IikuEXjGigo",
+      "fetched_at": "2026-09-02 19:07",
       "platform": "youtube",
-      "kind": "presser",
-      "speaker": "Kalif Raymond"
+      "kind": "clip",
+      "speaker": ""
     },
     {
-      "source": "Detroit Lions YouTube",
-      "tweet_text": "🏈 Team: Which Lions player would be the BEST Pop Warner Coach? 🏈 | Detroit #Lions #shorts",
-      "link": "https://www.youtube.com/shorts/juSYjxBGqVM",
-      "fetched_at": "2026-09-03 22:04",
+      "source": "Minnesota Vikings YouTube",
+      "tweet_text": "🏈 Team: Analyzing the Minnesota Vikings Initial 53-Man Roster",
+      "link": "https://www.youtube.com/watch?v=vvHaBPu1zf8",
+      "fetched_at": "2026-09-02 22:49",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
     },
     {
       "source": "Green Bay Packers YouTube",
-      "tweet_text": "🏈 Team: Like this if you love our equipment team",
-      "link": "https://www.youtube.com/shorts/i0KYpeeg-1A",
-      "fetched_at": "2026-09-03 21:30",
+      "tweet_text": "🎙️ Jordan Love: Jayden Reed on Jordan Love: 'I don't think I've ever seen him flinch'",
+      "link": "https://www.youtube.com/watch?v=gkxVkNT_OjU",
+      "fetched_at": "2026-09-02 19:48",
+      "platform": "youtube",
+      "kind": "presser",
+      "speaker": "Jordan Love"
+    },
+    {
+      "source": "Green Bay Packers YouTube",
+      "tweet_text": "🏈 Team: Anthony Campbell on making the roster: 'I'm a fighter'",
+      "link": "https://www.youtube.com/watch?v=0-P_lxsOE90",
+      "fetched_at": "2026-09-02 19:48",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Green Bay Packers YouTube",
+      "tweet_text": "🏈 Team: Packers Daily: New faces on the offense",
+      "link": "https://www.youtube.com/watch?v=SE1s6ogV5e4",
+      "fetched_at": "2026-09-03 17:05",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Green Bay Packers YouTube",
+      "tweet_text": "🏈 Team: Jonnu knew what he was doing sitting next to J-Love",
+      "link": "https://www.youtube.com/shorts/7fREmvlZ1CY",
+      "fetched_at": "2026-09-03 18:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Green Bay Packers YouTube",
+      "tweet_text": "🏈 Team: Packers Unscripted: State of the team",
+      "link": "https://www.youtube.com/watch?v=Lz3sN7SyY1k",
+      "fetched_at": "2026-09-03 18:29",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: Detroit Lions players meet with the media | 2026 NFL Preseason Week 3: Lions at Colts",
+      "link": "https://www.youtube.com/watch?v=fIu9wIQmx2A",
+      "fetched_at": "2026-08-29 23:47",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🎙️ Dan Campbell: Dan Campbell postgame media availability | 2026 NFL Preseason Season Week 3: Lions at Colts",
+      "link": "https://www.youtube.com/watch?v=qWTQBCOypSc",
+      "fetched_at": "2026-08-29 23:47",
+      "platform": "youtube",
+      "kind": "presser",
+      "speaker": "Dan Campbell"
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: Through the Seam | Patricia Cook",
+      "link": "https://www.youtube.com/watch?v=3TvR9mGDDOM",
+      "fetched_at": "2026-09-01 16:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🎙️ Brad Holmes: Brad Holmes and Ray Agnew Press Conference | Sept. 2, 2026",
+      "link": "https://www.youtube.com/watch?v=VDJggIy-VA4",
+      "fetched_at": "2026-09-02 14:30",
+      "platform": "youtube",
+      "kind": "presser",
+      "speaker": "Brad Holmes"
+    },
+    {
+      "source": "Detroit Lions YouTube",
+      "tweet_text": "🏈 Team: Lions Kid Reporter | Kellan O’Neil",
+      "link": "https://www.youtube.com/watch?v=NSAyBB_GcO4",
+      "fetched_at": "2026-09-03 16:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🎙️ Dennis Allen: Dennis Allen on defense's progress throughout training camp | Press Conference",
+      "link": "https://www.youtube.com/watch?v=s1sI46zy1wA",
+      "fetched_at": "2026-09-02 18:03",
+      "platform": "youtube",
+      "kind": "presser",
+      "speaker": "Dennis Allen"
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🏈 Team: Allow Zavion to introduce himself 🎤 #nfl #rookie #zavionthomas",
+      "link": "https://www.youtube.com/shorts/SAkziD_BUaU",
+      "fetched_at": "2026-09-02 20:27",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🎙️ D'Andre Swift: D'Andre Swift, Clark Phillips III believe 'best days are ahead' | Press Conference",
+      "link": "https://www.youtube.com/watch?v=HZkPS_C79XM",
+      "fetched_at": "2026-09-02 21:03",
+      "platform": "youtube",
+      "kind": "presser",
+      "speaker": "D'Andre Swift"
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🎙️ Ben Johnson: Press Taylor on working with Ben Johnson on offensive schemes | Press Conference",
+      "link": "https://www.youtube.com/watch?v=-WPfqkgozXs",
+      "fetched_at": "2026-09-03 18:50",
+      "platform": "youtube",
+      "kind": "presser",
+      "speaker": "Ben Johnson"
+    },
+    {
+      "source": "Chicago Bears YouTube",
+      "tweet_text": "🏈 Team: A Bear among bears 🤝 #zoo #rookie #nfl",
+      "link": "https://www.youtube.com/shorts/h_SUMKpGxlQ",
+      "fetched_at": "2026-09-03 19:13",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "@TheHerd",
+      "tweet_text": "🎥 Clip: Aaron Donald is BACK!",
+      "link": "https://www.youtube.com/shorts/tNTnnzfLiVs",
+      "fetched_at": "2026-08-31 21:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "@TheHerd",
+      "tweet_text": "🎥 Clip: WEEK 1 PICKS: Patriots-Seahawks, 49ers-Rams, Bills-Texans, Bears-Panthers, Saints-Lions | HERD NFL",
+      "link": "https://www.youtube.com/watch?v=gRm_CDilEF4",
+      "fetched_at": "2026-09-01 20:32",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "@TheHerd",
+      "tweet_text": "🎥 Clip: Is #KylerMurray the missing piece for the #minnesotavikings ? | THE HERD #nfl",
+      "link": "https://www.youtube.com/shorts/TA6-Mm6QKYA",
+      "fetched_at": "2026-09-01 21:30",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "@PatMcAfeeShow",
+      "tweet_text": "🎥 Clip: Can ANYONE Stop Aaron Donald & Myles Garrett? A Former NFL Lineman Weighs In",
+      "link": "https://www.youtube.com/watch?v=fZgqySV64jc",
+      "fetched_at": "2026-09-01 20:00",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "@SportsCenter",
+      "tweet_text": "🎥 Clip: Keys to 49ers attacking Aaron Donald and the Rams' defense in Week 1 🔑 | NFL Live",
+      "link": "https://www.youtube.com/watch?v=ZKI1mVBY2z4",
+      "fetched_at": "2026-09-03 21:02",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Minnesota Vikings YouTube",
+      "tweet_text": "🏈 Team: And Your 2026 Captains Are...",
+      "link": "https://www.youtube.com/shorts/p8g2FeGPi-A",
+      "fetched_at": "2026-09-03 21:41",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Green Bay Packers YouTube",
+      "tweet_text": "🏈 Team: Mic'd Up: Bo Melton",
+      "link": "https://www.youtube.com/watch?v=Aeg3VuKzjnk",
+      "fetched_at": "2026-09-04 14:50",
+      "platform": "youtube",
+      "kind": "clip",
+      "speaker": ""
+    },
+    {
+      "source": "Minnesota Vikings YouTube",
+      "tweet_text": "🏈 Team: Josh is our favorite MN State Fair YouTuber 😎",
+      "link": "https://www.youtube.com/shorts/gq8WW5b9mG4",
+      "fetched_at": "2026-09-04 13:58",
       "platform": "youtube",
       "kind": "clip",
       "speaker": ""
