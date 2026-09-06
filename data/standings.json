@@ -1,45 +1,45 @@
 {
-  "fetched_at": "2026-09-05T22:46:31Z",
+  "fetched_at": "2026-09-06T14:02:22Z",
   "source": "ESPN",
   "teams": {
-    "Green Bay Packers": {
-      "abbr": "GB",
-      "wins": 2,
-      "losses": 1,
+    "Chicago Bears": {
+      "abbr": "CHI",
+      "wins": 0,
+      "losses": 0,
       "ties": 0,
-      "record": "2-1",
-      "point_diff": 5,
-      "streak": 2.0,
+      "record": "0-0",
+      "point_diff": 0,
+      "streak": 0.0,
       "division_record": 0.0
     },
     "Detroit Lions": {
       "abbr": "DET",
-      "wins": 2,
-      "losses": 1,
+      "wins": 0,
+      "losses": 0,
       "ties": 0,
-      "record": "2-1",
-      "point_diff": 11,
-      "streak": 2.0,
+      "record": "0-0",
+      "point_diff": 0,
+      "streak": 0.0,
       "division_record": 0.0
     },
-    "Chicago Bears": {
-      "abbr": "CHI",
-      "wins": 2,
-      "losses": 1,
+    "Green Bay Packers": {
+      "abbr": "GB",
+      "wins": 0,
+      "losses": 0,
       "ties": 0,
-      "record": "2-1",
-      "point_diff": 15,
-      "streak": 1.0,
+      "record": "0-0",
+      "point_diff": 0,
+      "streak": 0.0,
       "division_record": 0.0
     },
     "Minnesota Vikings": {
       "abbr": "MIN",
-      "wins": 1,
-      "losses": 2,
+      "wins": 0,
+      "losses": 0,
       "ties": 0,
-      "record": "1-2",
-      "point_diff": -35,
-      "streak": -2.0,
+      "record": "0-0",
+      "point_diff": 0,
+      "streak": 0.0,
       "division_record": 0.0
     }
   }
