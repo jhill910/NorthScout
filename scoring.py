@@ -59,6 +59,13 @@ AVAILABILITY = [
     "out for the season", "season-ending", "did not practice", "no timetable",
     "questionable", "doubtful", "designated to return", "non-football injury",
     "calf", "hamstring", "acl", "concussion", "torn", "surgery", "injury designation",
+    # Everyday injury language the original list missed. "Bears' Rome Odunze,
+    # D'Andre Swift hurt at practice" carried no availability signal at all
+    # on 2026-09-08, despite being exactly the kind of story a producer needs.
+    "hurt", "injured", "injury update", "limited participant", "full participant",
+    "did not participate", "dnp", "missed practice", "left practice",
+    "day-to-day", "week-to-week", "ruled out", "game-time decision",
+    "activated off", "designated to return", "rehabbing", "setback",
 ]
 
 TRANSACTION = [
@@ -91,6 +98,25 @@ MONEY = [
     "fined", "fine ", "incentive", "signing bonus", "deal ",
 ]
 
+# Charitable and sponsorship money is not roster money. "Packers, Sargento
+# teaming up to tackle hunger in Wisconsin" reached the Packers cards on
+# 2026-09-08 flagged as "money: $, million" -- a donation, not a cap move.
+CHARITY_MONEY = [
+    "tackle hunger", "food bank", "fundraiser", "fundraising", "donation",
+    "donates", "donated", "proceeds", "charity", "charitable", "teaming up",
+    "partnership with", "raise money", "raised", "gives back", "toy drive",
+    "scholarship", "grant", "non-profit", "nonprofit", "united way",
+]
+
+# Appearances and sightings. A GM watching a college game is not news, but he
+# is a decision-maker, so attribution alone floated it to #2 on the Bears
+# cards on 2026-09-08.
+NON_EVENTS = [
+    "in attendance", "attends", "attended", "spotted at", "was seen",
+    "makes an appearance", "visits", "on hand for", "takes in",
+    "guest of honor", "throws out", "honorary",
+]
+
 UNCERTAINTY = [
     "i don't know", "i dont know", "didn't know", "didn t know", "unclear",
     "uncertain", "no timetable", "won't say", "wouldn't say", "declined to say",
@@ -116,6 +142,10 @@ HARD_BOILERPLATE = [
     "donation", "youth", "classroom", "draft party", "watch party",
     "sign contest", "nominations", "anniversary", "trivia", "quiz",
     "girls", "volunteer", "scholarship", "food drive", "toy drive",
+    # Sponsorship and charity partnerships. "Packers, Sargento teaming up to
+    # tackle hunger in Wisconsin" held a card on 2026-09-08.
+    "tackle hunger", "food bank", "fundraiser", "teaming up", "gives back",
+    "proceeds", "donation", "donates", "non-profit", "nonprofit",
 ]
 
 # Link paths are a reliable signal the club itself has filed a story as
@@ -393,10 +423,15 @@ def score_story(story, stats, team=None, now=None):
         reasons.append("acquisition: " + ", ".join(acq[:2]))
 
     # --- money ------------------------------------------------------------
-    mo = _hits(blob, MONEY)
+    # Only roster money counts. Charity and sponsorship dollars are not a cap
+    # move, however many dollar signs the headline carries.
+    charity = _hits(blob, CHARITY_MONEY)
+    mo = [] if charity else _hits(blob, MONEY)
     if mo:
         score += W_MONEY * min(len(mo), 2) / 2
         reasons.append("money: " + ", ".join(sorted(set(mo))[:2]))
+    elif charity:
+        reasons.append("charitable/sponsorship — not roster money")
 
     # --- decision-maker on the record -------------------------------------
     # A GM's name in a press release about a charity event is not attribution.
@@ -404,6 +439,16 @@ def score_story(story, stats, team=None, now=None):
     # in the body alongside a speech verb.
     names = DECISION_MAKERS.get(team, [])
     title_l = title.lower()
+
+    # An appearance is not a statement. "Bears GM Ryan Poles in attendance at
+    # Miami-Stanford game" reached #2 on the Bears cards on 2026-09-08 purely
+    # because a decision-maker was named in it.
+    non_event = _hits(blob, NON_EVENTS)
+    if non_event and not (av or ms or _hits(blob, CONFLICT)):
+        score -= W_ATTRIBUTION * 0.8
+        reasons.append("appearance, not news: " + ", ".join(non_event[:2]))
+        names = []
+
     dm_title = [n for n in names if n in title_l]
     dm_body = [n for n in names if n in blob]
     speaking = bool(_hits(blob, SPEECH))

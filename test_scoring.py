@@ -96,6 +96,44 @@ def test_rarity_no_longer_punishes_scoops():
     print(f"  ok  scoop outranks boilerplate ({scoop:.1f} vs {boiler:.1f})")
 
 
+def test_charity_money_is_not_roster_money():
+    """'Packers, Sargento teaming up to tackle hunger' held a card on 9/8."""
+    st = stats_for([{"title": "x", "summary": "", "pub": FRESH, "team": "Green Bay Packers"}] * 4)
+    charity, _ = scoring.score_story(
+        {"title": "Packers, Sargento teaming up to tackle hunger in Wisconsin",
+         "summary": "The partnership will donate $1 million to food banks.",
+         "pub": FRESH, "link": ""}, st, "Green Bay Packers", NOW)
+    real, _ = scoring.score_story(
+        {"title": "Bears restructure Joe Thuney contract",
+         "summary": "Chicago creates cap space.", "pub": FRESH, "link": ""},
+        st, "Chicago Bears", NOW)
+    assert real > charity * 1.5, (real, charity)
+    print(f"  ok  charity money damped ({charity:.1f}) vs a real cap move ({real:.1f})")
+
+
+def test_appearance_is_not_news():
+    """'Bears GM Ryan Poles in attendance at Miami-Stanford game' hit #2 on 9/8."""
+    st = stats_for([{"title": "x", "summary": "", "pub": FRESH, "team": "Chicago Bears"}] * 4)
+    appearance, _ = scoring.score_story(
+        {"title": "Bears GM Ryan Poles in attendance at Miami-Stanford game",
+         "summary": "Poles was spotted at the college matchup.", "pub": FRESH, "link": ""},
+        st, "Chicago Bears", NOW)
+    onrecord, _ = scoring.score_story(
+        {"title": "GM Ryan Poles: I don't know if Kyler Gordon will play this year",
+         "summary": "Gordon opens the season on IR with a calf injury.",
+         "pub": FRESH, "link": ""}, st, "Chicago Bears", NOW)
+    assert onrecord > appearance * 2, (onrecord, appearance)
+    print(f"  ok  appearance demoted ({appearance:.1f}) vs GM on record ({onrecord:.1f})")
+
+
+def test_everyday_injury_language():
+    """'hurt at practice' carried no availability signal at all on 9/8."""
+    for phrase in ["hurt at practice", "missed practice", "ruled out",
+                   "day-to-day", "rehabbing", "limited participant"]:
+        assert scoring._hits(f" player {phrase} today ", scoring.AVAILABILITY), phrase
+    print("  ok  everyday injury language recognised")
+
+
 if __name__ == "__main__":
     print("scoring.py regression tests")
     for fn in list(globals().values()):

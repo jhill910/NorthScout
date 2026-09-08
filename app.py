@@ -143,6 +143,53 @@ def _dedupe_near_titles(df, threshold=0.82):
     return df.loc[keep]
 
 
+def _diversify(df, max_per_subject=2):
+    """Stop one storyline owning the board.
+
+    On 2026-09-08 four of the five Minnesota cards were Harrison Smith
+    returning -- the same news from four outlets. Headline-similarity dedupe
+    missed it because "He's Back. Harrison Smith Returns" and "Vikings
+    reportedly bring back Harrison Smith" are not textually alike.
+
+    Grouping by the PEOPLE a story is about catches what wording comparison
+    can't. Highest-scoring two survive per subject; the rest drop below them,
+    so nothing is lost -- it just stops crowding out the other four topics
+    the show has to cover.
+    """
+    try:
+        import scoring
+    except ImportError:
+        return df
+
+    def surname_key(name):
+        """'Harrison Smith Returns' and 'Harrison Smith' are one person.
+
+        Extraction returns runs of capitalised words, so a headline verb can
+        get glued to the name. Comparing only the first two tokens collapses
+        those variants."""
+        parts = [p for p in name.lower().replace(".", "").split() if len(p) > 1]
+        return " ".join(parts[:2]) if len(parts) >= 2 else None
+
+    clusters, keep, deferred = {}, [], []
+    for idx, row in df.iterrows():
+        title_l = str(row.get("title", "")).lower()
+        names = scoring.extract_names(f"{row.get('title','')} {row.get('summary','')}")
+        keys = {surname_key(n) for n in names if n.lower()[:24] in title_l}
+        keys.discard(None)
+        if not keys:
+            keep.append(idx)
+            continue
+        # A story joins the first cluster it shares a person with.
+        hit = next((k for k in keys if k in clusters), None)
+        key = hit or sorted(keys)[0]
+        if clusters.get(key, 0) < max_per_subject:
+            clusters[key] = clusters.get(key, 0) + 1
+            keep.append(idx)
+        else:
+            deferred.append(idx)
+    return df.loc[keep + deferred]
+
+
 def load_dashboard_data(team_name, limit=5):
     """Top stories for a team, ranked by the score the scraper computed.
 
@@ -164,6 +211,7 @@ def load_dashboard_data(team_name, limit=5):
         df["score"] = pd.to_numeric(df["score"], errors="coerce").fillna(0)
         df = df.sort_values("score", ascending=False)
         df = _dedupe_near_titles(df)
+        df = _diversify(df)
         return df.head(limit)[cols].reset_index(drop=True)
 
     conn = sqlite3.connect(database.DB_NAME)
