@@ -204,10 +204,20 @@ def fetch_all_sources():
 
         routed = 0
         if src["team"] == "division":
+            # Current rosters make routing resilient to players changing club.
+            try:
+                import roster as _roster
+                _r = _roster.load_rosters()
+                roster_names = {t: {n.lower() for n in names}
+                                for t, names in _r.items()}
+            except Exception:
+                roster_names = None
+
             for e in entries:
                 import re as _re2
                 clean_summary = _re2.sub('<[^<]+?>', '', e.get("summary", "") or "")
-                for team in sources.route_to_teams(e.get("title", ""), clean_summary):
+                for team in sources.route_to_teams(e.get("title", ""), clean_summary,
+                                                   roster_names):
                     by_team[team].append((e, src))
                     routed += 1
         else:

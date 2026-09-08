@@ -69,33 +69,46 @@ SOURCES = [
 ]
 
 
-# Wire stories mention every club in the league, so they need routing. A story
-# is assigned to a team only if it names that club or one of its people; a wire
-# story naming nobody in the division is discarded.
+# Wire stories mention every club in the league, so they need routing.
+#
+# CLUB terms only -- cities, nicknames, venues. These never change.
+#
+# PLAYER names are deliberately NOT hardcoded here. A hand-typed roster goes
+# stale exactly when a player moves, and on 2026-09-08 that put "Cowboys'
+# captains: Kenny Clark, Quinnen Williams, Dak Prescott..." on the Packers
+# board, because Clark was still listed under Green Bay after moving to
+# Dallas. People come from roster.py, which learns them from the feeds.
+#
+# Coaches and GMs stay: they change rarely, and they anchor a story to a club
+# more reliably than any player.
 TEAM_ROUTING = {
     "Chicago Bears": [
         "bears", "chicago bears", "halas hall", "soldier field",
-        "caleb williams", "ryan poles", "ben johnson", "kyler gordon",
-        "braxton jones", "gervon dexter", "montez sweat", "rome odunze",
+        "ryan poles", "ben johnson",
     ],
     "Detroit Lions": [
         "lions", "detroit lions", "ford field", "allen park",
-        "dan campbell", "brad holmes", "jared goff", "aidan hutchinson",
-        "amon-ra st. brown", "jahmyr gibbs", "penei sewell", "brian branch",
-        "kerby joseph", "jameson williams",
+        "dan campbell", "brad holmes",
     ],
     "Green Bay Packers": [
         "packers", "green bay", "lambeau", "lambeau field",
-        "matt lafleur", "brian gutekunst", "jordan love", "josh jacobs",
-        "micah parsons", "christian watson", "kenny clark", "tucker kraft",
+        "matt lafleur", "brian gutekunst",
     ],
     "Minnesota Vikings": [
         "vikings", "minnesota vikings", "u.s. bank stadium", "us bank stadium",
         "kevin o'connell", "kevin oconnell", "kwesi adofo-mensah",
-        "j.j. mccarthy", "jj mccarthy", "justin jefferson", "jordan addison",
-        "brian flores", "kyler murray",
     ],
 }
+
+# Every other NFL club. If one of these owns the headline, the story belongs to
+# them -- however many NFC North players happen to be named in it.
+OTHER_CLUBS = [
+    "cardinals", "falcons", "ravens", "bills", "panthers", "bengals",
+    "browns", "cowboys", "broncos", "texans", "colts", "jaguars", "chiefs",
+    "raiders", "chargers", "rams", "dolphins", "patriots", "saints",
+    "giants", "jets", "eagles", "steelers", "49ers", "niners", "seahawks",
+    "buccaneers", "titans", "commanders",
+]
 
 
 def active_sources(include_unverified=True):
@@ -111,6 +124,7 @@ def active_sources(include_unverified=True):
     return out
 
 
+import re
 import re as _re
 
 _ROUTE_CACHE = {}
@@ -130,26 +144,52 @@ def _club_pattern(keys):
     return _ROUTE_CACHE[key]
 
 
-def route_to_teams(title, summary=""):
+def route_to_teams(title, summary="", roster_names=None):
     """Which NFC North clubs is this story actually ABOUT?
 
-    Two rules, both learned from live misroutes:
+    Three rules, every one of them learned from a live misroute:
 
-    1. Word boundaries, not substrings ('millions' is not the Lions).
+    1. Word boundaries, not substrings. 'millions' is not the Lions.
     2. A single passing mention in the body is not enough. A Rams schedule
-       piece that named the Packers once landed on the Packers board. The club
-       must appear in the HEADLINE, or at least twice in the body, before the
-       story is treated as being about that club.
+       piece naming the Packers once landed on the Packers board. The club
+       must appear in the HEADLINE, or at least twice in the body.
+    3. If ANOTHER NFL club owns the headline, the story is theirs. "Cowboys'
+       captains: Kenny Clark, Quinnen Williams, Dak Prescott" reached Green
+       Bay purely because Clark used to play there. When a rival club is named
+       in the headline, an NFC North CLUB term must also be in the headline --
+       a player name alone won't do it, because players move.
+
+    roster_names: optional {team: {lowercased names}} from roster.py. Used
+    only to strengthen a match, never as the sole basis when a rival club owns
+    the headline.
     """
     title_l = (title or "").lower()
     body_l = (summary or "").lower()
+
+    rival_owns_headline = bool(_club_pattern(OTHER_CLUBS).search(title_l))
+
     hits = []
     for team, keys in TEAM_ROUTING.items():
         pat = _club_pattern(keys)
-        if pat.search(title_l):
+        club_in_title = bool(pat.search(title_l))
+
+        if rival_owns_headline:
+            # Only a genuine club reference rescues it.
+            if club_in_title:
+                hits.append(team)
+            continue
+
+        if club_in_title or len(pat.findall(body_l)) >= 2:
             hits.append(team)
-        elif len(pat.findall(body_l)) >= 2:
-            hits.append(team)
+            continue
+
+        # No club term, but a current player of theirs is named in the
+        # headline. Roster is harvested from the feeds, so it stays current.
+        if roster_names:
+            names = roster_names.get(team) or set()
+            if names and any(re.search(r"\b" + re.escape(n) + r"\b", title_l)
+                             for n in names if len(n) > 6):
+                hits.append(team)
     return hits
 
 

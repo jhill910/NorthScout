@@ -142,16 +142,44 @@ def route_fetch_track(base_url):
 
 
 def route_library(vid):
+    """youtube-transcript-api, which tracks YouTube's caption protocol.
+
+    The API changed between major versions: older releases exposed a static
+    get_transcript(), newer ones want an instance and call it fetch(). The
+    first version of this probe assumed the old shape and raised
+    AttributeError, which looked like a block but was my bug. Try both.
+    """
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
     except ImportError:
-        return None, "youtube-transcript-api not installed (pip install youtube-transcript-api)"
+        return None, "not installed (pip install youtube-transcript-api)"
+
+    attempts = []
+
+    # Newer API: instance .fetch()
+    try:
+        api = YouTubeTranscriptApi()
+        data = api.fetch(vid)
+        chunks = getattr(data, "snippets", data)
+        words = " ".join(
+            (c.text if hasattr(c, "text") else c.get("text", "")) for c in chunks)
+        if words.strip():
+            return True, f"{len(words)} chars (instance .fetch)", words
+        attempts.append("fetch:empty")
+    except Exception as e:
+        attempts.append(f"fetch:{type(e).__name__}: {str(e)[:70]}")
+
+    # Older API: static get_transcript()
     try:
         tr = YouTubeTranscriptApi.get_transcript(vid)
         words = " ".join(x.get("text", "") for x in tr)
-        return True, f"{len(words)} chars via library"
+        if words.strip():
+            return True, f"{len(words)} chars (static get_transcript)", words
+        attempts.append("get_transcript:empty")
     except Exception as e:
-        return False, f"{type(e).__name__}"
+        attempts.append(f"get_transcript:{type(e).__name__}: {str(e)[:70]}")
+
+    return False, " | ".join(attempts), ""
 
 
 def main():
@@ -179,9 +207,16 @@ def main():
                 if not sample_text:
                     sample_text = text
 
-        r4, detail4 = route_library(vid)
-        mark = "skipped" if r4 is None else ("WORKS  " if r4 else "blocked")
-        print(f"     {mark}  4. youtube-transcript-api — {detail4}")
+        r4 = route_library(vid)
+        if r4[0] is None:
+            print(f"     skipped  4. youtube-transcript-api — {r4[1]}")
+        else:
+            ok4, detail4 = r4[0], r4[1]
+            print(f"     {'WORKS  ' if ok4 else 'blocked'}  4. youtube-transcript-api — {detail4}")
+            if ok4:
+                any_worked = True
+                if not sample_text:
+                    sample_text = r4[2]
 
     print("\n" + "=" * 72)
     if any_worked:

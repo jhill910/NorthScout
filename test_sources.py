@@ -71,6 +71,41 @@ def test_open_threads_demoted():
     print(f"  ok  open thread demoted ({thread:.1f}) below real news ({news:.1f})")
 
 
+def test_rival_club_owns_the_headline_2026_09_08():
+    """A Cowboys story reached the Packers board on the first live week.
+
+    'Cowboys' captains: Kenny Clark, Quinnen Williams, Dak Prescott' matched
+    Green Bay because Kenny Clark was hardcoded to the Packers -- he had since
+    moved to Dallas. Hand-typed rosters go stale exactly when players move,
+    which is exactly when they are newsworthy.
+    """
+    assert sources.route_to_teams(
+        "Cowboys' captains: Kenny Clark, Quinnen Williams, Dak Prescott, Brandon Aubrey",
+        "Dallas named six captains for the 2026 season.") == []
+
+    # A rival in the headline must not suppress a genuine NFC North story.
+    assert sources.route_to_teams(
+        "Cowboys trade for Packers DL Kenny Clark",
+        "Green Bay sends Clark to Dallas. The Packers get an edge rusher."
+    ) == ["Green Bay Packers"]
+
+    # And ordinary division news is untouched.
+    assert sources.route_to_teams(
+        "Bears restructure Joe Thuney, Dayo Odeyingbo, T.J. Edwards contracts",
+        "Chicago creates cap space.") == ["Chicago Bears"]
+    print("  ok  rival club owns the headline (Kenny Clark / Cowboys)")
+
+
+def test_no_player_names_hardcoded():
+    """Routing must not depend on a hand-maintained roster."""
+    stale_risk = ["kenny clark", "caleb williams", "jordan love", "justin jefferson",
+                  "jared goff", "micah parsons", "josh jacobs"]
+    for team, keys in sources.TEAM_ROUTING.items():
+        for k in keys:
+            assert k not in stale_risk, f"{k!r} hardcoded under {team}"
+    print("  ok  no player names hardcoded in TEAM_ROUTING")
+
+
 def test_presser_classification():
     cases=[("Ryan Poles Press Conference | Chicago Bears","Chicago Bears","presser","Ryan Poles"),
            ("Dan Campbell postgame vs. Colts","Detroit Lions","presser","Dan Campbell"),

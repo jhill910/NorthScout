@@ -1,88 +1,102 @@
-"""Tests for the Bluesky module.
+"""Tests for the Bluesky RSS integration.
 
-The live API is unreachable from where this was written, so these tests pin
-the PARSING contract against representative payloads. If check_bluesky.py shows
-the real shape differs, fix parse_post() and these tests will catch fallout.
+The API search endpoint returns 403 from two independent networks, so this
+module follows named accounts via profile RSS instead. These tests pin the
+RSS parsing contract.
 """
 from datetime import datetime, timedelta
+from email.utils import format_datetime
 import bluesky
 
-def _post(text="Bears place Kyler Gordon on PUP", handle="brad.bsky.social",
-          rkey="3kxyzabc", when=None, display="Brad B"):
-    when = when or (datetime.utcnow() - timedelta(hours=3))
-    return {"uri": f"at://did:plc:abc123/app.bsky.feed.post/{rkey}",
-            "cid": "bafy...",
-            "author": {"did": "did:plc:abc123", "handle": handle, "displayName": display},
-            "record": {"text": text, "createdAt": when.strftime("%Y-%m-%dT%H:%M:%S.000Z")}}
 
-def test_parses_search_post():
-    p = bluesky.parse_post(_post())
+def _entry(text="Bears place Kyler Gordon on PUP",
+           link="https://bsky.app/profile/x.bsky.social/post/3kabc",
+           when=None, summary=None):
+    e = {"title": text, "link": link}
+    if summary is not None:
+        e["summary"] = summary
+    e["published"] = format_datetime(when or (datetime.now() - timedelta(hours=3)))
+    return e
+
+
+def test_parses_rss_entry():
+    p = bluesky.parse_entry(_entry(), "brad.bsky.social", "Brad B")
     assert p and p["text"].startswith("Bears place")
-    assert p["link"] == "https://bsky.app/profile/brad.bsky.social/post/3kxyzabc"
-    assert p["source"] == "🦋 @brad.bsky.social"
-    print(f"  ok  search post parsed -> {p['link']}")
+    assert p["link"].endswith("3kabc")
+    assert p["source"] == "🦋 Brad B"
+    print("  ok  RSS entry parsed")
 
-def test_parses_author_feed_wrapper():
-    """getAuthorFeed nests the post one level deeper than searchPosts."""
-    p = bluesky.parse_post({"post": _post(), "reason": None})
-    assert p and p["link"].endswith("3kxyzabc")
-    print("  ok  author-feed wrapper unwrapped")
+
+def test_falls_back_to_summary():
+    """Some generators use a placeholder title and put the text elsewhere."""
+    e = _entry(text="Post by @brad.bsky.social", summary="Actual post body here")
+    p = bluesky.parse_entry(e, "brad.bsky.social", "Brad B")
+    assert p and p["text"] == "Actual post body here", p
+    print("  ok  placeholder title falls back to summary")
+
+
+def test_strips_html():
+    e = _entry(text="<p>Gordon to <b>PUP</b></p>")
+    p = bluesky.parse_entry(e, "h", "L")
+    assert p["text"] == "Gordon to PUP", p["text"]
+    print("  ok  HTML stripped from post text")
+
 
 def test_drops_stale_posts():
-    old = _post(when=datetime.utcnow() - timedelta(days=30))
-    assert bluesky.parse_post(old) is None
+    e = _entry(when=datetime.now() - timedelta(days=30))
+    assert bluesky.parse_entry(e, "h", "L") is None
     print("  ok  posts outside the 8-day window dropped")
 
-def test_survives_malformed_payloads():
-    """The response shape is unverified, so nothing may raise."""
-    for bad in [None, {}, [], "string", 42,
-                {"uri": "at://x/y/z"},                       # no author/record
-                {"author": {}, "record": {}},                 # empty
-                {"uri": "at://a/b/c", "author": {"handle": "h"}, "record": {"text": ""}},
-                {"uri": "", "author": {"handle": ""}, "record": {"text": "hi"}},
-                {"uri": "at://a/b/k", "author": {"handle": "h"},
-                 "record": {"text": "hi", "createdAt": "not-a-date"}}]:
-        try:
-            bluesky.parse_post(bad)
-        except Exception as e:
-            raise AssertionError(f"parse_post raised on {bad!r}: {e}")
-    # the last one has an unparseable date but valid text/link -> should survive
-    ok = bluesky.parse_post({"uri": "at://a/b/k", "author": {"handle": "h"},
-                             "record": {"text": "hi", "createdAt": "not-a-date"}})
-    assert ok is not None
-    print("  ok  malformed payloads degrade instead of raising")
 
-def test_relevance_filter_applied():
+def test_survives_malformed_entries():
+    """RSS shape is not contractual — nothing may raise."""
+    for bad in [{}, {"title": ""}, {"link": "x"}, {"title": "hi"},
+                {"title": "hi", "link": ""},
+                {"title": "hi", "link": "u", "published": "not-a-date"},
+                {"title": "<p></p>", "link": "u"}]:
+        try:
+            bluesky.parse_entry(bad, "h", "L")
+        except Exception as e:
+            raise AssertionError(f"parse_entry raised on {bad!r}: {e}")
+    ok = bluesky.parse_entry({"title": "hi", "link": "u", "published": "not-a-date"}, "h", "L")
+    assert ok is not None
+    print("  ok  malformed entries degrade instead of raising")
+
+
+def test_relevance_only_applies_to_division_wire():
+    """Team accounts are inherently relevant; the wire must mention the division."""
     calls = []
     def rel(t):
-        calls.append(t); return "Packers" in t
-    # unique links per query, otherwise dedupe (correctly) collapses them
-    bluesky.search = lambda q, limit=None: [
-        {"source":"s","text":"Packers sign a tackle","link":f"https://bsky.app/a/post/{abs(hash(q))}a","fetched_at":"x"},
-        {"source":"s","text":"Chiefs sign a kicker","link":f"https://bsky.app/a/post/{abs(hash(q))}b","fetched_at":"x"}]
-    bluesky.author_feed = lambda h, limit=None: []
+        calls.append(t)
+        return "Packers" in t
+    bluesky.profile_feed = lambda h, l, limit=None: [
+        {"source": "s", "text": "Chiefs sign a kicker",
+         "link": f"https://bsky.app/{h}/1", "fetched_at": "x"}]
     out = bluesky.collect(relevance_fn=rel)
-    assert len(out) == len(bluesky.SEARCH_QUERIES), len(out)   # one kept per query
-    assert all("Packers" in o["text"] for o in out)
-    assert calls, "relevance_fn never called"
-    print(f"  ok  relevance filter applied, AFC post excluded ({len(out)} kept)")
+    teams = {a[2] for a in bluesky.active_accounts()}
+    # Every team account keeps its post; the division wire's is filtered out.
+    assert all("Chiefs" in o["text"] for o in out)
+    assert len(out) == sum(1 for a in bluesky.active_accounts() if a[2] != "division")
+    print(f"  ok  relevance filter applied to the wire only ({len(out)} kept)")
 
-def test_dedupes_across_queries():
-    dup = {"source":"s","text":"Packers news","link":"https://bsky.app/a/post/same","fetched_at":"x"}
-    bluesky.search = lambda q, limit=None: [dict(dup)]
-    bluesky.author_feed = lambda h, limit=None: []
-    out = bluesky.collect()
-    assert len(out) == 1, f"expected 1 after dedupe, got {len(out)}"
-    print("  ok  same post across multiple queries deduped by link")
 
-def test_no_credentials_anywhere():
+def test_no_credentials_or_browser_automation():
     src = open("bluesky.py", encoding="utf-8").read().lower()
     for bad in ["password", "auth_token", "ct0", "storage_state", "playwright", "cookie"]:
         assert bad not in src, f"bluesky.py references {bad}"
-    print("  ok  no credentials, cookies or browser automation in the module")
+    print("  ok  no credentials, cookies or browser automation")
+
+
+def test_accounts_well_formed():
+    for handle, label, team, status in bluesky.ACCOUNTS:
+        assert status in ("verified", "unverified", "disabled"), (handle, status)
+        assert "/" not in handle and " " not in handle, handle
+    print(f"  ok  {len(bluesky.ACCOUNTS)} accounts well-formed")
+
 
 if __name__ == "__main__":
-    print("bluesky tests")
+    print("bluesky RSS tests")
     for fn in list(globals().values()):
-        if callable(fn) and getattr(fn,"__name__","").startswith("test_"): fn()
+        if callable(fn) and getattr(fn, "__name__", "").startswith("test_"):
+            fn()
     print("\nALL TESTS PASSED")
