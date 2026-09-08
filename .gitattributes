@@ -1,0 +1,24 @@
+# Normalise line endings.
+#
+# Without this, files written on Linux (the GitHub Action, and any edits made
+# through tooling) use LF while a Windows checkout uses CRLF. Git then reports
+# every line of every file as modified, which blocks `git pull --rebase` with
+# "you have unstaged changes" even though nothing was actually edited.
+#
+# `text=auto eol=lf` stores everything as LF in the repository and checks it
+# out as LF, so Windows and Linux agree and the phantom diffs stop.
+
+* text=auto eol=lf
+
+# Generated data — always LF, and treat as regular text so diffs stay readable.
+data/*.json text eol=lf
+
+# Windows-only scripts genuinely need CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary: never touch.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.db binary
