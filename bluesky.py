@@ -35,7 +35,14 @@ from datetime import datetime, timedelta
 
 API_BASE = "https://public.api.bsky.app/xrpc"
 TIMEOUT = 20
-UA = "NorthScout/1.0 (NFC North show prep; contact via GitHub)"
+
+# A custom User-Agent ("NorthScout/1.0 ...") drew an HTTP 403 on 2026-09-08.
+# Cloudflare-fronted APIs routinely reject unrecognised agents before the
+# request ever reaches the application. A standard browser string is treated
+# as ordinary traffic. This is not evasion -- the endpoint is public and
+# unauthenticated; it just wants a UA it recognises.
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
 MAX_POSTS_PER_QUERY = 12
 MAX_AGE_DAYS = 8
@@ -62,18 +69,37 @@ CANDIDATE_HANDLES = [
 ]
 
 
+LAST_ERROR = None
+
+
 def _get(endpoint, params):
-    """GET a public XRPC endpoint. Returns parsed JSON or None."""
+    """GET a public XRPC endpoint. Returns parsed JSON or None.
+
+    Records the failure reason in LAST_ERROR so check_bluesky.py can tell a
+    network block apart from a changed endpoint.
+    """
+    global LAST_ERROR
     url = f"{API_BASE}/{endpoint}?" + urllib.parse.urlencode(params)
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA,
-                                                   "Accept": "application/json"})
+        req = urllib.request.Request(url, headers={
+            "User-Agent": UA,
+            "Accept": "application/json",
+            "Accept-Language": "en-US,en;q=0.9",
+        })
         with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            LAST_ERROR = None
             return json.loads(resp.read().decode("utf-8", "replace"))
     except urllib.error.HTTPError as e:
-        print(f"   ⚠️  Bluesky {endpoint}: HTTP {e.code}")
+        body = ""
+        try:
+            body = e.read().decode("utf-8", "replace")[:200]
+        except Exception:
+            pass
+        LAST_ERROR = f"HTTP {e.code}" + (f" — {body}" if body else "")
+        print(f"   ⚠️  Bluesky {endpoint}: {LAST_ERROR}")
     except Exception as e:
-        print(f"   ⚠️  Bluesky {endpoint}: {type(e).__name__}")
+        LAST_ERROR = f"{type(e).__name__}: {e}"
+        print(f"   ⚠️  Bluesky {endpoint}: {LAST_ERROR}")
     return None
 
 

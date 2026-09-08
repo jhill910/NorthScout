@@ -18,12 +18,74 @@ import sys
 import bluesky
 
 
+def diagnose_failure():
+    """Work out WHY the API refused, so the fix is obvious.
+
+    A 403 has three common causes and they need different responses:
+      - the User-Agent was rejected (fix in code)
+      - a corporate proxy is blocking the domain (nothing to fix here)
+      - the endpoint itself moved or now needs auth (fix in code)
+    """
+    import urllib.error
+    import urllib.request
+
+    print("\n   Diagnosing...\n")
+    agents = [
+        ("browser UA (what the code now sends)", bluesky.UA),
+        ("no User-Agent header at all", None),
+        ("python-urllib default", "Python-urllib/3.11"),
+    ]
+    url = (bluesky.API_BASE +
+           "/app.bsky.feed.searchPosts?q=test&limit=1")
+    results = {}
+    for label, ua in agents:
+        headers = {"Accept": "application/json"}
+        if ua:
+            headers["User-Agent"] = ua
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=15) as r:
+                results[label] = f"OK ({r.status})"
+        except urllib.error.HTTPError as e:
+            results[label] = f"HTTP {e.code}"
+        except Exception as e:
+            results[label] = type(e).__name__
+        print(f"      {results[label]:<22} {label}")
+
+    print("\n   Is the domain reachable at all?")
+    for host in ("https://bsky.app", "https://public.api.bsky.app"):
+        try:
+            req = urllib.request.Request(host, headers={"User-Agent": bluesky.UA})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                print(f"      OK ({r.status})            {host}")
+        except urllib.error.HTTPError as e:
+            print(f"      HTTP {e.code}              {host}")
+        except Exception as e:
+            print(f"      {type(e).__name__:<22} {host}")
+
+    ok = [k for k, v in results.items() if v.startswith("OK")]
+    print()
+    if ok:
+        print(f"   VERDICT: the API works with: {ok[0]}")
+        print("   -> update bluesky.UA to that value.")
+    elif all(v.startswith("HTTP 403") for v in results.values()):
+        print("   VERDICT: every request returns 403 regardless of User-Agent.")
+        print("   That points to a network-level block rather than the code --")
+        print("   corporate proxies commonly categorise Bluesky as social media.")
+        print("   Try the same command off the work network (phone hotspot).")
+        print("   If it works there, the scheduled GitHub Action will be fine")
+        print("   too, since it runs on GitHub's servers, not yours.")
+    else:
+        print("   VERDICT: mixed results — see the table above.")
+
+
 def check_api():
     print("1. API reachability")
     data = bluesky._get("app.bsky.feed.searchPosts",
                         {"q": '"Green Bay Packers"', "limit": 3, "sort": "latest"})
     if data is None:
-        print("   FAIL — no response. Check network, or the endpoint has moved.")
+        print(f"   FAIL — {bluesky.LAST_ERROR or 'no response'}")
+        diagnose_failure()
         return None
     print(f"   OK — response received, top-level keys: {list(data.keys())}")
     return data
