@@ -1,12 +1,12 @@
 {
   "Chicago Bears": {
     "AP Second-Team": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Aaron Donald": {
-      "count": 27,
+      "count": 28,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -26,7 +26,7 @@
       "last_seen": "2026-09-12"
     },
     "Adam Amin": {
-      "count": 50,
+      "count": 52,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -41,7 +41,7 @@
       "last_seen": "2026-09-09"
     },
     "Alex Zietlow": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -50,18 +50,23 @@
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-11"
     },
+    "Amon-Ra St. Brown": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Andre Swift": {
-      "count": 16,
+      "count": 18,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
     "Antonio Hicks": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Antwaan Randle El": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -71,7 +76,7 @@
       "last_seen": "2026-09-12"
     },
     "Austin Booker": {
-      "count": 44,
+      "count": 45,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -81,32 +86,32 @@
       "last_seen": "2026-09-11"
     },
     "Beanie Bishop Jr": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Beanie Bishop Jr.": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Bearigami The": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "Bears-Panthers Predictions": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "Ben Johnson": {
-      "count": 433,
+      "count": 454,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Ben Johnson's": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -136,7 +141,7 @@
       "last_seen": "2026-09-04"
     },
     "Bobby Rome II": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -146,7 +151,7 @@
       "last_seen": "2026-09-06"
     },
     "Brandon Hill": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -156,8 +161,18 @@
       "last_seen": "2026-09-10"
     },
     "Braxton Jones": {
-      "count": 16,
+      "count": 17,
       "first_seen": "2026-09-08",
+      "last_seen": "2026-09-12"
+    },
+    "Breakfast. Do": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
+    "Brian Branch": {
+      "count": 1,
+      "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "Brian Sandalow": {
@@ -166,12 +181,12 @@
       "last_seen": "2026-09-09"
     },
     "Brittain Brown": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Brock Bowers": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -181,17 +196,17 @@
       "last_seen": "2026-09-11"
     },
     "Bryce Young": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Cairo Santos": {
-      "count": 59,
+      "count": 61,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Caleb Williams": {
-      "count": 660,
+      "count": 685,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -201,22 +216,22 @@
       "last_seen": "2026-09-09"
     },
     "Caleb Williams Johnson": {
-      "count": 27,
+      "count": 29,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Caleb Wilson": {
-      "count": 17,
+      "count": 18,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
     "Cameron Jordan": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Can Josh Allen": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -241,12 +256,12 @@
       "last_seen": "2026-09-10"
     },
     "Catholic Charities": {
-      "count": 29,
+      "count": 30,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Celebrating Women": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -261,7 +276,7 @@
       "last_seen": "2026-09-12"
     },
     "Chuba Hubbard On": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -281,32 +296,32 @@
       "last_seen": "2026-09-08"
     },
     "Clark Phillips III": {
-      "count": 72,
+      "count": 75,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Coby Bryant": {
-      "count": 140,
+      "count": 144,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Coby Bryant's": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Cole Kmet": {
-      "count": 53,
+      "count": 56,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Coleman Bennett": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Colston Loveland": {
-      "count": 114,
+      "count": 118,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -316,27 +331,27 @@
       "last_seen": "2026-09-11"
     },
     "Community All-Pros": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "D'Andre Swift": {
-      "count": 54,
+      "count": 59,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "D'Wayne Bates": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "DJ Moore": {
-      "count": 23,
+      "count": 24,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Dallis Flowers": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -346,22 +361,22 @@
       "last_seen": "2026-09-10"
     },
     "Dan Hampton": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Daniel Hardy": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Darnell Wright": {
-      "count": 92,
+      "count": 95,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Darnell Wright. El": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -371,7 +386,7 @@
       "last_seen": "2026-09-10"
     },
     "Deantre Prince": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -386,17 +401,17 @@
       "last_seen": "2026-09-09"
     },
     "Dennis Allen": {
-      "count": 101,
+      "count": 105,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Devin Bush": {
-      "count": 29,
+      "count": 30,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Dillon Thieneman": {
-      "count": 68,
+      "count": 69,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -426,7 +441,7 @@
       "last_seen": "2026-09-08"
     },
     "Elijah Hicks": {
-      "count": 43,
+      "count": 44,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -441,9 +456,9 @@
       "last_seen": "2026-09-11"
     },
     "Fast Facts": {
-      "count": 14,
+      "count": 15,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-08"
+      "last_seen": "2026-09-12"
     },
     "Five Questions With...": {
       "count": 2,
@@ -456,42 +471,42 @@
       "last_seen": "2026-09-06"
     },
     "Garrett Bradbury": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Gary. Both": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "George H. McCaskey": {
-      "count": 70,
-      "first_seen": "2026-09-03",
-      "last_seen": "2026-09-12"
-    },
-    "Gervarrius Owens": {
-      "count": 24,
-      "first_seen": "2026-09-03",
-      "last_seen": "2026-09-12"
-    },
-    "Gervon Dexter": {
       "count": 72,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
+    "Gervarrius Owens": {
+      "count": 25,
+      "first_seen": "2026-09-03",
+      "last_seen": "2026-09-12"
+    },
+    "Gervon Dexter": {
+      "count": 73,
+      "first_seen": "2026-09-03",
+      "last_seen": "2026-09-12"
+    },
     "Gervon Dexter Sr": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Grady Jarrett": {
-      "count": 16,
+      "count": 17,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Grant The": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -506,42 +521,42 @@
       "last_seen": "2026-09-06"
     },
     "Halas Intrigue": {
-      "count": 59,
+      "count": 61,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Halas Intrigue Bears-Titans": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Hallmark Media": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Hayden Large": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Highland Park": {
-      "count": 9,
+      "count": 10,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
     "Holiday Touchdown": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Hot Ones": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "How Colston Loveland": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -551,7 +566,7 @@
       "last_seen": "2026-09-10"
     },
     "IR The": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -566,7 +581,7 @@
       "last_seen": "2026-09-06"
     },
     "Indiana During": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -576,37 +591,37 @@
       "last_seen": "2026-09-05"
     },
     "Is Kyler Gordon": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jack Sanborn": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jack Sanborn Bryant": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jacob Infante": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-05",
-      "last_seen": "2026-09-06"
+      "last_seen": "2026-09-12"
     },
     "Jacob White": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-05",
-      "last_seen": "2026-09-06"
+      "last_seen": "2026-09-12"
     },
     "Jahdae Walker": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "James Lynch": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -616,7 +631,7 @@
       "last_seen": "2026-09-08"
     },
     "Jasmine Baker": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -626,17 +641,17 @@
       "last_seen": "2026-09-10"
     },
     "Jayden Loving": {
-      "count": 10,
+      "count": 11,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
     "Jayden Reed": {
-      "count": 19,
+      "count": 20,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
     "Jaylon Johnson's": {
-      "count": 7,
+      "count": 8,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -646,7 +661,7 @@
       "last_seen": "2026-09-12"
     },
     "Joe Thuney": {
-      "count": 28,
+      "count": 29,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -661,12 +676,12 @@
       "last_seen": "2026-09-11"
     },
     "Jonathan Garvin": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jonathon Brooks": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -686,12 +701,12 @@
       "last_seen": "2026-09-12"
     },
     "Josh Allen": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Josh Blackwell": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -701,34 +716,34 @@
       "last_seen": "2026-09-04"
     },
     "Justin Fields": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "K.C. Eziomume": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Kaden Davis": {
-      "count": 48,
+      "count": 52,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Kaelie Tomalak": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Kalif Raymond": {
-      "count": 43,
+      "count": 45,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Keidron Smith": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-09",
-      "last_seen": "2026-09-10"
+      "last_seen": "2026-09-12"
     },
     "Kentavius Street": {
       "count": 1,
@@ -736,12 +751,12 @@
       "last_seen": "2026-09-03"
     },
     "Kevin Warren": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Keyshaun Elliott": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -751,7 +766,7 @@
       "last_seen": "2026-09-12"
     },
     "Kyle Monangai": {
-      "count": 17,
+      "count": 19,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
@@ -761,22 +776,22 @@
       "last_seen": "2026-09-11"
     },
     "Kyler Gordon": {
-      "count": 87,
+      "count": 90,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Kyron Hudson": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Lake Forest": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Larry Mayer": {
-      "count": 24,
+      "count": 26,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -786,12 +801,12 @@
       "last_seen": "2026-09-09"
     },
     "Lexie Hoobler": {
-      "count": 9,
+      "count": 10,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
     "Lil Wayne": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -806,22 +821,22 @@
       "last_seen": "2026-09-07"
     },
     "Logan Jones": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Luke Elkin": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Luther Burden": {
-      "count": 61,
+      "count": 63,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Luther Burden III": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -831,22 +846,22 @@
       "last_seen": "2026-09-06"
     },
     "Madison Square Garden": {
-      "count": 18,
+      "count": 19,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
     "Making Monsters": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
     "Malik Muhammad": {
-      "count": 70,
+      "count": 72,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Malik Nabers": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -856,17 +871,17 @@
       "last_seen": "2026-09-03"
     },
     "Marcus Davenport": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Marlen Sewell": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Matas Buzelis": {
-      "count": 17,
+      "count": 18,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
@@ -876,12 +891,12 @@
       "last_seen": "2026-09-10"
     },
     "Matt Suhey": {
-      "count": 12,
+      "count": 13,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
     "Matt Suhey Former": {
-      "count": 7,
+      "count": 8,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -891,7 +906,7 @@
       "last_seen": "2026-09-08"
     },
     "Maurice Alexander": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -911,17 +926,17 @@
       "last_seen": "2026-09-04"
     },
     "Mike Singletary": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Mitch Trubisky": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Montez Sweat": {
-      "count": 78,
+      "count": 79,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -936,12 +951,12 @@
       "last_seen": "2026-09-08"
     },
     "Nephi Sewell": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Neville Gallimore": {
-      "count": 148,
+      "count": 154,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -951,12 +966,12 @@
       "last_seen": "2026-09-09"
     },
     "Nikola Kalinic": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Noah Sewell": {
-      "count": 29,
+      "count": 30,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -966,7 +981,7 @@
       "last_seen": "2026-09-11"
     },
     "Northwest Indiana": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -981,7 +996,7 @@
       "last_seen": "2026-09-12"
     },
     "Open Applications": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1001,12 +1016,12 @@
       "last_seen": "2026-09-11"
     },
     "Ozzy Trapilo": {
-      "count": 51,
+      "count": 53,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Ozzy Trapilo The": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1020,8 +1035,13 @@
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-09"
     },
+    "Penei Sewell": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Pete Crow-Armstrong": {
-      "count": 36,
+      "count": 38,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
@@ -1036,7 +1056,7 @@
       "last_seen": "2026-09-11"
     },
     "Play The": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1046,12 +1066,12 @@
       "last_seen": "2026-09-04"
     },
     "Power Rankings": {
-      "count": 12,
+      "count": 13,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Press Taylor": {
-      "count": 28,
+      "count": 30,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1061,12 +1081,12 @@
       "last_seen": "2026-09-12"
     },
     "Quarterback Tyson Bagent": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Quarterbacks Caleb Williams": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1076,27 +1096,27 @@
       "last_seen": "2026-09-10"
     },
     "RV Rental Factory": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Ray-Ray McCloud": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Ray-Ray McCloud III": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Receiver Rome Odunze": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Receiver Zavion Thomas": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1111,7 +1131,7 @@
       "last_seen": "2026-09-09"
     },
     "Richard Hightower": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -1126,7 +1146,7 @@
       "last_seen": "2026-09-11"
     },
     "Rome Odunze": {
-      "count": 180,
+      "count": 191,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1136,7 +1156,7 @@
       "last_seen": "2026-09-11"
     },
     "Ruben Hyppolite II": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1156,7 +1176,7 @@
       "last_seen": "2026-09-11"
     },
     "Ryan Poles": {
-      "count": 158,
+      "count": 162,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1166,7 +1186,7 @@
       "last_seen": "2026-09-09"
     },
     "Saint Charles North": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1176,12 +1196,17 @@
       "last_seen": "2026-09-09"
     },
     "Salvon Ahmed": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
+    "Sam LaPorta": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Sam Roush": {
-      "count": 175,
+      "count": 183,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1196,12 +1221,12 @@
       "last_seen": "2026-09-04"
     },
     "Shemar Turner": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Skydance Sports": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1216,7 +1241,7 @@
       "last_seen": "2026-09-08"
     },
     "South African": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1226,22 +1251,22 @@
       "last_seen": "2026-09-03"
     },
     "Stacey Dales": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Staley Da Bear": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "State University": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Stevenson High School": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1251,22 +1276,22 @@
       "last_seen": "2026-09-08"
     },
     "T.J. Edwards": {
-      "count": 81,
+      "count": 83,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Tailgate Village": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Taylor Doll": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
     "Taylor Swift": {
-      "count": 18,
+      "count": 19,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
@@ -1296,37 +1321,37 @@
       "last_seen": "2026-09-04"
     },
     "The Sun-Times": {
-      "count": 22,
+      "count": 23,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "The Sun-Times'": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Tight End": {
-      "count": 18,
+      "count": 19,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
     "Travis Kelce": {
-      "count": 18,
+      "count": 19,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
     "Trey Hendrickson's": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Tua Tagovailoa": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Tyson Bagent": {
-      "count": 98,
+      "count": 105,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1361,12 +1386,12 @@
       "last_seen": "2026-09-10"
     },
     "Wayne Bates": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Wesley French": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1376,7 +1401,7 @@
       "last_seen": "2026-09-10"
     },
     "West Side": {
-      "count": 19,
+      "count": 20,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
@@ -1411,7 +1436,7 @@
       "last_seen": "2026-09-12"
     },
     "William Wright": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1436,17 +1461,17 @@
       "last_seen": "2026-09-09"
     },
     "Writer Gabby Hajduk": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Xavier Woods": {
-      "count": 69,
+      "count": 71,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Ye The": {
-      "count": 8,
+      "count": 9,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
@@ -1476,7 +1501,7 @@
       "last_seen": "2026-09-11"
     },
     "Zavion Thomas": {
-      "count": 96,
+      "count": 100,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     }
@@ -1488,7 +1513,7 @@
       "last_seen": "2026-09-09"
     },
     "Aidan Hutchinson": {
-      "count": 79,
+      "count": 81,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1498,12 +1523,12 @@
       "last_seen": "2026-09-08"
     },
     "Aidan Hutchinson's": {
-      "count": 7,
+      "count": 8,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "Alim McNeill": {
-      "count": 41,
+      "count": 43,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1522,8 +1547,13 @@
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-09"
     },
+    "Amon-Ra St": {
+      "count": 2,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Amon-Ra St. Brown": {
-      "count": 68,
+      "count": 72,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1533,19 +1563,19 @@
       "last_seen": "2026-09-09"
     },
     "Avonte Maddox": {
-      "count": 7,
+      "count": 9,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Ben Bartch": {
-      "count": 41,
+      "count": 45,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Ben Stille": {
-      "count": 19,
+      "count": 21,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-09"
+      "last_seen": "2026-09-12"
     },
     "Bold Predictions Here": {
       "count": 1,
@@ -1563,12 +1593,12 @@
       "last_seen": "2026-09-10"
     },
     "Brian Branch": {
-      "count": 26,
+      "count": 27,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-10"
+      "last_seen": "2026-09-12"
     },
     "Brooke Kirchhofer": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1593,12 +1623,12 @@
       "last_seen": "2026-09-09"
     },
     "Christian Mahogany": {
-      "count": 22,
+      "count": 26,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
     "Chuck Clark": {
-      "count": 7,
+      "count": 9,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -1608,7 +1638,7 @@
       "last_seen": "2026-09-10"
     },
     "D.J. Wonnum": {
-      "count": 12,
+      "count": 13,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
@@ -1623,7 +1653,7 @@
       "last_seen": "2026-09-08"
     },
     "Dan Campbell": {
-      "count": 28,
+      "count": 30,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
@@ -1633,17 +1663,17 @@
       "last_seen": "2026-09-10"
     },
     "Dave Fipp": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "David Montgomery": {
-      "count": 3,
+      "count": 5,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "Derrick Moore": {
-      "count": 10,
+      "count": 11,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1653,7 +1683,7 @@
       "last_seen": "2026-09-09"
     },
     "Devin White": {
-      "count": 18,
+      "count": 19,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1663,7 +1693,7 @@
       "last_seen": "2026-09-04"
     },
     "Drew Petzing": {
-      "count": 8,
+      "count": 9,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
@@ -1673,12 +1703,12 @@
       "last_seen": "2026-09-11"
     },
     "EDT. Here": {
-      "count": 11,
+      "count": 12,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-06"
+      "last_seen": "2026-09-12"
     },
     "ET. The": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1693,7 +1723,7 @@
       "last_seen": "2026-09-10"
     },
     "Eric O'Neill": {
-      "count": 51,
+      "count": 54,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1703,7 +1733,7 @@
       "last_seen": "2026-09-10"
     },
     "FanDuel Sportsbook": {
-      "count": 13,
+      "count": 14,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
@@ -1713,7 +1743,7 @@
       "last_seen": "2026-09-08"
     },
     "Fipp Catch": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -1733,7 +1763,7 @@
       "last_seen": "2026-09-07"
     },
     "High School Football": {
-      "count": 26,
+      "count": 27,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1758,12 +1788,12 @@
       "last_seen": "2026-09-11"
     },
     "Jack Campbell": {
-      "count": 66,
+      "count": 68,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jack Campbell. It": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1773,12 +1803,12 @@
       "last_seen": "2026-09-08"
     },
     "Jacob Saylors": {
-      "count": 45,
+      "count": 47,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jahmyr Gibbs": {
-      "count": 70,
+      "count": 73,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1788,7 +1818,7 @@
       "last_seen": "2026-09-08"
     },
     "Jake Bates": {
-      "count": 13,
+      "count": 14,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1803,7 +1833,7 @@
       "last_seen": "2026-09-07"
     },
     "Jared Goff": {
-      "count": 121,
+      "count": 124,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1823,17 +1853,17 @@
       "last_seen": "2026-09-08"
     },
     "JuWan Shakespear": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "Juice Scruggs": {
-      "count": 12,
+      "count": 15,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
     "KEY QUESTIONS": {
-      "count": 12,
+      "count": 13,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
@@ -1848,22 +1878,22 @@
       "last_seen": "2026-09-10"
     },
     "Kelvin Sheppard": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Kerby Joseph": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Levi Onwuzurike": {
-      "count": 15,
+      "count": 18,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Levi Onwuzurike The": {
-      "count": 3,
+      "count": 5,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1888,7 +1918,7 @@
       "last_seen": "2026-09-08"
     },
     "Madden Sim": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -1898,7 +1928,7 @@
       "last_seen": "2026-09-10"
     },
     "Mike Garafolo": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1928,7 +1958,7 @@
       "last_seen": "2026-09-11"
     },
     "Penei Sewell": {
-      "count": 59,
+      "count": 61,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -1943,7 +1973,7 @@
       "last_seen": "2026-09-11"
     },
     "QUESTIONS WITH TWENTYMAN": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -1978,12 +2008,12 @@
       "last_seen": "2026-09-09"
     },
     "SB Nation Reacts": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
     "Sam LaPorta": {
-      "count": 24,
+      "count": 26,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2008,32 +2038,32 @@
       "last_seen": "2026-09-04"
     },
     "Sim Your": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "Sione Vaki": {
-      "count": 18,
+      "count": 21,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
     "Sione Vaki's": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Skyler Gill-Howard": {
-      "count": 38,
+      "count": 40,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Tate Ratledge": {
-      "count": 36,
+      "count": 37,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Tate Ratledge's": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2063,17 +2093,17 @@
       "last_seen": "2026-09-09"
     },
     "Tim Twentyman": {
-      "count": 162,
+      "count": 168,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Tom Kennedy": {
-      "count": 56,
+      "count": 59,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Tom Kennedy's": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -2083,7 +2113,7 @@
       "last_seen": "2026-09-08"
     },
     "Tyleik Williams": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2093,7 +2123,7 @@
       "last_seen": "2026-09-08"
     },
     "Tyre West": {
-      "count": 21,
+      "count": 22,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2135,7 +2165,7 @@
       "last_seen": "2026-09-10"
     },
     "Aaron Banks": {
-      "count": 5,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -2155,12 +2185,12 @@
       "last_seen": "2026-09-08"
     },
     "Adam Schefter": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Adam Stenavich": {
-      "count": 33,
+      "count": 35,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2170,12 +2200,17 @@
       "last_seen": "2026-09-09"
     },
     "American Family Insurance": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
+    "Amon-Ra St. Brown": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Anthony Campbell": {
-      "count": 28,
+      "count": 30,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2185,7 +2220,7 @@
       "last_seen": "2026-09-10"
     },
     "Arron Mosby": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2195,17 +2230,17 @@
       "last_seen": "2026-09-12"
     },
     "Atrium Eateries": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "BIG FM Continues": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Ben Sirmans": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2215,7 +2250,7 @@
       "last_seen": "2026-09-09"
     },
     "Bo Melton": {
-      "count": 5,
+      "count": 11,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2225,9 +2260,9 @@
       "last_seen": "2026-09-08"
     },
     "Bonus Codes": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Brandon Aubrey The": {
       "count": 4,
@@ -2249,18 +2284,23 @@
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-11"
     },
+    "Brian Branch": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Brian Flores": {
       "count": 6,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-11"
     },
     "Brian Gutekunst": {
-      "count": 48,
+      "count": 49,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Brock Bowers": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2270,17 +2310,17 @@
       "last_seen": "2026-09-08"
     },
     "Cam Achord": {
-      "count": 57,
+      "count": 60,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Cam Achord's": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Can Josh Allen": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2320,12 +2360,12 @@
       "last_seen": "2026-09-05"
     },
     "Damon Bankston": {
-      "count": 8,
+      "count": 9,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "Dan Currie": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2345,22 +2385,22 @@
       "last_seen": "2026-09-08"
     },
     "Dream U' JUCO": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Ed Policy": {
-      "count": 16,
+      "count": 17,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
     "Edgerrin Cooper": {
-      "count": 32,
+      "count": 33,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Editor Mike Spofford": {
-      "count": 7,
+      "count": 8,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -2380,22 +2420,22 @@
       "last_seen": "2026-09-09"
     },
     "Football Reference": {
-      "count": 27,
+      "count": 28,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Frank Falcone": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Giants-Cowboys Bettors": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Go Pack Go": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2420,47 +2460,47 @@
       "last_seen": "2026-09-10"
     },
     "Harry Hiestand": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Heritage Trail Trolley": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "High School": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "High School Plays": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Indy CC": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Isaiah McDuffie": {
-      "count": 12,
+      "count": 13,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
     "Isaiah McDuffies": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "J. Michael Sturdivant": {
-      "count": 43,
+      "count": 45,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "J. Michael Sturdivant's": {
-      "count": 19,
+      "count": 20,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
@@ -2480,7 +2520,7 @@
       "last_seen": "2026-09-09"
     },
     "Jason Vrable": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2505,17 +2545,17 @@
       "last_seen": "2026-09-11"
     },
     "John Dunn": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "John Williams": {
-      "count": 39,
+      "count": 40,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Johnsonville Tailgate Village": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2525,22 +2565,22 @@
       "last_seen": "2026-09-10"
     },
     "Jonathan Gannon": {
-      "count": 35,
+      "count": 37,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jonnu Smith": {
-      "count": 95,
+      "count": 99,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jordan Love": {
-      "count": 36,
+      "count": 40,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Jordan Love's": {
-      "count": 10,
+      "count": 11,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -2550,7 +2590,7 @@
       "last_seen": "2026-09-12"
     },
     "Josh Allen": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2570,27 +2610,27 @@
       "last_seen": "2026-09-03"
     },
     "Kahlef Hailassie": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
     "Kaleb Johnson": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Kaleb Johnson Former": {
-      "count": 24,
-      "first_seen": "2026-09-03",
-      "last_seen": "2026-09-12"
-    },
-    "Kamal Hadden": {
       "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
+    "Kamal Hadden": {
+      "count": 26,
+      "first_seen": "2026-09-03",
+      "last_seen": "2026-09-12"
+    },
     "Kedon Slovis": {
-      "count": 34,
+      "count": 35,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2605,12 +2645,12 @@
       "last_seen": "2026-09-10"
     },
     "Kippy Brown": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Kisean Johnson": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2619,15 +2659,25 @@
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
+    "Kristian Welch": {
+      "count": 2,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
+    "Kristian Welch Wide": {
+      "count": 2,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Kyle McCord": {
-      "count": 46,
+      "count": 47,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Kyler Murray": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Kyron Drones": {
       "count": 17,
@@ -2645,12 +2695,12 @@
       "last_seen": "2026-09-09"
     },
     "LaFleurs Matt": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Lenny Krieg": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2660,17 +2710,17 @@
       "last_seen": "2026-09-08"
     },
     "Luke Butkus": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Luke Getsy": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "MarShawn Lloyd": {
-      "count": 103,
+      "count": 106,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2680,7 +2730,7 @@
       "last_seen": "2026-09-06"
     },
     "Mark Redman": {
-      "count": 65,
+      "count": 68,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2690,7 +2740,7 @@
       "last_seen": "2026-09-04"
     },
     "Matt LaFleur": {
-      "count": 56,
+      "count": 58,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2705,7 +2755,7 @@
       "last_seen": "2026-09-12"
     },
     "Micah Parsons": {
-      "count": 45,
+      "count": 47,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2713,6 +2763,11 @@
       "count": 6,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-04"
+    },
+    "Michael Mayer": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
     },
     "Michael Penix Jr": {
       "count": 1,
@@ -2725,12 +2780,12 @@
       "last_seen": "2026-09-08"
     },
     "Mike LaFleur": {
-      "count": 48,
+      "count": 50,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Mike Sherman": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2740,22 +2795,22 @@
       "last_seen": "2026-09-12"
     },
     "Milwaukee Flagship Station": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Milwaukee Journal Sentinel": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Morgan Saracena": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Murvin Kenion III": {
-      "count": 6,
+      "count": 7,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -2770,7 +2825,7 @@
       "last_seen": "2026-09-11"
     },
     "NAMI Wisconsin": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2780,7 +2835,7 @@
       "last_seen": "2026-09-09"
     },
     "Network Health": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2790,17 +2845,17 @@
       "last_seen": "2026-09-07"
     },
     "Noah Pauley": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Notre Dame": {
-      "count": 20,
+      "count": 21,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "O-line Key": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2810,12 +2865,12 @@
       "last_seen": "2026-09-05"
     },
     "Ohio State": {
-      "count": 27,
+      "count": 28,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Operation Fan Mail'": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2825,13 +2880,18 @@
       "last_seen": "2026-09-10"
     },
     "Patrick Mahomes": {
-      "count": 3,
+      "count": 5,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Paul Hornung": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
+      "last_seen": "2026-09-12"
+    },
+    "Penei Sewell": {
+      "count": 1,
+      "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "Pete Prisco": {
@@ -2840,12 +2900,12 @@
       "last_seen": "2026-09-12"
     },
     "Pierre Strong Jr": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Pumpkin Palooza": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -2860,12 +2920,12 @@
       "last_seen": "2026-09-09"
     },
     "Radio Network": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Ray Nitschke": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2875,7 +2935,7 @@
       "last_seen": "2026-09-09"
     },
     "Rio Rancho": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2885,7 +2945,7 @@
       "last_seen": "2026-09-11"
     },
     "Ron Hopper": {
-      "count": 8,
+      "count": 9,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -2904,6 +2964,11 @@
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-10"
     },
+    "Sam LaPorta": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Sam Siefkes": {
       "count": 17,
       "first_seen": "2026-09-03",
@@ -2915,12 +2980,12 @@
       "last_seen": "2026-09-04"
     },
     "Scott Daly": {
-      "count": 31,
+      "count": 32,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Sean Rhyan": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -2935,12 +3000,12 @@
       "last_seen": "2026-09-11"
     },
     "Sportsbook Promos": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Sunday's Shamrock Series": {
-      "count": 20,
+      "count": 21,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -2949,48 +3014,53 @@
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-06"
     },
+    "The Melton": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Tom Ley": {
       "count": 4,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-09"
     },
     "Tom Silverstein": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Tra Fluellen": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Trey Hendrickson's": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Trey Smack": {
-      "count": 50,
+      "count": 51,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Tua Tagovailoa": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Tucker Kraft": {
-      "count": 63,
+      "count": 69,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "U.S. Air Force": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "UW Health Kids": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -3010,7 +3080,7 @@
       "last_seen": "2026-09-08"
     },
     "Vs. Cancer": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -3020,7 +3090,7 @@
       "last_seen": "2026-09-12"
     },
     "Welcoming Notre Dame": {
-      "count": 16,
+      "count": 17,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
@@ -3030,27 +3100,27 @@
       "last_seen": "2026-09-12"
     },
     "Will Sheppard": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Willie Wood": {
-      "count": 24,
+      "count": 25,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Wisconsin Exclusive": {
-      "count": 20,
+      "count": 21,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Wisconsin Now": {
-      "count": 11,
+      "count": 12,
       "first_seen": "2026-09-08",
       "last_seen": "2026-09-12"
     },
     "Wisconsin Policy": {
-      "count": 16,
+      "count": 17,
       "first_seen": "2026-09-05",
       "last_seen": "2026-09-12"
     },
@@ -3060,12 +3130,12 @@
       "last_seen": "2026-09-04"
     },
     "Xavier McKinney": {
-      "count": 21,
+      "count": 23,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     },
     "Zach Bako-Bewele": {
-      "count": 6,
+      "count": 8,
       "first_seen": "2026-09-09",
       "last_seen": "2026-09-12"
     },
@@ -3075,7 +3145,7 @@
       "last_seen": "2026-09-09"
     },
     "Zaire Franklin": {
-      "count": 14,
+      "count": 15,
       "first_seen": "2026-09-07",
       "last_seen": "2026-09-12"
     }
@@ -3127,14 +3197,19 @@
       "last_seen": "2026-09-10"
     },
     "Bluesky To": {
-      "count": 13,
+      "count": 14,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
-    "Bonus Codes": {
+    "Bo Melton": {
       "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
+    "Bonus Codes": {
+      "count": 2,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Border Battle": {
       "count": 10,
@@ -3152,7 +3227,7 @@
       "last_seen": "2026-09-08"
     },
     "Brock Bowers": {
-      "count": 7,
+      "count": 8,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -3162,7 +3237,7 @@
       "last_seen": "2026-09-12"
     },
     "CT. The": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3187,7 +3262,7 @@
       "last_seen": "2026-09-09"
     },
     "Cornerback Isaiah Rodgers": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -3202,7 +3277,7 @@
       "last_seen": "2026-09-12"
     },
     "Dave Stefano": {
-      "count": 26,
+      "count": 27,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -3212,7 +3287,7 @@
       "last_seen": "2026-09-08"
     },
     "Elizabeth Holmes": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3222,7 +3297,7 @@
       "last_seen": "2026-09-10"
     },
     "Expert Picks": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
@@ -3237,17 +3312,17 @@
       "last_seen": "2026-09-07"
     },
     "Gaining Ground": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Giants-Cowboys Bettors": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Giving Props": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -3257,7 +3332,7 @@
       "last_seen": "2026-09-07"
     },
     "Harrison Smith": {
-      "count": 66,
+      "count": 67,
       "first_seen": "2026-09-06",
       "last_seen": "2026-09-12"
     },
@@ -3292,7 +3367,7 @@
       "last_seen": "2026-09-09"
     },
     "Increased Role": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3302,12 +3377,12 @@
       "last_seen": "2026-09-06"
     },
     "Isaiah Rodgers's": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
     "J.J. McCarthy": {
-      "count": 23,
+      "count": 24,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -3317,7 +3392,7 @@
       "last_seen": "2026-09-08"
     },
     "JJ Watt": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3337,7 +3412,7 @@
       "last_seen": "2026-09-09"
     },
     "Jim Nanace": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3391,13 +3466,18 @@
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
+    "Know Your Enemy": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
+    },
     "Kyle Van Noy": {
-      "count": 38,
+      "count": 41,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Kyler Murray": {
-      "count": 24,
+      "count": 26,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -3462,7 +3542,7 @@
       "last_seen": "2026-09-09"
     },
     "National Football League": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -3492,7 +3572,7 @@
       "last_seen": "2026-09-08"
     },
     "Norse Code": {
-      "count": 13,
+      "count": 14,
       "first_seen": "2026-09-04",
       "last_seen": "2026-09-12"
     },
@@ -3512,17 +3592,17 @@
       "last_seen": "2026-09-06"
     },
     "Open Threads": {
-      "count": 31,
+      "count": 33,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
     "Opinions Divided": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Patrick Mahomes": {
-      "count": 3,
+      "count": 5,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3532,7 +3612,7 @@
       "last_seen": "2026-09-12"
     },
     "Player Bets": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-12",
       "last_seen": "2026-09-12"
     },
@@ -3542,9 +3622,14 @@
       "last_seen": "2026-09-12"
     },
     "Power Rankings": {
-      "count": 7,
+      "count": 8,
       "first_seen": "2026-09-08",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
+    },
+    "RIGHT NOW. Let": {
+      "count": 1,
+      "first_seen": "2026-09-12",
+      "last_seen": "2026-09-12"
     },
     "SB Nation": {
       "count": 5,
@@ -3552,9 +3637,9 @@
       "last_seen": "2026-09-03"
     },
     "SB Nation Reacts": {
-      "count": 26,
+      "count": 27,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Sam Darnold": {
       "count": 13,
@@ -3582,9 +3667,9 @@
       "last_seen": "2026-09-09"
     },
     "Sportsbook Promos": {
-      "count": 1,
+      "count": 2,
       "first_seen": "2026-09-11",
-      "last_seen": "2026-09-11"
+      "last_seen": "2026-09-12"
     },
     "Tom Pelissero": {
       "count": 21,
@@ -3592,12 +3677,12 @@
       "last_seen": "2026-09-09"
     },
     "Tua Tagovailoa": {
-      "count": 4,
+      "count": 5,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
     "Turner Ready": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3612,7 +3697,7 @@
       "last_seen": "2026-09-10"
     },
     "Tyler Forness": {
-      "count": 26,
+      "count": 27,
       "first_seen": "2026-09-03",
       "last_seen": "2026-09-12"
     },
@@ -3627,7 +3712,7 @@
       "last_seen": "2026-09-06"
     },
     "Victory Murray": {
-      "count": 3,
+      "count": 4,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     },
@@ -3637,12 +3722,12 @@
       "last_seen": "2026-09-11"
     },
     "Vikes Views": {
-      "count": 6,
+      "count": 8,
       "first_seen": "2026-09-10",
       "last_seen": "2026-09-12"
     },
     "Who Ya Got": {
-      "count": 2,
+      "count": 3,
       "first_seen": "2026-09-11",
       "last_seen": "2026-09-12"
     }
