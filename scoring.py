@@ -47,15 +47,29 @@ RECENCY_HALFLIFE_H = 34.0 # hours until the recency bonus halves
 # Bears lead slot over a 47-hour-old signing because it had simply stacked
 # more signals, not because it was more newsworthy *today*.
 #
-# The show is weekly, tapes Tuesday ~2:30pm CT. The right boundary for decay
-# isn't "how long is a game week" -- it's "did we already cover this on LAST
-# week's show." Everything published since then (Thursday's game, Sunday's,
-# Monday night's, a Wednesday signing) is equally new-to-the-show and must
-# not be penalized just for having happened a few days earlier in the week.
-# Only material that predates the last taping -- and so was already fair game
-# to be covered then -- should start fading, roughly halved per extra week.
-GRACE_PERIOD_H = 168.0      # 7 days: since the last (weekly) taping
-POST_GRACE_WEEKLY_DECAY = 0.5  # halved for each week beyond the grace window
+# The show is weekly, tapes Tuesday ~2:30pm CT. Two things need to be true
+# at once, and a hard "no decay for 7 days" rule (an earlier version of this
+# constant) satisfied neither:
+#
+#   1. A Thursday game shouldn't be crushed next to Monday night's just for
+#      being ~4 days older by taping time.
+#   2. A routine signing from Monday should NOT still be tied with a story
+#      published 20 minutes ago just because both are "within the week."
+#      Live example, 2026-09-14: a 4-day-old Lions signing and a 4-day-old
+#      Packers court-case update both sat at #1 over injury news that broke
+#      19 minutes earlier -- because a 7-day no-decay window applied zero
+#      decay to anything under 7 days old, so recency only ever came from
+#      the small separate W_RECENCY term, which a stacked story doesn't need
+#      to beat.
+#
+# So this decays CONTINUOUSLY from the moment of publication (like the
+# original recency term), just on a much longer half-life than that 34h one --
+# long enough that Thursday's game keeps most of its weight by Tuesday, but
+# a several-day-old routine story still visibly fades next to something
+# genuinely new. The GAME_RECAP/GAME_PREVIEW bonuses below (which are large
+# and additive) are what keep an aging game story ahead of routine chatter,
+# not an artificial decay exemption.
+OVERALL_DECAY_HALFLIFE_H = 96.0   # 4 days
 
 W_AVAILABILITY = 26.0     # PUP / IR / exempt list / suspension / injury
 W_TRANSACTION = 15.0      # signed, waived, traded, claimed, activated
@@ -78,6 +92,13 @@ AVAILABILITY = [
     "out for the season", "season-ending", "did not practice", "no timetable",
     "questionable", "doubtful", "designated to return", "non-football injury",
     "calf", "hamstring", "acl", "concussion", "torn", "surgery", "injury designation",
+    # Everyday injury language the original list missed. "Bears' Rome Odunze,
+    # D'Andre Swift hurt at practice" carried no availability signal at all
+    # on 2026-09-08, despite being exactly the kind of story a producer needs.
+    "hurt", "injured", "injury update", "limited participant", "full participant",
+    "did not participate", "dnp", "missed practice", "left practice",
+    "day-to-day", "week-to-week", "ruled out", "game-time decision",
+    "activated off", "designated to return", "rehabbing", "setback",
 ]
 
 TRANSACTION = [
@@ -113,7 +134,7 @@ GAME_RECAP = [
     "victory over", "loss to", "lose to", "loses to", "takeaways from",
     "3 things learned", "things learned", "instant reactions", "postgame",
     "post-game", "final whistle", "box score", "how it happened",
-    "final:", "recap:",
+    "recap:",
 ]
 W_GAME_RECAP = 30.0
 
@@ -133,6 +154,25 @@ MONEY = [
     "contract", "extension", "guaranteed", "salary cap", "cap hit", "cap space",
     "million", "$", "franchise tag", "restructure", "holdout", "hold-in",
     "fined", "fine ", "incentive", "signing bonus", "deal ",
+]
+
+# Charitable and sponsorship money is not roster money. "Packers, Sargento
+# teaming up to tackle hunger in Wisconsin" reached the Packers cards on
+# 2026-09-08 flagged as "money: $, million" -- a donation, not a cap move.
+CHARITY_MONEY = [
+    "tackle hunger", "food bank", "fundraiser", "fundraising", "donation",
+    "donates", "donated", "proceeds", "charity", "charitable", "teaming up",
+    "partnership with", "raise money", "raised", "gives back", "toy drive",
+    "scholarship", "grant", "non-profit", "nonprofit", "united way",
+]
+
+# Appearances and sightings. A GM watching a college game is not news, but he
+# is a decision-maker, so attribution alone floated it to #2 on the Bears
+# cards on 2026-09-08.
+NON_EVENTS = [
+    "in attendance", "attends", "attended", "spotted at", "was seen",
+    "makes an appearance", "visits", "on hand for", "takes in",
+    "guest of honor", "throws out", "honorary",
 ]
 
 UNCERTAINTY = [
@@ -160,6 +200,10 @@ HARD_BOILERPLATE = [
     "donation", "youth", "classroom", "draft party", "watch party",
     "sign contest", "nominations", "anniversary", "trivia", "quiz",
     "girls", "volunteer", "scholarship", "food drive", "toy drive",
+    # Sponsorship and charity partnerships. "Packers, Sargento teaming up to
+    # tackle hunger in Wisconsin" held a card on 2026-09-08.
+    "tackle hunger", "food bank", "fundraiser", "teaming up", "gives back",
+    "proceeds", "donation", "donates", "non-profit", "nonprofit",
 ]
 
 # Link paths are a reliable signal the club itself has filed a story as
@@ -410,13 +454,10 @@ def score_story(story, stats, team=None, now=None):
                 reasons.append(f"published {age_h:.0f}h ago")
             else:
                 reasons.append(f"published {age_h/24:.1f}d ago")
-        # Applied to the FULL score at return time below, not just here --
-        # see the grace-period explanation above.
-        if age_h <= GRACE_PERIOD_H:
-            decay_factor = 1.0
-        else:
-            extra_weeks = (age_h - GRACE_PERIOD_H) / (24 * 7)
-            decay_factor = POST_GRACE_WEEKLY_DECAY ** extra_weeks
+        # Applied to the FULL score at return time below -- see
+        # OVERALL_DECAY_HALFLIFE_H above for why this is continuous, not a
+        # grace-period step function.
+        decay_factor = math.exp(-age_h / OVERALL_DECAY_HALFLIFE_H)
     else:
         score += W_RECENCY * 0.3
 
@@ -459,10 +500,15 @@ def score_story(story, stats, team=None, now=None):
         reasons.append("acquisition: " + ", ".join(acq[:2]))
 
     # --- money ------------------------------------------------------------
-    mo = _hits(blob, MONEY)
+    # Only roster money counts. Charity and sponsorship dollars are not a cap
+    # move, however many dollar signs the headline carries.
+    charity = _hits(blob, CHARITY_MONEY)
+    mo = [] if charity else _hits(blob, MONEY)
     if mo:
         score += W_MONEY * min(len(mo), 2) / 2
         reasons.append("money: " + ", ".join(sorted(set(mo))[:2]))
+    elif charity:
+        reasons.append("charitable/sponsorship -- not roster money")
 
     # --- decision-maker on the record -------------------------------------
     # A GM's name in a press release about a charity event is not attribution.
@@ -470,6 +516,16 @@ def score_story(story, stats, team=None, now=None):
     # in the body alongside a speech verb.
     names = DECISION_MAKERS.get(team, [])
     title_l = title.lower()
+
+    # An appearance is not a statement. "Bears GM Ryan Poles in attendance at
+    # Miami-Stanford game" reached #2 on the Bears cards on 2026-09-08 purely
+    # because a decision-maker was named in it.
+    non_event = _hits(blob, NON_EVENTS)
+    if non_event and not (av or ms or _hits(blob, CONFLICT)):
+        score -= W_ATTRIBUTION * 0.8
+        reasons.append("appearance, not news: " + ", ".join(non_event[:2]))
+        names = []
+
     dm_title = [n for n in names if n in title_l]
     dm_body = [n for n in names if n in blob]
     speaking = bool(_hits(blob, SPEECH))
@@ -547,7 +603,7 @@ def score_story(story, stats, team=None, now=None):
     if (hard or hard_path) and not cf:
         score *= 0.25
         label = ", ".join((hard + hard_path)[:3])
-        reasons = [f"ceremonial/promotional ({label}) — heavily damped"]
+        reasons = [f"ceremonial/promotional ({label}) -- heavily damped"]
 
     # Age decay applies last, over everything above -- so a story's stacked
     # signals fade with it instead of persisting at full strength indefinitely.
