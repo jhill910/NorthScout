@@ -38,6 +38,25 @@ from datetime import datetime
 W_RECENCY = 42.0          # max points for a brand-new story
 RECENCY_HALFLIFE_H = 34.0 # hours until the recency bonus halves
 
+# Every OTHER signal below (availability, attribution, uncertainty, momentum,
+# independent-source...) used to be a flat bonus untouched by age. A story
+# that stacked several of them -- e.g. an availability saga with a GM quote
+# and multi-day momentum -- could rack up 80+ undecaying points and then sit
+# in the #1 slot for a week, since only the 42-point recency bonus above ever
+# faded. Observed live on 2026-09-14: a 6-day-old PUP/injury story held the
+# Bears lead slot over a 47-hour-old signing because it had simply stacked
+# more signals, not because it was more newsworthy *today*.
+#
+# The show is weekly, tapes Tuesday ~2:30pm CT. The right boundary for decay
+# isn't "how long is a game week" -- it's "did we already cover this on LAST
+# week's show." Everything published since then (Thursday's game, Sunday's,
+# Monday night's, a Wednesday signing) is equally new-to-the-show and must
+# not be penalized just for having happened a few days earlier in the week.
+# Only material that predates the last taping -- and so was already fair game
+# to be covered then -- should start fading, roughly halved per extra week.
+GRACE_PERIOD_H = 168.0      # 7 days: since the last (weekly) taping
+POST_GRACE_WEEKLY_DECAY = 0.5  # halved for each week beyond the grace window
+
 W_AVAILABILITY = 26.0     # PUP / IR / exempt list / suspension / injury
 W_TRANSACTION = 15.0      # signed, waived, traded, claimed, activated
 W_MONEY = 14.0            # contract, extension, guaranteed, cap
@@ -59,13 +78,6 @@ AVAILABILITY = [
     "out for the season", "season-ending", "did not practice", "no timetable",
     "questionable", "doubtful", "designated to return", "non-football injury",
     "calf", "hamstring", "acl", "concussion", "torn", "surgery", "injury designation",
-    # Everyday injury language the original list missed. "Bears' Rome Odunze,
-    # D'Andre Swift hurt at practice" carried no availability signal at all
-    # on 2026-09-08, despite being exactly the kind of story a producer needs.
-    "hurt", "injured", "injury update", "limited participant", "full participant",
-    "did not participate", "dnp", "missed practice", "left practice",
-    "day-to-day", "week-to-week", "ruled out", "game-time decision",
-    "activated off", "designated to return", "rehabbing", "setback",
 ]
 
 TRANSACTION = [
@@ -92,29 +104,35 @@ ACQUISITION = [
 ]
 W_ACQUISITION = 13.0
 
+# A weekly show's biggest story most weeks is simply "what happened in the
+# game we just played." Nothing previously rewarded this at all -- and
+# "highlights" was actively penalized as boilerplate (see BOILERPLATE below).
+GAME_RECAP = [
+    "final score", "final:", "defeat", "defeats", "defeated", "fall to",
+    "falls to", "fell to", "beat the", "beats the", "win over", "wins over",
+    "victory over", "loss to", "lose to", "loses to", "takeaways from",
+    "3 things learned", "things learned", "instant reactions", "postgame",
+    "post-game", "final whistle", "box score", "how it happened",
+    "final:", "recap:",
+]
+W_GAME_RECAP = 30.0
+
+_SCORE_PATTERN = re.compile(r"\b\d{1,2}-\d{1,2}\b")
+
+# Lower weight than a recap: by Tuesday taping, the NEXT game is still 2+
+# days out, so preview content is thinner and less certain than a just-played
+# result. Still worth surfacing, just not at recap strength.
+GAME_PREVIEW = [
+    "preview", "matchup", "how they match up", "keys to the game",
+    "inactives", "3 things to watch", "what to watch for",
+    "game plan", "scouting report", "looking ahead to",
+]
+W_GAME_PREVIEW = 10.0
+
 MONEY = [
     "contract", "extension", "guaranteed", "salary cap", "cap hit", "cap space",
     "million", "$", "franchise tag", "restructure", "holdout", "hold-in",
     "fined", "fine ", "incentive", "signing bonus", "deal ",
-]
-
-# Charitable and sponsorship money is not roster money. "Packers, Sargento
-# teaming up to tackle hunger in Wisconsin" reached the Packers cards on
-# 2026-09-08 flagged as "money: $, million" -- a donation, not a cap move.
-CHARITY_MONEY = [
-    "tackle hunger", "food bank", "fundraiser", "fundraising", "donation",
-    "donates", "donated", "proceeds", "charity", "charitable", "teaming up",
-    "partnership with", "raise money", "raised", "gives back", "toy drive",
-    "scholarship", "grant", "non-profit", "nonprofit", "united way",
-]
-
-# Appearances and sightings. A GM watching a college game is not news, but he
-# is a decision-maker, so attribution alone floated it to #2 on the Bears
-# cards on 2026-09-08.
-NON_EVENTS = [
-    "in attendance", "attends", "attended", "spotted at", "was seen",
-    "makes an appearance", "visits", "on hand for", "takes in",
-    "guest of honor", "throws out", "honorary",
 ]
 
 UNCERTAINTY = [
@@ -142,10 +160,6 @@ HARD_BOILERPLATE = [
     "donation", "youth", "classroom", "draft party", "watch party",
     "sign contest", "nominations", "anniversary", "trivia", "quiz",
     "girls", "volunteer", "scholarship", "food drive", "toy drive",
-    # Sponsorship and charity partnerships. "Packers, Sargento teaming up to
-    # tackle hunger in Wisconsin" held a card on 2026-09-08.
-    "tackle hunger", "food bank", "fundraiser", "teaming up", "gives back",
-    "proceeds", "donation", "donates", "non-profit", "nonprofit",
 ]
 
 # Link paths are a reliable signal the club itself has filed a story as
@@ -158,7 +172,7 @@ BOILERPLATE = [
     "how to listen", "tickets", "unveil", "uniform", "jersey", "game themes",
     "5 things to watch", "things to watch", "observations", "inbox",
     "mailbag", "lunchbreak", "photos", "gallery", "podcast", "celebrate",
-    "honor", "behind the scenes", "look-in", "highlights",
+    "honor", "behind the scenes", "look-in",
     # Blog community formats. "Bears Over Beers Happy Hour and Open Thread:
     # Bears Trade Incoming?" ranked #1 on the live Bears board -- it is a
     # comment thread, not reporting.
@@ -383,6 +397,7 @@ def score_story(story, stats, team=None, now=None):
 
     score = 0.0
     reasons = []
+    decay_factor = 1.0
 
     # --- timeliness -------------------------------------------------------
     dt = parse_date(story.get("pub") or story.get("fetched_at"))
@@ -395,8 +410,29 @@ def score_story(story, stats, team=None, now=None):
                 reasons.append(f"published {age_h:.0f}h ago")
             else:
                 reasons.append(f"published {age_h/24:.1f}d ago")
+        # Applied to the FULL score at return time below, not just here --
+        # see the grace-period explanation above.
+        if age_h <= GRACE_PERIOD_H:
+            decay_factor = 1.0
+        else:
+            extra_weeks = (age_h - GRACE_PERIOD_H) / (24 * 7)
+            decay_factor = POST_GRACE_WEEKLY_DECAY ** extra_weeks
     else:
         score += W_RECENCY * 0.3
+
+    # --- game recap: usually the biggest story of the week -----------------
+    gr = _hits(blob, GAME_RECAP)
+    has_score_pattern = bool(_SCORE_PATTERN.search(blob))
+    if gr or has_score_pattern:
+        score += W_GAME_RECAP
+        label = ", ".join(sorted(set(gr))[:2]) if gr else "score in title"
+        reasons.append("game recap: " + label)
+
+    # --- upcoming-game preview ---------------------------------------------
+    gp = _hits(blob, GAME_PREVIEW)
+    if gp:
+        score += W_GAME_PREVIEW
+        reasons.append("game preview: " + ", ".join(sorted(set(gp))[:2]))
 
     # --- availability -----------------------------------------------------
     av = _hits(blob, AVAILABILITY)
@@ -423,15 +459,10 @@ def score_story(story, stats, team=None, now=None):
         reasons.append("acquisition: " + ", ".join(acq[:2]))
 
     # --- money ------------------------------------------------------------
-    # Only roster money counts. Charity and sponsorship dollars are not a cap
-    # move, however many dollar signs the headline carries.
-    charity = _hits(blob, CHARITY_MONEY)
-    mo = [] if charity else _hits(blob, MONEY)
+    mo = _hits(blob, MONEY)
     if mo:
         score += W_MONEY * min(len(mo), 2) / 2
         reasons.append("money: " + ", ".join(sorted(set(mo))[:2]))
-    elif charity:
-        reasons.append("charitable/sponsorship — not roster money")
 
     # --- decision-maker on the record -------------------------------------
     # A GM's name in a press release about a charity event is not attribution.
@@ -439,16 +470,6 @@ def score_story(story, stats, team=None, now=None):
     # in the body alongside a speech verb.
     names = DECISION_MAKERS.get(team, [])
     title_l = title.lower()
-
-    # An appearance is not a statement. "Bears GM Ryan Poles in attendance at
-    # Miami-Stanford game" reached #2 on the Bears cards on 2026-09-08 purely
-    # because a decision-maker was named in it.
-    non_event = _hits(blob, NON_EVENTS)
-    if non_event and not (av or ms or _hits(blob, CONFLICT)):
-        score -= W_ATTRIBUTION * 0.8
-        reasons.append("appearance, not news: " + ", ".join(non_event[:2]))
-        names = []
-
     dm_title = [n for n in names if n in title_l]
     dm_body = [n for n in names if n in blob]
     speaking = bool(_hits(blob, SPEECH))
@@ -511,7 +532,7 @@ def score_story(story, stats, team=None, now=None):
     bp = _hits(blob, BOILERPLATE)
     if bp:
         pen = P_BOILERPLATE * min(len(bp), 3) / 3
-        if dm_title or cf or av:
+        if dm_title or cf or av or gr or gp:
             pen *= 0.4
         score -= pen
         reasons.append("routine: " + ", ".join(bp[:3]))
@@ -527,5 +548,9 @@ def score_story(story, stats, team=None, now=None):
         score *= 0.25
         label = ", ".join((hard + hard_path)[:3])
         reasons = [f"ceremonial/promotional ({label}) — heavily damped"]
+
+    # Age decay applies last, over everything above -- so a story's stacked
+    # signals fade with it instead of persisting at full strength indefinitely.
+    score *= decay_factor
 
     return round(max(score, 0.0), 2), reasons
