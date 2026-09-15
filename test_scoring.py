@@ -3,7 +3,7 @@
 Each test pins a bug found while tuning against the 2026-09-01 rundown.
 Run with:  python test_scoring.py
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 import scoring
 
 NOW = datetime(2026, 9, 1, 21, 0)
@@ -132,6 +132,102 @@ def test_everyday_injury_language():
                    "day-to-day", "rehabbing", "limited participant"]:
         assert scoring._hits(f" player {phrase} today ", scoring.AVAILABILITY), phrase
     print("  ok  everyday injury language recognised")
+
+
+# ---------------------------------------------------------------------------
+# Age decay and game detection (added 2026-09-15)
+# ---------------------------------------------------------------------------
+
+def _at(hours_ago):
+    return (NOW - timedelta(hours=hours_ago)).strftime("%Y-%m-%d %H:%M")
+
+
+def _sc(title, summary="", hours_ago=2, team="Chicago Bears", st=None):
+    story = {"title": title, "summary": summary, "team": team,
+             "pub": _at(hours_ago), "link": ""}
+    st = st or stats_for([story])
+    return scoring.score_story(story, st, team, NOW)[0]
+
+
+def test_fresh_news_beats_a_stacked_old_story():
+    """Decay has to actually bite, or the board never turns over."""
+    old = _sc("Bears sign guard to three-year extension worth $30 million",
+              "General manager Ryan Poles confirmed the deal.", hours_ago=24 * 8)
+    new = _sc("Bears place cornerback on injured reserve", hours_ago=3)
+    assert new > old, f"8-day-old stacked story {old} >= fresh news {new}"
+    print(f"  ok  decay turns the board over ({new:.1f} fresh vs {old:.1f} at 8d)")
+
+
+def test_thursday_game_survives_to_tuesday_taping():
+    """The week's game is the show's anchor; it must outlive routine news."""
+    game = _sc("Packers beat Lions 27-13 on Thursday night",
+               "Green Bay improves to 2-0.", hours_ago=114,
+               team="Green Bay Packers")
+    routine = _sc("Packers sign practice squad receiver", hours_ago=6,
+                  team="Green Bay Packers")
+    assert game > routine, f"game {game} faded below routine signing {routine}"
+    print(f"  ok  Thursday game survives to Tuesday ({game:.1f} vs {routine:.1f})")
+
+
+def test_decay_is_continuous_not_a_grace_window():
+    """No cliff edge: each day older must score strictly lower."""
+    vals = [_sc("Bears place cornerback on injured reserve", hours_ago=h)
+            for h in (2, 26, 50, 98, 170)]
+    assert all(a > b for a, b in zip(vals, vals[1:])), vals
+    print("  ok  decay is continuous: " + " > ".join(f"{v:.1f}" for v in vals))
+
+
+def test_game_recap_signal():
+    recap = _sc("Lions defeat Bears 31-24", "Detroit improves to 2-0.",
+                team="Detroit Lions")
+    plain = _sc("Lions hold walkthrough at practice facility",
+                team="Detroit Lions")
+    assert recap > plain
+    print(f"  ok  game recap outranks routine ({recap:.1f} vs {plain:.1f})")
+
+
+def test_game_preview_is_weaker_than_recap():
+    recap = _sc("Vikings beat Bears 24-17 on Sunday", team="Minnesota Vikings")
+    preview = _sc("Vikings preview: what to watch against the Bears",
+                  team="Minnesota Vikings")
+    assert recap > preview
+    print(f"  ok  recap outranks preview ({recap:.1f} vs {preview:.1f})")
+
+
+def test_score_pattern_needs_game_context():
+    """A 3-4 front and a 1-2 year deal are not final scores.
+
+    Each used to collect the full W_GAME_RECAP bonus -- the biggest single
+    weight in the scorer -- on the bare number pattern alone.
+    """
+    for title in ("Bears expected to run more 3-4 fronts this season",
+                  "Bears agree to 1-2 year deal with veteran safety",
+                  "Bears open 0-0 like everyone else"):
+        fake = _sc(title)
+        real = _sc("Bears beat Vikings 27-20", "Chicago improves to 1-0.")
+        assert real > fake, f"{title!r} scored {fake} vs real recap {real}"
+    print("  ok  3-4 fronts and 1-2 year deals are not final scores")
+
+
+def test_undated_stories_still_decay():
+    """Undated stories used to never fade and camped at the top."""
+    story = {"title": "Bears place cornerback on injured reserve",
+             "summary": "", "team": "Chicago Bears", "link": ""}
+    undated = scoring.score_story(
+        story, stats_for([story]), "Chicago Bears", NOW)[0]
+    fresh = _sc("Bears place cornerback on injured reserve", hours_ago=2)
+    assert undated < fresh, f"undated {undated} >= 2h-old {fresh}"
+    print(f"  ok  undated stories decay ({undated:.1f} vs {fresh:.1f} fresh)")
+
+
+def test_highlights_no_longer_penalised():
+    """Game highlights are real content, not ceremonial filler."""
+    hl = _sc("Highlights: Lions beat Bears 31-24 in Week 2",
+             team="Detroit Lions")
+    promo = _sc("Lions celebrate Girls Flag Football week in the community",
+                team="Detroit Lions")
+    assert hl > promo, f"highlights {hl} <= promo {promo}"
+    print(f"  ok  highlights are content, not filler ({hl:.1f} vs {promo:.1f})")
 
 
 if __name__ == "__main__":

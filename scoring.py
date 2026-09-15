@@ -66,10 +66,22 @@ RECENCY_HALFLIFE_H = 34.0 # hours until the recency bonus halves
 # original recency term), just on a much longer half-life than that 34h one --
 # long enough that Thursday's game keeps most of its weight by Tuesday, but
 # a several-day-old routine story still visibly fades next to something
-# genuinely new. The GAME_RECAP/GAME_PREVIEW bonuses below (which are large
-# and additive) are what keep an aging game story ahead of routine chatter,
-# not an artificial decay exemption.
+# genuinely new.
 OVERALL_DECAY_HALFLIFE_H = 96.0   # 4 days
+
+# Game results get their own, much longer half-life.
+#
+# The earlier reasoning was that the large additive GAME_RECAP bonus would be
+# enough to keep an aging game ahead of routine chatter without an "artificial
+# decay exemption". Measured against the show calendar, it isn't. A Thursday
+# night game is ~114h old by the Tuesday taping; at a 96h half-life it retains
+# ~44% of its score and lands BELOW a routine Monday signing. That inverts the
+# actual rundown, where the week's game is the anchor the show is built around.
+#
+# So this is not an exemption from decay -- a game story still fades, and a
+# month-old result is gone. It fades on the timescale a weekly show cares
+# about rather than a daily news cycle's.
+RECAP_DECAY_HALFLIFE_H = 480.0    # ~20 days
 
 W_AVAILABILITY = 26.0     # PUP / IR / exempt list / suspension / injury
 W_TRANSACTION = 15.0      # signed, waived, traded, claimed, activated
@@ -139,6 +151,27 @@ GAME_RECAP = [
 W_GAME_RECAP = 30.0
 
 _SCORE_PATTERN = re.compile(r"\b\d{1,2}-\d{1,2}\b")
+
+# A bare number pair is NOT a final score. On its own the pattern above fires
+# on a 3-4 defensive front, a 1-2 year deal and an 0-0 record -- each of which
+# collected the full W_GAME_RECAP bonus, the largest single weight here. So a
+# depth-chart story about scheme outscored a player landing on IR.
+#
+# Requiring a game word nearby costs almost nothing (a real recap always has
+# one) and removes the whole class of false positives.
+GAME_CONTEXT = [
+    "final", "beat", "beats", "defeat", "defeats", "defeated", "win", "wins",
+    "won", "loss", "lose", "loses", "lost", "victory", "recap", "halftime",
+    "quarter", "overtime", "comeback", "rally", "upset", "shutout",
+    "improve to", "fall to", "falls to", "drop to", "drops to", "vs.", " vs ",
+    " at ", "week 1", "week 2", "week 3", "week 4", "week 5", "week 6",
+]
+
+# Number pairs that are never a score, even with a game word in the sentence:
+# football formations, and any pair followed by a unit ("2-4 year deal").
+NOT_A_SCORE = re.compile(
+    r"\b(?:3-4|4-3|4-6|5-2|2-4|0-0)\b|"
+    r"\b\d{1,2}-\d{1,2}\s*(?:year|yr|season|game|week|day|man)\b")
 
 # Lower weight than a recap: by Tuesday taping, the NEXT game is still 2+
 # days out, so preview content is thinner and less certain than a just-played
@@ -441,30 +474,52 @@ def score_story(story, stats, team=None, now=None):
 
     score = 0.0
     reasons = []
-    decay_factor = 1.0
+    story_age_h = None
+
+    # Is this a game result? Detected up here rather than in its own block
+    # below because BOTH the recency term and the final decay need to know.
+    # Scoring it later meant a Thursday night game had its recency term
+    # computed on the 34h news half-life -- 114h old by the Tuesday taping
+    # leaves 3% of 42 points, about 1.5 -- and a 30-point recap bonus cannot
+    # cover that gap against a routine Monday signing that is six hours old.
+    # The game is what the show is built around, so it decays on the show's
+    # weekly clock, not the news cycle's daily one.
+    gr = _hits(blob, GAME_RECAP)
+    has_score_pattern = (
+        bool(_SCORE_PATTERN.search(blob))
+        and not NOT_A_SCORE.search(blob)
+        and bool(_hits(blob, GAME_CONTEXT))
+    )
+    is_game = bool(gr or has_score_pattern)
 
     # --- timeliness -------------------------------------------------------
     dt = parse_date(story.get("pub") or story.get("fetched_at"))
     if dt:
         age_h = max((now - dt).total_seconds() / 3600.0, 0.0)
-        rec = W_RECENCY * math.exp(-age_h / RECENCY_HALFLIFE_H)
+        rec_halflife = RECAP_DECAY_HALFLIFE_H if is_game else RECENCY_HALFLIFE_H
+        rec = W_RECENCY * math.exp(-age_h / rec_halflife)
         score += rec
         if rec >= 4:
             if age_h < 24:
                 reasons.append(f"published {age_h:.0f}h ago")
             else:
                 reasons.append(f"published {age_h/24:.1f}d ago")
-        # Applied to the FULL score at return time below -- see
-        # OVERALL_DECAY_HALFLIFE_H above for why this is continuous, not a
-        # grace-period step function.
-        decay_factor = math.exp(-age_h / OVERALL_DECAY_HALFLIFE_H)
+        # Decay is applied to the FULL score at return time below, once we
+        # know whether this is a game result -- see the two half-life
+        # constants above.
+        story_age_h = age_h
     else:
+        # No usable date. Previously these got a flat partial credit and NO
+        # decay factor at all, so they never faded: as every dated story
+        # around them aged, an undated one drifted to the top of the board
+        # and stayed there. Treat it as roughly three days old instead.
         score += W_RECENCY * 0.3
+        story_age_h = 72.0
+        reasons.append("undated -- treated as ~3 days old")
 
     # --- game recap: usually the biggest story of the week -----------------
-    gr = _hits(blob, GAME_RECAP)
-    has_score_pattern = bool(_SCORE_PATTERN.search(blob))
-    if gr or has_score_pattern:
+    # gr / has_score_pattern were computed above, before the timeliness block.
+    if is_game:
         score += W_GAME_RECAP
         label = ", ".join(sorted(set(gr))[:2]) if gr else "score in title"
         reasons.append("game recap: " + label)
@@ -607,6 +662,11 @@ def score_story(story, stats, team=None, now=None):
 
     # Age decay applies last, over everything above -- so a story's stacked
     # signals fade with it instead of persisting at full strength indefinitely.
-    score *= decay_factor
+    # Game results use the longer half-life: by Tuesday the week's game is
+    # days old but it is still what the show is built around.
+    if story_age_h is not None:
+        halflife = (RECAP_DECAY_HALFLIFE_H if is_game
+                    else OVERALL_DECAY_HALFLIFE_H)
+        score *= math.exp(-story_age_h / halflife)
 
     return round(max(score, 0.0), 2), reasons
