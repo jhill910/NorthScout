@@ -211,9 +211,23 @@ def _cap_event_cluster(df, max_game=3):
     except ImportError:
         return df
 
+    # getattr, not scoring.is_game_story directly. On 2026-09-16 Streamlit
+    # Cloud served the new app.py against a cached older scoring module; the
+    # bare attribute access raised AttributeError, which the ImportError guard
+    # above did not catch, and the whole dashboard went down. An uncapped
+    # column is a small loss; a blank page during show prep is not.
+    is_game = getattr(scoring, "is_game_story", None)
+    if not callable(is_game):
+        return df
+
     keep, deferred, n = [], [], 0
     for idx, row in df.iterrows():
-        if scoring.is_game_story(row.get("title", ""), row.get("summary", "")):
+        try:
+            game = is_game(row.get("title", ""), row.get("summary", ""))
+        except Exception:
+            # A malformed row should drop out of the cap, not out of the board.
+            game = False
+        if game:
             if n >= max_game:
                 deferred.append(idx)
                 continue
@@ -508,13 +522,16 @@ for _col, _team in zip(_rundown_cols, ["Chicago Bears", "Detroit Lions",
     with _col:
         _df = load_dashboard_data(_team, limit=1)
         if _df is None or _df.empty:
-            st.markdown(
-                f"""<div style="background:{_a['bg_color']};border-radius:10px;padding:14px;
-                       min-height:150px;"><div style="color:{_a['text_color']};font-weight:700;
-                       font-size:13px;letter-spacing:0.06em;">{_team.split()[-1].upper()}</div>
-                       <div style="color:#c9d1d9;font-size:13px;margin-top:10px;">
-                       No stories in the current snapshot.</div></div>""",
-                unsafe_allow_html=True)
+            # NOTE: no leading whitespace inside the emitted HTML -- markdown
+            # turns any 4-space-indented line into a code block.
+            st.markdown("".join([
+                f"<div style=\"background:{_a['bg_color']};border-radius:10px;",
+                "padding:14px;min-height:150px;\">",
+                f"<div style=\"color:{_a['text_color']};font-weight:700;font-size:13px;",
+                f"letter-spacing:0.06em;\">{_team.split()[-1].upper()}</div>",
+                "<div style=\"color:#c9d1d9;font-size:13px;margin-top:10px;\">",
+                "No stories in the current snapshot.</div></div>",
+            ]), unsafe_allow_html=True)
             continue
         _r = _df.iloc[0]
         _title = str(_r.get("title") or "").replace("<", "&lt;")
@@ -530,19 +547,23 @@ for _col, _team in zip(_rundown_cols, ["Chicago Bears", "Detroit Lions",
                      f"text-decoration:none;font-weight:600;font-size:14px;line-height:1.35;'>"
                      f"{_title}</a>") if _link else (
                      f"<span style='color:#ffffff;font-weight:600;font-size:14px;'>{_title}</span>")
-        st.markdown(
-            f"""<div style="background:{_a['bg_color']};border-radius:10px;padding:14px;
-                   min-height:150px;box-shadow:0 0 12px {_a['glow']};">
-                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-                   <img src="{_a['logo']}" style="height:22px;width:22px;object-fit:contain;">
-                   <span style="color:{_a['text_color']};font-weight:700;font-size:12px;
-                          letter-spacing:0.06em;">{_team.split()[-1].upper()}</span>
-                 </div>
-                 {_img}
-                 {_headline}
-                 <div style="color:#8b949e;font-size:11px;margin-top:8px;">{_when}</div>
-               </div>""",
-            unsafe_allow_html=True)
+        # NOTE: every fragment below must stay free of leading whitespace.
+        # Streamlit renders markdown before HTML, and markdown turns any line
+        # indented four spaces or more into a code block -- which is exactly
+        # what happened to the first version of this card.
+        st.markdown("".join([
+            f"<div style=\"background:{_a['bg_color']};border-radius:10px;padding:14px;",
+            f"min-height:150px;box-shadow:0 0 12px {_a['glow']};\">",
+            "<div style=\"display:flex;align-items:center;gap:8px;margin-bottom:10px;\">",
+            f"<img src=\"{_a['logo']}\" style=\"height:22px;width:22px;object-fit:contain;\">",
+            f"<span style=\"color:{_a['text_color']};font-weight:700;font-size:12px;",
+            f"letter-spacing:0.06em;\">{_team.split()[-1].upper()}</span>",
+            "</div>",
+            _img,
+            _headline,
+            f"<div style=\"color:#8b949e;font-size:11px;margin-top:8px;\">{_when}</div>",
+            "</div>",
+        ]), unsafe_allow_html=True)
 
 st.markdown("<div style='height:22px;'></div>", unsafe_allow_html=True)
 
