@@ -173,6 +173,21 @@ NOT_A_SCORE = re.compile(
     r"\b(?:3-4|4-3|4-6|5-2|2-4|0-0)\b|"
     r"\b\d{1,2}-\d{1,2}\s*(?:year|yr|season|game|week|day|man)\b")
 
+
+def is_game_story(title, summary=""):
+    """True if this story is about a game that was played.
+
+    score_story() works this out internally; app.py needs the same answer to
+    stop one game filling a column, and two independent copies of the rule
+    would drift apart. So it lives here and both callers use it.
+    """
+    blob = f" {str(title).lower()} {str(summary).lower()} "
+    if _hits(blob, GAME_RECAP):
+        return True
+    return (bool(_SCORE_PATTERN.search(blob))
+            and not NOT_A_SCORE.search(blob)
+            and bool(_hits(blob, GAME_CONTEXT)))
+
 # Lower weight than a recap: by Tuesday taping, the NEXT game is still 2+
 # days out, so preview content is thinner and less certain than a just-played
 # result. Still worth surfacing, just not at recap strength.
