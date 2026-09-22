@@ -7,10 +7,18 @@ name: NorthScout scrape
 
 on:
   schedule:
-    # 11:00 UTC = 6am CT, 21:00 UTC = 4pm CT.
-    # Morning run has overnight news ready before show prep; afternoon run
-    # catches same-day pressers, cuts and transactions.
+    # 11:00 UTC = 6am CT, 18:45 UTC = 1:45pm CT, 21:00 UTC = 4pm CT.
+    #
+    # The 1:45pm run exists because the show tapes around 2:30pm CT. Before
+    # it was added the schedule jumped from 6am straight to 4pm -- ninety
+    # minutes AFTER taping -- so producers always worked from a board that
+    # was at least half a day old. On 2026-09-22 it was four hours stale and
+    # the broadcast opened with news that broke after the snapshot was built.
+    #
+    # Nothing scheduled catches news that breaks minutes before air. For
+    # that, trigger this workflow by hand from the Actions tab.
     - cron: "0 11 * * *"
+    - cron: "45 18 * * *"
     - cron: "0 21 * * *"
   workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
   push:
