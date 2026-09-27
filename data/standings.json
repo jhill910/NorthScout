@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-09-27T21:39:48Z",
+  "fetched_at": "2026-09-27T23:44:39Z",
   "source": "ESPN",
   "teams": {
     "Minnesota Vikings": {
       "abbr": "MIN",
-      "wins": 2,
+      "wins": 3,
       "losses": 0,
       "ties": 0,
-      "record": "2-0",
-      "point_diff": 23,
-      "streak": 2.0,
+      "record": "3-0",
+      "point_diff": 30,
+      "streak": 3.0,
       "division_record": 0.0
     },
     "Detroit Lions": {
