@@ -207,9 +207,16 @@ def fetch_all_sources():
             # Current rosters make routing resilient to players changing club.
             try:
                 import roster as _roster
-                _r = _roster.load_rosters()
-                roster_names = {t: {n.lower() for n in names}
-                                for t, names in _r.items()}
+                # trusted_names(), not every harvested string: a name must be
+                # unique to one club and seen repeatedly before it is allowed
+                # to route a story. See roster.trusted_names().
+                _trusted = getattr(_roster, "trusted_names", None)
+                if callable(_trusted):
+                    roster_names = _trusted()
+                else:
+                    _r = _roster.load_rosters()
+                    roster_names = {t: {n.lower() for n in names}
+                                    for t, names in _r.items()}
             except Exception:
                 roster_names = None
 

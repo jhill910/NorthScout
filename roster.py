@@ -183,8 +183,19 @@ def save_rosters(rosters):
         f.write("\n")
 
 
-def harvest(by_team, rosters=None, today=None):
-    """Update rosters from {team: [(entry, source), ...]}. Returns rosters."""
+def harvest(by_team, rosters=None, today=None, official_only=True):
+    """Update rosters from {team: [(entry, source), ...]}. Returns rosters.
+
+    official_only: harvest ONLY from a club's own feed. bears.com names
+    Bears players; Yahoo and ProFootballTalk name the whole league. Without
+    this gate every opposing player mentioned in a wire story joined the
+    roster, and route_to_teams() then pulled that player's future news into
+    this club's column -- whose names were harvested in turn. By 2026-10-06
+    Chicago held 918 "roster" names and 533 of the board's 957 stories,
+    including a Jayden Reed surgery story. Minnesota had 128.
+
+    Set official_only=False only to reproduce the old behaviour in a test.
+    """
     rosters = rosters if rosters is not None else load_rosters()
     today = (today or datetime.now()).date().isoformat()
 
@@ -194,6 +205,11 @@ def harvest(by_team, rosters=None, today=None):
         bucket = rosters[team]
         for item in pairs:
             entry = item[0] if isinstance(item, tuple) else item
+            src = item[1] if isinstance(item, tuple) and len(item) > 1 else None
+            if official_only:
+                kind = (src or {}).get("kind") if isinstance(src, dict) else None
+                if kind != "official":
+                    continue
             for name in extract_from_entry(entry):
                 rec = bucket.get(name)
                 if rec:
@@ -215,6 +231,44 @@ def prune(rosters, ttl_days=ROSTER_TTL_DAYS, today=None):
             del bucket[name]
             removed += 1
     return removed
+
+
+MIN_ROSTER_COUNT = 3
+
+
+def trusted_names(rosters=None, min_count=MIN_ROSTER_COUNT):
+    """{team: {lowercased names}} safe enough to ROUTE a story on.
+
+    Two conditions, both learned from the 2026-10-06 board:
+
+    1. UNIQUE TO ONE TEAM. A real player plays for one club. 260 names were
+       on all four rosters -- Aaron Rodgers, Adam Schefter, "An MRI". Any
+       name claimed by two clubs is ambiguous by definition and routing on
+       it is a coin flip.
+
+    2. SEEN AT LEAST min_count TIMES. 181 of Chicago's 918 names appeared
+       exactly once, which is what a one-off mention or a mangled headline
+       fragment looks like.
+
+    This is deliberately separate from what gets STORED. Storage is cheap and
+    reversible; a bad route silently puts another club's news on your board.
+    """
+    from collections import Counter
+    rosters = rosters if rosters is not None else load_rosters()
+
+    seen = Counter()
+    for bucket in rosters.values():
+        for name in bucket:
+            seen[name.lower()] += 1
+
+    out = {}
+    for team, bucket in rosters.items():
+        out[team] = {
+            name.lower() for name, rec in bucket.items()
+            if (rec.get("count", 0) if isinstance(rec, dict) else 0) >= min_count
+            and seen[name.lower()] == 1
+        }
+    return out
 
 
 def all_names(rosters=None, team=None):

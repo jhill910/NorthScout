@@ -63,13 +63,15 @@ def test_harvest_accumulates_and_prunes():
     today = datetime(2026, 9, 1)
     e = {"title": "Bears activate Coby Bryant", "summary": "",
          "media_keywords": "Coby Bryant, Article - Roster Moves"}
-    r = roster.harvest({"Chicago Bears": [(e, None)]},
+    # The source must now be the club's OWN feed -- see the harvest gate.
+    OFFICIAL = {"kind": "official", "label": "Bears.com"}
+    r = roster.harvest({"Chicago Bears": [(e, OFFICIAL)]},
                        rosters={t: {} for t in roster.TEAMS}, today=today)
     assert "Coby Bryant" in r["Chicago Bears"]
     assert r["Chicago Bears"]["Coby Bryant"]["count"] == 1
 
     # second sighting a week later
-    r = roster.harvest({"Chicago Bears": [(e, None)]}, rosters=r,
+    r = roster.harvest({"Chicago Bears": [(e, OFFICIAL)]}, rosters=r,
                        today=today + timedelta(days=7))
     rec = r["Chicago Bears"]["Coby Bryant"]
     assert rec["count"] == 2 and rec["last_seen"] == "2026-09-08", rec
@@ -100,7 +102,7 @@ def test_new_arrival_becomes_visible():
     entry = {"title": "5 things to know about new Packers RB Kaleb Johnson",
              "summary": "Green Bay acquires backfield depth in trade with Pittsburgh",
              "media_keywords": ""}
-    r = roster.harvest({"Green Bay Packers": [(entry, None)]},
+    r = roster.harvest({"Green Bay Packers": [(entry, {"kind": "official"})]},
                        rosters={t: {} for t in roster.TEAMS})
     assert "Kaleb Johnson" in r["Green Bay Packers"], r["Green Bay Packers"]
 
@@ -123,6 +125,47 @@ def test_relevance_survives_missing_roster_file():
         roster.all_names = real
         agent._ROSTER_CACHE = None
     print("  ok  falls back to core list if the roster file is unreadable")
+
+
+def test_wire_sources_do_not_feed_the_roster():
+    """The feedback loop that put Jayden Reed in the Chicago column.
+
+    A wire story names the whole league. Harvesting from it put opposing
+    players on a club roster, which then routed their future news here.
+    """
+    e = {"title": "Packers WR Jayden Reed undergoing neck surgery", "summary": "",
+         "media_keywords": "Jayden Reed"}
+    wire = {"kind": "wire", "label": "Yahoo"}
+    r = roster.harvest({"Chicago Bears": [(e, wire)]},
+                       rosters={t: {} for t in roster.TEAMS})
+    assert not r["Chicago Bears"], r["Chicago Bears"]
+
+    official = {"kind": "official", "label": "Bears.com"}
+    r = roster.harvest({"Chicago Bears": [(e, official)]},
+                       rosters={t: {} for t in roster.TEAMS})
+    assert r["Chicago Bears"], "official feeds must still harvest"
+    print("  ok  wire feeds cannot add to a roster; club feeds still can")
+
+
+def test_trusted_names_rejects_shared_and_rare():
+    """260 names sat on all four rosters; 181 were seen exactly once."""
+    rosters = {
+        "Chicago Bears": {
+            "Caleb Williams": {"count": 9, "first_seen": "", "last_seen": ""},
+            "Aaron Rodgers": {"count": 9, "first_seen": "", "last_seen": ""},
+            "Seen Once Guy": {"count": 1, "first_seen": "", "last_seen": ""},
+        },
+        "Green Bay Packers": {
+            "Aaron Rodgers": {"count": 9, "first_seen": "", "last_seen": ""},
+        },
+        "Detroit Lions": {}, "Minnesota Vikings": {},
+    }
+    t = roster.trusted_names(rosters, min_count=3)
+    assert "caleb williams" in t["Chicago Bears"]
+    assert "aaron rodgers" not in t["Chicago Bears"], "shared name must not route"
+    assert "aaron rodgers" not in t["Green Bay Packers"]
+    assert "seen once guy" not in t["Chicago Bears"], "one sighting must not route"
+    print("  ok  routing ignores shared names and one-off sightings")
 
 
 if __name__ == "__main__":
