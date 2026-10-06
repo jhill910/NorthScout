@@ -32,3 +32,6 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Patch-script backups
+*.bak*
