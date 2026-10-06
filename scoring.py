@@ -174,6 +174,37 @@ NOT_A_SCORE = re.compile(
     r"\b\d{1,2}-\d{1,2}\s*(?:year|yr|season|game|week|day|man)\b")
 
 
+def is_press_conference(title, summary=""):
+    """True if this is a press conference or media availability.
+
+    Producers build segments from what the head coach actually said, so a
+    presser is primary source rather than another take. app.py exempts these
+    from the per-person cap: the day after a game the coach appears in every
+    headline, and a cap that cannot tell crowding from coverage buried the
+    Bears postgame presser at position 258 on 2026-09-29.
+    """
+    blob = f" {str(title).lower()} {str(summary).lower()} "
+    return ("press conference" in blob
+            or "media availability" in blob
+            or "postgame availability" in blob
+            or "\U0001F3A4" in str(title))
+
+
+def game_story_kind(title, summary=""):
+    """'recap', 'preview' or None.
+
+    is_game_story() answers "is this about a game" but not "which game, and
+    has it happened yet". A preview of a game already played is worthless the
+    morning after, and one held a slot that belonged to postgame coverage.
+    """
+    blob = f" {str(title).lower()} {str(summary).lower()} "
+    if _hits(blob, GAME_RECAP):
+        return "recap"
+    if _hits(blob, GAME_PREVIEW):
+        return "preview"
+    return "recap" if is_game_story(title, summary) else None
+
+
 def is_game_story(title, summary=""):
     """True if this story is about a game that was played.
 
@@ -252,6 +283,15 @@ HARD_BOILERPLATE = [
     # tackle hunger in Wisconsin" held a card on 2026-09-08.
     "tackle hunger", "food bank", "fundraiser", "teaming up", "gives back",
     "proceeds", "donation", "donates", "non-profit", "nonprofit",
+    # Sportsbook advertising. "Use DraftKings promo code to claim $150 in
+    # bonus bets" scored 72.0 and held a Bears card on 2026-09-29, directly
+    # below the Monday night win. These are adverts wearing a headline.
+    #
+    # NOT listed, deliberately: "odds", "opening lines", "spread". An
+    # opening line is a real editorial item -- the show cites them -- while
+    # a sign-up bonus is not. The distinction is the offer, not the betting.
+    "promo code", "bonus code", "bonus bets", "sign-up offer", "signup offer",
+    "odds boost", "first bet offer", "welcome offer", "use code",
 ]
 
 # Link paths are a reliable signal the club itself has filed a story as

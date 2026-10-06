@@ -172,6 +172,19 @@ def _diversify(df, max_per_subject=2):
 
     clusters, keep, deferred = {}, [], []
     for idx, row in df.iterrows():
+        # Press conferences bypass the person cap. The day after a game the
+        # head coach is in every headline, so the cap deferred the Bears
+        # postgame presser to position 258 on 2026-09-29. A presser is
+        # primary source -- the coach being named is definitional, not
+        # crowding.
+        _presser = getattr(scoring, "is_press_conference", None)
+        if callable(_presser):
+            try:
+                if _presser(row.get("title", ""), row.get("summary", "")):
+                    keep.append(idx)
+                    continue
+            except Exception:
+                pass
         title_l = str(row.get("title", "")).lower()
         names = scoring.extract_names(f"{row.get('title','')} {row.get('summary','')}")
         keys = {surname_key(n) for n in names if n.lower()[:24] in title_l}
@@ -216,22 +229,30 @@ def _cap_event_cluster(df, max_game=3):
     # bare attribute access raised AttributeError, which the ImportError guard
     # above did not catch, and the whole dashboard went down. An uncapped
     # column is a small loss; a blank page during show prep is not.
-    is_game = getattr(scoring, "is_game_story", None)
-    if not callable(is_game):
+    kind_of = getattr(scoring, "game_story_kind", None)
+    if not callable(kind_of):
         return df
 
-    keep, deferred, n = [], [], 0
+    # Recaps and previews get separate budgets. Sharing one budget let a
+    # preview of an ALREADY PLAYED game take a slot on 2026-09-29, pushing
+    # the postgame press conference and snap-count analysis off the board.
+    # One preview slot is kept because the show's closing segment is all
+    # look-aheads.
+    limits = {"recap": max_game, "preview": 1}
+    counts = {"recap": 0, "preview": 0}
+
+    keep, deferred = [], []
     for idx, row in df.iterrows():
         try:
-            game = is_game(row.get("title", ""), row.get("summary", ""))
+            k = kind_of(row.get("title", ""), row.get("summary", ""))
         except Exception:
             # A malformed row should drop out of the cap, not out of the board.
-            game = False
-        if game:
-            if n >= max_game:
+            k = None
+        if k in limits:
+            if counts[k] >= limits[k]:
                 deferred.append(idx)
                 continue
-            n += 1
+            counts[k] += 1
         keep.append(idx)
     return df.loc[keep + deferred]
 
