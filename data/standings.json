@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-11T22:30:21Z",
+  "fetched_at": "2026-10-12T00:25:16Z",
   "source": "ESPN",
   "teams": {
     "Minnesota Vikings": {
@@ -34,12 +34,12 @@
     },
     "Detroit Lions": {
       "abbr": "DET",
-      "wins": 2,
+      "wins": 3,
       "losses": 2,
       "ties": 0,
-      "record": "2-2",
-      "point_diff": -8,
-      "streak": -1.0,
+      "record": "3-2",
+      "point_diff": 16,
+      "streak": 1.0,
       "division_record": 0.0
     }
   }
