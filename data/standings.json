@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-18T14:22:49Z",
+  "fetched_at": "2026-10-18T21:04:26Z",
   "source": "ESPN",
   "teams": {
     "Minnesota Vikings": {
@@ -10,6 +10,16 @@
       "record": "5-0",
       "point_diff": 45,
       "streak": 5.0,
+      "division_record": 0.0
+    },
+    "Chicago Bears": {
+      "abbr": "CHI",
+      "wins": 4,
+      "losses": 2,
+      "ties": 0,
+      "record": "4-2",
+      "point_diff": 31,
+      "streak": 1.0,
       "division_record": 0.0
     },
     "Green Bay Packers": {
@@ -30,16 +40,6 @@
       "record": "3-2",
       "point_diff": 16,
       "streak": 1.0,
-      "division_record": 0.0
-    },
-    "Chicago Bears": {
-      "abbr": "CHI",
-      "wins": 3,
-      "losses": 2,
-      "ties": 0,
-      "record": "3-2",
-      "point_diff": 23,
-      "streak": -1.0,
       "division_record": 0.0
     }
   }
