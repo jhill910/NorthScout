@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-10-25T14:54:19Z",
+  "fetched_at": "2026-10-25T21:16:07Z",
   "source": "ESPN",
   "teams": {
     "Minnesota Vikings": {
       "abbr": "MIN",
-      "wins": 5,
+      "wins": 6,
       "losses": 0,
       "ties": 0,
-      "record": "5-0",
-      "point_diff": 45,
-      "streak": 5.0,
+      "record": "6-0",
+      "point_diff": 51,
+      "streak": 6.0,
       "division_record": 0.0
     },
     "Chicago Bears": {
