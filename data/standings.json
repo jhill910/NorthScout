@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-30T00:45:51Z",
+  "fetched_at": "2026-10-30T16:58:14Z",
   "source": "ESPN",
   "teams": {
     "Minnesota Vikings": {
@@ -34,12 +34,12 @@
     },
     "Green Bay Packers": {
       "abbr": "GB",
-      "wins": 4,
+      "wins": 5,
       "losses": 3,
       "ties": 0,
-      "record": "4-3",
-      "point_diff": -1,
-      "streak": -1.0,
+      "record": "5-3",
+      "point_diff": 7,
+      "streak": 1.0,
       "division_record": 0.0
     }
   }
