@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-03T02:52:07Z",
+  "fetched_at": "2026-11-03T18:17:18Z",
   "source": "ESPN",
   "teams": {
     "Minnesota Vikings": {
@@ -12,6 +12,16 @@
       "streak": -1.0,
       "division_record": 0.0
     },
+    "Chicago Bears": {
+      "abbr": "CHI",
+      "wins": 6,
+      "losses": 2,
+      "ties": 0,
+      "record": "6-2",
+      "point_diff": 54,
+      "streak": 3.0,
+      "division_record": 0.0
+    },
     "Detroit Lions": {
       "abbr": "DET",
       "wins": 5,
@@ -20,16 +30,6 @@
       "record": "5-2",
       "point_diff": 23,
       "streak": 3.0,
-      "division_record": 0.0
-    },
-    "Chicago Bears": {
-      "abbr": "CHI",
-      "wins": 5,
-      "losses": 2,
-      "ties": 0,
-      "record": "5-2",
-      "point_diff": 37,
-      "streak": 2.0,
       "division_record": 0.0
     },
     "Green Bay Packers": {
