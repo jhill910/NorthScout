@@ -1,14 +1,24 @@
 {
-  "fetched_at": "2026-11-22T18:21:10Z",
+  "fetched_at": "2026-11-22T23:52:57Z",
   "source": "ESPN",
   "teams": {
     "Detroit Lions": {
       "abbr": "DET",
-      "wins": 7,
+      "wins": 8,
       "losses": 2,
       "ties": 0,
-      "record": "7-2",
-      "point_diff": 58,
+      "record": "8-2",
+      "point_diff": 68,
+      "streak": 6.0,
+      "division_record": 0.0
+    },
+    "Chicago Bears": {
+      "abbr": "CHI",
+      "wins": 8,
+      "losses": 2,
+      "ties": 0,
+      "record": "8-2",
+      "point_diff": 65,
       "streak": 5.0,
       "division_record": 0.0
     },
@@ -20,16 +30,6 @@
       "record": "7-2",
       "point_diff": 50,
       "streak": 1.0,
-      "division_record": 0.0
-    },
-    "Chicago Bears": {
-      "abbr": "CHI",
-      "wins": 7,
-      "losses": 2,
-      "ties": 0,
-      "record": "7-2",
-      "point_diff": 57,
-      "streak": 4.0,
       "division_record": 0.0
     },
     "Green Bay Packers": {
