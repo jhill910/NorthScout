@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-23T01:30:33Z",
+  "fetched_at": "2026-11-23T22:29:50Z",
   "source": "ESPN",
   "teams": {
     "Detroit Lions": {
@@ -25,11 +25,11 @@
     "Minnesota Vikings": {
       "abbr": "MIN",
       "wins": 7,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
-      "record": "7-2",
-      "point_diff": 50,
-      "streak": 1.0,
+      "record": "7-3",
+      "point_diff": 25,
+      "streak": -1.0,
       "division_record": 0.0
     },
     "Green Bay Packers": {
