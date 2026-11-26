@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-26T03:28:08Z",
+  "fetched_at": "2026-11-26T20:01:52Z",
   "source": "ESPN",
   "teams": {
     "Detroit Lions": {
@@ -35,11 +35,11 @@
     "Green Bay Packers": {
       "abbr": "GB",
       "wins": 6,
-      "losses": 4,
+      "losses": 5,
       "ties": 0,
-      "record": "6-4",
-      "point_diff": 5,
-      "streak": -1.0,
+      "record": "6-5",
+      "point_diff": -8,
+      "streak": -2.0,
       "division_record": 0.0
     }
   }
