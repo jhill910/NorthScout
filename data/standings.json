@@ -1,25 +1,25 @@
 {
-  "fetched_at": "2026-11-26T20:01:52Z",
+  "fetched_at": "2026-11-27T01:57:53Z",
   "source": "ESPN",
   "teams": {
-    "Detroit Lions": {
-      "abbr": "DET",
-      "wins": 8,
+    "Chicago Bears": {
+      "abbr": "CHI",
+      "wins": 9,
       "losses": 2,
       "ties": 0,
-      "record": "8-2",
-      "point_diff": 68,
+      "record": "9-2",
+      "point_diff": 69,
       "streak": 6.0,
       "division_record": 0.0
     },
-    "Chicago Bears": {
-      "abbr": "CHI",
+    "Detroit Lions": {
+      "abbr": "DET",
       "wins": 8,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
-      "record": "8-2",
-      "point_diff": 65,
-      "streak": 5.0,
+      "record": "8-3",
+      "point_diff": 64,
+      "streak": -1.0,
       "division_record": 0.0
     },
     "Minnesota Vikings": {
